@@ -2,7 +2,7 @@ function SideNav() {
 
     return(
         <div>
-
+            
         </div>
     )
 }
