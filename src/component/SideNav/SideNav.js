@@ -11,17 +11,17 @@ function SideNav({children}) {
     const menuItem = [
         {
             path:"/student",
-            name:"student",
+            name:"마이페이지",
             icon:<BsFillPersonFill />
         },
         {
             path:"/studentapply",
-            name:"studentapply",
+            name:"지원신청",
             icon:<BsFileEarmarkPlusFill />
         },
         {
             path:"/studentattend",
-            name:"studentattend",
+            name:"출석확인",
             icon:<BsPersonCheckFill />
         },
     ]
@@ -42,6 +42,7 @@ function SideNav({children}) {
                         </NavLink>
                     ))
                 }
+                <h3 style={{display : isOpen ? "block" : "none"}} className="sidenav-foot">로그아웃</h3>
             </div>
             <main>{children}</main>
         </div>
