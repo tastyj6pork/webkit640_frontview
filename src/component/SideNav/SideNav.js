@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {BsFillPersonFill, BsFileEarmarkPlusFill, BsPersonCheckFill, BsPentagonFill} from "react-icons/bs";
+import {BsFillPersonFill, BsFileEarmarkPlusFill, BsPersonCheckFill, BsList} from "react-icons/bs";
 import { NavLink } from "react-router-dom";
 import '../SideNav/SideNav.css';
 
@@ -31,7 +31,7 @@ function SideNav({children}) {
                 <div className="sidenav-top">
                     <h1 style={{display : isOpen ? "block" : "none"}} className="sidenav-logo">Webkit</h1>
                     <div style={{marginLeft : isOpen ? "94px" : "-3px"}} className="sidenav-webkitbars">
-                        <BsPentagonFill onClick={toggle}/>
+                        <BsList onClick={toggle}/>
                     </div>
                 </div>
                 {

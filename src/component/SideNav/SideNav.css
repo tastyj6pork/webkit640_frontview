@@ -59,3 +59,11 @@ main {
     padding-left: 129px ;
 }
 
+@media all and (max-width: 1536px) {
+   
+    .sidenav-foot {
+        top: 479px;
+        padding-left: 146px ;
+    }
+    
+}
