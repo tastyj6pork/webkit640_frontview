@@ -5,6 +5,7 @@ import { KAKAO_AUTH_URL } from '../../service/OAuth';
 import StickyHeader from '../../component/StickyHeader/StickyHeader';
 import { call } from '../../service/ApiService';
 
+
 function Login() {
     const[code, setCode] = useState('');
     
@@ -16,8 +17,6 @@ function Login() {
         })
         
     }
-
-
     
     return (
         <div className="Login">
@@ -27,10 +26,10 @@ function Login() {
                     <img className="logo" src="#" />
                     <h3>안녕하세요.<br/>웹킷640에 오신 걸<br/>환영합니다.</h3><br/>
                     <a href={KAKAO_AUTH_URL}><div  className="kakao-btn"/></a>
-                    <p>아직 회원이 아니신가요? <Link to="/signup"><span>회원가입</span></Link></p>
-                    {code}
+                    <p>아직 회원이 아니신가요? 
+                        <Link to="/signup" style={{textDecoration: 'none'}}>
+                            <span>회원가입</span></Link></p>
                 </div>
-
             </div>
         </div>
     )
