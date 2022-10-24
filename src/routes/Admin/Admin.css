@@ -1,0 +1,8 @@
+.apply-title {
+    width: 100%;
+    background: whitesmoke;
+    height: 100px;
+}
+.apply-title h1 {
+    padding: 25px;
+}

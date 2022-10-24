@@ -1,6 +1,6 @@
 import { useState } from "react";
 import {BsFillPersonFill, BsFileEarmarkPlusFill, BsPersonCheckFill, BsList, BsCalendarCheck} from "react-icons/bs";
-import { NavLink } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 import '../SideNav/SideNav.css';
 
 function SideNav({children}) {
@@ -49,11 +49,12 @@ function SideNav({children}) {
             icon:<BsCalendarCheck />
         }
     ]
+
     return(
         <div className="sidenav-container">
             <div style={{width : isOpen ? "300px" : "50px"}} className="sidenav-box">
                 <div className="sidenav-top">
-                    <h1 style={{display : isOpen ? "block" : "none"}} className="sidenav-logo">Webkit</h1>
+                    <NavLink to="/"><h1 style={{display : isOpen ? "block" : "none", textDecoration : "none", color : "white"}} className="sidenav-logo">Webkit</h1></NavLink>
                     <div style={{marginLeft : isOpen ? "94px" : "-3px"}} className="sidenav-webkitbars">
                         <BsList onClick={toggle}/>
                     </div>
@@ -73,9 +74,10 @@ function SideNav({children}) {
                         ))
                     }
                 <h3 style={{display : isOpen ? "block" : "none"}} className="sidenav-foot">로그아웃</h3>
-            </div>
-            <main>{children}</main>
+            </div>            
+            <main><Outlet /></main>
         </div>
+        
     )
 }
 

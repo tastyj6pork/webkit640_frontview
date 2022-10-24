@@ -2,8 +2,13 @@ import '../Admin/Admin.css';
 
 function AdminApply() {
 
-    return(<div>
-        <h2>관리자 지원관리 입니다.</h2>
+    return(<div className="apply-total">
+        <div className="apply-title">
+            <h1>지원관리</h1>
+        </div>
+        <div className="apply-container">
+            
+        </div>
     </div>)
 }
 

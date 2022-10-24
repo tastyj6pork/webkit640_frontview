@@ -1,9 +1,12 @@
-//라우터에 '/'없으니까 에러떠서 만들었어요 - ㅈㅇ
+import "../Main/Main.css";
+
+import { Link } from "react-router-dom";
 
 function Main() {
 
     return(<div>
         <h2>메인페이지</h2>
+        <Link to="/studentapply">지원하기</Link>
     </div>)
 }
 
