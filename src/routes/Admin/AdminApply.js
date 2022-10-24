@@ -1,13 +1,16 @@
 import { useState } from 'react';
 import '../Admin/Admin.css';
+import ApplyItems from './ApplyItems';
 
 function AdminApply() {
 
     const [applyList, setApplyList] = useState([
         {
+            id : 1,
             name : "홍길동",
             major : "컴퓨터공학과",
             schoolnumber : "20226789",
+            email : "webkit640@google.co.kr"
         }
     ])
 
@@ -36,7 +39,13 @@ function AdminApply() {
                 <li className="table-fourth">이메일</li>
                 <li className="table-fifth">상태</li>
             </ul>
-        </div>   
+        </div>
+        {applyList.map((items) => (
+            <ApplyItems
+            items={items}
+            key={items.id}
+            />
+        ))}
     </div>)
 }
 
