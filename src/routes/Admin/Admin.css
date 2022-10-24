@@ -58,3 +58,29 @@
 .table-fifth {
     margin-left: 365px;
 }
+.apply-insert-items {
+    height: 50.79px;
+}
+.apply-insert-items ul {
+    list-style: none;
+    display: inline-flex;
+    padding: 10px;
+}
+.apply-insert-items ul li {
+    padding-left: 25px;
+}
+.items-first {
+    margin-left: 77.28px;
+}
+.items-second {
+    margin-left: 144px;
+}
+.items-third {
+    margin-left: 128px;
+}
+.items-fourth {
+    margin-left: 205px;
+}
+.items-fifth {
+    margin-left: 286.5px;
+}
