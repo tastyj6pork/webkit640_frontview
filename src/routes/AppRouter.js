@@ -1,21 +1,24 @@
 import React from 'react';
 import { ConnectedRouter } from 'connected-react-router';
-import { Route, Switch } from 'react-router-dom';
-import history from './history';
-import KakaoRedirectHandler from '../service/KakaoRedirectHandler';
-import App from '../App';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from '../routes/Main/Main'
 import Login from '../routes/Login/Login'
+import SideNav from "./component/SideNav/SideNav";
+import Student from "./routes/Student/Student";
+import StudentApply from "./routes/Student/StudentApply";
+import StudentAttend from "./routes/Student/StudentAttend";
 
 function AppRouter(){
     return (
-        <ConnectedRouter history={history}>
-            <Switch>
-                <Route exact path="/" component={App}/>
-                <Route exact path="/login" component={Login}/>
-                <Route exact path="/auth/Oauth/kakao" component={KakaoRedirectHandler}/>
-            </Switch>
-        </ConnectedRouter>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Home/>}/>
+                <Route path="/login" element={<Login/>}/>
+                <Route path="/student" element={<Student />} />
+                <Route path="/studentapply" element={<StudentApply />} />
+                <Route path="/studentattend" element={<StudentAttend />} />
+            </Routes>
+        </BrowserRouter>
     )
 }
 

@@ -1,10 +1,15 @@
-//라우터에 '/'없으니까 에러떠서 만들었어요 - ㅈㅇ
+import { React, useEffect } from "react";
+import { Link } from "react-router-dom";
+import "./Main.css"
 
 function Main() {
 
-    return(<div>
-        <h2>메인페이지</h2>
-    </div>)
+    return (
+        <div>
+            <div>메인 페이지</div>
+            <Link to="/login">로그인</Link>
+        </div>
+    )
 }
 
 export default Main;
