@@ -9,7 +9,7 @@ import Login from "./routes/Login/Login";
 function App() {
   return (    
     <div className="App">
-      <Login/>
+      <Home/>
       {/*}
       <SideNav>
             <Routes>

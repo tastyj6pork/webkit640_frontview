@@ -3,7 +3,7 @@ const ACCESS_TOKEN = "ACCESS_TOKEN";
 
 export function call(api, method, request) {
     let headers = new Headers({
-        "Content-Type": "application/json",
+        "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
     });
 
     const accessToken = localStorage.getItem(ACCESS_TOKEN);
