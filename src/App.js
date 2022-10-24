@@ -1,8 +1,19 @@
+import { Route, Routes } from "react-router-dom";
+import SideNav from "./component/SideNav/SideNav";
+import Student from "./routes/Student/Student";
+import StudentApply from "./routes/Student/StudentApply";
+import StudentAttend from "./routes/Student/StudentAttend";
+
 function App() {
-  return (
+  return (    
     <div className="App">
-      <h1>송민규 천제</h1>
-      <p>test</p>
+      <SideNav>
+            <Routes>
+                <Route path="/student" element={<Student />} />
+                <Route path="/studentapply" element={<StudentApply />} />
+                <Route path="/studentattend" element={<StudentAttend />} /> 
+            </Routes>
+        </SideNav>
     </div>
   );
 }
