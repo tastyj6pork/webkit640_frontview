@@ -1,10 +1,11 @@
 import { useState } from "react";
-import {BsFillPersonFill, BsFileEarmarkPlusFill, BsPersonCheckFill, BsPentagonFill} from "react-icons/bs";
-import { NavLink } from "react-router-dom";
+import {BsFillPersonFill, BsFileEarmarkPlusFill, BsPersonCheckFill, BsList, BsCalendarCheck} from "react-icons/bs";
+import { NavLink, Outlet } from "react-router-dom";
 import '../SideNav/SideNav.css';
 
 function SideNav({children}) {
 
+    const [logCheck, setLogCheck] = useState(true) // true = 관리자, false = 학생
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen)
 
@@ -25,27 +26,58 @@ function SideNav({children}) {
             icon:<BsPersonCheckFill />
         },
     ]
+
+    const adminItem = [
+        {
+            path:"/admin",
+            name:"관리자 페이지",
+            icon:<BsFillPersonFill />
+        },
+        {
+            path:"/adminapply",
+            name:"지원관리",
+            icon:<BsFileEarmarkPlusFill />
+        },
+        {
+            path:"/adminattend",
+            name:"출석관리",
+            icon:<BsPersonCheckFill />
+        },
+        {
+            path:"/adminschedule",
+            name:"일정관리",
+            icon:<BsCalendarCheck />
+        }
+    ]
+
     return(
         <div className="sidenav-container">
             <div style={{width : isOpen ? "300px" : "50px"}} className="sidenav-box">
                 <div className="sidenav-top">
-                    <h1 style={{display : isOpen ? "block" : "none"}} className="sidenav-logo">Webkit</h1>
+                    <NavLink to="/"><h1 style={{display : isOpen ? "block" : "none", textDecoration : "none", color : "white"}} className="sidenav-logo">Webkit</h1></NavLink>
                     <div style={{marginLeft : isOpen ? "94px" : "-3px"}} className="sidenav-webkitbars">
-                        <BsPentagonFill onClick={toggle}/>
+                        <BsList onClick={toggle}/>
                     </div>
                 </div>
-                {
-                    menuItem.map((item, index) => (
-                        <NavLink to={item.path} key={index} className="link">
-                            <div className="sidenav-icon">{item.icon}</div>
-                            <div style={{display : isOpen ? "block" : "none"}} className="sidenav-link-text">{item.name}</div>
-                        </NavLink>
-                    ))
-                }
+                    { logCheck ?
+                        adminItem.map((item, index) => (
+                            <NavLink to={item.path} key={index} className="link">
+                                <div className="sidenav-icon">{item.icon}</div>
+                                <div style={{display : isOpen ? "block" : "none"}} className="sidenav-link-text">{item.name}</div>
+                            </NavLink>
+                        )) :
+                        menuItem.map((item, index) => (
+                            <NavLink to={item.path} key={index} className="link">
+                                <div className="sidenav-icon">{item.icon}</div>
+                                <div style={{display : isOpen ? "block" : "none"}} className="sidenav-link-text">{item.name}</div>
+                            </NavLink>
+                        ))
+                    }
                 <h3 style={{display : isOpen ? "block" : "none"}} className="sidenav-foot">로그아웃</h3>
-            </div>
-            <main>{children}</main>
+            </div>            
+            <main><Outlet /></main>
         </div>
+        
     )
 }
 
