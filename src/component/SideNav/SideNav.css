@@ -54,8 +54,8 @@ main {
 }
 .sidenav-foot {
     display: flex;
-    position: relative;
-    top: 705px;
+    position: fixed;
+    margin-top: 195px;
     padding-left: 129px ;
 }
 
