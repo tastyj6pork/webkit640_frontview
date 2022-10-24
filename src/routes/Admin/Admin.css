@@ -6,3 +6,41 @@
 .apply-title h1 {
     padding: 25px;
 }
+.apply-insert {
+    width: 100%;
+    height: 564px;
+    background: #62669d;
+    margin-top: 36px;
+    opacity: 0.64;
+    border-radius: 10px;
+    display: inline-block;
+}
+.apply-result {
+    width: 100%;
+    height: 564px;
+    background: #62669d;
+    margin-top: 36px;
+    opacity: 0.64;
+    border-radius: 10px;
+    display: inline-block;
+
+}
+.apply-insert-algin{
+    text-align: end;
+}
+.apply-insert-search {
+    width: 28%;
+    height: 43px;
+    margin: 10px;
+    border-radius: 5px;  
+}
+.apply-insert-select {
+    width: 100px;
+    height: 43px;
+    border-radius: 5px;  
+}
+.apply-number {
+    font-size: 28px;
+    position: absolute;
+    padding-left: 12px;
+}
