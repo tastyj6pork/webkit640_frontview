@@ -9,6 +9,7 @@ function SideNav({children}) {
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen)
 
+    //Login = 학생 List
     const menuItem = [
         {
             path:"/student",
@@ -27,6 +28,7 @@ function SideNav({children}) {
         },
     ]
 
+    //Login = 관리자 List
     const adminItem = [
         {
             path:"/admin",
