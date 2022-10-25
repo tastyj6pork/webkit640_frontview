@@ -6,3 +6,81 @@
 .apply-title h1 {
     padding: 25px;
 }
+.apply-insert {
+    width: 100%;
+    height: 94px;
+    margin-top: 36px;
+    display: inline-block;
+}
+.apply-insert-algin{
+    text-align: end;
+}
+.apply-insert-search {
+    width: 28%;
+    height: 43px;
+    margin: 10px;
+    background: whitesmoke;
+    border: none;
+}
+.apply-insert-select {
+    width: 100px;
+    height: 43px;
+    border: none;
+}
+.apply-frist-label {
+    padding: 20px;
+    position: absolute;
+    z-index: 999;
+
+}
+.apply-insert-table {
+    border-top: 3px solid black;
+    height: 50.79px;
+    background: whitesmoke;
+}
+.apply-insert-table ul {
+    list-style: none;
+    display: inline-flex;
+    padding: 10px;
+}
+.apply-insert-table ul li {
+    padding-left: 25px;
+}
+.table-first {
+    margin-left: 117.4px;
+}
+.table-second, .table-third {
+    margin-left: 180px;
+}
+.table-fourth {
+    margin-left: 295px;
+}
+.table-fifth {
+    margin-left: 365px;
+}
+.apply-insert-items {
+    height: 50.79px;
+}
+.apply-insert-items ul {
+    list-style: none;
+    display: inline-flex;
+    padding: 10px;
+}
+.apply-insert-items ul li {
+    padding-left: 25px;
+}
+.items-first {
+    margin-left: 77.28px;
+}
+.items-second {
+    margin-left: 144px;
+}
+.items-third {
+    margin-left: 128px;
+}
+.items-fourth {
+    margin-left: 205px;
+}
+.items-fifth {
+    margin-left: 286.5px;
+}
