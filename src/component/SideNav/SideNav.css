@@ -19,6 +19,8 @@ main {
     height: 100vh;
     width: 300px;
     transition: all 0.7s; /*SideNavbar 이벤트 스크롤 속도 CSS*/
+    position: sticky;
+    top: 0;
 }
 .sidenav-top {
     display: flex;
