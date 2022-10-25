@@ -1,8 +1,11 @@
 import '../Admin/Admin.css'
 
-function ApplyItems({items}) {
+function ApplyItems({saveItem, items, setSaveItem}) {
 
-    console.log(items);
+    function BtnClick() {
+        setSaveItem([...saveItem, items.name]);
+    }
+
     return(<div>
         <div className="apply-insert-items">
             <ul>
@@ -11,7 +14,7 @@ function ApplyItems({items}) {
                 <li className="items-second">{items.major}</li>
                 <li className="items-third">{items.schoolnumber}</li>
                 <li className="items-fourth">{items.email}</li>
-                <li className="items-fifth"><button>선택</button></li>
+                <li className="items-fifth"><button className="items-btn" onClick={BtnClick}>선택</button></li>
             </ul>
         </div>
     </div>)
