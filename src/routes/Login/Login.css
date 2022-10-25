@@ -1,0 +1,58 @@
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+.Login * {
+    font-family: 'Pretendard-Regular';
+}
+
+.Login {
+    width: 100vw;
+    height: 100vh;
+}
+
+.Login .loginContent{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    background-color: rgb(248, 251, 249);
+}
+
+.Login .login-box {
+    width: 400px;
+    height: 400px;
+    padding: 40px;
+    background-color: white;
+    border-radius: 9px;
+    box-shadow: 0px 0px 10px 3px lightgrey;
+}
+
+.Login .logo {
+    width: 60px;
+    height: 60px;
+}
+
+.Login h3 {
+    line-height: 34px;
+    font-weight: 800;
+}
+
+.Login p {
+    margin-top: 10px;
+}
+
+.Login p span {
+    margin-left: 5px;
+    font-weight: 800;
+    color: rgba(29, 223, 144, 0.99);
+}
+
+.Login .kakao-btn {
+    background-image: url("../../../public/images/kakao_login.png");
+    background-repeat: no-repeat;
+    width: auto;
+    height: 50px;
+}

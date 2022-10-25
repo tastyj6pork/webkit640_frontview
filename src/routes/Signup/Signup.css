@@ -1,0 +1,84 @@
+.Signup * {
+    font-family: 'Pretendard-Regular';
+}
+
+.Signup {
+    width: 100vw;
+    height: 100vh;
+}
+
+.Signup .signup-content{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    background-color: rgb(248, 251, 249);
+}
+
+.Signup .signup-box {
+    width: 540px;
+    height: 750px;
+    padding: 40px;
+    background-color: white;
+    border-radius: 9px;
+    box-shadow: 0px 0px 10px 3px lightgrey;
+}
+
+.Signup .logo {
+    width: 60px;
+    height: 60px;
+    float: left;
+    margin-right: 15px;
+}
+
+.Signup h3 {
+    line-height: 34px;
+    font-weight: 800;
+}
+
+.Signup form {
+    margin-top: 30px;
+}
+
+.Signup .form-group input{
+    width: 300px;
+}
+
+.Signup #affiliInput input{
+    width: 220px;
+}
+
+.Signup .form-group select {
+    float: left;
+    width: 70px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.Signup #studentInput {
+    margin-top: 5px;
+}
+
+.Signup #studentInput #major {
+    width: 170px;
+    float: left;
+    margin-right: 10px;
+}
+
+.Signup #studentInput #snum {
+    width: 120px;
+}
+
+.Signup .join-btn {
+    width: 140px;
+    height: 50px;
+    margin-top: 20px;
+    color: white;
+    border: 0;
+    border-radius: 10px;
+    font-weight: 600;
+    background-color: rgb(29, 205, 171);
+}
+
+.Signup .join-btn:hover {
+    background-color: rgb(92, 222, 196);
+}
