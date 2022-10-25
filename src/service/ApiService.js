@@ -46,3 +46,29 @@ export function call(api, method, request) {
         return Promise.reject(error);
     });
 }
+
+export function signin(userDTO) {
+    return call("/auth/login", "POST", userDTO)
+    .then((response)=>{
+        if(response.token){
+            localStorage.setItem(ACCESS_TOKEN, response.token);
+            window.location.href="/";
+        }
+    })
+}
+
+export function signup(userDTO){
+    return call("/auth/signup", "POST", userDTO)
+    .then((response)=> {
+        if(response.id){
+            window.location.herf="/login";
+        }
+    })
+    .catch((error)=>{
+        console.log(error.state);
+        if(error.state === 403) {
+            window.location.herf="/auth/signup";
+        }
+        return Promise.reject(error);
+    })
+}
