@@ -108,10 +108,9 @@
 .items-btn {
     height: 29px;
     width: 50px;
-    border:none;
-    background: #e5dfff;
+    border:1.6px solid black;
+    background: whitesmoke;
     color: black;
-    box-shadow: 1.7px 1.7px #122a4f;
 }
 .items-btn:active {
     height: 29px;
@@ -125,4 +124,8 @@
     height: 180px;
     border: 3px solid black;
     margin-top: 100px;
+}
+.apply-result-list {
+    padding: 9px;
+    font-size: smaller;
 }

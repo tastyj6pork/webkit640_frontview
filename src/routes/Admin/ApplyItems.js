@@ -1,9 +1,9 @@
 import '../Admin/Admin.css'
 
-function ApplyItems({saveItem, items, setSaveItem}) {
+function ApplyItems({items, setSaveItem}) {
 
     function BtnClick() {
-        setSaveItem([...saveItem, items.name]);
+        setSaveItem(items);
     }
 
     return(<div>
