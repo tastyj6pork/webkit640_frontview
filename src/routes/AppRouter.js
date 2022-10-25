@@ -28,6 +28,7 @@ function AppRouter(){
                 <Route path="/studentapply" element={<StudentApply />} />
                 <Route path="/studentattend" element={<StudentAttend />} />
                 <Route path="/auth/oauth/kakao" element={<KakaoRedirectHandler/>}/>
+
             </Routes>
         </BrowserRouter>
     )
