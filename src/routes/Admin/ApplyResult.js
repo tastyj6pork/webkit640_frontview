@@ -1,10 +1,10 @@
 import '../Admin/Admin.css'
 
-function ApplyResult(props) {
+function ApplyResult() {
 
     return(<div>
         <div className="result-items">
-            <p>{props.map((res) => res.name)}</p>
+            <p></p>
         </div>
     </div>)
 }

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import '../Admin/Admin.css';
 import ApplyItems from './ApplyItems';
 import ApplyResult from './ApplyResult';
@@ -51,6 +51,8 @@ function AdminApply() {
     ])
     
     const [saveItem, setSaveItem] = useState([]);
+    const saveItemRef = useRef([]);
+    saveItemRef.current = saveItemRef.current + (saveItem.email + " "); //이름+이메일 박스로 구분지어 생성하는거 연구해야됨!
 
     return(<div className="apply-total">
         <div className="apply-title">
@@ -93,11 +95,7 @@ function AdminApply() {
                 <h3>선발 목록</h3>
             </div>
             <div className="applyl-select-result">
-                {saveItem.map((selection) => (
-                    <ApplyResult 
-                    selection={selection}
-                    key={selection.id} />
-                ))}
+                <div className="apply-result-list">{saveItemRef.current}</div>
             </div>
             <div className="apply-selection"><button className="apply-select-btn">선발 완료</button></div>
         </div>
