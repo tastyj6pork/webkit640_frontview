@@ -17,18 +17,19 @@ function AppRouter(){
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<App/>}/>
-                <Route path="/login" element={<Login/>}/>
-                <Route path="/signup" element={<Signup/>}/>
-                <Route path="/admin" element={<Admin />} />
-                <Route path="/adminapply" element={<AdminApply />} />
-                <Route path="/adminattend" element={<AdminAttend />} />
-                <Route path="/adminschedule" element={<AdminSchedule />} />
-                <Route path="/student" element={<Student />} />
-                <Route path="/studentapply" element={<StudentApply />} />
-                <Route path="/studentattend" element={<StudentAttend />} />
-                <Route path="/auth/oauth/kakao" element={<KakaoRedirectHandler/>}/>
-
+                <Route element={<SideNav />}>
+                    <Route path="/admin" element={<Admin />} />
+                    <Route path="/adminapply" element={<AdminApply />} />
+                    <Route path="/adminattend" element={<AdminAttend />} />
+                    <Route path="/adminschedule" element={<AdminSchedule />} />
+                    <Route path="/student" element={<Student />} />
+                    <Route path="/studentapply" element={<StudentApply />} />
+                    <Route path="/studentattend" element={<StudentAttend />} />
+                </Route>
+                    <Route path="/" element={<App/>}/>
+                    <Route path="/login" element={<Login/>}/>
+                    <Route path="/signup" element={<Signup/>}/>
+                    <Route path="/auth/oauth/kakao" element={<KakaoRedirectHandler/>}/>
             </Routes>
         </BrowserRouter>
     )

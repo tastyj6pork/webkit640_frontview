@@ -1,10 +1,10 @@
 import '../Admin/Admin.css'
 
-function ApplyResult() {
+function ApplyResult({item, onRemove}) {
 
     return(<div>
         <div className="result-items">
-            <p></p>
+            <div className="result-contents" onClick={() => onRemove(item.id)}>{item.name + " " + item.email}</div>
         </div>
     </div>)
 }
