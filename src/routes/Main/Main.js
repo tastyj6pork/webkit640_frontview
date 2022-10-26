@@ -1,4 +1,4 @@
-import { React, useEffect } from "react";
+import { React, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Main.css"
 import Header from "../../component/Header/Header";
@@ -13,10 +13,9 @@ function Main() {
                     <div className="header-background"/>
                     <div className="w3-display-middle w3-margin-top w3-center">
                         <div>카운트다운</div>
-                        <Link to="/studentapply">지원하기</Link>
+                        <button className="apply-btn" href="/studentapply">지원하기</button>
                     </div>
                 </header>
-                <Link to="/student">마이페이지</Link><br/>
 
             </div>
         </div>

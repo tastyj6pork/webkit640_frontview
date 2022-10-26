@@ -11,13 +11,12 @@ export function call(api, method, request) {
         headers.append("Authorization", "Bearer " + accessToken);
     }
 
-    
     let options = {
         headers: headers,
         url: API_BASE_URL + api,
         method: method,
     };
-    
+
     /*
     let options = {
         headers: headers,
@@ -51,6 +50,7 @@ export function login(userDTO) {
     return call("/auth/login", "POST", userDTO)
     .then((response)=>{
         if(response.token !== null){
+            localStorage.setItem("IS_ADMIN", response.isadmin);
             localStorage.setItem(ACCESS_TOKEN, response.token);
             window.location.href="/";
         }

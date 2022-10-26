@@ -5,8 +5,8 @@
 }
 
 .Header .navbar-brand {
-    margin-left: 180px;
     float: left;
+    margin: 0;
 }
 
 .Header #navBar {
@@ -14,10 +14,16 @@
     padding: 25px;
 }
 
+.Header .nav-content {
+    width: 1480px;
+    height: 40px;
+    margin: auto;
+}
+
 .Header #menuList {
-    width: 1700px;
-    height: auto;
-    margin-left: 200px;
+    width: 1480px;
+    height: 40px;
+    margin-left: 0;
     padding: 5px;
 }
 
@@ -36,6 +42,12 @@
     font-size: 20px;
 }
 
-.Header #menuList .login-btn {
+.Header #menuList li a{
+    text-decoration: none;
+    color: rgb(66, 66, 66);
+}
+
+.Header #menuList #loginState li{
     float: right;
+    margin-left: 40px;
 }
