@@ -1,0 +1,41 @@
+.Header * {
+    font-family: 'Pretendard-Regular';
+    position: relative;
+    z-index: 2;
+}
+
+.Header .navbar-brand {
+    margin-left: 180px;
+    float: left;
+}
+
+.Header #navBar {
+    height: 90px;
+    padding: 25px;
+}
+
+.Header #menuList {
+    width: 1700px;
+    height: auto;
+    margin-left: 200px;
+    padding: 5px;
+}
+
+.Header #menuList ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-left: 250px;
+}
+
+.Header #menuList li {
+    float: left;
+    margin: 0;
+    padding: 0;
+    margin-left: 70px;
+    font-size: 20px;
+}
+
+.Header #menuList .login-btn {
+    float: right;
+}

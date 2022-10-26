@@ -65,7 +65,7 @@ export function signup(userDTO){
         }
     })
     .catch((error)=>{
-        console.log(error.state);
+        //console.log(error.state);
         if(error.state === 403) {
             window.location.herf="/auth/signup";
         }

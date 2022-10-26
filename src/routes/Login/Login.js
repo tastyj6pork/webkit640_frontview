@@ -46,7 +46,7 @@ function Login() {
                                 placeholder="비밀번호"/>
                         </div>
                     </form>
-                    <a href={KAKAO_AUTH_URL}><div  className="kakao-btn"/></a>
+                    <a href={KAKAO_AUTH_URL}><div className="kakao-btn"/></a>
                     <div className="w3-center">
                             <button type="submit" 
                             form="loginForm"

@@ -79,7 +79,7 @@ function Signup() {
         const affdata = affili;
         
         signup({name: name, email: email, memberType: s_affili, memberBelong: affdata, password: pwd})
-        .then((resposne)=>{
+        .then((response)=>{
             window.location.href="/login";
         })
     }
