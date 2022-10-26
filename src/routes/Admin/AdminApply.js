@@ -1,4 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
+import { json } from 'react-router-dom';
+import { API_BASE_URL } from '../../app-config';
+
 import '../Admin/Admin.css';
 import ApplyItems from './ApplyItems';
 import ApplyResult from './ApplyResult';
@@ -49,6 +52,28 @@ function AdminApply() {
             email : "webkit8910@google.co.kr"
         }
     ])
+
+    /*const [applyList, setApplyList] = useState([]);
+
+    useEffect(() => {
+        let header = new Headers({
+
+        })
+
+        let options = {
+            method : "GET",
+            url : API_BASE_URL,
+            header : header,
+
+        };
+
+        fetch(options.url, options).then(response => {
+            response.json().then((json) => {
+                setApplyList(json);
+            });
+        })
+        .catch((error) => console.log(error))
+    }, [])*/
 
     const [saveItems, setSaveItems] = useState([]);
     

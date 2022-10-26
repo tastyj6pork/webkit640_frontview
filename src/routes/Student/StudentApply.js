@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { API_BASE_URL } from '../../app-config';
 import '../Student/Student.css';
 
 function StudentApply() {
@@ -28,7 +29,7 @@ function StudentApply() {
 
         let option = {
             method : "POST",
-            url : "http://192.168.232.69:8080",
+            url : API_BASE_URL,
             header : header,
             body : formData
         
