@@ -16,7 +16,6 @@ function Main() {
                         <button className="apply-btn" href="/studentapply">지원하기</button>
                     </div>
                 </header>
-
             </div>
         </div>
     )
