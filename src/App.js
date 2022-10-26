@@ -17,15 +17,6 @@ function App() {
   return (
     <div className="App">
       <Home/>
-      {/*}
-      <SideNav>
-            <Routes>
-                <Route path="/student" element={<Student />} />
-                <Route path="/studentapply" element={<StudentApply />} />
-                <Route path="/studentattend" element={<StudentAttend />} />
-            </Routes>
-        </SideNav>
-  {*/}
     </div>
   );
 }
