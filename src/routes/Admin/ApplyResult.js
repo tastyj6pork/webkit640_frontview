@@ -1,10 +1,14 @@
 import '../Admin/Admin.css'
 
-function ApplyResult() {
+function ApplyResult({res}) {
+
+    const onRemove = (res) => {
+        
+    }
 
     return(<div>
         <div className="result-items">
-            <p></p>
+            <div className="result-contents" onClick={() => onRemove(res)}>{res}</div>
         </div>
     </div>)
 }

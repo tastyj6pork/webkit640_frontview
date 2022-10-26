@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import '../Admin/Admin.css';
 import ApplyItems from './ApplyItems';
 import ApplyResult from './ApplyResult';
@@ -10,50 +10,57 @@ function AdminApply() {
             id : 1,
             name : "홍길동",
             major : "컴퓨터공학과",
-            schoolnumber : "20226789",
+            schoolNumber : "20226789",
             email : "webkit640@google.co.kr"
         },
         {
             id : 2,
             name : "김길동",
-            major : "컴퓨터공학과",
-            schoolnumber : "20226789",
-            email : "webkit640@google.co.kr"
+            major : "소프트웨어공학과",
+            schoolNumber : "20226789",
+            email : "webkit123@google.co.kr"
         },
         {
             id : 3,
             name : "이길동",
-            major : "컴퓨터공학과",
-            schoolnumber : "20226789",
-            email : "webkit640@google.co.kr"
+            major : "광시스템공학과",
+            schoolNumber : "20226789",
+            email : "webkit456@google.co.kr"
         },
         {
             id : 4,
             name : "박길동",
-            major : "컴퓨터공학과",
-            schoolnumber : "20226789",
-            email : "webkit640@google.co.kr"
+            major : "건축학과",
+            schoolNumber : "20226789",
+            email : "webkit789@google.co.kr"
         },
         {
             id : 5,
             name : "오길동",
-            major : "컴퓨터공학과",
-            schoolnumber : "20226789",
-            email : "webkit640@google.co.kr"
+            major : "응용수리데이터과학과",
+            schoolNumber : "20226789",
+            email : "webkit321@google.co.kr"
         },
         {
             id : 6,
             name : "고길동",
             major : "컴퓨터공학과",
-            schoolnumber : "20226789",
-            email : "webkit640@google.co.kr"
+            schoolNumber : "20226789",
+            email : "webkit8910@google.co.kr"
         }
     ])
-    
-    const [saveItem, setSaveItem] = useState([]);
-    const saveItemRef = useRef([]);
-    saveItemRef.current = saveItemRef.current + (saveItem.email + " "); //이름+이메일 박스로 구분지어 생성하는거 연구해야됨!
 
+    const [saveItems, setSaveItems] = useState([]);
+    console.log(saveItems);
+    
+    function setItems(content) {
+        setSaveItems([...saveItems , content.name + " " + content.email]);
+        console.log(saveItems);
+    }
+
+    useEffect(() => {
+    }, [])
+    
     return(<div className="apply-total">
         <div className="apply-title">
             <h1>지원관리</h1>
@@ -77,7 +84,8 @@ function AdminApply() {
                 <li className="table-second">학과</li>
                 <li className="table-third">학번</li>
                 <li className="table-fourth">이메일</li>
-                <li className="table-fifth">상태</li>
+                <li className="table-fifth">지원파일</li>
+                <li className="table-last">상태</li>
             </ul>
         </div>
         <div className="apply-items-box">
@@ -85,8 +93,7 @@ function AdminApply() {
                 <ApplyItems
                 items={items}
                 key={items.id}
-                itemList = {saveItem}
-                setSaveItem={setSaveItem}
+                setItems={setItems}
                 />
             ))}
         </div>
@@ -95,7 +102,12 @@ function AdminApply() {
                 <h3>선발 목록</h3>
             </div>
             <div className="applyl-select-result">
-                <div className="apply-result-list">{saveItemRef.current}</div>
+                <div className="apply-result-list">{saveItems.map((res, i) => (
+                    <ApplyResult
+                    res = {res}
+                    key = {i}
+                    />
+                ))}</div>
             </div>
             <div className="apply-selection"><button className="apply-select-btn">선발 완료</button></div>
         </div>
