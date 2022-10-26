@@ -51,15 +51,19 @@ function AdminApply() {
     ])
 
     const [saveItems, setSaveItems] = useState([]);
-    console.log(saveItems);
     
     function setItems(content) {
-        setSaveItems([...saveItems , content.name + " " + content.email]);
+        setSaveItems([...saveItems , content]);
         console.log(saveItems);
     }
 
-    useEffect(() => {
-    }, [])
+    const onRemove = id => {
+        setSaveItems(saveItems.filter(saveItems => saveItems.id !== id));
+    }
+
+    function resultEnd() {
+        console.log(saveItems);
+    }
     
     return(<div className="apply-total">
         <div className="apply-title">
@@ -102,14 +106,15 @@ function AdminApply() {
                 <h3>선발 목록</h3>
             </div>
             <div className="applyl-select-result">
-                <div className="apply-result-list">{saveItems.map((res, i) => (
+                <div className="apply-result-list">{saveItems.map((item, i) => (
                     <ApplyResult
-                    res = {res}
+                    item = {item}
                     key = {i}
+                    onRemove={onRemove}
                     />
                 ))}</div>
             </div>
-            <div className="apply-selection"><button className="apply-select-btn">선발 완료</button></div>
+            <div className="apply-selection"><button className="apply-select-btn" onClick={resultEnd}>선발 완료</button></div>
         </div>
     </div>)
 }
