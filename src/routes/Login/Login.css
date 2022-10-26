@@ -23,7 +23,7 @@
 
 .Login .login-box {
     width: 400px;
-    height: 400px;
+    height: 530px;
     padding: 40px;
     background-color: white;
     border-radius: 9px;
@@ -55,4 +55,29 @@
     background-repeat: no-repeat;
     width: auto;
     height: 50px;
+}
+
+.Login .login-btn {
+    width: 110px;
+    height: 40px;
+    margin-top: 15px;
+    color: white;
+    border: 0;
+    border-radius: 10px;
+    font-weight: 600;
+    background-color: rgb(29, 205, 171);
+}
+
+.Login #loginForm {
+    width: 220px;
+    padding-top: 10px;
+    margin-bottom: 20px;
+}
+
+.Login .login-btn:hover {
+    background-color: rgb(92, 222, 196);
+}
+
+.Login #loginForm span {
+    float: left;
 }

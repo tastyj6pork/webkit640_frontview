@@ -3,27 +3,27 @@ const ACCESS_TOKEN = "ACCESS_TOKEN";
 
 export function call(api, method, request) {
     let headers = new Headers({
-        "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
+        "Content-Type": "application/json",
     });
 
     const accessToken = localStorage.getItem(ACCESS_TOKEN);
     if(accessToken) {
-        //headers.append("Authorization", "Bearer " + accessToken);
+        headers.append("Authorization", "Bearer " + accessToken);
     }
 
-    /*
+    
     let options = {
         headers: headers,
         url: API_BASE_URL + api,
         method: method,
     };
-    */
-
+    
+    /*
     let options = {
         headers: headers,
         url: api,
         method: method,
-    };
+    };*/
 
     if(request) {
         options.body = JSON.stringify(request);
@@ -41,16 +41,16 @@ export function call(api, method, request) {
     .catch((error)=> {
         console.log(error.status);
         if(error.status === 403) {
-            //window.location.href = "/login";
+            window.location.href = "/login";
         }
         return Promise.reject(error);
     });
 }
 
-export function signin(userDTO) {
+export function login(userDTO) {
     return call("/auth/login", "POST", userDTO)
     .then((response)=>{
-        if(response.token){
+        if(response.token !== null){
             localStorage.setItem(ACCESS_TOKEN, response.token);
             window.location.href="/";
         }

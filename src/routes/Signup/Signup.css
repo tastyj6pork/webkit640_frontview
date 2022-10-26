@@ -16,7 +16,7 @@
 
 .Signup .signup-box {
     width: 540px;
-    height: 750px;
+    height: 720px;
     padding: 40px;
     background-color: white;
     border-radius: 9px;
@@ -36,7 +36,7 @@
 }
 
 .Signup form {
-    margin-top: 30px;
+    margin-top: 15px;
 }
 
 .Signup .form-group input{

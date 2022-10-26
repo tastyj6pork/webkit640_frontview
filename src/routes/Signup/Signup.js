@@ -6,6 +6,7 @@ import {call, signup} from "../../service/ApiService";
 function Signup() {
     const [isstudent, setIsStudent] = useState(false);
 
+    /*
     const isStudent = () => {
         const code = '<div id="studentInput">'+
         '<input type="text"'+
@@ -19,7 +20,7 @@ function Signup() {
             return code;
         else
             return "";
-    }
+    }*/
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -29,6 +30,7 @@ function Signup() {
         let input_affili = document.getElementById('affiliInput');
         let input_pwd = document.getElementById('pwdInput');
         let input_pwdh = document.getElementById('pwdhInput');
+        let input_student = document.getElementById('studentInput');;
 
         const data = new FormData(e.target);
         const name = data.get('name');
@@ -38,8 +40,6 @@ function Signup() {
         const pwd = data.get('pwd');
         const pwdh = data.get('pwdh');
 
-        console.log(name);
-        console.log(s_affili);
         if(name.length === 0) {
             input_name.childNodes[1].focus();
             input_name.childNodes[2].innerHTML = '이름을 입력하세요.';
@@ -76,11 +76,12 @@ function Signup() {
             return;
         }
 
-        /*
-        signup({name: name, email: email, password: pwd})
+        const affdata = affili;
+        
+        signup({name: name, email: email, memberType: s_affili, memberBelong: affdata, password: pwd})
         .then((resposne)=>{
             window.location.href="/login";
-        })*/
+        })
     }
 
     const onChangeEvent = e => {
@@ -90,9 +91,11 @@ function Signup() {
         let input_pwd = document.getElementById('pwdInput');
         let input_pwdh = document.getElementById('pwdhInput');
 
-        if(e.target.id === 's_affili' && e.target.value === '학생')
-            setIsStudent(true);
-        else setIsStudent(false);
+        if(e.target.id === 's_affili'){
+            if(e.target.value === '학생')
+                setIsStudent(true);
+            else setIsStudent(false);
+        }
 
         if (e.target.value.length === 0){
             e.target.classList.remove('is-valid');
@@ -176,7 +179,7 @@ function Signup() {
                             onChange={onChangeEvent}
                             placeholder="기관명을 입력하세요." required/>
                             <div className="invalid-feedback"></div>
-                            <div dangerouslySetInnerHTML={{__html:isStudent()}}></div>
+                            {/*}<div dangerouslySetInnerHTML={{__html:isStudent()}}></div>{*/}
                         </div>
 
                         <div className="form-group" id="pwdInput">

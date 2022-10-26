@@ -3,7 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import "./Login.css"
 import { KAKAO_AUTH_URL } from '../../service/OAuth';
 import StickyHeader from '../../component/StickyHeader/StickyHeader';
-import { call } from '../../service/ApiService';
+import { call, login } from '../../service/ApiService';
 
 
 function Login() {
@@ -17,14 +17,41 @@ function Login() {
         })
     }
 
+    const handleSubmit = e => {
+        e.preventDefault();
+        const data = new FormData(e.target);
+        const email = data.get("email");
+        const password = data.get("password");
+        console.log(email + "/" + password);
+        login({email: email, password: password});
+    }
+
     return (
         <div className="Login">
             <StickyHeader/>
             <div className="loginContent w3-display-container">
                 <div className="login-box w3-display-middle">
                     <img className="logo"/>
-                    <h3>안녕하세요.<br/>웹킷640에 오신 걸<br/>환영합니다.</h3><br/>
+                    <h3>안녕하세요.<br/>웹킷640에 오신 걸<br/>환영합니다.</h3>
+                    <form id="loginForm"
+                    onSubmit={handleSubmit}>
+                        <div className="form-group" id="emailInput">
+                                <input type="text" className="form-control"
+                                id="email" name="email"
+                                placeholder="이메일"/>
+                        </div>
+                        <div className="form-group" id="pwdInput">
+                                <input type="password"
+                                className="form-control" id="password" name="password"
+                                placeholder="비밀번호"/>
+                        </div>
+                    </form>
                     <a href={KAKAO_AUTH_URL}><div  className="kakao-btn"/></a>
+                    <div className="w3-center">
+                            <button type="submit" 
+                            form="loginForm"
+                            className="login-btn">로그인</button>
+                    </div>
                     <p>아직 회원이 아니신가요?
                         <Link to="/signup" style={{textDecoration: 'none'}}>
                             <span>회원가입</span></Link></p>
