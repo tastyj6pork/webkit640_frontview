@@ -15,7 +15,7 @@
 }
 .apply-container ul {
     list-style: none;
-    padding: 65px 10px 10px 10px;
+    padding: 0px 10px 10px 10px;
 }
 .apply-container li {
     padding: 10px;
@@ -24,14 +24,14 @@
     color: gray;
     margin-bottom: 3px;
 }
-.apply-name, .apply-major, .apply-schoolnumber {
-    height: 50px;
+.apply-name, .apply-major, .apply-schoolnumber, .apply-school {
+    height: 39px;
     width: 280px;
     font-size: 16px;
 }
 .apply-submit {
     border-top: 0.5px solid gray;
-    margin-top: 60px;
+    margin-top: 10px;
 }
 .apply-submit-btn {
     height: 50px;

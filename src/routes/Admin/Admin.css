@@ -1,5 +1,5 @@
 .apply-total {
-    min-width: 1134px;
+    min-width: 470px;
 }
 .apply-title {
     width: 100%;
@@ -54,21 +54,31 @@
 }
 .table-first {
     margin-left: 75px;
+    width: 53px;
 }
 .table-second {
-    margin-left: 129px;
+    margin-left: 80px;
+    width: 53px;
 }
 .table-third{
     margin-left: 140px;
+    width: 53px;
 }
 .table-fourth {
-    margin-left: 189px;
+    margin-left: 136px;
+    width: 53px;
 }
 .table-fifth {
-    margin-left: 157px;
+    margin-left: 160px;
+    width: 67px;
 }
-.table-last {
-    margin-left: 18.5px;
+.table-sixth {
+    margin-left: 160px;
+    width: 81px;
+}
+.table-seventh {
+    margin-left: 65px;
+    width: 53px;
 }
 .apply-insert-items {
     height: 50.79px;
@@ -86,21 +96,26 @@
     width: 68px;
 }
 .items-second {
-    margin-left: 98px;
+    margin-left: 22.8px;
     width: 180px;
 }
 .items-third {
-    margin-left: 18px;
+    margin-left: 30px;
+    width: 180px;
 }
 .items-fourth {
-    margin-left: 105px;
-    width: 280px;
+    margin-left: 23.6px;
+    width: 65px;
 }
 .items-fifth {
-    margin-left: 0px;
+    margin-left: 100px;
+    width: 100px;
 }
-.items-last {
-    margin-left: 5.3px;
+.items-sixth {
+    margin-left: 188px;
+}
+.items-seventh {
+    margin-left: 50px;
 }
 .apply-items-box {
     height: 280px;
