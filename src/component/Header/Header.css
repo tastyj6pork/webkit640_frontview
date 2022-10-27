@@ -1,5 +1,6 @@
 .Header * {
     font-family: 'Pretendard-Regular';
+    letter-spacing: normal;
     position: relative;
     z-index: 2;
 }

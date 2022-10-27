@@ -1,0 +1,24 @@
+import { React, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import "./ScrollHeader.css"
+
+function ScrollHeader() {
+    return(
+        <div className="ScrollHeader">
+            <div id="navBar" className="w3-bar w3-white w3-wide w3-card">
+                <div className="nav-content">
+                    <div id="menuList" className="w3-hide-small">
+                        <ul>
+                            <li><a className="w3-display-middle" href="/">모집 정보</a></li>
+                            <li><a className="w3-display-middle" href="/">주요 일정</a></li>
+                            <li><a className="w3-display-middle" href="/">교육 정보</a></li>
+                            <li><a className="w3-display-middle" href="/">수강 후기</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+export default ScrollHeader;

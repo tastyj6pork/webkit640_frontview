@@ -2,6 +2,7 @@ import { React, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Main.css"
 import Header from "../../component/Header/Header";
+import ScrollHeader from "../../component/Header/ScrollHeader";
 
 function Main() {
 
