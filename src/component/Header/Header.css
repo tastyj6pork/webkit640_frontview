@@ -1,0 +1,53 @@
+.Header * {
+    font-family: 'Pretendard-Regular';
+    position: relative;
+    z-index: 2;
+}
+
+.Header .navbar-brand {
+    float: left;
+    margin: 0;
+}
+
+.Header #navBar {
+    height: 90px;
+    padding: 25px;
+}
+
+.Header .nav-content {
+    width: 1480px;
+    height: 40px;
+    margin: auto;
+}
+
+.Header #menuList {
+    width: 1480px;
+    height: 40px;
+    margin-left: 0;
+    padding: 5px;
+}
+
+.Header #menuList ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-left: 250px;
+}
+
+.Header #menuList li {
+    float: left;
+    margin: 0;
+    padding: 0;
+    margin-left: 70px;
+    font-size: 20px;
+}
+
+.Header #menuList li a{
+    text-decoration: none;
+    color: rgb(66, 66, 66);
+}
+
+.Header #menuList #loginState li{
+    float: right;
+    margin-left: 40px;
+}
