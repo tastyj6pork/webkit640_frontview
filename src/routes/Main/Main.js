@@ -19,19 +19,19 @@ function Main() {
             setIsScrollNavOn(true);
         }
     }
-
-    const debounceScroll = useMemo(()=>
-        debounce(()=>{
+    /*
+    const throttleScroll  = useMemo(()=>
+        throttle(()=>{
             console.log("scroll");
         }, 300),
     );
-
+        */
     useEffect(()=>{
         window.addEventListener('scroll', handleScroll);
         return() => {
             window.removeEventListener('scroll', handleScroll);
         }
-    }, [debounceScroll]);
+    });
 
     return (
         <div className="Main">

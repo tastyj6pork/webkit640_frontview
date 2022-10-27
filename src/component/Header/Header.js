@@ -1,11 +1,13 @@
 import { React, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {call, signout} from "../../service/ApiService";
+import DetailMenu from "./DetailMenu";
 import "./Header.css"
 
 function Header() {
     const [isLogin, setIsLogin] = useState(false);
     const [isAdmin, setIsAdmin] = useState(0);
+    const [isHover, setIsHover] = useState(false);
     
     const isUserLogin = () => {
         if(localStorage.getItem("ACCESS_TOKEN") !== "null")
@@ -14,6 +16,14 @@ function Header() {
         if(localStorage.getItem("IS_ADMIN") === 1)
             setIsAdmin(true);
         else setIsAdmin(false);
+    }
+
+    const showDetail = (e) => {
+        setIsHover(true);
+    }
+
+    const hideDetail = (e) => {
+        setIsHover(false);
     }
 
     useEffect(()=>{
@@ -28,9 +38,9 @@ function Header() {
                     <div id="menuList" className="w3-hide-small">
                         <ul>
                             <li><Link to='/'>About us</Link></li>
-                            <li><Link to='/'>게시판</Link></li>
-                            <li><Link to='/'>수업정보</Link></li>
-                            <li><Link to='/'>수강후기</Link></li>
+                            <li><Link onMouseOver={showDetail} onMouseLeave={hideDetail}><span>게시판</span></Link></li>
+                            <li><Link onMouseOver={showDetail} onMouseLeave={hideDetail}><span>수업정보</span></Link></li>
+                            <li><Link><span>수강후기</span></Link></li>
                             <li><Link to='/'>Q&A</Link></li>
                             {isLogin && !isAdmin &&
                                 <li className="mypage-btn" style={{float:"right", marginLeft: "40px"}}>
@@ -59,6 +69,7 @@ function Header() {
                     </div>
                 </div>
             </div>
+            {isHover && <DetailMenu navY={window.scrollY}/>}
         </div>
     )
 }
