@@ -51,3 +51,8 @@
     float: right;
     margin-left: 40px;
 }
+
+.Header #menuList #logout li{
+    float: right;
+    margin-left: 40px;
+}

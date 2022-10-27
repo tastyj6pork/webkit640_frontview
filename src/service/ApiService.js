@@ -50,8 +50,9 @@ export function login(userDTO) {
     return call("/auth/login", "POST", userDTO)
     .then((response)=>{
         if(response.token !== null){
-            localStorage.setItem("IS_ADMIN", response.isadmin);
-            localStorage.setItem(ACCESS_TOKEN, response.token);
+            localStorage.setItem("IS_ADMIN", response.data[0].is_admin);
+            localStorage.setItem(ACCESS_TOKEN, response.data[0].token);
+            console.log(localStorage.getItem(ACCESS_TOKEN));
             window.location.href="/";
         }
     })
@@ -71,4 +72,9 @@ export function signup(userDTO){
         }
         return Promise.reject(error);
     })
+}
+
+export function signout() {
+    localStorage.setItem(ACCESS_TOKEN,null);
+    window.location.href="/";
 }

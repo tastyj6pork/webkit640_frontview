@@ -1,13 +1,15 @@
 import { React, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import {call, signout} from "../../service/ApiService";
 import "./Header.css"
 
 function Header() {
     const [isLogin, setIsLogin] = useState(false);
     const [isAdmin, setIsAdmin] = useState(0);
-
+    
     const isUserLogin = () => {
-        if(localStorage.getItem("ACCESS_TOKEN") !== null)
+        console.log(localStorage.getItem("ACCESS_TOKEN"));
+        if(localStorage.getItem("ACCESS_TOKEN") !== "null")
             setIsLogin(true);
         else setIsLogin(false);
         if(localStorage.getItem("IS_ADMIN") === 1)
@@ -15,35 +17,10 @@ function Header() {
         else setIsAdmin(false);
     }
 
-    const userState = () => {
-        const not_Login = '<li className="login-btn">'+
-        '<a href="/login">로그인</a>'+
-        '</li>';
-
-        const is_Student = '<li className="logout-btn">'+
-        '<a href="/">로그아웃</a>'+
-        '</li>'+
-        '<li className="mypage-btn">'+
-        '<a href="/student">마이페이지</a>'+
-        '</li>';
-
-        const is_Admin = '<li className="logout-btn">'+
-        '<a href="/">로그아웃</a>'+
-        '</li>'+
-        '<li className="adminpage-btn">'+
-        '<a href="/admin">관리페이지</a>'+
-        '</li>'
-
-        if(!isLogin)
-            return not_Login;
-        else if(isLogin && !isAdmin)
-            return is_Student;
-        else if(isLogin && isAdmin)
-            return is_Admin;
-    };
-
     useEffect(()=>{
+        console.log("Did Mount!");
         isUserLogin();
+        console.log(isLogin);
     })
 
     return(
@@ -58,7 +35,29 @@ function Header() {
                             <li><Link to='/'>수업정보</Link></li>
                             <li><Link to='/'>수강후기</Link></li>
                             <li><Link to='/'>Q&A</Link></li>
-                            <div id="loginState" dangerouslySetInnerHTML={{__html:userState()}}></div>
+                            {isLogin && !isAdmin &&
+                                <li className="mypage-btn" style={{float:"right", marginLeft: "40px"}}>
+                                    <a href="/student">마이페이지</a>
+                                </li>
+                            }
+                            {isLogin && isAdmin &&
+                                <li className="adminpage-btn" style={{float:"right", marginLeft: "40px"}}>
+                                    <a href="/admin">관리페이지</a>
+                                </li>
+                            }
+                            {!isLogin && 
+                                <li className="login-btn" style={{float:"right", marginLeft: "40px"}}>
+                                    <a href="/login">로그인</a>
+                                </li>
+                            }
+                            {isLogin && 
+                                <li className="logout-btn" onClick={()=>{
+                                    signout();
+                                    setIsLogin(false);
+                                }} style={{float:"right", marginLeft: "40px"}}>
+                                    <a>로그아웃</a>
+                                </li>
+                            }
                         </ul>
                     </div>
                 </div>
