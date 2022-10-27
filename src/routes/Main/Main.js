@@ -1,45 +1,53 @@
-import { React, useEffect, useState } from "react";
+import { React, useEffect, useState, useMemo } from "react";
 import { Link } from "react-router-dom";
+import { throttle, debounce } from 'lodash';
 import "./Main.css"
 import Header from "../../component/Header/Header";
 import ScrollHeader from "../../component/Header/ScrollHeader";
 
 function Main() {
     const [isNav, setIsNav] = useState(true);
-    const [isScrollNav, setIsScrollNav] = useState(false);
+    const [isScrollNavOn, setIsScrollNavOn] = useState(false);
 
     const handleScroll = () => {
-        if(window.scrollY < 800){
+        if(window.scrollY < 860){
             setIsNav(true);
-            setIsScrollNav(false);
+            setIsScrollNavOn(false);
         }
         else {
             setIsNav(false);
-            setIsScrollNav(true);
+            setIsScrollNavOn(true);
         }
     }
+
+    const debounceScroll = useMemo(()=>
+        debounce(()=>{
+            console.log("scroll");
+        }, 300),
+    );
 
     useEffect(()=>{
         window.addEventListener('scroll', handleScroll);
         return() => {
             window.removeEventListener('scroll', handleScroll);
         }
-    }, []);
+    }, [debounceScroll]);
 
     return (
         <div className="Main">
         {isNav && <Header/>}
-        {isScrollNav && <ScrollHeader/>}
-        <div id="mainContent" className="w3-display-container w3-wide">
-            <header id="header" >
+        <div id="mainContent" className="w3-wide">
+            <header id="header" className="w3-display-container">
                 <div className="header-background"/>
-                <div className="w3-display-middle w3-margin-top w3-center">
+                <div className="w3-display-middle w3-center">
                     <div>카운트다운</div>
                     <button className="apply-btn"
                     onClick={()=>window.location.href="/studentapply"}>지원하기</button>
                 </div>
             </header>
-            <ScrollHeader/>
+            <div style={{height:"60px"}}></div>
+            {isNav && <ScrollHeader isOn={isScrollNavOn}/>}
+            {isScrollNavOn && <ScrollHeader isOn={isScrollNavOn}/>}
         </div>
     </div>
     )

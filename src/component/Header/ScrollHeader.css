@@ -2,7 +2,7 @@
     font-family: 'Pretendard-Regular';
     letter-spacing: normal;
     position: relative;
-    z-index: 2;
+    z-index: 3;
 }
 
 .ScrollHeader .navbar-brand {
@@ -13,9 +13,8 @@
 .ScrollHeader #navBar {
     height: 90px;
     padding: 25px;
-    position: fixed;
-    top: 0;
-    transition: top 0.5s;
+    top: 860px;
+    position: absolute;
     box-shadow: 0 0 0 0 white;
 }
 

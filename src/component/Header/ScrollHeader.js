@@ -2,7 +2,18 @@ import { React, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./ScrollHeader.css"
 
-function ScrollHeader() {
+function ScrollHeader(props) {
+    const [isOn, setIsOn] = useState(false);
+
+    useEffect(()=>{
+        const navBar = document.getElementById("navBar");
+        if(props.isOn){
+            navBar.style.position='fixed';
+            navBar.style.top='0px';
+        }
+        setIsOn(props.isOn);
+    })
+
     return(
         <div className="ScrollHeader">
             <div id="navBar" className="w3-bar w3-white w3-wide w3-card">
