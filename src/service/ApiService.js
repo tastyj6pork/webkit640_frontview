@@ -1,6 +1,45 @@
 import {API_BASE_URL} from "../app-config";
 const ACCESS_TOKEN = "ACCESS_TOKEN";
 
+export function applyCall(api, method, request) {
+    let headers = new Headers({
+        // "Content-Type": "multipart/formed-data",
+        //"Content-Type":"Application/x-www-form-urlencode",
+    });
+
+    const accessToken = localStorage.getItem(ACCESS_TOKEN);
+    if(accessToken) {
+        headers.append("Authorization", "Bearer " + accessToken);
+    }
+
+    let options = {
+        headers: headers,
+        url: API_BASE_URL + api,
+        method: method,
+        redirect: 'follow'
+    };
+
+    if(request) {
+        options.body = request;
+    }
+
+    return fetch(options.url, options)
+    .then((response) => response.json().then((json) => {
+        if(!response.ok) {
+            return Promise.reject(json);
+        }
+        return json;
+    })
+)
+.catch((error) => {
+    console.log(error.status);
+    if(error.status === 403) {
+        window.location.href = "/login";
+    }
+    return Promise.reject(error);
+    });
+}
+
 export function call(api, method, request) {
     let headers = new Headers({
         "Content-Type": "application/json",
@@ -16,13 +55,6 @@ export function call(api, method, request) {
         url: API_BASE_URL + api,
         method: method,
     };
-
-    /*
-    let options = {
-        headers: headers,
-        url: api,
-        method: method,
-    };*/
 
     if(request) {
         options.body = JSON.stringify(request);
@@ -51,7 +83,7 @@ export function login(userDTO) {
     .then((response)=>{
         if(response.token !== null){
             localStorage.setItem("IS_ADMIN", response.isadmin);
-            localStorage.setItem(ACCESS_TOKEN, response.token);
+            localStorage.setItem(ACCESS_TOKEN, response.data[0].token);
             window.location.href="/";
         }
     })
