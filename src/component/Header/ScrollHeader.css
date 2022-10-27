@@ -1,0 +1,58 @@
+.ScrollHeader * {
+    font-family: 'Pretendard-Regular';
+    letter-spacing: normal;
+    position: relative;
+    z-index: 3;
+}
+
+.ScrollHeader .navbar-brand {
+    float: left;
+    margin: 0;
+}
+
+.ScrollHeader #navBar {
+    height: 90px;
+    padding: 25px;
+    top: 0px;
+    position: relative;
+    z-index: 3;
+    box-shadow: 0 0 0 0 white;
+}
+
+.ScrollHeader .nav-content {
+    width: 900px;
+    padding: 0;
+    margin-left: 100px;
+}
+
+.ScrollHeader #menuList ul {
+    position: absolute;
+    top: 18px;
+    height: 60px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.ScrollHeader #menuList li {
+    float: left;
+    margin: 0;
+    padding: 0;
+    margin-left: 10px;
+    text-align: center;
+    font-size: 150%;
+}
+
+.ScrollHeader #menuList li a:hover {
+    background-color: rgb(196, 253, 229);
+}
+
+.ScrollHeader #menuList li a{
+    width: 150px;
+    height: 60px;
+    padding-top: 12px;
+    display: inline-block;
+    vertical-align: middle;
+    text-decoration: none;
+    color: rgb(66, 66, 66);
+}

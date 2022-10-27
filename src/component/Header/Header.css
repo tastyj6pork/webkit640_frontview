@@ -1,5 +1,9 @@
 .Header * {
     font-family: 'Pretendard-Regular';
+    letter-spacing: normal;
+}
+
+.Header {
     position: relative;
     z-index: 2;
 }
@@ -12,6 +16,8 @@
 .Header #navBar {
     height: 90px;
     padding: 25px;
+    position: fixed;
+    top: 0;
 }
 
 .Header .nav-content {
@@ -47,7 +53,21 @@
     color: rgb(66, 66, 66);
 }
 
+.Header .dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content {
+    display: none;
+    position: relative;
+}
+
 .Header #menuList #loginState li{
+    float: right;
+    margin-left: 40px;
+}
+
+.Header #menuList #logout li{
     float: right;
     margin-left: 40px;
 }

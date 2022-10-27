@@ -1,13 +1,16 @@
 import { React, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import {call, signout} from "../../service/ApiService";
+import DetailMenu from "./DetailMenu";
 import "./Header.css"
 
 function Header() {
     const [isLogin, setIsLogin] = useState(false);
     const [isAdmin, setIsAdmin] = useState(0);
-
+    const [isHover, setIsHover] = useState(false);
+    
     const isUserLogin = () => {
-        if(localStorage.getItem("ACCESS_TOKEN") !== null)
+        if(localStorage.getItem("ACCESS_TOKEN") !== "null")
             setIsLogin(true);
         else setIsLogin(false);
         if(localStorage.getItem("IS_ADMIN") === 1)
@@ -15,32 +18,13 @@ function Header() {
         else setIsAdmin(false);
     }
 
-    const userState = () => {
-        const not_Login = '<li className="login-btn">'+
-        '<a href="/login">로그인</a>'+
-        '</li>';
+    const showDetail = (e) => {
+        setIsHover(true);
+    }
 
-        const is_Student = '<li className="logout-btn">'+
-        '<a href="/">로그아웃</a>'+
-        '</li>'+
-        '<li className="mypage-btn">'+
-        '<a href="/student">마이페이지</a>'+
-        '</li>';
-
-        const is_Admin = '<li className="logout-btn">'+
-        '<a href="/">로그아웃</a>'+
-        '</li>'+
-        '<li className="adminpage-btn">'+
-        '<a href="/admin">관리페이지</a>'+
-        '</li>'
-
-        if(!isLogin)
-            return not_Login;
-        else if(isLogin && !isAdmin)
-            return is_Student;
-        else if(isLogin && isAdmin)
-            return is_Admin;
-    };
+    const hideDetail = (e) => {
+        setIsHover(false);
+    }
 
     useEffect(()=>{
         isUserLogin();
@@ -54,15 +38,38 @@ function Header() {
                     <div id="menuList" className="w3-hide-small">
                         <ul>
                             <li><Link to='/'>About us</Link></li>
-                            <li><Link to='/'>게시판</Link></li>
-                            <li><Link to='/'>수업정보</Link></li>
-                            <li><Link to='/'>수강후기</Link></li>
+                            <li><Link onMouseOver={showDetail} onMouseLeave={hideDetail}><span>게시판</span></Link></li>
+                            <li><Link onMouseOver={showDetail} onMouseLeave={hideDetail}><span>수업정보</span></Link></li>
+                            <li><Link><span>수강후기</span></Link></li>
                             <li><Link to='/'>Q&A</Link></li>
-                            <div id="loginState" dangerouslySetInnerHTML={{__html:userState()}}></div>
+                            {isLogin && !isAdmin &&
+                                <li className="mypage-btn" style={{float:"right", marginLeft: "40px"}}>
+                                    <a href="/student">마이페이지</a>
+                                </li>
+                            }
+                            {isLogin && isAdmin &&
+                                <li className="adminpage-btn" style={{float:"right", marginLeft: "40px"}}>
+                                    <a href="/admin">관리페이지</a>
+                                </li>
+                            }
+                            {!isLogin && 
+                                <li className="login-btn" style={{float:"right", marginLeft: "40px"}}>
+                                    <a href="/login">로그인</a>
+                                </li>
+                            }
+                            {isLogin && 
+                                <li className="logout-btn" onClick={()=>{
+                                    signout();
+                                    setIsLogin(false);
+                                }} style={{float:"right", marginLeft: "40px"}}>
+                                    <a href="#">로그아웃</a>
+                                </li>
+                            }
                         </ul>
                     </div>
                 </div>
             </div>
+            {isHover && <DetailMenu navY={window.scrollY}/>}
         </div>
     )
 }
