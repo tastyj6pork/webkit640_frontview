@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
-import { json } from 'react-router-dom';
+import { API_BASE_URL } from '../../app-config';
 import { call } from '../../service/ApiService';
-
 import '../Admin/Admin.css';
 import ApplyItems from './ApplyItems';
 import ApplyResult from './ApplyResult';
@@ -10,7 +9,7 @@ function AdminApply() {
 
     /*const [applyList, setApplyList] = useState([
         {
-            id : 1,
+            // id : 1,
             name : "홍길동",
             school : "메사추세츠공과대학교",
             major : "컴퓨터공학과",
@@ -18,7 +17,7 @@ function AdminApply() {
             email : "webkit640@google.co.kr"
         },
         {
-            id : 2,
+            // id : 2,
             name : "김길동",
             school : "메사추세츠공과대학교",
             major : "소프트웨어공학과",
@@ -26,7 +25,7 @@ function AdminApply() {
             email : "webkit123@google.co.kr"
         },
         {
-            id : 3,
+            // id : 3,
             name : "이길동",
             school : "메사추세츠공과대학교",
             major : "광시스템공학과",
@@ -34,7 +33,7 @@ function AdminApply() {
             email : "webkit456@google.co.kr"
         },
         {
-            id : 4,
+            // id : 4,
             name : "박길동",
             school : "메사추세츠공과대학교",
             major : "건축학과",
@@ -42,7 +41,7 @@ function AdminApply() {
             email : "webkit789@google.co.kr"
         },
         {
-            id : 5,
+            // id : 5,
             name : "오길동",
             school : "메사추세츠공과대학교",
             major : "응용수리데이터과학과",
@@ -50,7 +49,7 @@ function AdminApply() {
             email : "webkit321@google.co.kr"
         },
         {
-            id : 6,
+            // id : 6,
             name : "고길동",
             school : "메사추세츠공과대학교",
             major : "컴퓨터공학과",
@@ -59,7 +58,7 @@ function AdminApply() {
         }
     ])*/
 
-    const [applyList, setApplyList] = useState([]);
+    // const [applyList, setApplyList] = useState([]);
 
     useEffect(() => {
         
@@ -70,7 +69,7 @@ function AdminApply() {
 
     }, [])
 
-    /*const [applyList, setApplyList] = useState([]);
+    const [applyList, setApplyList] = useState([]);
 
     useEffect(() => {
         let header = new Headers({
@@ -90,7 +89,7 @@ function AdminApply() {
             });
         })
         .catch((error) => console.log(error))
-    }, [])*/
+    }, [])
 
     const [saveItems, setSaveItems] = useState([]);
     
@@ -149,10 +148,10 @@ function AdminApply() {
             </ul>
         </div>
         <div className="apply-items-box">
-            {applyList.map((items) => (
+            {applyList.map((items, i) => (
                 <ApplyItems
                 items={items}
-                key={items.id}
+                key={i}
                 setItems={setItems}
                 />
             ))}
