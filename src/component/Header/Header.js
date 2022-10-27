@@ -52,7 +52,7 @@ function Header() {
                                     signout();
                                     setIsLogin(false);
                                 }} style={{float:"right", marginLeft: "40px"}}>
-                                    <a>로그아웃</a>
+                                    <a href="#">로그아웃</a>
                                 </li>
                             }
                         </ul>
