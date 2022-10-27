@@ -7,18 +7,18 @@ function Main() {
 
     return (
         <div className="Main">
-            <Header/>
-            <div id="mainContent" className="w3-display-container w3-wide">
-                <header id="header" >
-                    <div className="header-background"/>
-                    <div className="w3-display-middle w3-margin-top w3-center">
-                        <div>카운트다운</div>
-                        <button className="apply-btn"
-                        onClick={()=>window.location.href="/studentapply"}>지원하기</button>
-                    </div>
-                </header>
-            </div>
+        <Header/>
+        <div id="mainContent" className="w3-display-container w3-wide">
+            <header id="header" >
+                <div className="header-background"/>
+                <div className="w3-display-middle w3-margin-top w3-center">
+                    <div>카운트다운</div>
+                    <button className="apply-btn"
+                    onClick={()=>window.location.href="/studentapply"}>지원하기</button>
+                </div>
+            </header>
         </div>
+    </div>
     )
 }
 

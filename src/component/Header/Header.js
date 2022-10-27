@@ -8,7 +8,6 @@ function Header() {
     const [isAdmin, setIsAdmin] = useState(0);
     
     const isUserLogin = () => {
-        console.log(localStorage.getItem("ACCESS_TOKEN"));
         if(localStorage.getItem("ACCESS_TOKEN") !== "null")
             setIsLogin(true);
         else setIsLogin(false);
@@ -18,9 +17,7 @@ function Header() {
     }
 
     useEffect(()=>{
-        console.log("Did Mount!");
         isUserLogin();
-        console.log(isLogin);
     })
 
     return(

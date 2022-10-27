@@ -12,6 +12,9 @@
 .Header #navBar {
     height: 90px;
     padding: 25px;
+    position: fixed;
+    top: 0;
+    transition: top 0.5s;
 }
 
 .Header .nav-content {
