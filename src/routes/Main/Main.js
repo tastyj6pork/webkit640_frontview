@@ -14,7 +14,7 @@ function Main() {
                     <div className="w3-display-middle w3-margin-top w3-center">
                         <div>카운트다운</div>
                         <button className="apply-btn"
-                        onClick={()=>window.location.href = "/studentapply"}>지원하기</button>
+                        onClick={()=>window.location.href="/studentapply"}>지원하기</button>
                     </div>
                 </header>
             </div>
