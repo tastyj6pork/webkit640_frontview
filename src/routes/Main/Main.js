@@ -6,6 +6,11 @@ import Header from "../../component/Header/Header";
 import ScrollNav from "../../component/MainPage/ScrollNav/ScrollNav";
 import RecruitInfo from "../../component/MainPage/RecruitInfo/RecruitInfo";
 import MainSchedule from "../../component/MainPage/MainSchedule/MainSchedule";
+import ProcessInfo from "../../component/MainPage/ProcessInfo/ProcessInfo";
+import Graduate from "../../component/MainPage/Graduate/Graduate";
+import Review from "../../component/MainPage/Review/Review";
+import With from "../../component/MainPage/With/With";
+import Footer from "../../component/Footer/Footer";
 
 function Main() {
     const [isNav, setIsNav] = useState(true);
@@ -52,7 +57,12 @@ function Main() {
             {isScrollNavOn && <ScrollNav isOn={isScrollNavOn}/>}
             <RecruitInfo/>
             <MainSchedule/>
+            <ProcessInfo/>
+            <Graduate/>
+            <Review/>
+            <With/>
         </div>
+        <Footer/>
     </div>
     )
 }

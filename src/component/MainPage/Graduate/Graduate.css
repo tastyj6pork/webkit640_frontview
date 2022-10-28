@@ -1,21 +1,22 @@
-.Footer * {
+.Graduate * {
     font-family: 'Pretendard-Regular';
     letter-spacing: normal;
     color: rgb(51, 51, 51);
 }
 
-.Footer {
+.Graduate {
     width: 100vw;
-    height: 350px;
+    height: 800px;
+    background-color: rgb(248, 251, 249);
 }
 
-.Footer .footer-content {
+.Graduate .graduate-content {
     width: 100%;
     height: 100%;
     border: 1px solid red;
 }
 
-.Footer .footer-box {
+.Graduate .graduate-box {
     width: 1500px;
     height: auto;
     border: 1px solid pink;
