@@ -16,8 +16,26 @@
     border: 1px solid red;
 }
 
-.Review .reivew-box {
+.Review .review-box {
     width: 1500px;
     height: auto;
     border: 1px solid pink;
+}
+
+.Review #reviewCarousel img{
+    width: 550px;
+    height: 400px;
+}
+
+.carousel-control-prev, .carousel-control-next {
+    background-color: black;
+    width: 20px;
+}
+
+.item-left {
+    margin-right: 15px;
+}
+
+.item-right {
+    margin-left: 15px
 }
