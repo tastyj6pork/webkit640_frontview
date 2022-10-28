@@ -6,7 +6,7 @@
 
 .ProcessInfo {
     width: 100vw;
-    height: 850px;
+    height: 800px;
 }
 
 .ProcessInfo .process-content {
@@ -22,15 +22,18 @@
 }
 
 .ProcessInfo .process-box .frontend-img {
-    background-image: url("../../../public/images/프론트엔드.jpg");
+    background-image: url("../../../../public/images/프론트엔드.JPG");
     background-repeat: no-repeat;
-    width: auto;
-    height: 150px;
+    background-size: cover;
+    width:320px;
+    height: 360px;
+    margin-right: 50px;
 }
 
 .ProcessInfo .process-box .backend-img {
-    background-image: url("../../../public/images/백엔드.jpg");
+    background-image: url("../../../../public/images/백엔드.JPG");
     background-repeat: no-repeat;
-    width: auto;
-    height: 150px;
+    background-size: cover;
+    width:320px;
+    height: 360px;
 }
