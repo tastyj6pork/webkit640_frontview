@@ -1,15 +1,25 @@
+import { useEffect } from 'react';
 import '../Admin/Admin.css'
 
-function ApplyItems({items, setItems}) {
+function ApplyItems({items, id, setItems}) {
 
     function BtnClick() {
-        setItems(items);
+        console.log(id);
+        const content = {
+            id:id, 
+            name:items.name, 
+            school:items.school,
+            major:items.major,
+            schoolNumber:items.schoolNumber,
+            email:items.email
+        }
+        setItems(content);
     }
 
     return(<div>
         <div className="apply-insert-items">
             <ul>
-                <li>{items.id}</li>
+                <li>{id}</li>
                 <li className="items-first">{items.name}</li>
                 <li className="items-second">{items.school}</li>
                 <li className="items-third">{items.major}</li>

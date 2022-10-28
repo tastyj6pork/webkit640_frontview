@@ -62,12 +62,10 @@ function AdminApply() {
     const [applyList, setApplyList] = useState([]);
 
     useEffect(() => {
-        
         call("/apply/all","GET",null).then((res)=>{
             console.log(res)
-            setApplyList(res);
+            setApplyList(res.data);
         })
-
     }, [])
 
     /*const [applyList, setApplyList] = useState([]);
@@ -110,14 +108,11 @@ function AdminApply() {
     const [searchType, setSearchType] = useState("");
     
     function Reflash(value) {
-
         const data = {
             type : searchType,
             keyword : value,
         }
-        
         call("/auth/view-members","GET",data)
-
     }
     
     return(<div className="apply-total">
@@ -149,12 +144,15 @@ function AdminApply() {
             </ul>
         </div>
         <div className="apply-items-box">
-            {applyList.map((items) => (
+            {applyList.map((items, id) => (
+                <div>
+                    <div>{id}</div>
                 <ApplyItems
                 items={items}
-                key={items.id}
+                key={id}
+                id={id}
                 setItems={setItems}
-                />
+                /></div>
             ))}
         </div>
         <div className="apply-select-container">
@@ -162,10 +160,11 @@ function AdminApply() {
                 <h3>선발 목록</h3>
             </div>
             <div className="applyl-select-result">
-                <div className="apply-result-list">{saveItems.map((item, i) => (
+                <div className="apply-result-list">{saveItems.map((item) => (
                     <ApplyResult
                     item = {item}
-                    key = {i}
+                    key = {item.id}
+                    id = {item.id}
                     onRemove={onRemove}
                     />
                 ))}</div>
