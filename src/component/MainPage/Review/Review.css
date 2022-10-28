@@ -1,4 +1,22 @@
 .Review * {
     font-family: 'Pretendard-Regular';
     letter-spacing: normal;
+    color: rgb(51, 51, 51);
+}
+
+.Review {
+    width: 100vw;
+    height: 800px;
+}
+
+.Review .review-content {
+    width: 100%;
+    height: 100%;
+    border: 1px solid red;
+}
+
+.Review .reivew-box {
+    width: 1500px;
+    height: auto;
+    border: 1px solid pink;
 }
