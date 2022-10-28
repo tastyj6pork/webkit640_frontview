@@ -20,3 +20,17 @@
     height: auto;
     border: 1px solid pink;
 }
+
+.ProcessInfo .process-box .frontend-img {
+    background-image: url("../../../public/images/프론트엔드.jpg");
+    background-repeat: no-repeat;
+    width: auto;
+    height: 150px;
+}
+
+.ProcessInfo .process-box .backend-img {
+    background-image: url("../../../public/images/백엔드.jpg");
+    background-repeat: no-repeat;
+    width: auto;
+    height: 150px;
+}
