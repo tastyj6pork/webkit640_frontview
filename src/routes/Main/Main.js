@@ -30,7 +30,7 @@ function Main() {
             setIsScrollNavOn(true);
         }
     }
-    /*
+    /* [김다함]: Scroll Event 함수 실행 최소화 방법... 추가 공부 필요
     const throttleScroll  = useMemo(()=>
         throttle(()=>{
             console.log("scroll");
