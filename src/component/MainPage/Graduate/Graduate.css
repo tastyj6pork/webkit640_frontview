@@ -21,3 +21,30 @@
     height: auto;
     border: 1px solid pink;
 }
+
+.Graduate .graduate-box .img-box {
+    width: 250px;
+    height: 350px;
+    display: inline-block;
+    border: 1px solid forestgreen;
+}
+
+.Graduate .graduate-box .empty-space {
+    width: 190px;
+    height: 350px;
+    display: inline-block;
+    border: 1px solid red;
+}
+
+.Graduate .graduate-box .img-box img {
+    width: 200px;
+    height: 200px;
+}
+
+.Graduate .graduate-box #graduation-box {
+    margin-right: 80px;
+}
+
+.Graduate .graduate-box #nonmajor-box {
+    margin-left: 80px;
+}

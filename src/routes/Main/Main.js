@@ -1,4 +1,4 @@
-import { React, useEffect, useState, useMemo } from "react";
+import { React, useEffect, useState, useMemo, useRef } from "react";
 import { Link } from "react-router-dom";
 import { throttle, debounce } from 'lodash';
 import "./Main.css"
@@ -15,9 +15,13 @@ import Footer from "../../component/Footer/Footer";
 function Main() {
     const [isNav, setIsNav] = useState(true);
     const [isScrollNavOn, setIsScrollNavOn] = useState(false);
+    const recruitRef = useRef(null);
+    const scheduleRef = useRef(null);
+    const processRef = useRef(null);
+    const reviewRef = useRef(null);
 
     const handleScroll = () => {
-        if(window.scrollY < 860){
+        if(window.scrollY < 800){
             setIsNav(true);
             setIsScrollNavOn(false);
         }
@@ -26,13 +30,30 @@ function Main() {
             setIsScrollNavOn(true);
         }
     }
-    /*
+    /* [김다함]: Scroll Event 함수 실행 최소화 방법... 추가 공부 필요
     const throttleScroll  = useMemo(()=>
         throttle(()=>{
             console.log("scroll");
         }, 300),
     );
         */
+
+    const onRecruitInfoClick = () => {
+        recruitRef.current?.scrollIntoView({behavior:'smooth'});
+    }
+
+    const onMainScheduleClick = () => {
+        scheduleRef.current?.scrollIntoView({behavior:'smooth'});
+    }
+
+    const onProcessInfoClick = () => {
+        processRef.current?.scrollIntoView({behavior:'smooth'});
+    }
+
+    const onReviewClick = () => {
+        reviewRef.current?.scrollIntoView({behavior:'smooth'});
+    }
+
     useEffect(()=>{
         window.addEventListener('scroll', handleScroll);
         return() => {
@@ -53,15 +74,23 @@ function Main() {
                 </div>
             </header>
             <div style={{height:"60px"}}></div>
-            {isNav && <ScrollNav isOn={isScrollNavOn}/>}
-            {isScrollNavOn && <ScrollNav isOn={isScrollNavOn}/>}
-            <RecruitInfo/>
-            <MainSchedule/>
-            <ProcessInfo/>
+
+            {isNav && <ScrollNav isOn={isScrollNavOn}
+            onRecruit={onRecruitInfoClick} onProcess={onProcessInfoClick}
+            onSchedule={onMainScheduleClick} onReview={onReviewClick}/>}
+            
+            {isScrollNavOn && <ScrollNav isOn={isScrollNavOn}
+            onRecruit={onRecruitInfoClick} onProcess={onProcessInfoClick}
+            onSchedule={onMainScheduleClick} onReview={onReviewClick}/>}
+            
+            <RecruitInfo ref={recruitRef}/>
+            <MainSchedule ref={scheduleRef}/>
+            <ProcessInfo ref={processRef}/>
             <Graduate/>
-            <Review/>
+            <Review ref={reviewRef}/>
             <With/>
         </div>
+        <div className="empty-space"></div>
         <Footer/>
     </div>
     )
