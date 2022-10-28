@@ -3,8 +3,7 @@ const ACCESS_TOKEN = "ACCESS_TOKEN";
 
 export function applyCall(api, method, request) {
     let headers = new Headers({
-        // "Content-Type": "multipart/formed-data",
-        //"Content-Type":"Application/x-www-form-urlencode",
+        "Content-Type":"multipart/form-data; boundary=----WebKitFormBoundarylTMBUUyXqgLqmAdj"
     });
 
     const accessToken = localStorage.getItem(ACCESS_TOKEN);
@@ -16,7 +15,7 @@ export function applyCall(api, method, request) {
         headers: headers,
         url: API_BASE_URL + api,
         method: method,
-        redirect: 'follow'
+        // redirect: 'follow'
     };
 
     if(request) {

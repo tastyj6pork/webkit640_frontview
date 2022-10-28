@@ -1,8 +1,7 @@
-import { type } from '@testing-library/user-event/dist/type';
 import axios from 'axios';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { API_BASE_URL } from '../../app-config';
-import { applyCall, call } from '../../service/ApiService';
+import { call } from '../../service/ApiService';
 import '../Student/Student.css';
 
 function StudentApply() {
@@ -23,11 +22,6 @@ function StudentApply() {
 
         setApplication("test");
 
-        // const accessToken = localStorage.getItem(ACCESS_TOKEN);
-        // let headers = new Headers({
-        //     "Authorization" : "Bearer "+accessToken
-        // })
-
         console.log(localStorage.getItem("ACCESS_TOKEN"));
 
         const formData = new FormData();
@@ -40,44 +34,47 @@ function StudentApply() {
         }
         formData.enctype = "multipart/form-data";
         formData.append("file", file);
+        console.log(file);
 
-
-        // applyCall("/apply/applies","POST",formData).then((res)=>console.log(res));
-        
-        const fetchTemplate = function (requestUrl, method, headers, body) {
-            return fetch(
-                requestUrl, {
-                    method: method,
-                    headers: {
-                        "Authorization":"Bearer " + accessToken,
-                        "Content-Type":"multipart/form-data; boundary=----WebKitFormBoundarylTMBUUyXqgLqmAdj"
-                    },
-                    body: body
-                }
-            ).then(res => {
-                console.log(res);
-                if (res.status === 200) {
-                    console.log("SUCCESS");
-                }
-                if (res.status === 400) {
-                    console.error("error");
-                }
-            });
-        };
         await call("/apply/applicant-data","POST",data).then((res)=>{console.log(res);});
-        await fetchTemplate("/apply/applicant-application","POST",formData).then(response => response)
-        // let option = {
-        //     method : "POST",
-        //     url : API_BASE_URL + "/apply/applies",
-        //     header : headers,
-        //     body : formData
-        
-        // };
-
-        // fetch(option.url, option).then(response => response.json())
-        // .catch((error) => console.log(error));
+        await axios({
+            method:"POST",
+            url:API_BASE_URL + "/apply/applicant-application",
+            data: formData,
+            headers: {
+                "Content-Type": "multipart/form-data",
+                "Authorization": "Bearer " + accessToken, 
+            },
+        }).then((res) => {
+            if(res.status === 200) {
+                console.log(res);
+                alert("POST SUCCESS");
+                window.location.href = "/";
+            }
+        });
     }
-
+    useEffect(() => {
+        const ACCESS_TOKEN = "ACCESS_TOKEN";
+        const accessToken = localStorage.getItem(ACCESS_TOKEN);
+        console.log(accessToken);
+        axios({
+            method:"GET",
+            url:API_BASE_URL + "/apply/checkApplicant",
+            data: null,
+            headers: {
+                "Authorization":"Bearer " + accessToken
+            }
+        }).then((res)=>{
+            if(res.status === 200) {
+                console.log(res.data);
+                if(res.data.error === "400") {
+                    alert("이미 지원하셨습니다.");
+                    window.location.href="/";
+                }
+            }
+        });
+    },[])
+    
     return(<div className="apply-total">
         <div className="apply-title">
             <h1>지원하기</h1>

@@ -4,9 +4,11 @@ import { call } from '../../service/ApiService';
 import '../Admin/Admin.css';
 import ApplyItems from './ApplyItems';
 import ApplyResult from './ApplyResult';
+import axios from 'axios';
 
 function AdminApply() {
-
+    const ACCESS_TOKEN = "ACCESS_TOKEN";
+    const accessToken = localStorage.getItem(ACCESS_TOKEN);
     /*const [applyList, setApplyList] = useState([
         {
             // id : 1,
@@ -118,8 +120,21 @@ function AdminApply() {
         call("/auth/view-members","GET",data)
 
     }
+    async function zipDownload() {
+        await axios({
+            method:"POST",
+            url:API_BASE_URL + "/apply/zip-download",
+            data: null,
+            headers: {
+                "Authorization": "Bearer " + accessToken,
+            }, 
+        }).then((res)=>{
+            
+        })
+    }
     
     return(<div className="apply-total">
+        <button onClick={zipDownload}>asdfasdf</button>
         <div className="apply-title">
             <h1>지원관리</h1>
         </div>
