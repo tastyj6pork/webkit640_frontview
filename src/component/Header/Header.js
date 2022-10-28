@@ -15,9 +15,9 @@ function Header() {
         if(localStorage.getItem("ACCESS_TOKEN") !== "null")
             setIsLogin(true);
         else setIsLogin(false);
-        if(localStorage.getItem("IS_ADMIN") === 1)
-            setIsAdmin(true);
-        else setIsAdmin(false);
+        if(localStorage.getItem("IS_ADMIN") === "true")
+            setIsAdmin(1);
+        else setIsAdmin(0);
     }
 
     const showDetail = (e) => {
