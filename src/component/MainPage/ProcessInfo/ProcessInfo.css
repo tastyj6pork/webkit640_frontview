@@ -1,4 +1,22 @@
 .ProcessInfo * {
     font-family: 'Pretendard-Regular';
     letter-spacing: normal;
+    color: rgb(51, 51, 51);
+}
+
+.ProcessInfo {
+    width: 100vw;
+    height: 850px;
+}
+
+.ProcessInfo .process-content {
+    width: 100%;
+    height: 100%;
+    border: 1px solid red;
+}
+
+.ProcessInfo .process-box {
+    width: 1500px;
+    height: auto;
+    border: 1px solid pink;
 }
