@@ -1,10 +1,10 @@
-import { React, useEffect, useState } from "react";
+import { React, useEffect, useState, forwardRef } from "react";
 import { Link } from "react-router-dom";
 import "./ProcessInfo.css"
 
-function ProcessInfo() {
+const ProcessInfo = forwardRef((props, ref) => {
     return(
-        <div className="ProcessInfo">
+        <div className="ProcessInfo" ref={ref}>
             <div className="process-content w3-display-container">
                 <div className="process-box w3-display-middle w3-center">
                     <span>OUR PROCESS</span>
@@ -20,6 +20,6 @@ function ProcessInfo() {
             </div>
         </div>
     )
-}
+})
 
 export default ProcessInfo;

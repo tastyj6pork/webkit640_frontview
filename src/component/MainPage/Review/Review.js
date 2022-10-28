@@ -1,10 +1,10 @@
-import { React, useEffect, useState } from "react";
+import { React, useEffect, useState, forwardRef } from "react";
 import { Link } from "react-router-dom";
 import "./Review.css"
 
-function Review() {
+const Review = forwardRef((props, ref) => {
     return(
-        <div className="Review">
+        <div className="Review" ref={ref}>
             <div className="review-content w3-display-container">
                 <div className="review-box w3-display-middle w3-center">
                     <h1>웹킷640과 함께한 학생들의 이야기를 들어보세요.</h1>
@@ -42,6 +42,6 @@ function Review() {
             </div>
         </div>
     )
-}
+})
 
 export default Review;

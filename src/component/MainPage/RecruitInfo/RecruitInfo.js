@@ -1,10 +1,10 @@
-import { React, useEffect, useState, useMemo } from "react";
+import { React, useEffect, useState, useMemo, forwardRef } from "react";
 import { Link } from "react-router-dom";
 import "./RecruitInfo.css"
 
-function RecruitInfo() {
+const RecruitInfo = forwardRef((props, ref) => {
     return(
-        <div className="RecruitInfo">
+        <div className="RecruitInfo" ref={ref}>
             <div className="recruit-content w3-display-container">
                 <div className="recruit-box w3-display-middle">
                     <span>웹킷640은<br/>이런 인재를 기다립니다.</span><hr/>
@@ -37,6 +37,6 @@ function RecruitInfo() {
             </div>
         </div>
     )
-}
+})
 
 export default RecruitInfo;
