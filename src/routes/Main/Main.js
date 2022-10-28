@@ -10,6 +10,7 @@ import ProcessInfo from "../../component/MainPage/ProcessInfo/ProcessInfo";
 import Graduate from "../../component/MainPage/Graduate/Graduate";
 import Review from "../../component/MainPage/Review/Review";
 import With from "../../component/MainPage/With/With";
+import Footer from "../../component/Footer/Footer";
 
 function Main() {
     const [isNav, setIsNav] = useState(true);
@@ -61,6 +62,7 @@ function Main() {
             <Review/>
             <With/>
         </div>
+        <Footer/>
     </div>
     )
 }

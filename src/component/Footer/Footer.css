@@ -1,0 +1,22 @@
+.Footer * {
+    font-family: 'Pretendard-Regular';
+    letter-spacing: normal;
+    color: rgb(51, 51, 51);
+}
+
+.Footer {
+    width: 100vw;
+    height: 350px;
+}
+
+.Footer .footer-content {
+    width: 100%;
+    height: 100%;
+    border: 1px solid red;
+}
+
+.Footer .footer-box {
+    width: 1500px;
+    height: auto;
+    border: 1px solid pink;
+}
