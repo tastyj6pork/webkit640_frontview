@@ -1,16 +1,16 @@
-.ScrollHeader * {
+.ScrollNav * {
     font-family: 'Pretendard-Regular';
     letter-spacing: normal;
     position: relative;
     z-index: 3;
 }
 
-.ScrollHeader .navbar-brand {
+.ScrollNav .navbar-brand {
     float: left;
     margin: 0;
 }
 
-.ScrollHeader #navBar {
+.ScrollNav #navBar {
     height: 90px;
     padding: 25px;
     top: 0px;
@@ -19,13 +19,13 @@
     box-shadow: 0 0 0 0 white;
 }
 
-.ScrollHeader .nav-content {
+.ScrollNav .nav-content {
     width: 900px;
     padding: 0;
     margin-left: 100px;
 }
 
-.ScrollHeader #menuList ul {
+.ScrollNav #menuList ul {
     position: absolute;
     top: 18px;
     height: 60px;
@@ -34,7 +34,7 @@
     padding: 0;
 }
 
-.ScrollHeader #menuList li {
+.ScrollNav #menuList li {
     float: left;
     margin: 0;
     padding: 0;
@@ -43,11 +43,11 @@
     font-size: 150%;
 }
 
-.ScrollHeader #menuList li a:hover {
+.ScrollNav #menuList li a:hover {
     background-color: rgb(196, 253, 229);
 }
 
-.ScrollHeader #menuList li a{
+.ScrollNav #menuList li a{
     width: 150px;
     height: 60px;
     padding-top: 12px;
