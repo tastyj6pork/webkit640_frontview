@@ -1,8 +1,8 @@
 import { React, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import "./ScrollHeader.css"
+import "./ScrollNav.css"
 
-function ScrollHeader(props) {
+function ScrollNav(props) {
     const [isOn, setIsOn] = useState(false);
 
     useEffect(()=>{
@@ -15,12 +15,13 @@ function ScrollHeader(props) {
     })
 
     return(
-        <div className="ScrollHeader">
+        <div className="ScrollNav">
             <div id="navBar" className="w3-bar w3-white w3-wide w3-card">
                 <div className="nav-content">
                     <div id="menuList" className="w3-hide-small">
                         <ul>
-                            <li><a className="w3-display-middle" href="/">모집 정보</a></li>
+                            <li><a className="w3-display-middle" href="/"
+                            style={{backgroundColor:"rgb(196, 253, 229)"}}>모집 정보</a></li>
                             <li><a className="w3-display-middle" href="/">주요 일정</a></li>
                             <li><a className="w3-display-middle" href="/">교육 정보</a></li>
                             <li><a className="w3-display-middle" href="/">수강 후기</a></li>
@@ -32,4 +33,4 @@ function ScrollHeader(props) {
     )
 }
 
-export default ScrollHeader;
+export default ScrollNav;

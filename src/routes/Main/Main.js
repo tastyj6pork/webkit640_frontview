@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import { throttle, debounce } from 'lodash';
 import "./Main.css"
 import Header from "../../component/Header/Header";
-import ScrollHeader from "../../component/Header/ScrollHeader";
+import ScrollNav from "../../component/MainPage/ScrollNav/ScrollNav";
+import RecruitInfo from "../../component/MainPage/RecruitInfo/RecruitInfo";
+import MainSchedule from "../../component/MainPage/MainSchedule/MainSchedule";
 
 function Main() {
     const [isNav, setIsNav] = useState(true);
@@ -46,8 +48,10 @@ function Main() {
                 </div>
             </header>
             <div style={{height:"60px"}}></div>
-            {isNav && <ScrollHeader isOn={isScrollNavOn}/>}
-            {isScrollNavOn && <ScrollHeader isOn={isScrollNavOn}/>}
+            {isNav && <ScrollNav isOn={isScrollNavOn}/>}
+            {isScrollNavOn && <ScrollNav isOn={isScrollNavOn}/>}
+            <RecruitInfo/>
+            <MainSchedule/>
         </div>
     </div>
     )

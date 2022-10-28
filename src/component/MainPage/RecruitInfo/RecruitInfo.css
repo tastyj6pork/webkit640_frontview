@@ -1,0 +1,58 @@
+.RecruitInfo * {
+    font-family: 'Pretendard-Regular';
+    letter-spacing: normal;
+    color: rgb(66, 66, 66);
+}
+
+.RecruitInfo {
+    height: auto;
+    width: 100vw;
+    height: 800px;
+}
+
+.RecruitInfo .recruit-content {
+    width: 100%;
+    height: 100%;
+}
+
+.RecruitInfo .recruit-box {
+    width: 1500px;
+    height: auto;
+}
+
+.RecruitInfo .recruit-box span {
+    font-size: 50px;
+    color: black;
+}
+
+.RecruitInfo .recruit-box hr {
+    width: 468px;
+    height: 1px;
+    border: 0;
+    margin: 0;
+    background-color: rgb(66, 66, 66);
+}
+
+.RecruitInfo .recruit-box .table {
+    width: 1000px;
+    height: auto;
+    float: right;
+    margin-top: 50px;
+    border: 0;
+}
+
+.RecruitInfo .recruit-box .table tr {
+    font-size: 23px;
+}
+
+.RecruitInfo .recruit-box .table .label {
+    width: 190px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    font-weight: 600;
+}
+
+.RecruitInfo .recruit-box .table .content {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}

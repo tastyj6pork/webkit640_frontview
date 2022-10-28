@@ -63,12 +63,10 @@ function AdminApply() {
     // const [applyList, setApplyList] = useState([]);
 
     useEffect(() => {
-        
         call("/apply/all","GET",null).then((res)=>{
             console.log(res)
-            setApplyList(res);
+            setApplyList(res.data);
         })
-
     }, [])
 
     const [applyList, setApplyList] = useState([]);
@@ -111,14 +109,11 @@ function AdminApply() {
     const [searchType, setSearchType] = useState("");
     
     function Reflash(value) {
-
         const data = {
             type : searchType,
             keyword : value,
         }
-        
         call("/auth/view-members","GET",data)
-
     }
     async function zipDownload() {
         await axios({
@@ -163,10 +158,10 @@ function AdminApply() {
             </ul>
         </div>
         <div className="apply-items-box">
-            {applyList.map((items, i) => (
+            {applyList.map((items) => (
                 <ApplyItems
                 items={items}
-                key={i}
+                key={items.id}
                 setItems={setItems}
                 />
             ))}
@@ -176,10 +171,11 @@ function AdminApply() {
                 <h3>선발 목록</h3>
             </div>
             <div className="applyl-select-result">
-                <div className="apply-result-list">{saveItems.map((item, i) => (
+                <div className="apply-result-list">{saveItems.map((item) => (
                     <ApplyResult
                     item = {item}
-                    key = {i}
+                    key = {item.id}
+                    id = {item.id}
                     onRemove={onRemove}
                     />
                 ))}</div>

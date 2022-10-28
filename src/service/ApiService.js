@@ -81,7 +81,7 @@ export function login(userDTO) {
     return call("/auth/login", "POST", userDTO)
     .then((response)=>{
         if(response.token !== null) {
-            localStorage.setItem("IS_ADMIN", response.isadmin);
+            localStorage.setItem("IS_ADMIN", response.data[0]._admin);
             localStorage.setItem(ACCESS_TOKEN, response.data[0].token);
             window.location.href="/";
         }

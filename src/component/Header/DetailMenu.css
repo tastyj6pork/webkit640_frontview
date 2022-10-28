@@ -21,12 +21,13 @@
     float: left;
     margin: 0;
     margin-top: 8px;
-    margin-left: 70px;
     padding: 0;
 }
 
-.DetailMenu ul #menu01 {
-    border: 1px solid black;
+.DetailMenu ul #menu01, .DetailMenu ul #menu02 {
+    margin: 0;
+    padding: 0;
+    position: absolute;
 }
 
 .DetailMenu li {

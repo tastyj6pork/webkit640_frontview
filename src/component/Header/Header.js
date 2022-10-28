@@ -8,14 +8,16 @@ function Header() {
     const [isLogin, setIsLogin] = useState(false);
     const [isAdmin, setIsAdmin] = useState(0);
     const [isHover, setIsHover] = useState(false);
-    
+    const [dmenu01, setDmenu01] = useState(0);
+    const [dmenu02, setDmenu02] = useState(0);
+
     const isUserLogin = () => {
         if(localStorage.getItem("ACCESS_TOKEN") !== "null")
             setIsLogin(true);
         else setIsLogin(false);
-        if(localStorage.getItem("IS_ADMIN") === 1)
-            setIsAdmin(true);
-        else setIsAdmin(false);
+        if(localStorage.getItem("IS_ADMIN") === "true")
+            setIsAdmin(1);
+        else setIsAdmin(0);
     }
 
     const showDetail = (e) => {
@@ -28,6 +30,14 @@ function Header() {
 
     useEffect(()=>{
         isUserLogin();
+        const dmenu01 = document.getElementById('have-dmenu01');
+        const dmenu02 = document.getElementById('have-dmenu02');
+
+        const dmenu01_x = dmenu01.getBoundingClientRect().left;
+        const dmenu02_x = dmenu02.getBoundingClientRect().left;
+
+        setDmenu01(dmenu01_x);
+        setDmenu02(dmenu02_x);
     })
 
     return(
@@ -38,8 +48,12 @@ function Header() {
                     <div id="menuList" className="w3-hide-small">
                         <ul>
                             <li><Link to='/'>About us</Link></li>
-                            <li><Link onMouseOver={showDetail} onMouseLeave={hideDetail}><span>게시판</span></Link></li>
-                            <li><Link onMouseOver={showDetail} onMouseLeave={hideDetail}><span>수업정보</span></Link></li>
+                            <li><Link id="have-dmenu01"
+                            onMouseOver={showDetail}
+                            onMouseLeave={hideDetail}><span>게시판</span></Link></li>
+                            <li><Link id="have-dmenu02"
+                            onMouseOver={showDetail}
+                            onMouseLeave={hideDetail}><span>수업정보</span></Link></li>
                             <li><Link><span>수강후기</span></Link></li>
                             <li><Link to='/'>Q&A</Link></li>
                             {isLogin && !isAdmin &&
@@ -52,12 +66,12 @@ function Header() {
                                     <a href="/admin">관리페이지</a>
                                 </li>
                             }
-                            {!isLogin && 
+                            {!isLogin &&
                                 <li className="login-btn" style={{float:"right", marginLeft: "40px"}}>
                                     <a href="/login">로그인</a>
                                 </li>
                             }
-                            {isLogin && 
+                            {isLogin &&
                                 <li className="logout-btn" onClick={()=>{
                                     signout();
                                     setIsLogin(false);
@@ -69,7 +83,7 @@ function Header() {
                     </div>
                 </div>
             </div>
-            {isHover && <DetailMenu navY={window.scrollY}/>}
+            {isHover && <DetailMenu navY={window.scrollY} dmenu01_x={dmenu01} dmenu02_x={dmenu02}/>}
         </div>
     )
 }
