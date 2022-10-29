@@ -1,14 +1,10 @@
 import { useEffect, useState } from 'react';
-import { API_BASE_URL } from '../../app-config';
 import { call } from '../../service/ApiService';
 import '../Admin/Admin.css';
 import ApplyItems from './ApplyItems';
-import ApplyResult from './ApplyResult';
-import axios from 'axios';
+import ApplySelector from './ApplySelector';
 
 function AdminApply() {
-    const ACCESS_TOKEN = "ACCESS_TOKEN";
-    const accessToken = localStorage.getItem(ACCESS_TOKEN);
     /*const [applyList, setApplyList] = useState([
         {
             // id : 1,
@@ -60,76 +56,38 @@ function AdminApply() {
         }
     ])*/
 
-    // const [applyList, setApplyList] = useState([]);
-
+    const [applyList, setApplyList] = useState([]);
+    
     useEffect(() => {
         call("/apply/all","GET",null).then((res)=>{
-            console.log(res)
-            setApplyList(res.data);
+            console.log(res);
+            setApplyList(res);
         })
     }, [])
-
-    const [applyList, setApplyList] = useState([]);
-
-    useEffect(() => {
-        let header = new Headers({
-
-        })
-
-        let options = {
-            method : "GET",
-            url : API_BASE_URL,
-            header : header,
-
-        };
-
-        fetch(options.url, options).then(response => {
-            response.json().then((json) => {
-                setApplyList(json);
-            });
-        })
-        .catch((error) => console.log(error))
-    }, [])
-
-    const [saveItems, setSaveItems] = useState([]);
     
-    function setItems(content) {
-        setSaveItems([...saveItems , content]);
-        console.log(saveItems);
+    const [showList, setShowList] = useState([ ]);
+    const [selectList, setSelectList] = useState([]);
+
+    function ApplySaveUpper() {
+        
     }
 
-    const onRemove = id => {
-        setSaveItems(saveItems.filter(saveItems => saveItems.id !== id));
-    }
-
-    function resultEnd() {
-        console.log(saveItems);
-    }
-
-    const [searchType, setSearchType] = useState("");
-    
-    function Reflash(value) {
-        const data = {
-            type : searchType,
-            keyword : value,
-        }
-        call("/auth/view-members","GET",data)
-    }
-    async function zipDownload() {
-        await axios({
-            method:"POST",
-            url:API_BASE_URL + "/apply/zip-download",
-            data: null,
-            headers: {
-                "Authorization": "Bearer " + accessToken,
-            }, 
-        }).then((res)=>{
+    // 전체 zip.file 추출하는 함수
+    // async function zipDownload() {
+    //     await axios({
+    //         method:"POST",
+    //         url:API_BASE_URL + "/apply/zip-download",
+    //         data: null,
+    //         headers: {
+    //             "Authorization": "Bearer " + accessToken,
+    //         }, 
+    //     }).then((res)=>{
             
-        })
-    }
+    //     })
+    // }
     
     return(<div className="apply-total">
-        <button onClick={zipDownload}>asdfasdf</button>
+        {/* <button onClick={zipDownload}>asdfasdf</button> */}
         <div className="apply-title">
             <h1>지원관리</h1>
         </div>
@@ -138,12 +96,12 @@ function AdminApply() {
                 <h3>지원학생 목록</h3>
             </div>
             <div className="apply-insert-algin">
-                <select className="apply-insert-select" onChange={(e) => setSearchType(e.target.value)}>
+                <select className="apply-insert-select">
                     <option value="name">이름</option>
                     <option value="school">학교</option>
                     <option value="major">학과</option>
                 </select>
-                <input className="apply-insert-search" onChange={(e) => Reflash(e.target.value)} placeholder="   검색어를 입력해 주세요"></input>
+                <input className="apply-insert-search" placeholder="   검색어를 입력해 주세요"></input>
             </div>
         </div>
         <div className="apply-insert-table">
@@ -151,18 +109,19 @@ function AdminApply() {
                 <li className="table-first">이름</li>
                 <li className="table-second">학교</li>
                 <li className="table-third">학과</li>
-                <li className="table-fourth">학번</li>
-                <li className="table-fifth">이메일</li>
-                <li className="table-sixth">지원파일</li>
-                <li className="table-seventh">상태</li>
+                <li className="table-fourth">학년</li>
+                <li className="table-fifth">학번</li>
+                <li className="table-sixth">이메일</li>
+                <li className="table-seventh">지원파일</li>
+                <li className="table-last">상태</li>
             </ul>
         </div>
         <div className="apply-items-box">
-            {applyList.map((items) => (
+            {showList.map((items, i) => (
                 <ApplyItems
                 items={items}
-                key={items.id}
-                setItems={setItems}
+                key={i}
+                ApplySaveUpper={ApplySaveUpper}
                 />
             ))}
         </div>
@@ -170,17 +129,27 @@ function AdminApply() {
             <div className="apply-last-label">
                 <h3>선발 목록</h3>
             </div>
-            <div className="applyl-select-result">
-                <div className="apply-result-list">{saveItems.map((item) => (
-                    <ApplyResult
-                    item = {item}
-                    key = {item.id}
-                    id = {item.id}
-                    onRemove={onRemove}
-                    />
-                ))}</div>
-            </div>
-            <div className="apply-selection"><button className="apply-select-btn" onClick={resultEnd}>선발 완료</button></div>
+            <div className="apply-insert-table">
+            <ul>
+                <li className="table-first">이름</li>
+                <li className="table-second">학교</li>
+                <li className="table-third">학과</li>
+                <li className="table-fourth">학년</li>
+                <li className="table-fifth">학번</li>
+                <li className="table-sixth">이메일</li>
+                <li className="table-seventh">지원파일</li>
+                <li className="table-last">상태</li>
+            </ul>
+        </div>
+        <div className="apply-items-box">
+            {selectList.map((itemes, i) => (
+                <ApplySelector
+                items={itemes}
+                key={i}
+                />
+            ))}
+        </div>
+            <div className="apply-selection"><button className="apply-select-btn">선발 완료</button></div>
         </div>
     </div>)
 }
