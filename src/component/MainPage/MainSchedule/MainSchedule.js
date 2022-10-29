@@ -1,10 +1,10 @@
-import { React, useEffect, useState, useMemo } from "react";
+import { React, useEffect, useState, useMemo, forwardRef } from "react";
 import { Link } from "react-router-dom";
 import "./MainSchedule.css"
 
-function MainSchedule() {
+const MainSchedule = forwardRef((props, ref) => {
     return(
-        <div className="MainSchedule">
+        <div className="MainSchedule" ref={ref}>
             <div className="schedule-content w3-display-container">
                 <div className="schedule-box w3-display-middle">
                     <span>
@@ -36,6 +36,6 @@ function MainSchedule() {
             </div>
         </div>
     )
-}
+});
 
 export default MainSchedule;

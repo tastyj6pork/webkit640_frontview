@@ -20,11 +20,12 @@ function ScrollNav(props) {
                 <div className="nav-content">
                     <div id="menuList" className="w3-hide-small">
                         <ul>
-                            <li><a className="w3-display-middle" href="/"
-                            style={{backgroundColor:"rgb(196, 253, 229)"}}>모집 정보</a></li>
-                            <li><a className="w3-display-middle" href="/">주요 일정</a></li>
-                            <li><a className="w3-display-middle" href="/">교육 정보</a></li>
-                            <li><a className="w3-display-middle" href="/">수강 후기</a></li>
+                            <li><a className="w3-display-middle"
+                            style={{backgroundColor:"rgb(196, 253, 229)"}}
+                            onClick={props.onRecruit}>모집 정보</a></li>
+                            <li><a className="w3-display-middle" onClick={props.onSchedule}>주요 일정</a></li>
+                            <li><a className="w3-display-middle" onClick={props.onProcess}>교육 정보</a></li>
+                            <li><a className="w3-display-middle" onClick={props.onReview}>수강 후기</a></li>
                         </ul>
                     </div>
                 </div>
