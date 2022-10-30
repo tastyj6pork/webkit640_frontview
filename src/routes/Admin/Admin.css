@@ -56,33 +56,63 @@
     margin-left: 50px;
     width: 53px;
 }
+.items-first {
+    margin-left: 42.8px;
+    width: 68px;
+}
 .table-second {
     margin-left: 75px;
     width: 53px;
 }
+.items-second {
+    margin-left: 12.8px;
+    width: 250px;
+}
 .table-third{
-    margin-left: 127px;
+    margin-left: 197px;
     width: 53px;
+}
+.items-third {
+    margin-left: 30px;
+    width: 250px;
 }
 .table-fourth {
-    margin-left: 95px;
+    margin-left: 162.7px;
     width: 53px;
+}
+.items-fourth {
+    margin-left: px;
+    width: 10px;
 }
 .table-fifth {
-    margin-left: 80px;
+    margin-left: 75px;
     width: 53px;
+}
+.items-fifth {
+    margin-left: 75px;
+    width: 100px;
 }
 .table-sixth {
-    margin-left: 128px;
+    margin-left: 100px;
     width: 67px;
 }
+.items-sixth {
+    margin-left: 10px;
+    width: 180px;
+}
 .table-seventh {
-    margin-left: 128px;
+    margin-left: 230px;
     width: 81px;
 }
+.items-seventh {
+    margin-left: 174px;
+}
 .table-last {
-    margin-left: 69px;
+    margin-left: 64px;
     width: 53px;
+}
+.items-last {
+    margin-left: 50px;
 }
 .apply-insert-items {
     height: 50.79px;
@@ -95,43 +125,24 @@
 .apply-insert-items ul li {
     padding-left: 25px;
 }
-.items-first {
-    margin-left: 50px;
-    width: 68px;
-}
-.items-second {
-    margin-left: 36px;
-    width: 180px;
-}
-.items-third {
-    margin-left: 3px;
-    width: 50px;
-}
-.items-fourth {
-    margin-left: 127px;
-    width: 10px;
-}
-.items-fifth {
-    margin-left: 50px;
-    width: 100px;
-}
-.items-sixth {
-    margin-left: 100px;
-    width: 50px;
-}
-.items-seventh {
-    margin-left: 174px;
-}
-.items-last {
-    margin-left: 50px;
-}
 .apply-items-box {
     height: 280px;
     overflow: auto;
 }
 .apply-selection {
     text-align: center;
+    margin-top: 36px;
+}
+.apply-finish {
+    text-align: center;
     margin-top: 18px;
+}
+.apply-finish-btn {
+    height: 47px;
+    width: 100px;
+    border: none;
+    background: #62669d;
+    color: white;
 }
 .apply-select-btn {
     height: 47px;
@@ -194,6 +205,6 @@
     margin-left: 50px;
     width: 30px;
 }
-/* .items-checkbox:checked {
-    background-color: gray;
-} */
+.apply-select-container {
+    margin-top: 125px;
+}
