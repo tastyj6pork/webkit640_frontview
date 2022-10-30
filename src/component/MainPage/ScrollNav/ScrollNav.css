@@ -25,7 +25,7 @@
     margin-left: 100px;
 }
 
-.ScrollNav #menuList ul {
+.ScrollNav #menuList {
     position: absolute;
     top: 18px;
     height: 60px;
@@ -43,16 +43,20 @@
     font-size: 150%;
 }
 
-.ScrollNav #menuList li a:hover {
+.ScrollNav #menuList li button:hover {
     background-color: rgb(196, 253, 229);
 }
 
-.ScrollNav #menuList li a{
+.ScrollNav #menuList li button:click {
+    border: 0px;
+}
+
+.ScrollNav #menuList li button {
     width: 150px;
     height: 60px;
-    padding-top: 12px;
     display: inline-block;
     vertical-align: middle;
     text-decoration: none;
+    border: 0px;
     color: rgb(66, 66, 66);
 }

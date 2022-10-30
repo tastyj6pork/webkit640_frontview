@@ -5,7 +5,7 @@ import DetailMenu from "./DetailMenu";
 import "./Header.css"
 
 function Header(props) {
-    const [isLogin, setIsLogin] = useState(true);
+    const [isLogin, setIsLogin] = useState(false);
     const [isAdmin, setIsAdmin] = useState(0);
     const [isClick, setIsClick] = useState(false);
     const [isHover, setIsHover] = useState(false);
@@ -37,18 +37,23 @@ function Header(props) {
     }
 
     useEffect(()=>{
-        //isUserLogin();
+        isUserLogin();
         const dmenu01 = document.getElementById('have-dmenu01');
         const dmenu02 = document.getElementById('have-dmenu02');
-        const duser = document.getElementById('welcome');
+        const duser = null;
+        const duser_x = null;
+
+        if(isLogin){
+            duser = document.getElementById('welcome');
+            duser_x = duser.getBoundingClientRect().left;
+            setDuser(duser_x);
+        }
 
         const dmenu01_x = dmenu01.getBoundingClientRect().left;
         const dmenu02_x = dmenu02.getBoundingClientRect().left;
-        const duser_x = duser.getBoundingClientRect().left;
 
         setDmenu01(dmenu01_x);
         setDmenu02(dmenu02_x);
-        setDuser(duser_x);
     })
 
     return(
