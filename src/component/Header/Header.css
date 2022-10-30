@@ -8,6 +8,11 @@
     z-index: 2;
 }
 
+.Header #navBarIncludeDetail {
+    position: fixed;
+    top: 0;
+}
+
 .Header .navbar-brand {
     float: left;
     margin: 0;
@@ -17,7 +22,6 @@
     height: 90px;
     padding: 25px;
     position: fixed;
-    top: 0;
 }
 
 .Header .nav-content {
@@ -70,4 +74,19 @@
 .Header #menuList #logout li{
     float: right;
     margin-left: 40px;
+}
+
+.Header #userDetailMenu{
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    position: absolute;
+    top: 0;
+}
+
+.Header #userDetailMenu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
 }
