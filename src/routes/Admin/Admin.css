@@ -53,31 +53,35 @@
     padding-left: 25px;
 }
 .table-first {
-    margin-left: 75px;
+    margin-left: 50px;
     width: 53px;
 }
 .table-second {
-    margin-left: 80px;
+    margin-left: 75px;
     width: 53px;
 }
 .table-third{
-    margin-left: 140px;
+    margin-left: 127px;
     width: 53px;
 }
 .table-fourth {
-    margin-left: 136px;
+    margin-left: 95px;
     width: 53px;
 }
 .table-fifth {
-    margin-left: 160px;
-    width: 67px;
+    margin-left: 80px;
+    width: 53px;
 }
 .table-sixth {
-    margin-left: 160px;
-    width: 81px;
+    margin-left: 128px;
+    width: 67px;
 }
 .table-seventh {
-    margin-left: 65px;
+    margin-left: 128px;
+    width: 81px;
+}
+.table-last {
+    margin-left: 69px;
     width: 53px;
 }
 .apply-insert-items {
@@ -92,29 +96,33 @@
     padding-left: 25px;
 }
 .items-first {
-    margin-left: 32.8px;
+    margin-left: 50px;
     width: 68px;
 }
 .items-second {
-    margin-left: 22.8px;
+    margin-left: 36px;
     width: 180px;
 }
 .items-third {
-    margin-left: 30px;
-    width: 180px;
+    margin-left: 3px;
+    width: 50px;
 }
 .items-fourth {
-    margin-left: 23.6px;
-    width: 65px;
+    margin-left: 127px;
+    width: 10px;
 }
 .items-fifth {
-    margin-left: 100px;
+    margin-left: 50px;
     width: 100px;
 }
 .items-sixth {
-    margin-left: 188px;
+    margin-left: 100px;
+    width: 50px;
 }
 .items-seventh {
+    margin-left: 174px;
+}
+.items-last {
     margin-left: 50px;
 }
 .apply-items-box {
@@ -182,3 +190,10 @@
     background: #0087ff;
     color: whitesmoke;
 }
+.items-checkbox {
+    margin-left: 50px;
+    width: 30px;
+}
+/* .items-checkbox:checked {
+    background-color: gray;
+} */
