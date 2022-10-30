@@ -4,9 +4,9 @@
 }
 
 .DetailMenu {
-    width: 100%;
+    width: 100vw;
     height: 150px;
-    position: absolute;
+    position: relative;
     background-color: rgba(255, 255, 255, 0.8);
 }
 
@@ -27,6 +27,7 @@
 .DetailMenu ul #menu01, .DetailMenu ul #menu02 {
     margin: 0;
     padding: 0;
+    width: 80px;
     position: absolute;
 }
 

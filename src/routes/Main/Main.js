@@ -15,12 +15,14 @@ import Footer from "../../component/Footer/Footer";
 function Main() {
     const [isNav, setIsNav] = useState(true);
     const [isScrollNavOn, setIsScrollNavOn] = useState(false);
+    //const [scrollY, setScrollY] = useState(window.scrollY);
     const recruitRef = useRef(null);
     const scheduleRef = useRef(null);
     const processRef = useRef(null);
     const reviewRef = useRef(null);
 
     const handleScroll = () => {
+        //setScrollY(window.scrollY);
         if(window.scrollY < 800){
             setIsNav(true);
             setIsScrollNavOn(false);
@@ -78,11 +80,11 @@ function Main() {
             {isNav && <ScrollNav isOn={isScrollNavOn}
             onRecruit={onRecruitInfoClick} onProcess={onProcessInfoClick}
             onSchedule={onMainScheduleClick} onReview={onReviewClick}/>}
-            
+
             {isScrollNavOn && <ScrollNav isOn={isScrollNavOn}
             onRecruit={onRecruitInfoClick} onProcess={onProcessInfoClick}
             onSchedule={onMainScheduleClick} onReview={onReviewClick}/>}
-            
+
             <RecruitInfo ref={recruitRef}/>
             <MainSchedule ref={scheduleRef}/>
             <ProcessInfo ref={processRef}/>
