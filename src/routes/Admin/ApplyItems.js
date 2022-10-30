@@ -1,9 +1,10 @@
 import '../Admin/Admin.css'
 
-function ApplyItems({items, ApplySaveUpper}) {
-
+function ApplyItems({items, fileListDown}) {
+    
     function BtnClick() {
-        ApplySaveUpper(items)
+        
+        fileListDown(items);
     }
 
     return(<div>
@@ -16,7 +17,7 @@ function ApplyItems({items, ApplySaveUpper}) {
                 <li className="items-fifth">{items.schoolNumber}</li>
                 <li className="items-sixth">{items.email}</li>
                 <li className="items-seventh"><button className="items-file">다운로드</button></li>
-                <li className="items-last"><button className="items-btn" onClick={BtnClick}>선택</button></li>
+                <li className="items-last"><button type="button" className="items-btn" onClick={BtnClick}>선택</button></li>
                 <input className="items-checkbox" type="checkbox"></input>
             </ul>
         </div>

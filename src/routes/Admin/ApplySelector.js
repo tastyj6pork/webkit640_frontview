@@ -1,6 +1,12 @@
 import '../Admin/Admin.css'
 
-function ApplySelector({itemes}) {
+function ApplySelector({itemes, fileListUp}) {
+
+    function BtnReverse() {
+
+        fileListUp(itemes)
+
+    }
 
     return(<div>
         <div className="apply-insert-items">
@@ -12,7 +18,7 @@ function ApplySelector({itemes}) {
                 <li className="items-fifth">{itemes.schoolNumber}</li>
                 <li className="items-sixth">{itemes.email}</li>
                 <li className="items-seventh"><button className="items-file">다운로드</button></li>
-                <li className="items-last"><button className="items-btn">선택</button></li>
+                <li className="items-last"><button className="items-btn" onClick={BtnReverse}>제거</button></li>
                 <input className="items-checkbox" type="checkbox"></input>
             </ul>
         </div>
