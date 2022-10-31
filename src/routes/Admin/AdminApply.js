@@ -84,7 +84,7 @@ function AdminApply() {
     //선발완료 누를시 체크박스에 담긴 데이터 아래로 내리는 함수
     function SelectFinish() {
         setSelectList([...selectList, ...checkItems]);
-        // setShowList(showList.filter(showList => showList !== checkItems));
+        // setShowList(showList.filter(content => content === checkItems));
         console.log(checkItems);
         console.log(showList);
     }
@@ -109,7 +109,6 @@ function AdminApply() {
             const filter = checkItems.filter(one => one !== content)
             setCheckItems([...filter])
         }
-
     }
 
     //체크박스 전체선택 활성화 시켜주는 함수
@@ -183,6 +182,8 @@ function AdminApply() {
             </div>
             <div className="apply-insert-table">
             <ul>
+                <input className="items-checkbox" type="checkbox" onChange={(e) => handleAllCheck(e.target.checked)}
+                checked={checkItems.length === showList.length ? true : false}></input>
                 <li className="table-first">이름</li>
                 <li className="table-second">학교</li>
                 <li className="table-third">학과</li>
