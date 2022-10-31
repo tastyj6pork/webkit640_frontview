@@ -1,22 +1,26 @@
 import { React, useEffect, useState } from "react";
 import { useMediaQuery } from 'react-responsive';
 import { Link } from "react-router-dom";
-import {call, signout} from "../../service/ApiService";
+import { signout} from "../../service/ApiService";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 import DetailMenu from "./DetailMenu";
+import HideMenu from "./HideMenu";
 import "./Header.css"
 
-function Header(props) {
+function Header() {
     const [isLogin, setIsLogin] = useState(false);
     const [isAdmin, setIsAdmin] = useState(0);
     const [isClick, setIsClick] = useState(false);
+    const [isHideClick, setIsHideClick] = useState(false);
     const [isHover, setIsHover] = useState(false);
     const [dmenu01, setDmenu01] = useState(0);
     const [dmenu02, setDmenu02] = useState(0);
     const [duser, setDuser] = useState(0);
 
     const username = localStorage.getItem("USER_NAME");
-    const isBigScreen = useMediaQuery({minDeviceWidth: 1201});
-    const isMediumScreen = useMediaQuery({maxDeviceWidth: 1200});
+    const isBigScreen = useMediaQuery({query: '(min-width:1201px)'});
+    const isMediumScreen = useMediaQuery({query: '(max-width: 1200px)'});
 
     const isUserLogin = () => {
         if(localStorage.getItem("ACCESS_TOKEN") !== "null")
@@ -40,6 +44,16 @@ function Header(props) {
         setIsHover(false);
     }
 
+    const showHideMenu = (e) => {
+        if(isHideClick) setIsHideClick(false);
+        else setIsHideClick(true);
+    }
+
+    const sign_out = () => {
+        signout();
+        setIsLogin(false);
+    }
+
     useEffect(()=>{
         isUserLogin();
         const dmenu01 = document.getElementById('have-dmenu01');
@@ -52,22 +66,22 @@ function Header(props) {
             duser_x = duser.getBoundingClientRect().left;
             setDuser(duser_x);
         }
-
-        const dmenu01_x = dmenu01.getBoundingClientRect().left;
-        const dmenu02_x = dmenu02.getBoundingClientRect().left;
-
-        setDmenu01(dmenu01_x);
-        setDmenu02(dmenu02_x);
+        if(isBigScreen){
+            const dmenu01_x = dmenu01.getBoundingClientRect().left;
+            const dmenu02_x = dmenu02.getBoundingClientRect().left;
+            setDmenu01(dmenu01_x);
+            setDmenu02(dmenu02_x);
+        }
     })
 
     return(
         <div className="Header">
             <div id="navBarIncludeDetail">
                 <div id="navBar" className="w3-bar w3-white w3-wide w3-card">
-                    <div className="nav-content w3-center">
+                    <div className="nav-content">
                         <Link to='/' className="navbar-brand">Logo</Link>
                         {isBigScreen &&
-                            <div id="menuList" className="w3-hide-small">
+                            <div id="menuList" className="w3-center w3-hide-small w3-hide-medium">
                                 <ul>
                                     <li><Link to='/'>About us</Link></li>
                                     <li><Link id="have-dmenu01"
@@ -104,6 +118,14 @@ function Header(props) {
                                 </ul>
                             </div>
                         }
+                        {isMediumScreen && 
+                            <div className="hide-menu">
+                                <button className="hide-menu-btn"
+                                onClick={showHideMenu}>
+                                    <FontAwesomeIcon icon={faBars} size="2x"/>
+                                </button>
+                            </div>
+                        }
                     </div>
                 </div>
                 {isBigScreen && isClick && <DetailMenu navY={window.scrollY} dmenu01_x={dmenu01} dmenu02_x={dmenu02}/>}
@@ -116,6 +138,12 @@ function Header(props) {
                             <li><a href="/">회원정보</a></li>
                         </ul>
                     </div>
+                }
+
+                {isMediumScreen && isHideClick &&
+                    <HideMenu isLogin={isLogin} isAdmin={isAdmin}
+                    user={username} signout={sign_out}
+                    style={{top:`${window.scrollY+90}px`}}/>
                 }
             </div>
         </div>
