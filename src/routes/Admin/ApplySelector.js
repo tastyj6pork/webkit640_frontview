@@ -11,6 +11,7 @@ function ApplySelector({itemes, fileListUp}) {
     return(<div>
         <div className="apply-insert-items">
             <ul>
+                <input className="items-checkbox" type="checkbox"></input>
                 <li className="items-first">{itemes.name}</li>
                 <li className="items-second">{itemes.school}</li>
                 <li className="items-third">{itemes.major}</li>
@@ -19,7 +20,6 @@ function ApplySelector({itemes, fileListUp}) {
                 <li className="items-sixth">{itemes.email}</li>
                 <li className="items-seventh"><button className="items-file">다운로드</button></li>
                 <li className="items-last"><button className="items-btn" onClick={BtnReverse}>제거</button></li>
-                <input className="items-checkbox" type="checkbox"></input>
             </ul>
         </div>
     </div>)
