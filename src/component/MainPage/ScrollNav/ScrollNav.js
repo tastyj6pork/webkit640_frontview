@@ -90,7 +90,7 @@ function ScrollNav(props) {
                 </div>
                 
                     <div id="dropdownMenu" style={{top:`${window.scrollY+90}px `}}
-                    >
+                    onMouseLeave={hideDropdown}>
                         <ul>
                             <li><button id="recruit"
                             onClick={onClickEvent}>모집 정보</button></li>
