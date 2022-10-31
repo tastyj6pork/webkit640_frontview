@@ -5,22 +5,17 @@ import {call, signup} from "../../service/ApiService";
 
 function Signup() {
     const [isstudent, setIsStudent] = useState(false);
+    const [kakaoEmail, setKakaoEmail] = useState(null);
 
-    /*
-    const isStudent = () => {
-        const code = '<div id="studentInput">'+
-        '<input type="text"'+
-        'className="form-control" id="major" name="major"'+
-        'placeholder="학과"/>'+
-        '<input type="text"'+
-        'className="form-control" id="snum" name="snum" placeholder="학번"/>'+
-        '</div>';
-
-        if(isstudent)
-            return code;
-        else
-            return "";
-    }*/
+    useEffect = (()=>{
+        const urlParams = new URL(document.location).searchParams;
+        const email = urlParams.get('email');
+        const email_input = document.getElementById('email');
+        setKakaoEmail(email);
+        if(kakaoEmail){
+            email_input.classList.add('readonly');
+        }
+    })
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -160,7 +155,7 @@ function Signup() {
                         <div className="form-group" id="emailInput">
                             <label>이메일:</label>
                             <input type="text" className="form-control"
-                            id="email" name="email"
+                            id="email" name="email" value={kakaoEmail} 
                             onChange={onChangeEvent}
                             placeholder="이메일을 입력하세요." required/>
                             <div className="invalid-feedback">이메일을 입력하세요.</div>
