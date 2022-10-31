@@ -71,8 +71,9 @@ function AdminApply() {
     //     })
     // }, [])
     
-    const [showList, setShowList] = useState([]);
-    const [selectList, setSelectList] = useState([]);
+    const [showList, setShowList] = useState([]); // 지원학생 목록 리스트
+    const [selectList, setSelectList] = useState([]); // 선발 목록 리스트
+    const [checkItems, setCheckItems] = useState([]); // 체크 선택 목록 리스트
 
     useEffect(() => {
 
@@ -80,20 +81,40 @@ function AdminApply() {
 
     }, [])
 
-    console.log(selectList);
+    //선발완료 누를시 체크박스에 담긴 데이터 아래로 내리는 함수
+    function SelectFinish() {
+        setSelectList([...selectList, ...checkItems]);
+        // setShowList(showList.filter(showList => showList !== checkItems));
+        console.log(checkItems);
+        console.log(showList);
+    }
 
+    //선택버튼 작동 시 아래로 데이터 내리는 함수 -ㅈㅇ
     function fileListDown(content) {
         setSelectList([...selectList, content]);
         setShowList(showList.filter(showList => showList !== content));
     }
 
+    //삭제버튼 작동 시 위로 데이터 올리는 함수 -ㅈㅇ    
     function fileListUp(content) {
         setShowList([...showList, content]);
         setSelectList(selectList.filter(selectList => selectList !== content));
     }
 
-    function SelectFinish() {
+    //체크박스 true일때의 데이터만 저장해주는 함수
+    function fileCheckList(content, isChecked) {
+        if(isChecked) {
+            setCheckItems([...checkItems, content]);
+        } else if (!isChecked && checkItems.find(one => one === content)) {
+            const filter = checkItems.filter(one => one !== content)
+            setCheckItems([...filter])
+        }
 
+    }
+
+    //체크박스 전체선택 활성화 시켜주는 함수
+    function handleAllCheck(checked) {
+        
     }
 
 
@@ -131,6 +152,8 @@ function AdminApply() {
         </div>
         <div className="apply-insert-table">
             <ul>
+                <input className="items-checkbox" type="checkbox" onChange={(e) => handleAllCheck(e.target.checked)}
+                checked={checkItems.length === showList.length ? true : false}></input>
                 <li className="table-first">이름</li>
                 <li className="table-second">학교</li>
                 <li className="table-third">학과</li>
@@ -147,6 +170,7 @@ function AdminApply() {
                 items={items}
                 key={index}
                 fileListDown={fileListDown}
+                fileCheckList={fileCheckList}
                 />
             ))}
         </div>
