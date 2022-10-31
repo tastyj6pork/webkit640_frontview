@@ -64,12 +64,15 @@ function HideMenu(props) {
                         <li>{props.user}님, 어서오세요.
                             <br/><a href="/student">마이페이지</a>
                         </li>
-                        <li onClick={props.signout}><a href="#">로그아웃</a></li>
                     </ul>
                 }
                 { props.isLogin && props.isAdmin &&
                     <ul className="user-menu-list">
                         <li><a href="/admin">관리페이지</a></li>
+                    </ul>
+                }
+                { props.isLogin && 
+                    <ul className="user-menu-list">
                         <li onClick={props.signout}><a href="#">로그아웃</a></li>
                     </ul>
                 }

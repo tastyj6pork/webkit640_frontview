@@ -5,6 +5,10 @@
     z-index: 3;
 }
 
+.ScrollNav {
+    width: 100vh;
+}
+
 .ScrollNav .navbar-brand {
     float: left;
     margin: 0;
@@ -59,4 +63,43 @@
     text-decoration: none;
     border: 0px;
     color: rgb(66, 66, 66);
+}
+
+.ScrollNav .nav-content .dropdown-nav span {
+    margin-right: 20px;
+    font-size: 25px;
+}
+
+.ScrollNav .nav-content .dropdown-nav button {
+    background-color: rgba(255, 255, 255, 0);
+    border: 0;
+    padding: 7px;
+}
+
+.ScrollNav .nav-content .dropdown-nav button:click {
+    border: 0;
+}
+
+.ScrollNav #navBar #dropdownMenu {
+    border: 1px solid salmon;
+    width: 1000px;
+    height: 5000px;
+}
+
+.ScrollNav #navBar #dropdownMenu ul {
+    list-style-type: none;
+    margin: 0;
+}
+
+@media only screen and (max-width:1200px) {
+    .ScrollNav #navBar {
+        width: 100%;
+        border-bottom: 1px solid lightgrey;
+        border: 1px solid red;
+    }
+
+    .ScrollNav .nav-content {
+        width: 100%;
+        margin: 0;
+    }
 }

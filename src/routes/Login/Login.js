@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import "./Login.css"
-import { KAKAO_AUTH_URL } from '../../service/OAuth';
 import StickyHeader from '../../component/StickyHeader/StickyHeader';
 import { call, login } from '../../service/ApiService';
 
@@ -46,7 +45,8 @@ function Login() {
                                 placeholder="비밀번호"/>
                         </div>
                     </form>
-                    <a href={KAKAO_AUTH_URL}><div className="kakao-btn"/></a>
+                    <a href="https://kauth.kakao.com/oauth/authorize?client_id=ceff3c3a5ff411df946f1aa557ffc001&redirect_uri=http://localhost:3000/auth/oauth/kakao/&response_type=code">
+                        <div className="kakao-btn"/></a>
                     <div className="w3-center">
                             <button type="submit" 
                             form="loginForm"
