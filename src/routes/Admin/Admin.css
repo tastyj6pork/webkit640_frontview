@@ -19,16 +19,20 @@
     text-align: end;
 }
 .apply-insert-search {
-    width: 28%;
+    width: 14%;
     height: 43px;
     margin: 10px;
     background: whitesmoke;
     border: none;
 }
-.apply-insert-select {
-    width: 100px;
+.apply-search-btn {
+    width: 74px;
     height: 43px;
-    border: none;
+}
+.apply-search-btn:active {
+    border:none;
+    background: #62669d;
+    color: white;
 }
 .apply-first-label {
     padding: 20px;
@@ -53,16 +57,16 @@
     padding-left: 25px;
 }
 .table-first {
-    margin-left: 50px;
-    width: 53px;
+    margin-left: 42.8px;
+    width: 64px;
 }
 .items-first {
-    margin-left: 42.8px;
-    width: 68px;
+    margin-left: 35px;
+    width: 74px;
 }
 .table-second {
-    margin-left: 75px;
-    width: 53px;
+    margin-left: 69px;
+    width: 64px;
 }
 .items-second {
     margin-left: 12.8px;
@@ -70,49 +74,49 @@
 }
 .table-third{
     margin-left: 197px;
-    width: 53px;
+    width: 64px;
 }
 .items-third {
-    margin-left: 1.8px;
+    margin-left: 30px;
     width: 250px;
 }
 .table-fourth {
-    margin-left: 162.7px;
-    width: 53px;
+    margin-left: 138px;
+    width: 64px;
 }
 .items-fourth {
-    margin-left: 28px;
+    margin-left: px;
     width: 10px;
 }
 .table-fifth {
-    margin-left: 75px;
-    width: 53px;
+    margin-left: 69px;
+    width: 64px;
 }
 .items-fifth {
     margin-left: 75px;
     width: 100px;
 }
 .table-sixth {
-    margin-left: 100px;
-    width: 67px;
+    margin-left: 95px;
+    width: 74px;
 }
 .items-sixth {
     margin-left: 10px;
     width: 180px;
 }
 .table-seventh {
-    margin-left: 230px;
-    width: 81px;
+    margin-left: 100px;
+    width: 94px;
 }
 .items-seventh {
-    margin-left: 174px;
+    margin-left: 63px;
 }
 .table-last {
-    margin-left: 64px;
-    width: 53px;
+    margin-left: 35px;
+    width: 64px;
 }
 .items-last {
-    margin-left: 50px;
+    margin-left: 30.5px;
 }
 .apply-insert-items {
     height: 50.79px;
