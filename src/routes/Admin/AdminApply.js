@@ -73,7 +73,14 @@ function AdminApply() {
     
     const [showList, setShowList] = useState([]); // 지원학생 목록 리스트
     const [selectList, setSelectList] = useState([]); // 선발 목록 리스트
+    const [isChecked, setIsChecked] = useState(false); // 체크 선택 여부 리스트
     const [checkItems, setCheckItems] = useState([]); // 체크 선택 목록 리스트
+
+    const [filterList, setFilterList] = useState([]);
+    const [studentSearch, setStudentSearch] = useState();
+    const [schoolSearch, setSchoolSearch] = useState();
+    const [majorSearch, setMajorSearch] = useState();
+    const [schoolYearSearch, setSchoolYearSearch] = useState();
 
     useEffect(() => {
 
@@ -84,9 +91,15 @@ function AdminApply() {
     //선발완료 누를시 체크박스에 담긴 데이터 아래로 내리는 함수
     function SelectFinish() {
         setSelectList([...selectList, ...checkItems]);
-        // setShowList(showList.filter(content => content === checkItems));
+        let showTestList = [...showList];
+        for (let i=0; i<checkItems.length; i++) {
+            showTestList = showTestList.filter(content => content.email !== checkItems[i].email);
+        }
+        setShowList(showTestList);
+        console.log(checkItems.length);
         console.log(checkItems);
         console.log(showList);
+        setCheckItems([]);
     }
 
     //선택버튼 작동 시 아래로 데이터 내리는 함수 -ㅈㅇ
@@ -102,10 +115,10 @@ function AdminApply() {
     }
 
     //체크박스 true일때의 데이터만 저장해주는 함수
-    function fileCheckList(content, isChecked) {
-        if(isChecked) {
+    function fileCheckList(content, checked) {
+        if(checked) {
             setCheckItems([...checkItems, content]);
-        } else if (!isChecked && checkItems.find(one => one === content)) {
+        } else if (!checked && checkItems.find(one => one === content)) {
             const filter = checkItems.filter(one => one !== content)
             setCheckItems([...filter])
         }
@@ -115,6 +128,11 @@ function AdminApply() {
     function handleAllCheck(checked) {
         
     }
+
+    //다중 조건 검색 필터링 시켜주는 함수
+    // function filterData() {
+             
+    // }
 
 
     // 전체 zip.file 추출하는 함수 >> 데이터 위아래로 스위칭하는거 구현했고, 체크박스 상태관리기능 추가 필요하다.
@@ -141,12 +159,15 @@ function AdminApply() {
                 <h3>지원학생 목록</h3>
             </div>
             <div className="apply-insert-algin">
-                <select className="apply-insert-select">
-                    <option value="name">이름</option>
-                    <option value="school">학교</option>
-                    <option value="major">학과</option>
-                </select>
-                <input className="apply-insert-search" placeholder="   검색어를 입력해 주세요"></input>
+                <input className="apply-insert-search" placeholder="   이름을 입력해 주세요"
+                onChange={(e) => setStudentSearch(e.target.value)}></input>
+                <input className="apply-insert-search" placeholder="   학교를 입력해 주세요"
+                onChange={(e) => setSchoolSearch(e.target.value)}></input>
+                <input className="apply-insert-search" placeholder="   학과를 입력해 주세요"
+                onChange={(e) => setMajorSearch(e.target.value)}></input>
+                <input className="apply-insert-search" placeholder="   학년을 입력해 주세요"
+                onChange={(e) => setSchoolYearSearch(e.target.value)}></input>
+                <button className="apply-search-btn">조회</button>
             </div>
         </div>
         <div className="apply-insert-table">
