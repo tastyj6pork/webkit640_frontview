@@ -1,8 +1,7 @@
-import { useState } from 'react';
 import '../Admin/Admin.css'
 
 
-function ApplyItems({items, fileListDown, fileCheckList}) {
+function ApplyItems({items, fileListDown, fileCheckList, isChecked}) {
     
     function BtnClick() {    
         
@@ -10,14 +9,15 @@ function ApplyItems({items, fileListDown, fileCheckList}) {
     }
 
     function CheckInput(checked) {
-
-        fileCheckList(items, checked);
+        
+        items.checked = checked;
+        fileCheckList(items);
     }
 
     return(<div>
         <div className="apply-insert-items">
             <ul>
-                <input className="items-checkbox" type="checkbox" onChange={(e) => CheckInput(e.target.checked)}></input>
+                <input className="items-checkbox" type="checkbox" onChange={(e) => CheckInput(e.target.checked)} checked={items.checked}></input>
                 <li className="items-first">{items.name}</li>
                 <li className="items-second">{items.school}</li>
                 <li className="items-third">{items.major}</li>
