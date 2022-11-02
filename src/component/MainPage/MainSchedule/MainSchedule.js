@@ -1,8 +1,13 @@
 import { React, useEffect, useState, useMemo, forwardRef } from "react";
 import { Link } from "react-router-dom";
+import { useMediaQuery } from 'react-responsive';
 import "./MainSchedule.css"
 
 const MainSchedule = forwardRef((props, ref) => {
+    const isBigScreen = useMediaQuery({query: '(min-width:1201px)'});
+    const isMediumScreen = useMediaQuery({query: '(min-width:768px) and (max-width: 1200px)'});
+    const isSmallScreen = useMediaQuery({query: '(max-width: 767px)'});
+
     return(
         <div className="MainSchedule" ref={ref}>
             <div className="schedule-content w3-display-container">
@@ -11,25 +16,57 @@ const MainSchedule = forwardRef((props, ref) => {
                         웹킷640 참가 신청부터<br />최종 마감까지<br />주요 일정을 확인하세요.
                     </span>
                     <div className="mini-calender w3-display-container">
-                        <div className="c-bar w3-display-middle"></div>
-                        <div className="row">
-                            <div className="col">
-                                <h3>서류 접수</h3><br />
-                                <p>2023년 -월 -일(월) ~<br/>-월-일(일) 오후 6시</p>
-                            </div>
-                            <div className="col">
-                                <h3>추가 모집</h3><br />
-                                <p>2023년 -월 -일(월) ~<br/>-월 -일(일) 오후 6시</p>
-                            </div>
-                            <div className="col">
-                                <h3>최종 합격자 발표</h3><br />
-                                <p>2023년 -월 -일(월)</p>
-                            </div>
-                            <div className="col">
-                                <h3>웹킷640 시작</h3><br />
-                                <p>2023년 -월 -일(월) ~</p>
+                        { (isBigScreen || isMediumScreen) &&
+                        <div>
+                            <div className="c-bar w3-display-middle"></div>
+                            <div className="row">
+                                <div className="col">
+                                    <h3>서류 접수</h3><br />
+                                    <label>2023년 -월 -일(월) ~<br/>-월-일(일) 오후 6시</label>
+                                </div>
+                                <div className="col">
+                                    <h3>추가 모집</h3><br />
+                                    <label>2023년 -월 -일(월) ~<br/>-월 -일(일) 오후 6시</label>
+                                </div>
+                                <div className="col">
+                                    <h3>최종 합격자 발표</h3><br />
+                                    <label>2023년 -월 -일(월)</label>
+                                </div>
+                                <div className="col">
+                                    <h3>웹킷640 시작</h3><br />
+                                    <label>2023년 -월 -일(월) ~</label>
+                                </div>
                             </div>
                         </div>
+                        }
+                        { isSmallScreen &&
+                            <div>
+                                <div className="row">
+                                <div className="col">
+                                    <h3>서류 접수</h3>
+                                    <label>2023년 -월 -일(월) ~<br/>-월-일(일) 오후 6시</label>
+                                </div>
+                                </div>
+                                <div className="row">
+                                <div className="col">
+                                    <h3>추가 모집</h3>
+                                    <label>2023년 -월 -일(월) ~<br/>-월 -일(일) 오후 6시</label>
+                                </div>
+                                </div>
+                                <div className="row">
+                                <div className="col">
+                                    <h3>최종 합격자 발표</h3>
+                                    <label>2023년 -월 -일(월)</label>
+                                </div>
+                                </div>
+                                <div className="row">
+                                <div className="col">
+                                    <h3>웹킷640 시작</h3>
+                                    <label>2023년 -월 -일(월) ~</label>
+                                </div>
+                                </div>
+                            </div>
+                        }
                     </div>
                     <span className="warning">※추가 모집은 지원자 정원 미달 시에만 진행됩니다.</span>
                 </div>
