@@ -7,6 +7,7 @@ import "./ScrollNav.css"
 
 function ScrollNav(props) {
     const [isOn, setIsOn] = useState(false);
+    const [dropdownY, setDropdownY] = useState(0);
     const [isDropdownClick, setIsDropdownClick] = useState(false);
     const menuList = document.getElementById('menuList');
 
@@ -22,6 +23,10 @@ function ScrollNav(props) {
                 lis[i].childNodes[0].style.backgroundColor = "white";
             }
             e.target.style.backgroundColor = "rgb(196, 253, 229)";
+        }
+        if(isDropdownClick) {
+            const dropdownBtn = document.getElementById("dropdownBtn");
+            dropdownBtn.childNodes[0].innerHTML = e.target.innerHTML;
         }
         switch(e.target.id){
             case 'recruit':
@@ -45,31 +50,37 @@ function ScrollNav(props) {
         else setIsDropdownClick(true);
     }
 
-    const hideDropdown = () => {
-        setIsDropdownClick(false);
-    }
-
     useEffect(()=>{
         const navBar = document.getElementById("navBar");
+        const dropdownMenu = document.getElementById("dropdownMenu");
+        const dropdownBtn = document.getElementById("dropdownBtn");
         if(props.isOn){
             navBar.style.position='fixed';
         }
-        else {
-            //navBar.style.position='relative';
+        else if (!props.isOn && isDropdownClick && isMediumScreen && isSmallScreen){
+            dropdownMenu.style.position = 'relative';
+            let dropdown_y = dropdownBtn.getBoundingClientRect().top;
+            console.log(dropdown_y)
+            dropdownMenu.style.top = `0px`;
         }
         setIsOn(props.isOn);
+        if(isMediumScreen || isSmallScreen){
+            let dropdownBtn_y = null;
+            dropdownBtn_y = dropdownBtn.getBoundingClientRect().left;
+            setDropdownY(dropdownBtn_y);
+        }
     })
 
     return(
         <div className="ScrollNav">
             <div id="navBar" className="w3-bar w3-white w3-wide w3-card">
                 <div className="nav-content">
-                    { isBigScreen && 
+                    { isBigScreen &&
                             <ul id="menuList">
                                 <li><button className="w3-display-middle"
                                 style={{backgroundColor:"rgb(196, 253, 229)"}}
                                 onClick={onClickEvent}
-                                id="recruit">모집 정보</button></li>
+                                id="recruit">모집 안내</button></li>
                                 <li><button className="w3-display-middle"
                                 onClick={onClickEvent}
                                 id="schedule">주요 일정</button></li>
@@ -88,22 +99,21 @@ function ScrollNav(props) {
                         </div>
                     }
                 </div>
-                
-                    <div id="dropdownMenu" style={{top:`${window.scrollY+90}px `}}
-                    onMouseLeave={hideDropdown}>
-                        <ul>
-                            <li><button id="recruit"
-                            onClick={onClickEvent}>모집 정보</button></li>
-                            <li><button id="schedule"
-                            onClick={onClickEvent}>주요 일정</button></li>
-                            <li><button id="process"
-                            onClick={onClickEvent}>교육 정보</button></li>
-                            <li><button id="review"
-                            onClick={onClickEvent}>수강 후기</button></li>
-                        </ul>
-                    </div>
-                
             </div>
+            { (isMediumScreen || isSmallScreen) && isDropdownClick &&
+                <div id="dropdownMenu" style={{top:`90px`, left:`${dropdownY}px`}}>
+                    <ul>
+                        <li><button id="recruit"
+                        onClick={onClickEvent}>모집 안내</button></li>
+                        <li><button id="schedule"
+                        onClick={onClickEvent}>주요 일정</button></li>
+                        <li><button id="process"
+                        onClick={onClickEvent}>교육 정보</button></li>
+                        <li><button id="review"
+                        onClick={onClickEvent}>수강 후기</button></li>
+                    </ul>
+                </div>
+            }
         </div>
     )
 }

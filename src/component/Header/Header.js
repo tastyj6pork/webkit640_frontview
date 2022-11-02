@@ -120,7 +120,7 @@ function Header() {
                                 </ul>
                             </div>
                         }
-                        {isMediumScreen && 
+                        {isMediumScreen &&
                             <div className="hide-menu">
                                 <button className="hide-menu-btn"
                                 onClick={showHideMenu}>
@@ -131,12 +131,12 @@ function Header() {
                     </div>
                 </div>
                 { isBigScreen && isClick &&
-                <DetailMenu navY={window.scrollY} 
+                <DetailMenu navY={window.scrollY}
                 dmenu01_x={dmenu01} dmenu02_x={dmenu02}/>
                 }
 
                 { isBigScreen && isLogin && !isAdmin && isHover &&
-                    <div id="userDetailMenu" 
+                    <div id="userDetailMenu"
                     style={{top:`${window.scrollY+90}px `, left:`${duser}px`}}
                     onMouseLeave={hideMypage}>
                         <ul>
