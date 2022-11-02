@@ -47,7 +47,7 @@ function HideMenu(props) {
                     </li>
                     { isProcessClick && 
                         <ul className="detail-menu">
-                            <li>수업일정</li>
+                            <li><Link to="/studentSchedule">수업일정</Link></li>
                             <li>강의자료</li>
                         </ul>
                     }
