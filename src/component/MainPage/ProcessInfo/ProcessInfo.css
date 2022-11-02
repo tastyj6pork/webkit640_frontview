@@ -37,3 +37,31 @@
     width:320px;
     height: 360px;
 }
+
+@media only screen and (max-width:767px) {
+    .ProcessInfo .process-box {
+        width: 100%;
+        height: auto;
+        padding: 15px;
+        margin-top: 40px;
+    }
+    .ProcessInfo .process-box span {
+        font-size: 15px;
+    }
+    .ProcessInfo .process-box h1 {
+        font-size: 25px;
+    }
+    .ProcessInfo .process-box p {
+        font-size: 13px;
+    }
+    .ProcessInfo .process-box .frontend-img {
+        width: 250px;
+        height: 280px;
+        margin-right: 0;
+    }
+    .ProcessInfo .process-box .backend-img {
+        width: 250px;
+        height: 280px;
+        margin-top: 18px;
+    }
+}
