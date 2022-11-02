@@ -21,3 +21,14 @@
     height: auto;
     border: 1px solid pink;
 }
+
+@media only screen and (max-width:767px) {
+    .With .with-box {
+        width: 100%;
+        height: auto;
+        padding: 15px;
+    }
+    .With .with-box h2 {
+        font-size: 25px;
+    }
+}

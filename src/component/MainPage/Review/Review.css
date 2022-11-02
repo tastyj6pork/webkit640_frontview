@@ -21,7 +21,7 @@
     border: 1px solid pink;
 }
 
-.Review #reviewCarousel img{
+.Review #reviewCarousel img {
     width: 550px;
     height: 400px;
 }
@@ -37,4 +37,26 @@
 
 .item-right {
     margin-left: 15px
+}
+
+@media only screen and (max-width:767px) {
+    .Review {
+        height: 650px;
+    }
+    .Review .review-box {
+        width: 100%;
+        height: auto;
+        padding: 15px;
+    }
+    .Review .review-box h1 {
+        font-size: 30px;
+    }
+    .Review #reviewCarousel img {
+        width: 100%;
+        height: 300px;
+    }
+    #reviewCarousel {
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
 }

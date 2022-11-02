@@ -1,8 +1,13 @@
 import { React, useEffect, useState, forwardRef } from "react";
 import { Link } from "react-router-dom";
+import { useMediaQuery } from 'react-responsive';
 import "./ProcessInfo.css"
 
 const ProcessInfo = forwardRef((props, ref) => {
+    const isBigScreen = useMediaQuery({query: '(min-width:1201px)'});
+    const isMediumScreen = useMediaQuery({query: '(min-width:768px) and (max-width: 1200px)'});
+    const isSmallScreen = useMediaQuery({query: '(max-width: 767px)'});
+
     return(
         <div className="ProcessInfo" ref={ref}>
             <div className="process-content w3-display-container">

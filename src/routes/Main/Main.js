@@ -1,5 +1,6 @@
 import { React, useEffect, useState, useMemo, useRef } from "react";
 import { Link } from "react-router-dom";
+import { useMediaQuery } from 'react-responsive';
 import { throttle, debounce } from 'lodash';
 import "./Main.css"
 import Header from "../../component/Header/Header";
@@ -19,6 +20,9 @@ function Main() {
     const scheduleRef = useRef(null);
     const processRef = useRef(null);
     const reviewRef = useRef(null);
+    const isBigScreen = useMediaQuery({query: '(min-width:1201px)'});
+    const isMediumScreen = useMediaQuery({query: '(min-width:768px) and (max-width: 1200px)'});
+    const isSmallScreen = useMediaQuery({query: '(max-width: 767px)'});
 
     const handleScroll = () => {
         if(window.scrollY < 800){
@@ -74,7 +78,6 @@ function Main() {
                     onClick={()=>window.location.href="/studentapply"}>지원하기</button>
                 </div>
             </header>
-            <div style={{height:"60px"}}></div>
 
             {isNav && <ScrollNav isOn={isScrollNavOn}
             onRecruit={onRecruitInfoClick} onProcess={onProcessInfoClick}

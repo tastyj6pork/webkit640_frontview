@@ -2,11 +2,15 @@
     font-family: 'Pretendard-Regular';
     letter-spacing: normal;
     position: relative;
-    z-index: 3;
+    color: rgb(66, 66, 66);
 }
 
 .ScrollNav {
     width: 100vh;
+    position: absolute;
+    display: block;
+    margin-top: 20px;
+    z-index: 2;
 }
 
 .ScrollNav .navbar-brand {
@@ -80,22 +84,39 @@
     border: 0;
 }
 
-.ScrollNav #navBar #dropdownMenu {
-    border: 1px solid salmon;
-    width: 1000px;
-    height: 5000px;
+.ScrollNav #dropdownMenu {
+    width: 150px;
+    height: auto;
+    position: fixed;
 }
 
-.ScrollNav #navBar #dropdownMenu ul {
+.ScrollNav #dropdownMenu ul {
     list-style-type: none;
     margin: 0;
+    box-shadow: 2px 2px 11px 1px lightgrey;
+}
+
+.ScrollNav #dropdownMenu ul li {
+    text-align: center;
+    font-size: 150%;
+    line-height: 60px;
+    vertical-align: middle;
+    background-color: white;
+}
+
+.ScrollNav #dropdownMenu button {
+    background-color: rgba(255, 255, 255, 0);
+    border: 0;
+}
+
+.ScrollNav #dropdownMenu button:click {
+    border: 0;
 }
 
 @media only screen and (max-width:1200px) {
     .ScrollNav #navBar {
         width: 100%;
         border-bottom: 1px solid lightgrey;
-        border: 1px solid red;
     }
 
     .ScrollNav .nav-content {
