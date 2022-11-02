@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { call } from '../../service/ApiService';
 import '../Admin/Admin.css';
 import ApplyItems from './ApplyItems';
@@ -83,10 +83,14 @@ function AdminApply() {
     const [schoolYearSearch, setSchoolYearSearch] = useState();
 
     useEffect(() => {
-
-        setShowList(applyList);
-
+        let list = [];
+        applyList.forEach((item, i) => {
+            item.checked = false;
+            list = [...list, item];
+        });
+        setShowList(list);
     }, [])
+
 
     //선발완료 누를시 체크박스에 담긴 데이터 아래로 내리는 함수
     function SelectFinish() {
@@ -115,24 +119,35 @@ function AdminApply() {
     }
 
     //체크박스 true일때의 데이터만 저장해주는 함수
-    function fileCheckList(content, checked) {
-        if(checked) {
+    function fileCheckList(content) {
+        if(content.checked) {
             setCheckItems([...checkItems, content]);
-        } else if (!checked && checkItems.find(one => one === content)) {
+        } else if (!content.checked && checkItems.find(one => one === content)) {
             const filter = checkItems.filter(one => one !== content)
             setCheckItems([...filter])
         }
     }
-
-    //체크박스 전체선택 활성화 시켜주는 함수
-    function handleAllCheck(checked) {
+    
+    function onCheckAll(checkAll) {
         
+        if(checkAll) {
+            setCheckItems(showList);
+            for(let i=0; i<showList.length; i++) {
+                showList[i].checked = true; 
+            }
+        }
+        else {
+            setCheckItems([]);
+            for(let i=0; i<showList.length; i++) {
+                showList[i].checked = false; 
+            }
+        }
     }
 
     //다중 조건 검색 필터링 시켜주는 함수
-    // function filterData() {
-             
-    // }
+    function filterData() {
+    
+    }
 
 
     // 전체 zip.file 추출하는 함수 >> 데이터 위아래로 스위칭하는거 구현했고, 체크박스 상태관리기능 추가 필요하다.
@@ -172,7 +187,7 @@ function AdminApply() {
         </div>
         <div className="apply-insert-table">
             <ul>
-                <input className="items-checkbox" type="checkbox" onChange={(e) => handleAllCheck(e.target.checked)}
+                <input className="items-checkbox" type="checkbox" onChange={(e) => onCheckAll(e.target.checked)}
                 checked={checkItems.length === showList.length ? true : false}></input>
                 <li className="table-first">이름</li>
                 <li className="table-second">학교</li>
@@ -203,8 +218,7 @@ function AdminApply() {
             </div>
             <div className="apply-insert-table">
             <ul>
-                <input className="items-checkbox" type="checkbox" onChange={(e) => handleAllCheck(e.target.checked)}
-                checked={checkItems.length === showList.length ? true : false}></input>
+                <input className="items-checkbox" type="checkbox" style={{dispaly:"none"}}></input>
                 <li className="table-first">이름</li>
                 <li className="table-second">학교</li>
                 <li className="table-third">학과</li>
