@@ -5,9 +5,9 @@
 }
 
 .RecruitInfo {
-    height: auto;
     width: 100vw;
     height: 900px;
+    margin-top: 140px;
 }
 
 .RecruitInfo .recruit-content {
@@ -55,4 +55,32 @@
 .RecruitInfo .recruit-box .table .content {
     padding-top: 40px;
     padding-bottom: 40px;
+}
+
+@media only screen and (max-width:767px) {
+    .RecruitInfo .recruit-box {
+        width: 100%;
+        height: auto;
+        padding: 15px;
+    }
+    .RecruitInfo .recruit-box span {
+        font-size: 38px;
+    }
+    .RecruitInfo .recruit-box hr {
+        width: 360px;
+    }
+    .RecruitInfo .recruit-box .table {
+        width: 100%;
+        float: left;
+    }
+    .RecruitInfo .recruit-box .table tr {
+        font-size: 19px;
+    }
+    .RecruitInfo .recruit-box .table tr td div {
+        font-weight: 500;
+    }
+    .RecruitInfo .recruit-box ul {
+        margin-top: 30px;
+        font-weight: 500;
+    }
 }

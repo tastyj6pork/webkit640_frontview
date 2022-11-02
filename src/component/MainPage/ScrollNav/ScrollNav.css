@@ -8,6 +8,8 @@
 .ScrollNav {
     width: 100vh;
     position: absolute;
+    display: block;
+    margin-top: 20px;
     z-index: 2;
 }
 

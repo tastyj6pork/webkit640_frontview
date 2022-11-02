@@ -1,35 +1,69 @@
 import { React, useEffect, useState, useMemo, forwardRef } from "react";
 import { Link } from "react-router-dom";
+import { useMediaQuery } from 'react-responsive';
 import "./RecruitInfo.css"
 
 const RecruitInfo = forwardRef((props, ref) => {
+    const isBigScreen = useMediaQuery({query: '(min-width:1201px)'});
+    const isMediumScreen = useMediaQuery({query: '(min-width:768px) and (max-width: 1200px)'});
+    const isSmallScreen = useMediaQuery({query: '(max-width: 767px)'});
+
     return(
-        <div className="RecruitInfo" ref={ref}>
+        <div className="RecruitInfo" id="recruit" ref={ref}>
             <div className="recruit-content w3-display-container">
                 <div className="recruit-box w3-display-middle">
                     <span>웹킷640은<br/>이런 인재를 기다립니다.</span><hr/>
                     <table className="table">
                         <tbody>
                             <tr>
-                                <td className="label">모집 기간</td>
+                                <td className="label">모집 기간
+                                {isSmallScreen &&
+                                    <div>
+                                        <br />2023년 -월 -일(월) ~ 2023 -월 -일(일) 오후6시
+                                    </div>
+                                }</td>
+                                { (isBigScreen || isMediumScreen) &&
                                 <td className="content">2023년 -월 -일(월) ~ 2023 -월 -일(일) 오후6시</td>
+                                }
                             </tr>
                             <tr>
-                                <td className="label">모집 대상</td>
+                                <td className="label">모집 대상
+                                {isSmallScreen &&
+                                    <div>
+                                        <br />금오공과대학교 재학생, 휴학생, 졸업생
+                                    </div>
+                                }</td>
+                                { (isBigScreen || isMediumScreen) &&
                                 <td className="content">금오공과대학교 재학생, 휴학생, 졸업생</td>
+                                }
                             </tr>
                             <tr>
-                                <td className="label">모집 인원</td>
+                                <td className="label">모집 인원
+                                {isSmallScreen &&
+                                    <div>
+                                        <br />25명
+                                    </div>
+                                }</td>
+                                { (isBigScreen || isMediumScreen) &&
                                 <td className="content">25명</td>
+                                }
                             </tr>
                             <tr>
-                                <td className="label">지원 자격</td>
+                                <td className="label">지원 자격
+                                {isSmallScreen &&
+                                    <ul>
+                                        <li>2023년 하반기에 풀타임(09:00~18:00)으로 참여할 수 있는 학생</li>
+                                        <li>640시간 동안 꾸준한 출석률을 유지할 수 있는 학생</li>
+                                    </ul>
+                                }</td>
+                                { (isBigScreen || isMediumScreen) &&
                                 <td className="content">
                                     <ul>
                                         <li>2023년 하반기에 풀타임(09:00~18:00)으로 참여할 수 있는 학생</li>
                                         <li>640시간 동안 꾸준한 출석률을 유지할 수 있는 학생</li>
                                     </ul>
                                 </td>
+                                }
                             </tr>
                         </tbody>
                     </table>

@@ -59,8 +59,6 @@ function ScrollNav(props) {
         }
         else if (!props.isOn && isDropdownClick && isMediumScreen && isSmallScreen){
             dropdownMenu.style.position = 'relative';
-            let dropdown_y = dropdownBtn.getBoundingClientRect().top;
-            console.log(dropdown_y)
             dropdownMenu.style.top = `0px`;
         }
         setIsOn(props.isOn);
