@@ -1,75 +1,79 @@
+import axios from 'axios';
 import { useCallback, useEffect, useState } from 'react';
+import { API_BASE_URL } from '../../app-config';
 import { call } from '../../service/ApiService';
 import '../Admin/Admin.css';
 import ApplyItems from './ApplyItems';
 import ApplySelector from './ApplySelector';
 
 function AdminApply() {
-    const [applyList, setApplyList] = useState([
-        {
-            // id : 1,
-            name : "홍길동",
-            school : "메사추세츠공과대학교",
-            major : "컴퓨터공학과",
-            schoolNumber : "20226789",
-            schoolYear: "4",
-            email : "webkit640@google.co.kr"
-        },
-        {
-            // id : 2,
-            name : "김길동",
-            school : "메사추세츠공과대학교",
-            major : "소프트웨어공학과",
-            schoolNumber : "20226789",
-            schoolYear: "4",
-            email : "webkit123@google.co.kr"
-        },
-        {
-            // id : 3,
-            name : "이길동",
-            school : "메사추세츠공과대학교",
-            major : "광시스템공학과",
-            schoolNumber : "20226789",
-            schoolYear: "4",
-            email : "webkit456@google.co.kr"
-        },
-        {
-            // id : 4,
-            name : "박길동",
-            school : "메사추세츠공과대학교",
-            major : "건축학과",
-            schoolNumber : "20226789",
-            schoolYear: "4",
-            email : "webkit789@google.co.kr"
-        },
-        {
-            // id : 5,
-            name : "오길동",
-            school : "메사추세츠공과대학교",
-            major : "응용수리데이터과학과",
-            schoolNumber : "20226789",
-            schoolYear: "4",
-            email : "webkit321@google.co.kr"
-        },
-        {
-            // id : 6,
-            name : "고길동",
-            school : "메사추세츠공과대학교",
-            major : "컴퓨터공학과",
-            schoolNumber : "20226789",
-            schoolYear: "4",
-            email : "webkit8910@google.co.kr"
-        }
-    ])
+    // const [applyList, setApplyList] = useState([
+    //     {
+    //         // id : 1,
+    //         name : "홍길동",
+    //         school : "메사추세츠공과대학교",
+    //         major : "컴퓨터공학과",
+    //         schoolNumber : "20226789",
+    //         schoolYear: "4",
+    //         email : "webkit640@google.co.kr"
+    //     },
+    //     {
+    //         // id : 2,
+    //         name : "김길동",
+    //         school : "메사추세츠공과대학교",
+    //         major : "소프트웨어공학과",
+    //         schoolNumber : "20226789",
+    //         schoolYear: "4",
+    //         email : "webkit123@google.co.kr"
+    //     },
+    //     {
+    //         // id : 3,
+    //         name : "이길동",
+    //         school : "메사추세츠공과대학교",
+    //         major : "광시스템공학과",
+    //         schoolNumber : "20226789",
+    //         schoolYear: "4",
+    //         email : "webkit456@google.co.kr"
+    //     },
+    //     {
+    //         // id : 4,
+    //         name : "박길동",
+    //         school : "메사추세츠공과대학교",
+    //         major : "건축학과",
+    //         schoolNumber : "20226789",
+    //         schoolYear: "4",
+    //         email : "webkit789@google.co.kr"
+    //     },
+    //     {
+    //         // id : 5,
+    //         name : "오길동",
+    //         school : "메사추세츠공과대학교",
+    //         major : "응용수리데이터과학과",
+    //         schoolNumber : "20226789",
+    //         schoolYear: "4",
+    //         email : "webkit321@google.co.kr"
+    //     },
+    //     {
+    //         // id : 6,
+    //         name : "고길동",
+    //         school : "메사추세츠공과대학교",
+    //         major : "컴퓨터공학과",
+    //         schoolNumber : "20226789",
+    //         schoolYear: "4",
+    //         email : "webkit8910@google.co.kr"
+    //     }
+    // ])
 
-    // const [applyList, setApplyList] = useState([]); >> applyList Data GET 테스트 종료 시 주석 지워야됨!
+    const [applyList, setApplyList] = useState([]);
     
-    // useEffect(() => {
-    //     call("/apply/all","GET",null).then((res)=>{
-    //         console.log(res);
-    //         setApplyList(res);
-    //     })
-    // }, [])
+    useEffect(() => {
+        call("/apply/all","GET",null).then((res)=>{
+            console.log(res);
+            setApplyList(res);
+        })
+    }, [])
+
+
     
     const [showList, setShowList] = useState([]); // 지원학생 목록 리스트
     const [selectList, setSelectList] = useState([]); // 선발 목록 리스트
@@ -91,6 +95,8 @@ function AdminApply() {
         setShowList(list);
     }, [])
 
+    const ACCESS_TOKEN = "ACCESS_TOKEN";
+    const accessToken = localStorage.getItem(ACCESS_TOKEN);
 
     //선발완료 누를시 체크박스에 담긴 데이터 아래로 내리는 함수
     function SelectFinish() {
@@ -147,6 +153,32 @@ function AdminApply() {
     //다중 조건 검색 필터링 시켜주는 함수
     function filterData() {
     
+    }
+
+    async function ConfirmBtn() {
+        // var asdf = new Array();
+        // asdf.push({nameEmail:"asdfasdf"})
+        // [
+        //     {nameEmail:"ASLFJALKFJ"},
+        //     {nameEmail:"sdfgsfgsdfgsdf"},
+        //     {name}
+        // ]
+        await axios({
+            method:"POST",
+            url:API_BASE_URL + "/apply/select",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + accessToken,
+            },
+            data: {
+                nameEmail: selectList.map((content) => content.email)
+            }
+        }).then((res) => {
+            if(res.status === 200) {
+                console.log(res);
+                alert("POST SUCCESS");
+            }
+        })
     }
 
 
@@ -238,7 +270,7 @@ function AdminApply() {
                 />
             ))}
         </div>
-            <div className="apply-finish"><button className="apply-finish-btn">선발 확정</button></div>
+            <div className="apply-finish"><button className="apply-finish-btn" onClick={ConfirmBtn}>선발 확정</button></div>
         </div>
     </div>)
 }
