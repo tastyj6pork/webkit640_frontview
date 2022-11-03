@@ -58,29 +58,36 @@
 }
 
 @media only screen and (max-width:767px) {
+    .RecruitInfo {
+        height: 700px;
+    }
     .RecruitInfo .recruit-box {
         width: 100%;
-        height: auto;
-        padding: 15px;
+        height: 100%;
+        padding: 20px;
     }
     .RecruitInfo .recruit-box span {
-        font-size: 33px;
+        font-size: 28px;
     }
     .RecruitInfo .recruit-box hr {
-        width: 310px;
+        width: 265px;
     }
     .RecruitInfo .recruit-box .table {
         width: 100%;
         float: left;
     }
+    .RecruitInfo .recruit-box .table .label {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
     .RecruitInfo .recruit-box .table tr {
-        font-size: 19px;
+        font-size: 16px;
     }
     .RecruitInfo .recruit-box .table tr td div {
         font-weight: 500;
     }
     .RecruitInfo .recruit-box ul {
-        margin-top: 30px;
+        margin-top: 10px;
         font-weight: 500;
     }
 }

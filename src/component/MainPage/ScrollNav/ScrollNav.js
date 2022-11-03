@@ -7,7 +7,7 @@ import "./ScrollNav.css"
 
 function ScrollNav(props) {
     const [isOn, setIsOn] = useState(false);
-    const [dropdownY, setDropdownY] = useState(0);
+    const [dropdownX, setDropdownX] = useState(0);
     const [isDropdownClick, setIsDropdownClick] = useState(false);
     const menuList = document.getElementById('menuList');
 
@@ -58,14 +58,14 @@ function ScrollNav(props) {
             navBar.style.position='fixed';
         }
         else if (!props.isOn && isDropdownClick && isMediumScreen && isSmallScreen){
-            dropdownMenu.style.position = 'relative';
-            dropdownMenu.style.top = `0px`;
+            dropdownMenu.style.position = 'absolute';
+            dropdownMenu.style.top = `60px`;
         }
         setIsOn(props.isOn);
         if(isMediumScreen || isSmallScreen){
-            let dropdownBtn_y = null;
-            dropdownBtn_y = dropdownBtn.getBoundingClientRect().left;
-            setDropdownY(dropdownBtn_y);
+            let dropdownBtn_x = null;
+            dropdownBtn_x = dropdownBtn.getBoundingClientRect().left;
+            setDropdownX(dropdownBtn_x);
         }
     })
 
@@ -73,7 +73,7 @@ function ScrollNav(props) {
         <div className="ScrollNav">
             <div id="navBar" className="w3-bar w3-white w3-wide w3-card">
                 <div className="nav-content">
-                    { isBigScreen &&
+                    { isBigScreen && 
                             <ul id="menuList">
                                 <li><button className="w3-display-middle"
                                 style={{backgroundColor:"rgb(196, 253, 229)"}}
@@ -92,26 +92,26 @@ function ScrollNav(props) {
                         <div className="dropdown-nav">
                             <button id="dropdownBtn" onClick={showDropdown}>
                                 <span>모집 안내</span>
-                                <FontAwesomeIcon icon={faCircleChevronDown} size="2x"/>
+                                <FontAwesomeIcon icon={faCircleChevronDown}/>
                             </button>
                         </div>
                     }
                 </div>
             </div>
-            { (isMediumScreen || isSmallScreen) && isDropdownClick &&
-                <div id="dropdownMenu" style={{top:`90px`, left:`${dropdownY}px`}}>
-                    <ul>
-                        <li><button id="recruit"
-                        onClick={onClickEvent}>모집 안내</button></li>
-                        <li><button id="schedule"
-                        onClick={onClickEvent}>주요 일정</button></li>
-                        <li><button id="process"
-                        onClick={onClickEvent}>교육 정보</button></li>
-                        <li><button id="review"
-                        onClick={onClickEvent}>수강 후기</button></li>
-                    </ul>
-                </div>
-            }
+                { (isMediumScreen || isSmallScreen) && isDropdownClick &&
+                    <div id="dropdownMenu" style={{top:`60px`, left:`${dropdownX}px`}}>
+                        <ul>
+                            <li><button id="recruit"
+                            onClick={onClickEvent}>모집 안내</button></li>
+                            <li><button id="schedule"
+                            onClick={onClickEvent}>주요 일정</button></li>
+                            <li><button id="process"
+                            onClick={onClickEvent}>교육 정보</button></li>
+                            <li><button id="review"
+                            onClick={onClickEvent}>수강 후기</button></li>
+                        </ul>
+                    </div>
+                }
         </div>
     )
 }

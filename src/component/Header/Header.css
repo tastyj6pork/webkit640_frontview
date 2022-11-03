@@ -20,6 +20,7 @@
 }
 
 .Header #navBar {
+    width: 100vw;
     height: 90px;
     padding: 25px;
     position: fixed;
@@ -96,6 +97,8 @@
     width: 40px;
     float: right;
     padding: 5px;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 .Header .hide-menu .hide-menu-btn {
@@ -108,7 +111,12 @@
     border: 0;
 }
 
-@media only screen and (max-width:1200px) {
+@media only screen and (max-width:767px) and (max-width:1200px){
+    .Header #navBar {
+        height: 60px;
+        padding: 10px;
+        padding-left: 20px;
+    }
     .Header .nav-content {
         width: 100%;
     }
