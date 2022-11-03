@@ -115,6 +115,9 @@ function Header() {
                                     }
                                     {isLogin && isAdmin &&
                                         <li className="adminpage-btn" style={{float:"right", marginLeft: "40px"}}>
+                                            <p onMouseOver={showMypage} id="welcome">
+                                                어서오세요, {username} 님
+                                            </p>
                                             <a href="/admin">관리페이지</a>
                                         </li>
                                     }
