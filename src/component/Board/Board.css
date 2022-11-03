@@ -1,0 +1,49 @@
+.board-container {
+    margin-bottom: 50px;
+}
+.board-title {
+    margin-top: 100px;
+    text-align: center;
+}
+.board-title h1 {
+    font-size: 38px;
+    text-align: center;
+    margin-top: 147px;
+}
+.board-title-btn p {
+    font-size: 25px;
+    display: inline-block;
+    padding: 16px;
+    width: 40%;
+    height: 79px;
+    border-bottom: 3px solid black;
+    
+}
+.board-title-btn p:hover {
+    border: 3px solid black;
+}
+.board-search-container {
+    text-align: end;
+    margin-right: 10%;
+    margin-top: 50px;
+}
+.board-search-select {
+    width: 120px;
+    height: 40px;
+    margin-right: 10px;
+}
+.board-search-input {
+    width: 190px;
+    height: 40px;
+}
+.board-search-btn {
+    width: 60px;
+    height: 40px;
+    background: #31343f;
+    color: white;
+    border: none;
+}
+.board-list-container {
+    width: 80%;
+    margin-left: 152.8px;
+}
