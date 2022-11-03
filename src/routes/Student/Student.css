@@ -24,10 +24,15 @@
     color: gray;
     margin-bottom: 3px;
 }
-.apply-name, .apply-major, .apply-schoolnumber, .apply-school {
+.apply-name, .apply-major, .apply-school {
     height: 39px;
     width: 280px;
     font-size: 16px;
+}
+.apply-schoolnumber {
+    height: 39px;
+    width: 180px;
+    font-size: 13.6px;
 }
 .apply-submit {
     border-top: 0.5px solid gray;
@@ -48,6 +53,14 @@
     font-weight: light;
     padding-top: 5px;
 }
+.schoolgrade, .schoolnumber {
+    display: inline-block;
+}
+.apply-schoolyear {
+    width: 81px;
+    height: 39px;
+}
+
 
 @media all and (max-width: 1536px) {
     

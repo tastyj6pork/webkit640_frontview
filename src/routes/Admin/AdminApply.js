@@ -64,21 +64,12 @@ function AdminApply() {
     //     }
     // ])
 
-    const [applyList, setApplyList] = useState([]);
-    
-    useEffect(() => {
-        call("/apply/all","GET",null).then((res)=>{
-            console.log(res);
-            setApplyList(res);
-        })
-    }, [])
-
-
-    
+    const [applyList, setApplyList] = useState([]);    
     const [showList, setShowList] = useState([]); // 지원학생 목록 리스트
     const [selectList, setSelectList] = useState([]); // 선발 목록 리스트
     const [isChecked, setIsChecked] = useState(false); // 체크 선택 여부 리스트
     const [checkItems, setCheckItems] = useState([]); // 체크 선택 목록 리스트
+    const [nameEmail, setNameEmail] = useState([]);
 
     const [filterList, setFilterList] = useState([]);
     const [studentSearch, setStudentSearch] = useState();
@@ -86,13 +77,21 @@ function AdminApply() {
     const [majorSearch, setMajorSearch] = useState();
     const [schoolYearSearch, setSchoolYearSearch] = useState();
 
-    useEffect(() => {
+
+    useEffect(()=>{
         let list = [];
         applyList.forEach((item, i) => {
             item.checked = false;
             list = [...list, item];
         });
         setShowList(list);
+    },[applyList])
+
+    useEffect(() => {
+        call("/apply/all","GET",null).then((res)=>{
+            console.log(res);
+            setApplyList(res.data);
+        })
     }, [])
 
     const ACCESS_TOKEN = "ACCESS_TOKEN";
@@ -156,13 +155,15 @@ function AdminApply() {
     }
 
     async function ConfirmBtn() {
-        // var asdf = new Array();
-        // asdf.push({nameEmail:"asdfasdf"})
-        // [
-        //     {nameEmail:"ASLFJALKFJ"},
-        //     {nameEmail:"sdfgsfgsdfgsdf"},
-        //     {name}
-        // ]
+        console.log(selectList);
+        var submitList = [];
+        selectList.map((data)=>{
+            submitList.push({nameEmail:data.email});
+        })
+        console.log(submitList);
+
+        //setNameEmail(selectList.email)
+        
         await axios({
             method:"POST",
             url:API_BASE_URL + "/apply/select",
@@ -170,34 +171,54 @@ function AdminApply() {
                 "Content-Type": "application/json",
                 "Authorization": "Bearer " + accessToken,
             },
-            data: {
-                nameEmail: selectList.map((content) => content.email)
-            }
+            data: submitList
         }).then((res) => {
             if(res.status === 200) {
                 console.log(res);
                 alert("POST SUCCESS");
+                window.location.href = "/";
             }
         })
     }
 
+    async function zipDownload() {
+        await axios({
+            method:"POST",
+            url:API_BASE_URL + "/apply/zip-download",
+            responseType: "blob",
+            data: null,
+            headers: {
+                "Authorization": "Bearer " + accessToken,
+            }, 
+        }).then((res)=>{
+            console.log(res.headers);
+            const blob = new Blob([res.data]);
 
-    // 전체 zip.file 추출하는 함수 >> 데이터 위아래로 스위칭하는거 구현했고, 체크박스 상태관리기능 추가 필요하다.
-    // async function zipDownload() {
-    //     await axios({
-    //         method:"POST",
-    //         url:API_BASE_URL + "/apply/zip-download",
-    //         data: null,
-    //         headers: {
-    //             "Authorization": "Bearer " + accessToken,
-    //         }, 
-    //     }).then((res)=>{
-            
-    //     })
-    // }
+            const fileObjectUrl = window.URL.createObjectURL(blob);
+
+            const link = document.createElement("a");
+            link.href = fileObjectUrl;
+            link.style.display = "none";
+
+            const extractDownloadFilename = (res) =>{
+                const disposition = res.headers["content-disposition"];
+                console.log(disposition)
+                const filename = decodeURI(
+                    disposition.match(/filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/)[1]
+                    .replace(/['"]/g,"")
+                );
+                return filename;
+            }
+            link.download = extractDownloadFilename(res);
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+        })
+    }
     
     return(<div className="apply-total">
         {/* <button onClick={zipDownload}>asdfasdf</button> */}
+        {console.log(showList)}
         <div className="apply-title">
             <h1>지원관리</h1>
         </div>
@@ -215,6 +236,7 @@ function AdminApply() {
                 <input className="apply-insert-search" placeholder="   학년을 입력해 주세요"
                 onChange={(e) => setSchoolYearSearch(e.target.value)}></input>
                 <button className="apply-search-btn">조회</button>
+                <button className="apply-search-btn" style={{width:"118px", marginLeft:"10px"}} onClick={zipDownload}>전체다운로드</button>
             </div>
         </div>
         <div className="apply-insert-table">

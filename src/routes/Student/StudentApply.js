@@ -10,6 +10,7 @@ function StudentApply() {
     const [application, setApplication] = useState("");
     const [major, setMajor] = useState("");
     const [schoolnumber, setSchoolnumber] = useState("");
+    const [schoolYear, setSchoolYear] = useState("");
     const [school, setSchool] = useState("")
     const [file, setFile] = useState("");
 
@@ -30,8 +31,10 @@ function StudentApply() {
             application: application,
             major: major,
             schoolNumber: schoolnumber,
+            schoolYear: schoolYear,
             school: school,
         }
+        console.log(data);
         formData.enctype = "multipart/form-data";
         formData.append("file", file);
         console.log(file);
@@ -93,9 +96,13 @@ function StudentApply() {
                     <p className="apply-text">학과</p>
                     <input className="apply-major" name="major" onChange={(e) => {setMajor(e.target.value)}} placeholder='한글로 공백없이 입력해주세요.'></input>
                 </li>
-                <li>
+                <li className="schoolnumber">
                     <p className="apply-text">학번</p>
                     <input className="apply-schoolnumber" name="schoolnumber" onChange={(e) => {setSchoolnumber(e.target.value)}} placeholder='숫자로 공백없이 입력해주세요.'></input>
+                </li>
+                <li className="schoolgrade">
+                    <p className="apply-text">학년</p>
+                    <input className="apply-schoolyear" name="schoolyear" onChange={(e) => {setSchoolYear(e.target.value)}} placeholder="학년"></input>
                 </li>
                 <li>
                     <p className="apply-text">첨부파일</p>
