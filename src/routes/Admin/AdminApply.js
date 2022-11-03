@@ -7,64 +7,64 @@ import ApplyItems from './ApplyItems';
 import ApplySelector from './ApplySelector';
 
 function AdminApply() {
-    // const [applyList, setApplyList] = useState([
-    //     {
-    //         // id : 1,
-    //         name : "홍길동",
-    //         school : "메사추세츠공과대학교",
-    //         major : "컴퓨터공학과",
-    //         schoolNumber : "20226789",
-    //         schoolYear: "4",
-    //         email : "webkit640@google.co.kr"
-    //     },
-    //     {
-    //         // id : 2,
-    //         name : "김길동",
-    //         school : "메사추세츠공과대학교",
-    //         major : "소프트웨어공학과",
-    //         schoolNumber : "20226789",
-    //         schoolYear: "4",
-    //         email : "webkit123@google.co.kr"
-    //     },
-    //     {
-    //         // id : 3,
-    //         name : "이길동",
-    //         school : "메사추세츠공과대학교",
-    //         major : "광시스템공학과",
-    //         schoolNumber : "20226789",
-    //         schoolYear: "4",
-    //         email : "webkit456@google.co.kr"
-    //     },
-    //     {
-    //         // id : 4,
-    //         name : "박길동",
-    //         school : "메사추세츠공과대학교",
-    //         major : "건축학과",
-    //         schoolNumber : "20226789",
-    //         schoolYear: "4",
-    //         email : "webkit789@google.co.kr"
-    //     },
-    //     {
-    //         // id : 5,
-    //         name : "오길동",
-    //         school : "메사추세츠공과대학교",
-    //         major : "응용수리데이터과학과",
-    //         schoolNumber : "20226789",
-    //         schoolYear: "4",
-    //         email : "webkit321@google.co.kr"
-    //     },
-    //     {
-    //         // id : 6,
-    //         name : "고길동",
-    //         school : "메사추세츠공과대학교",
-    //         major : "컴퓨터공학과",
-    //         schoolNumber : "20226789",
-    //         schoolYear: "4",
-    //         email : "webkit8910@google.co.kr"
-    //     }
-    // ])
+    const [applyList, setApplyList] = useState([
+        {
+            // id : 1,
+            name : "홍길동",
+            school : "메사추세츠공과대학교",
+            major : "컴퓨터공학과",
+            schoolNumber : "20226789",
+            schoolYear: "4",
+            email : "webkit640@google.co.kr"
+        },
+        {
+            // id : 2,
+            name : "김길동",
+            school : "메사추세츠공과대학교",
+            major : "소프트웨어공학과",
+            schoolNumber : "20226789",
+            schoolYear: "4",
+            email : "webkit123@google.co.kr"
+        },
+        {
+            // id : 3,
+            name : "이길동",
+            school : "메사추세츠공과대학교",
+            major : "광시스템공학과",
+            schoolNumber : "20226789",
+            schoolYear: "4",
+            email : "webkit456@google.co.kr"
+        },
+        {
+            // id : 4,
+            name : "박길동",
+            school : "메사추세츠공과대학교",
+            major : "건축학과",
+            schoolNumber : "20226789",
+            schoolYear: "4",
+            email : "webkit789@google.co.kr"
+        },
+        {
+            // id : 5,
+            name : "오길동",
+            school : "메사추세츠공과대학교",
+            major : "응용수리데이터과학과",
+            schoolNumber : "20226789",
+            schoolYear: "4",
+            email : "webkit321@google.co.kr"
+        },
+        {
+            // id : 6,
+            name : "고길동",
+            school : "메사추세츠공과대학교",
+            major : "컴퓨터공학과",
+            schoolNumber : "20226789",
+            schoolYear: "4",
+            email : "webkit8910@google.co.kr"
+        }
+    ])
 
-    const [applyList, setApplyList] = useState([]);
+    //const [applyList, setApplyList] = useState([]);
     
     useEffect(() => {
         call("/apply/all","GET",null).then((res)=>{
@@ -85,6 +85,12 @@ function AdminApply() {
     const [schoolSearch, setSchoolSearch] = useState();
     const [majorSearch, setMajorSearch] = useState();
     const [schoolYearSearch, setSchoolYearSearch] = useState();
+
+    const [searchList, setSearchList] = useState([]);
+    const [studentFlag, setStudentFlag] = useState(false);
+    const [schoolFlag, setSchoolFlag] = useState(false);
+    const [majorFlag, setMajorFlag] = useState(false);
+    const [schoolYearFlag, setSchoolYearFlag] = useState(false);
 
     useEffect(() => {
         let list = [];
@@ -150,9 +156,107 @@ function AdminApply() {
         }
     }
 
+    function onChangeEvent(e) {
+        if(e.target.value.length > 0) {
+            switch(e.target.id){
+                case 'student':
+                    setStudentSearch(e.target.value);
+                    setStudentFlag(true);
+                    break;
+                case 'school':
+                    setSchoolSearch(e.target.value);
+                    setSchoolFlag(true);
+                    break;
+                case 'major':
+                    setMajorSearch(e.target.value);
+                    setMajorFlag(true);
+                    break;
+                case 'schoolYear':
+                    setSchoolYearSearch(e.target.value);
+                    setSchoolYearFlag(true);
+                    break;
+            }
+        }
+        else {
+            if(e.target.id === 'student') setStudentFlag(false);
+            if(e.target.id === 'school') setSchoolFlag(false);
+            if(e.target.id === 'major') setMajorFlag(false);
+            if(e.target.id === 'schoolYear') setSchoolYearFlag(false);
+        }
+    }
+
     //다중 조건 검색 필터링 시켜주는 함수
-    function filterData() {
-    
+    function filterData(none) {
+        let list = []
+        let tmp2List = []
+        if(none === 'none') {
+            console.log('none in');
+            showList.filter((item)=>{
+                list = [...list, item];
+            })
+        }
+        else {
+
+            console.log('option in')
+            let tmpList = []
+            list = showList;
+            if(studentFlag) {
+                console.log("studentFlag in")
+                list.filter((item)=>{
+                    if(item.name.toLowerCase().includes(studentSearch.toLowerCase())){
+                        console.log(item)
+                        tmpList = [...tmpList, item];
+                        tmp2List = [...tmp2List, item];
+                        list = tmpList;
+                    }
+                })
+            }
+            if(schoolFlag) {
+                console.log("schoolFlag in")
+                list.filter((item)=>{
+                    console.log(item)
+                    if(item.school.toLowerCase().includes(schoolSearch.toLowerCase())){
+                        tmpList = [...tmpList, item];
+                        tmp2List = [...tmp2List, item];
+                        list = tmpList; 
+                    }
+                })
+            }
+            if(majorFlag) {
+                console.log("majorFlag in")
+                list.filter((item)=>{
+                    console.log(item)
+                    if(item.major.toLowerCase().includes(majorSearch.toLowerCase())){
+                        tmpList = [...tmpList, item];
+                        tmp2List = [...tmp2List, item];
+                        list = tmpList;
+                    }
+                })
+            }
+            if(schoolYearFlag) {
+                console.log("schoolYearFlag in")
+                list.filter((item)=>{
+                    console.log(item)
+                    if(item.schoolYear.toLowerCase().includes(schoolYearSearch.toLowerCase())){
+                        tmpList = [...tmpList, item];
+                        tmp2List = [...tmp2List, item];
+                        list = tmpList; 
+                    }
+                })
+            }
+        }
+        console.log(tmp2List);
+        setSearchList(tmp2List);
+    }
+
+    function onClickSearchBtn() {
+        if(!studentFlag && !schoolFlag && !majorFlag && !schoolYearFlag) filterData('none');
+        else filterData();
+        setShowList(searchList);
+    }
+
+    function checkState() {
+        console.log(studentFlag);
     }
 
     async function ConfirmBtn() {
@@ -203,18 +307,19 @@ function AdminApply() {
         </div>
         <div className="apply-insert">
             <div className="apply-first-label">
+                <button onClick={checkState}>확인</button>
                 <h3>지원학생 목록</h3>
             </div>
             <div className="apply-insert-algin">
                 <input className="apply-insert-search" placeholder="   이름을 입력해 주세요"
-                onChange={(e) => setStudentSearch(e.target.value)}></input>
+                onChange={onChangeEvent} id="student"></input>
                 <input className="apply-insert-search" placeholder="   학교를 입력해 주세요"
-                onChange={(e) => setSchoolSearch(e.target.value)}></input>
+                onChange={onChangeEvent} id="school"></input>
                 <input className="apply-insert-search" placeholder="   학과를 입력해 주세요"
-                onChange={(e) => setMajorSearch(e.target.value)}></input>
+                onChange={onChangeEvent} id="major"></input>
                 <input className="apply-insert-search" placeholder="   학년을 입력해 주세요"
-                onChange={(e) => setSchoolYearSearch(e.target.value)}></input>
-                <button className="apply-search-btn">조회</button>
+                onChange={onChangeEvent} id="schoolYear"></input>
+                <button className="apply-search-btn" onClick={onClickSearchBtn}>조회</button>
             </div>
         </div>
         <div className="apply-insert-table">
