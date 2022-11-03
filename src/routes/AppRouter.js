@@ -14,6 +14,7 @@ import StudentAttend from "../routes/Student/StudentAttend";
 import KakaoRedirectHandler from '../service/KakaoRedirectHandler';
 import StudentSchedule from './Student/StudentSchedule';
 import Board from '../component/Board/Board';
+import LectureData from '../component/Board/LectureData';
 
 function AppRouter(){
     return (
@@ -35,6 +36,7 @@ function AppRouter(){
                     <Route path="/signup" element={<Signup/>}/>
                     <Route path="/auth/oauth/kakao" element={<KakaoRedirectHandler/>}/>
                     <Route path="/board" element={<Board />} />
+                    <Route path="/lecturedata" element={<LectureData />} />
             </Routes>
         </BrowserRouter>
     )
