@@ -59,13 +59,16 @@
 }
 
 @media only screen and (max-width:767px) {
+    .MainSchedule{
+        height: 900px;
+    }
     .MainSchedule .schedule-box {
         width: 100%;
         height: auto;
         padding: 15px;
     }
     .MainSchedule .schedule-box span {
-        font-size: 30px;
+        font-size: 25px;
     }
     .MainSchedule .schedule-box .warning {
         float: left;
@@ -73,18 +76,18 @@
         margin-top: 20px;
     }
     .MainSchedule .schedule-box .mini-calender h3 {
-        font-size: 19px;
+        font-size: 16px;
     }
     .MainSchedule .schedule-box .mini-calender {
-        font-size: 15px;
-        margin-top: 50px;
-        padding: 15px;
+        font-size: 14px;
+        margin-top: 30px;
+        padding: 20px;
     }
     .MainSchedule .schedule-box .mini-calender .row {
         margin-bottom: 15px;
     }
     .MainSchedule .schedule-box .mini-calender .col {
-        height: 150px;
+        height: 130px;
         padding-left: 30px;
         padding-top: 15px;
     }

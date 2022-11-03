@@ -20,7 +20,8 @@ function Header() {
     const [username, setUsername] = useState(null);
 
     const isBigScreen = useMediaQuery({query: '(min-width:1201px)'});
-    const isMediumScreen = useMediaQuery({query: '(max-width: 1200px)'});
+    const isMediumScreen = useMediaQuery({query: '(min-width:768px) and (max-width: 1200px)'});
+    const isSmallScreen = useMediaQuery({query: '(max-width: 767px)'});
 
     const isUserLogin = () => {
         if(localStorage.getItem("ACCESS_TOKEN") !== "null"){
@@ -120,7 +121,7 @@ function Header() {
                                 </ul>
                             </div>
                         }
-                        {isMediumScreen &&
+                        {(isMediumScreen || isSmallScreen) &&
                             <div className="hide-menu">
                                 <button className="hide-menu-btn"
                                 onClick={showHideMenu}>
@@ -146,10 +147,10 @@ function Header() {
                     </div>
                 }
 
-                {isMediumScreen && isHideClick &&
+                {(isMediumScreen || isSmallScreen) && isHideClick &&
                     <HideMenu isLogin={isLogin} isAdmin={isAdmin}
                     user={username} signout={sign_out}
-                    style={{top:`${window.scrollY+90}px`}}/>
+                    style={{top:`${window.scrollY+60}px`}}/>
                 }
             </div>
         </div>

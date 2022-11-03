@@ -51,15 +51,19 @@
         padding: 20px;
     }
     .Graduate .graduate-box h1 {
-        font-size: 30px;
+        font-size: 25px;
         margin-bottom: 30px;
     }
+    .Graduate .graduate-box #graduation-box,.graduate-box #nonmajor-box{
+        width: 200px;
+        height: 300px;
+        margin: auto;
+        display: block;
+    } 
     .Graduate .graduate-box #graduation-box {
-        margin-right: 0;
         margin-bottom: 20px;
     }
     .Graduate .graduate-box #nonmajor-box {
-        margin-left: 0;
         margin-bottom: 30px;
     }
 }
