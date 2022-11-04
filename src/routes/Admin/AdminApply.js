@@ -18,12 +18,21 @@ function AdminApply() {
             email : "webkit640@google.co.kr"
         },
         {
+            // id : 1,
+            name : "홍길동2",
+            school : "메사추세츠공과대학교",
+            major : "소프트웨어공학과",
+            schoolNumber : "20226789",
+            schoolYear: "4",
+            email : "webkit640@google.co.kr"
+        },
+        {
             // id : 2,
             name : "김길동",
             school : "메사추세츠공과대학교",
             major : "소프트웨어공학과",
             schoolNumber : "20226789",
-            schoolYear: "4",
+            schoolYear: "1",
             email : "webkit123@google.co.kr"
         },
         {
@@ -32,7 +41,7 @@ function AdminApply() {
             school : "메사추세츠공과대학교",
             major : "광시스템공학과",
             schoolNumber : "20226789",
-            schoolYear: "4",
+            schoolYear: "1",
             email : "webkit456@google.co.kr"
         },
         {
@@ -41,7 +50,7 @@ function AdminApply() {
             school : "메사추세츠공과대학교",
             major : "건축학과",
             schoolNumber : "20226789",
-            schoolYear: "4",
+            schoolYear: "2",
             email : "webkit789@google.co.kr"
         },
         {
@@ -50,7 +59,7 @@ function AdminApply() {
             school : "메사추세츠공과대학교",
             major : "응용수리데이터과학과",
             schoolNumber : "20226789",
-            schoolYear: "4",
+            schoolYear: "3",
             email : "webkit321@google.co.kr"
         },
         {
@@ -59,19 +68,19 @@ function AdminApply() {
             school : "메사추세츠공과대학교",
             major : "컴퓨터공학과",
             schoolNumber : "20226789",
-            schoolYear: "4",
+            schoolYear: "3",
             email : "webkit8910@google.co.kr"
         }
     ])
 
     //const [applyList, setApplyList] = useState([]);
     
-    useEffect(() => {
-        call("/apply/all","GET",null).then((res)=>{
-            console.log(res);
-            setApplyList(res);
-        })
-    }, [])
+    // useEffect(() => {
+    //     call("/apply/all","GET",null).then((res)=>{
+    //         console.log(res);
+    //         setApplyList(res);
+    //     })
+    // }, [])
 
     const [showList, setShowList] = useState([]); // 지원학생 목록 리스트
     const [selectList, setSelectList] = useState([]); // 선발 목록 리스트
@@ -100,12 +109,12 @@ function AdminApply() {
         setShowList(list);
     },[applyList])
 
-    useEffect(() => {
-        call("/apply/all","GET",null).then((res)=>{
-            console.log(res);
-            setApplyList(res.data);
-        })
-    }, [])
+    // useEffect(() => {
+    //     call("/apply/all","GET",null).then((res)=>{
+    //         console.log(res);
+    //         setApplyList(res.data);
+    //     })
+    // }, [])
 
     const ACCESS_TOKEN = "ACCESS_TOKEN";
     const accessToken = localStorage.getItem(ACCESS_TOKEN);
@@ -198,17 +207,18 @@ function AdminApply() {
         if(none === 'none') {
             console.log('none in');
             showList.filter((item)=>{
-                list = [...list, item];
+                tmp2List = [...tmp2List, item];
             })
         }
         else {
-
             console.log('option in')
             let tmpList = []
             list = showList;
             if(studentFlag) {
                 console.log("studentFlag in")
+                tmp2List = [];
                 list.filter((item)=>{
+                    console.log("studentFlag filter in");
                     if(item.name.toLowerCase().includes(studentSearch.toLowerCase())){
                         console.log(item)
                         tmpList = [...tmpList, item];
@@ -219,7 +229,10 @@ function AdminApply() {
             }
             if(schoolFlag) {
                 console.log("schoolFlag in")
+                console.log(list)
+                tmp2List = [];
                 list.filter((item)=>{
+                    console.log("schoolFlag filter in");
                     console.log(item)
                     if(item.school.toLowerCase().includes(schoolSearch.toLowerCase())){
                         tmpList = [...tmpList, item];
@@ -230,7 +243,10 @@ function AdminApply() {
             }
             if(majorFlag) {
                 console.log("majorFlag in")
+                console.log(list)
+                tmp2List = [];
                 list.filter((item)=>{
+                    console.log("majorFlag filter in");
                     console.log(item)
                     if(item.major.toLowerCase().includes(majorSearch.toLowerCase())){
                         tmpList = [...tmpList, item];
@@ -241,7 +257,10 @@ function AdminApply() {
             }
             if(schoolYearFlag) {
                 console.log("schoolYearFlag in")
+                console.log(list)
+                tmp2List = [];
                 list.filter((item)=>{
+                    console.log("schoolYearFlag filter in");
                     console.log(item)
                     if(item.schoolYear.toLowerCase().includes(schoolYearSearch.toLowerCase())){
                         tmpList = [...tmpList, item];
@@ -259,10 +278,6 @@ function AdminApply() {
         if(!studentFlag && !schoolFlag && !majorFlag && !schoolYearFlag) filterData('none');
         else filterData();
         setShowList(searchList);
-    }
-
-    function checkState() {
-        console.log(studentFlag);
     }
 
     async function ConfirmBtn() {
@@ -329,13 +344,11 @@ function AdminApply() {
     
     return(<div className="apply-total">
         {/* <button onClick={zipDownload}>asdfasdf</button> */}
-        {console.log(showList)}
         <div className="apply-title">
             <h1>지원관리</h1>
         </div>
         <div className="apply-insert">
             <div className="apply-first-label">
-                <button onClick={checkState}>확인</button>
                 <h3>지원학생 목록</h3>
             </div>
             <div className="apply-insert-algin">
@@ -346,8 +359,8 @@ function AdminApply() {
                 <input className="apply-insert-search" placeholder="   학과를 입력해 주세요"
                 onChange={onChangeEvent} id="major"></input>
                 <input className="apply-insert-search" placeholder="   학년을 입력해 주세요"
-                onChange={(e) => setSchoolYearSearch(e.target.value)}></input>
-                <button className="apply-search-btn">조회</button>
+                onChange={onChangeEvent} id="schoolYear"></input>
+                <button className="apply-search-btn" onClick={onClickSearchBtn}>조회</button>
             </div>
         </div>
         <div className="apply-insert-table">
