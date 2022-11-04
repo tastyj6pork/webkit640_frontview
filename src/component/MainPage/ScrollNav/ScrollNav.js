@@ -9,10 +9,11 @@ function ScrollNav(props) {
     const [isOn, setIsOn] = useState(false);
     const [dropdownX, setDropdownX] = useState(0);
     const [isDropdownClick, setIsDropdownClick] = useState(false);
+    const [faSize, setFaSize] = useState(1);
     const menuList = document.getElementById('menuList');
 
     const isBigScreen = useMediaQuery({query: '(min-width:1201px)'});
-    const isMediumScreen = useMediaQuery({query: '(max-width: 1200px)'});
+    const isMediumScreen = useMediaQuery({query: '(min-width:768px) and (max-width: 1200px)'});
     const isSmallScreen = useMediaQuery({query: '(max-width: 767px)'});
 
     const onClickEvent = (e) => {
@@ -57,9 +58,18 @@ function ScrollNav(props) {
         if(props.isOn){
             navBar.style.position='fixed';
         }
-        else if (!props.isOn && isDropdownClick && isMediumScreen && isSmallScreen){
+        if(isMediumScreen) {
+            dropdownBtn.childNodes[1].classList.add('fa-2x');
+            setFaSize(2);
+        }
+        if(isSmallScreen) {
+            dropdownBtn.childNodes[1].classList.remove('fa-2x');
+            setFaSize(1);
+        }
+        else if (!props.isOn && isDropdownClick && (isMediumScreen || isSmallScreen)){
             dropdownMenu.style.position = 'absolute';
-            dropdownMenu.style.top = `60px`;
+            if(isSmallScreen)
+                dropdownMenu.style.top = `60px`;
         }
         setIsOn(props.isOn);
         if(isMediumScreen || isSmallScreen){
@@ -99,7 +109,7 @@ function ScrollNav(props) {
                 </div>
             </div>
                 { (isMediumScreen || isSmallScreen) && isDropdownClick &&
-                    <div id="dropdownMenu" style={{top:`60px`, left:`${dropdownX}px`}}>
+                    <div id="dropdownMenu" style={{left:`${dropdownX}px`}}>
                         <ul>
                             <li><button id="recruit"
                             onClick={onClickEvent}>모집 안내</button></li>

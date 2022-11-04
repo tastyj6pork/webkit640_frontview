@@ -27,6 +27,11 @@
     margin-top: 35px;
 }
 
+.HideMenu .hide-content .user-menu-list li{
+    height: 30px;
+    line-height: 30px;
+}
+
 .HideMenu .hide-content li {
     height: 60px;
     line-height: 60px;
@@ -60,4 +65,36 @@
     vertical-align: middle;
     font-size: 19x;
     margin-left: 20px;
+}
+
+@media only screen and (min-width:768px) and (max-width:1200px){
+    .HideMenu .hide-content {
+        margin-top: 38px;
+    }
+    .HideMenu .hide-content .user-menu-list li{
+        height: 50px;
+        line-height: 50px;
+    }
+    
+    .HideMenu .hide-content li {
+        height: 70px;
+        line-height: 70px;
+        vertical-align: middle;
+        font-size: 23px;
+    }
+    
+    .HideMenu .hide-content li button {
+        float: right;
+        height: 60px;
+        background-color: rgba(255, 255, 255, 0);
+        border: 0;
+    }
+    
+    .HideMenu .hide-content .detail-menu li {
+        height: 60px;
+        line-height: 60px;
+        vertical-align: middle;
+        font-size: 23x;
+        margin-left: 20px;
+    }
 }

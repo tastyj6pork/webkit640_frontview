@@ -47,6 +47,7 @@
         width: 100%;
         height: auto;
         padding: 15px;
+        border: solid purple;
     }
     .Review .review-box h1 {
         font-size: 25px;
@@ -54,6 +55,7 @@
     .Review #reviewCarousel img {
         width: 100%;
         height: 300px;
+        border: solid green;
     }
     #reviewCarousel {
         margin-top: 50px;

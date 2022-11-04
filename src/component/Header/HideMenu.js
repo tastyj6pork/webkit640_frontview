@@ -68,6 +68,7 @@ function HideMenu(props) {
                 }
                 { props.isLogin && props.isAdmin &&
                     <ul className="user-menu-list">
+                        <li>{props.user}님, 어서오세요.</li>
                         <li><a href="/admin">관리페이지</a></li>
                     </ul>
                 }

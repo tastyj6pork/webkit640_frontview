@@ -54,7 +54,7 @@
         font-size: 25px;
         margin-bottom: 30px;
     }
-    .Graduate .graduate-box #graduation-box,.graduate-box #nonmajor-box{
+    .Graduate .graduate-box #graduation-box,.Graduate .graduate-box #nonmajor-box{
         width: 200px;
         height: 300px;
         margin: auto;

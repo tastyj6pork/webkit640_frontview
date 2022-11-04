@@ -58,6 +58,13 @@
     font-weight: 400;
 }
 
+@media only screen and (min-width:768px) and (max-width:1200px) {
+    .MainSchedule .schedule-box {
+        width: 100%;
+        padding: 20px;
+    }
+}
+
 @media only screen and (max-width:767px) {
     .MainSchedule{
         height: 900px;

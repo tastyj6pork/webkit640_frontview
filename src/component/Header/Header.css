@@ -79,7 +79,7 @@
 }
 
 .Header #userDetailMenu{
-    width: 100px;
+    width: 160px;
     height: 100px;
     background-color: white;
     position: absolute;
@@ -89,8 +89,23 @@
 .Header #userDetailMenu ul {
     list-style: none;
     margin: 0;
-    padding: 0;
+    padding: 10px;
     text-align: center;
+}
+
+.Header #userDetailMenu li {
+    height: 35px;
+    line-height: 35px;
+    text-align: middle;
+}
+
+.Header #userDetailMenu li a {
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.Header #userDetailMenu li a:hover {
+    color:rgb(66, 66, 66);
 }
 
 .Header .hide-menu {
@@ -111,7 +126,13 @@
     border: 0;
 }
 
-@media only screen and (max-width:767px) and (max-width:1200px){
+@media only screen and (min-width:768px) and (max-width:1200px){
+    .Header .nav-content {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width:767px){
     .Header #navBar {
         height: 60px;
         padding: 10px;
