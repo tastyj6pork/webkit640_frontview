@@ -7,6 +7,7 @@ import "./ScrollNav.css"
 
 function ScrollNav(props) {
     const [isOn, setIsOn] = useState(false);
+    const [dropdownX, setDropdownX] = useState(0);
     const [isDropdownClick, setIsDropdownClick] = useState(false);
     const menuList = document.getElementById('menuList');
 
@@ -22,6 +23,10 @@ function ScrollNav(props) {
                 lis[i].childNodes[0].style.backgroundColor = "white";
             }
             e.target.style.backgroundColor = "rgb(196, 253, 229)";
+        }
+        if(isDropdownClick) {
+            const dropdownBtn = document.getElementById("dropdownBtn");
+            dropdownBtn.childNodes[0].innerHTML = e.target.innerHTML;
         }
         switch(e.target.id){
             case 'recruit':
@@ -45,19 +50,23 @@ function ScrollNav(props) {
         else setIsDropdownClick(true);
     }
 
-    const hideDropdown = () => {
-        setIsDropdownClick(false);
-    }
-
     useEffect(()=>{
         const navBar = document.getElementById("navBar");
+        const dropdownMenu = document.getElementById("dropdownMenu");
+        const dropdownBtn = document.getElementById("dropdownBtn");
         if(props.isOn){
             navBar.style.position='fixed';
         }
-        else {
-            //navBar.style.position='relative';
+        else if (!props.isOn && isDropdownClick && isMediumScreen && isSmallScreen){
+            dropdownMenu.style.position = 'absolute';
+            dropdownMenu.style.top = `60px`;
         }
         setIsOn(props.isOn);
+        if(isMediumScreen || isSmallScreen){
+            let dropdownBtn_x = null;
+            dropdownBtn_x = dropdownBtn.getBoundingClientRect().left;
+            setDropdownX(dropdownBtn_x);
+        }
     })
 
     return(
@@ -69,7 +78,7 @@ function ScrollNav(props) {
                                 <li><button className="w3-display-middle"
                                 style={{backgroundColor:"rgb(196, 253, 229)"}}
                                 onClick={onClickEvent}
-                                id="recruit">모집 정보</button></li>
+                                id="recruit">모집 안내</button></li>
                                 <li><button className="w3-display-middle"
                                 onClick={onClickEvent}
                                 id="schedule">주요 일정</button></li>
@@ -83,17 +92,17 @@ function ScrollNav(props) {
                         <div className="dropdown-nav">
                             <button id="dropdownBtn" onClick={showDropdown}>
                                 <span>모집 안내</span>
-                                <FontAwesomeIcon icon={faCircleChevronDown} size="2x"/>
+                                <FontAwesomeIcon icon={faCircleChevronDown}/>
                             </button>
                         </div>
                     }
                 </div>
-                
-                    <div id="dropdownMenu" style={{top:`${window.scrollY+90}px `}}
-                    onMouseLeave={hideDropdown}>
+            </div>
+                { (isMediumScreen || isSmallScreen) && isDropdownClick &&
+                    <div id="dropdownMenu" style={{top:`60px`, left:`${dropdownX}px`}}>
                         <ul>
                             <li><button id="recruit"
-                            onClick={onClickEvent}>모집 정보</button></li>
+                            onClick={onClickEvent}>모집 안내</button></li>
                             <li><button id="schedule"
                             onClick={onClickEvent}>주요 일정</button></li>
                             <li><button id="process"
@@ -102,8 +111,7 @@ function ScrollNav(props) {
                             onClick={onClickEvent}>수강 후기</button></li>
                         </ul>
                     </div>
-                
-            </div>
+                }
         </div>
     )
 }

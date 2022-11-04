@@ -20,7 +20,8 @@ function Header() {
     const [username, setUsername] = useState(null);
 
     const isBigScreen = useMediaQuery({query: '(min-width:1201px)'});
-    const isMediumScreen = useMediaQuery({query: '(max-width: 1200px)'});
+    const isMediumScreen = useMediaQuery({query: '(min-width:768px) and (max-width: 1200px)'});
+    const isSmallScreen = useMediaQuery({query: '(max-width: 767px)'});
 
     const isUserLogin = () => {
         if(localStorage.getItem("ACCESS_TOKEN") !== "null"){
@@ -114,13 +115,16 @@ function Header() {
                                     }
                                     {isLogin && isAdmin &&
                                         <li className="adminpage-btn" style={{float:"right", marginLeft: "40px"}}>
+                                            <p onMouseOver={showMypage} id="welcome">
+                                                어서오세요, {username} 님
+                                            </p>
                                             <a href="/admin">관리페이지</a>
                                         </li>
                                     }
                                 </ul>
                             </div>
                         }
-                        {isMediumScreen && 
+                        {(isMediumScreen || isSmallScreen) &&
                             <div className="hide-menu">
                                 <button className="hide-menu-btn"
                                 onClick={showHideMenu}>
@@ -131,12 +135,12 @@ function Header() {
                     </div>
                 </div>
                 { isBigScreen && isClick &&
-                <DetailMenu navY={window.scrollY} 
+                <DetailMenu navY={window.scrollY}
                 dmenu01_x={dmenu01} dmenu02_x={dmenu02}/>
                 }
 
                 { isBigScreen && isLogin && !isAdmin && isHover &&
-                    <div id="userDetailMenu" 
+                    <div id="userDetailMenu"
                     style={{top:`${window.scrollY+90}px `, left:`${duser}px`}}
                     onMouseLeave={hideMypage}>
                         <ul>
@@ -146,10 +150,10 @@ function Header() {
                     </div>
                 }
 
-                {isMediumScreen && isHideClick &&
+                {(isMediumScreen || isSmallScreen) && isHideClick &&
                     <HideMenu isLogin={isLogin} isAdmin={isAdmin}
                     user={username} signout={sign_out}
-                    style={{top:`${window.scrollY+90}px`}}/>
+                    style={{top:`${window.scrollY+60}px`}}/>
                 }
             </div>
         </div>

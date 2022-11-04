@@ -29,13 +29,6 @@
     border: 1px solid forestgreen;
 }
 
-.Graduate .graduate-box .empty-space {
-    width: 190px;
-    height: 350px;
-    display: inline-block;
-    border: 1px solid red;
-}
-
 .Graduate .graduate-box .img-box img {
     width: 200px;
     height: 200px;
@@ -47,4 +40,30 @@
 
 .Graduate .graduate-box #nonmajor-box {
     margin-left: 80px;
+}
+
+@media only screen and (max-width:767px) {
+    .Graduate {
+        height: 1000px;
+    }
+    .Graduate .graduate-box {
+        width: 100%;
+        padding: 20px;
+    }
+    .Graduate .graduate-box h1 {
+        font-size: 25px;
+        margin-bottom: 30px;
+    }
+    .Graduate .graduate-box #graduation-box,.graduate-box #nonmajor-box{
+        width: 200px;
+        height: 300px;
+        margin: auto;
+        display: block;
+    } 
+    .Graduate .graduate-box #graduation-box {
+        margin-bottom: 20px;
+    }
+    .Graduate .graduate-box #nonmajor-box {
+        margin-bottom: 30px;
+    }
 }

@@ -6,7 +6,7 @@
 
 .MainSchedule {
     width: 100vw;
-    height: 900px;
+    height: 1000px;
     background-color: rgb(248, 251, 249);
 }
 
@@ -51,9 +51,47 @@
     font-size: 20px;
 }
 
-.MainSchedule .schedule-box .warning{
+.MainSchedule .schedule-box .warning {
     float: right;
     margin-top: 50px;
     font-size: 21px;
     font-weight: 400;
+}
+
+@media only screen and (max-width:767px) {
+    .MainSchedule{
+        height: 900px;
+    }
+    .MainSchedule .schedule-box {
+        width: 100%;
+        height: auto;
+        padding: 15px;
+    }
+    .MainSchedule .schedule-box span {
+        font-size: 25px;
+    }
+    .MainSchedule .schedule-box .warning {
+        float: left;
+        font-size: 15px;
+        margin-top: 20px;
+    }
+    .MainSchedule .schedule-box .mini-calender h3 {
+        font-size: 16px;
+    }
+    .MainSchedule .schedule-box .mini-calender {
+        font-size: 14px;
+        margin-top: 30px;
+        padding: 20px;
+    }
+    .MainSchedule .schedule-box .mini-calender .row {
+        margin-bottom: 15px;
+    }
+    .MainSchedule .schedule-box .mini-calender .col {
+        height: 130px;
+        padding-left: 30px;
+        padding-top: 15px;
+    }
+    .MainSchedule .schedule-box .mini-calender label {
+        margin-top: 10px;
+    }
 }

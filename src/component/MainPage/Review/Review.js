@@ -1,8 +1,13 @@
 import { React, useEffect, useState, forwardRef } from "react";
 import { Link } from "react-router-dom";
+import { useMediaQuery } from 'react-responsive';
 import "./Review.css"
 
 const Review = forwardRef((props, ref) => {
+    const isBigScreen = useMediaQuery({query: '(min-width:1201px)'});
+    const isMediumScreen = useMediaQuery({query: '(min-width:768px) and (max-width: 1200px)'});
+    const isSmallScreen = useMediaQuery({query: '(max-width: 400px)'});
+
     return(
         <div className="Review" ref={ref}>
             <div className="review-content w3-display-container">
@@ -14,22 +19,35 @@ const Review = forwardRef((props, ref) => {
                             <li data-target="#reviewCarousel" data-slide-to="1"></li>
                             <li data-target="#reviewCarousel" data-slide-to="2"></li>
                         </ul>
-
-                        <div className="carousel-inner">
-                            <div className="carousel-item active">
-                                <img className="item-left"/>
-                                <img className="item-right"/>
+                        { (isBigScreen || isMediumScreen) &&
+                            <div className="carousel-inner">
+                                <div className="carousel-item active">
+                                    <img className="item-left"/>
+                                    <img className="item-right"/>
+                                </div>
+                                <div className="carousel-item">
+                                    <img className="item-left"/>
+                                    <img className="item-right"/>
+                                </div>
+                                <div className="carousel-item">
+                                    <img className="item-left"/>
+                                    <img className="item-right"/>
+                                </div>
                             </div>
-                            <div className="carousel-item">
-                                <img className="item-left"/>
-                                <img className="item-right"/>
+                        }
+                        { isSmallScreen &&
+                            <div className="carousel-inner">
+                                <div className="carousel-item active">
+                                    <img className="item-left"/>
+                                </div>
+                                <div className="carousel-item">
+                                    <img className="item-left"/>
+                                </div>
+                                <div className="carousel-item">
+                                    <img className="item-left"/>
+                                </div>
                             </div>
-                            <div className="carousel-item">
-                                <img className="item-left"/>
-                                <img className="item-right"/>
-                            </div>
-                        </div>
-
+                        }
                         <a className="carousel-control-prev" href="#demo" data-slide="prev">
                             <span className="carousel-control-prev-icon"></span>
                         </a>
