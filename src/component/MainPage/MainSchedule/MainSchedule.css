@@ -7,7 +7,10 @@
 .MainSchedule {
     width: 100vw;
     height: 1000px;
-    background-color: rgb(248, 251, 249);
+    /*background-color: rgb(248, 251, 249);*/
+    background-image: url("../../../public/images/study01.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .MainSchedule .schedule-content {
@@ -28,6 +31,7 @@
 
 .MainSchedule .schedule-box .mini-calender {
     margin-top: 100px;
+    font-size: 20px;
 }
 
 .MainSchedule .schedule-box .mini-calender .c-bar {
@@ -45,10 +49,6 @@
     background-color: white;
     border-radius: 10px;
     box-shadow: 3px 4px 13px 1px rgb(198, 198, 198);
-}
-
-.MainSchedule .schedule-box .mini-calender .col p {
-    font-size: 20px;
 }
 
 .MainSchedule .schedule-box .warning {

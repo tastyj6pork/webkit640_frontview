@@ -115,7 +115,7 @@
 
 @media only screen and (max-width:767px) {
     .ScrollNav #navBar {
-        width: 100%;
+        width: 100vw;
         height: 60px;
         padding: 10px;
         padding-left: 20px;
@@ -149,7 +149,7 @@
     }
 }
 
-@media only screen and (min-width:767px) and (max-width:1200px){
+@media only screen and (min-width:768px) and (max-width:1200px){
     .ScrollNav #navBar {
         width: 100vw;
         height: 90px;
