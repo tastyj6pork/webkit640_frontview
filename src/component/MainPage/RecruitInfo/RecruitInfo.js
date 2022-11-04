@@ -6,7 +6,7 @@ import "./RecruitInfo.css"
 const RecruitInfo = forwardRef((props, ref) => {
     const isBigScreen = useMediaQuery({query: '(min-width:1201px)'});
     const isMediumScreen = useMediaQuery({query: '(min-width:768px) and (max-width: 1200px)'});
-    const isSmallScreen = useMediaQuery({query: '(max-width: 400px)'});
+    const isSmallScreen = useMediaQuery({query: '(max-width: 767px)'});
 
     return(
         <div className="RecruitInfo" id="recruit" ref={ref}>

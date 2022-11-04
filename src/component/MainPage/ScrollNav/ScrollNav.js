@@ -12,7 +12,7 @@ function ScrollNav(props) {
     const menuList = document.getElementById('menuList');
 
     const isBigScreen = useMediaQuery({query: '(min-width:1201px)'});
-    const isMediumScreen = useMediaQuery({query: '(max-width: 1200px)'});
+    const isMediumScreen = useMediaQuery({query: '(min-width:768px) and (max-width: 1200px)'});
     const isSmallScreen = useMediaQuery({query: '(max-width: 767px)'});
 
     const onClickEvent = (e) => {
@@ -57,9 +57,10 @@ function ScrollNav(props) {
         if(props.isOn){
             navBar.style.position='fixed';
         }
-        else if (!props.isOn && isDropdownClick && isMediumScreen && isSmallScreen){
+        else if (!props.isOn && isDropdownClick && (isMediumScreen || isSmallScreen)){
             dropdownMenu.style.position = 'absolute';
-            dropdownMenu.style.top = `60px`;
+            if(isSmallScreen)
+                dropdownMenu.style.top = `60px`;
         }
         setIsOn(props.isOn);
         if(isMediumScreen || isSmallScreen){
@@ -99,7 +100,7 @@ function ScrollNav(props) {
                 </div>
             </div>
                 { (isMediumScreen || isSmallScreen) && isDropdownClick &&
-                    <div id="dropdownMenu" style={{top:`60px`, left:`${dropdownX}px`}}>
+                    <div id="dropdownMenu" style={{left:`${dropdownX}px`}}>
                         <ul>
                             <li><button id="recruit"
                             onClick={onClickEvent}>모집 안내</button></li>

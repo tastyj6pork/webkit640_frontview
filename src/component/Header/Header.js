@@ -118,7 +118,6 @@ function Header() {
                                             <p onMouseOver={showMypage} id="welcome">
                                                 어서오세요, {username} 님
                                             </p>
-                                            <a href="/admin">관리페이지</a>
                                         </li>
                                     }
                                 </ul>
@@ -145,6 +144,17 @@ function Header() {
                     onMouseLeave={hideMypage}>
                         <ul>
                             <li><a href="/student">마이페이지</a></li>
+                            <li><a href="/">회원정보</a></li>
+                        </ul>
+                    </div>
+                }
+
+                { isBigScreen && isLogin && isAdmin && isHover &&
+                    <div id="userDetailMenu"
+                    style={{top:`${window.scrollY+90}px `, left:`${duser}px`}}
+                    onMouseLeave={hideMypage}>
+                        <ul>
+                            <li><a href="/admin">관리페이지</a></li>
                             <li><a href="/">회원정보</a></li>
                         </ul>
                     </div>

@@ -6,7 +6,7 @@ import "./Review.css"
 const Review = forwardRef((props, ref) => {
     const isBigScreen = useMediaQuery({query: '(min-width:1201px)'});
     const isMediumScreen = useMediaQuery({query: '(min-width:768px) and (max-width: 1200px)'});
-    const isSmallScreen = useMediaQuery({query: '(max-width: 400px)'});
+    const isSmallScreen = useMediaQuery({query: '(max-width: 767px)'});
 
     return(
         <div className="Review" ref={ref}>
@@ -35,7 +35,7 @@ const Review = forwardRef((props, ref) => {
                                 </div>
                             </div>
                         }
-                        { isSmallScreen &&
+                        { (isSmallScreen) &&
                             <div className="carousel-inner">
                                 <div className="carousel-item active">
                                     <img className="item-left"/>
