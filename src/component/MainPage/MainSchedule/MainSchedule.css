@@ -6,11 +6,8 @@
 
 .MainSchedule {
     width: 100vw;
-    height: 1000px;
-    /*background-color: rgb(248, 251, 249);*/
-    background-image: url("../../../public/images/study01.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
+    height: 900px;
+    background-color: rgb(248, 251, 249);
 }
 
 .MainSchedule .schedule-content {
@@ -24,7 +21,7 @@
 }
 
 .MainSchedule .schedule-box span {
-    font-size: 40px;
+    font-size: 43px;
     font-weight: 600;
     color: black;
 }
@@ -83,7 +80,7 @@
         margin-top: 20px;
     }
     .MainSchedule .schedule-box .mini-calender h3 {
-        font-size: 16px;
+        font-size: 18px;
     }
     .MainSchedule .schedule-box .mini-calender {
         font-size: 14px;

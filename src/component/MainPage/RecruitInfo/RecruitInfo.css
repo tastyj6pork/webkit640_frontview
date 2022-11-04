@@ -6,8 +6,8 @@
 
 .RecruitInfo {
     width: 100vw;
-    height: 900px;
-    margin-top: 140px;
+    height: 1000px;
+    margin-top: 100px;
 }
 
 .RecruitInfo .recruit-content {
@@ -57,6 +57,24 @@
     padding-bottom: 40px;
 }
 
+.RecruitInfo .recruit-box .btn-row {
+    width: 1000px;
+    text-align: right;
+}
+
+.RecruitInfo .recruit-box .btn-row td {
+    border: 0;
+}
+
+.RecruitInfo .recruit-box .more-btn {
+    border: 0;
+    width: 150px;
+    height: 60px;
+    margin-right: 10px;
+    font-size: 22px;
+    background-color: rgb(187, 248, 221);
+}
+
 @media only screen and (min-width:768px) and (max-width:1200px) {
     .RecruitInfo .recruit-box {
         width: 100%;
@@ -71,7 +89,7 @@
 
 @media only screen and (max-width:767px) {
     .RecruitInfo {
-        height: 700px;
+        height: 750px;
     }
     .RecruitInfo .recruit-box {
         width: 100%;
@@ -101,5 +119,20 @@
     .RecruitInfo .recruit-box ul {
         margin-top: 10px;
         font-weight: 500;
+    }
+    .RecruitInfo .recruit-box .btn-row {
+        width: 100%;
+        text-align: right;
+    }
+    .RecruitInfo .recruit-box .btn-row td {
+        border: 0;
+    }
+    .RecruitInfo .recruit-box .more-btn {
+        border: 0;
+        width: 90px;
+        height: 40px;
+        margin-right: 10px;
+        font-size: 17px;
+        background-color: rgb(187, 248, 221);
     }
 }

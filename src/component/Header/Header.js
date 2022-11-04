@@ -90,7 +90,7 @@ function Header() {
                                     <li><Link id="have-dmenu01"
                                     onClick={showDetail}><span>게시판</span></Link></li>
                                     <li><Link id="have-dmenu02"
-                                    onClick={showDetail}><span>수업정보</span></Link></li>
+                                    onClick={showDetail}><span>수업소개</span></Link></li>
                                     <li><Link><span>수강후기</span></Link></li>
                                     <li><Link to='/'>Q&A</Link></li>
                                     {!isLogin &&

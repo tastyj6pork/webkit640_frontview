@@ -13,8 +13,8 @@ function DetailMenu(props) {
                         <li>강의자료</li>
                     </ul>
                     <ul id="menu02" style={{left:`${props.dmenu02_x}px`}}>
+                        <li>수업정보</li>
                         <li>지원하기</li>
-                        <li>수업일정</li>
                     </ul>
                 </ul>
             </div>

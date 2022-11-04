@@ -65,6 +65,14 @@ const RecruitInfo = forwardRef((props, ref) => {
                                 </td>
                                 }
                             </tr>
+                            <tr className="btn-row">
+                                { (isBigScreen||isMediumScreen) && 
+                                    <td></td>
+                                }
+                                <td>
+                                    <button className="more-btn">MORE ></button>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

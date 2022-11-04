@@ -40,15 +40,15 @@ function HideMenu(props) {
                             <li>Q&A</li>
                         </ul>
                     }
-                    <li>수업정보
+                    <li>수업소개
                         <button name="process" onClick={onClickBtn}>
                             <FontAwesomeIcon name="process" icon={faChevronRight}/>
                         </button>
                     </li>
                     { isProcessClick && 
                         <ul className="detail-menu">
-                            <li><Link to="/studentSchedule">수업일정</Link></li>
-                            <li>강의자료</li>
+                            <li>지원하기</li>
+                            <li><Link to="/studentSchedule">수업정보</Link></li>
                         </ul>
                     }
                     <li>수강후기</li>
