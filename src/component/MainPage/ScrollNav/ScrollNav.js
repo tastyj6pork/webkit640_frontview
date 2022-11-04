@@ -9,6 +9,7 @@ function ScrollNav(props) {
     const [isOn, setIsOn] = useState(false);
     const [dropdownX, setDropdownX] = useState(0);
     const [isDropdownClick, setIsDropdownClick] = useState(false);
+    const [faSize, setFaSize] = useState(1);
     const menuList = document.getElementById('menuList');
 
     const isBigScreen = useMediaQuery({query: '(min-width:1201px)'});
@@ -56,6 +57,14 @@ function ScrollNav(props) {
         const dropdownBtn = document.getElementById("dropdownBtn");
         if(props.isOn){
             navBar.style.position='fixed';
+        }
+        if(isMediumScreen) {
+            dropdownBtn.childNodes[1].classList.add('fa-2x');
+            setFaSize(2);
+        }
+        if(isSmallScreen) {
+            dropdownBtn.childNodes[1].classList.remove('fa-2x');
+            setFaSize(1);
         }
         else if (!props.isOn && isDropdownClick && (isMediumScreen || isSmallScreen)){
             dropdownMenu.style.position = 'absolute';
