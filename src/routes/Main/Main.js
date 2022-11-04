@@ -16,6 +16,7 @@ import Footer from "../../component/Footer/Footer";
 function Main() {
     const [isNav, setIsNav] = useState(true);
     const [isScrollNavOn, setIsScrollNavOn] = useState(false);
+    const mainRef = useRef(null);
     const recruitRef = useRef(null);
     const scheduleRef = useRef(null);
     const processRef = useRef(null);
@@ -59,6 +60,10 @@ function Main() {
         reviewRef.current?.scrollIntoView({behavior:'smooth'});
     }
 
+    const scrollUp = () => {
+        mainRef.current?.scrollIntoView({behavior:'smooth'});
+    }
+
     useEffect(()=>{
         window.addEventListener('scroll', handleScroll);
         return() => {
@@ -67,7 +72,7 @@ function Main() {
     });
 
     return (
-        <div className="Main">
+        <div className="Main" ref={mainRef}>
         {isNav && <Header/>}
         <div id="mainContent" className="w3-wide">
             <header id="header" className="w3-display-container">
@@ -98,7 +103,7 @@ function Main() {
             <div className="outro-background"/>
             <div className="w3-display-middle w3-center">
                 <span>즐거운 코딩의 시작,<br/>웹킷640과 함께 하세요.</span>
-                <p>놓치지 말고 신청하세요!</p>
+                <button onClick={scrollUp}>놓치지 말고 신청하세요↑</button>
             </div>
         </div>
         <Footer/>

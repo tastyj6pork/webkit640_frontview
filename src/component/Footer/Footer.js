@@ -7,7 +7,7 @@ function Footer() {
         <div className="Footer">
             <div className="footer-content w3-display-container">
                 <div className="footer-box w3-display-middle w3-center">
-
+                    <h1>Footer</h1>
                 </div>
             </div>
         </div>
