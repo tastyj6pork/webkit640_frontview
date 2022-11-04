@@ -103,7 +103,7 @@ function Main() {
             <div className="outro-background"/>
             <div className="w3-display-middle w3-center">
                 <span>즐거운 코딩의 시작,<br/>웹킷640과 함께 하세요.</span>
-                <button onClick={scrollUp}>놓치지 말고 신청하세요↑</button>
+                <br/><button onClick={scrollUp}>놓치지 말고 신청하세요↑</button>
             </div>
         </div>
         <Footer/>
