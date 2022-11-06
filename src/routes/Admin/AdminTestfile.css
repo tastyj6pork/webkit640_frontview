@@ -1,0 +1,11 @@
+.container {
+    max-width: 100%;
+}
+.apply-title-test {
+    padding: 20px;
+    background: whitesmoke;
+    margin-bottom: 30px;
+}
+.apply-title-test h1 {
+    font-weight: 640;
+}
