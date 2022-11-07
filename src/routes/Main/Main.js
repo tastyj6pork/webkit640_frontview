@@ -26,7 +26,7 @@ function Main() {
     const isSmallScreen = useMediaQuery({query: '(max-width: 767px)'});
 
     const handleScroll = () => {
-        if(window.scrollY < 800){
+        if(window.scrollY < 630){
             setIsNav(true);
             setIsScrollNavOn(false);
         }

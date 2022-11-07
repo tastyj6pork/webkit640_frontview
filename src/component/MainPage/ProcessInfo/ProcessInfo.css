@@ -7,38 +7,71 @@
 .ProcessInfo {
     width: 100vw;
     height: 900px;
-    background-image: url("../../../../public/images/study01.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-color: white;
 }
 
 .ProcessInfo .process-content {
     width: 100%;
     height: 100%;
-    border: 1px solid red;
 }
 
 .ProcessInfo .process-box {
-    width: 1500px;
+    width: 1100px;
     height: auto;
     border: 1px solid pink;
+    
+}
+
+.ProcessInfo .process-box span {
+    font-size: 17px;
+    margin-top: 10px;
+}
+
+.ProcessInfo .process-box h1 {
+    font-size: 45px;
+    margin-top: 0px;
+    margin-bottom: 15px;
+}
+
+.ProcessInfo .process-box .code-stack-box {
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.ProcessInfo .process-box .frontend-img, .ProcessInfo .process-box .backend-img {
+    display: inline-block;
+    width:500px;
+    height: 360px;
+    border-radius: 15px;
 }
 
 .ProcessInfo .process-box .frontend-img {
-    background-image: url("../../../../public/images/프론트엔드.JPG");
+    background-image: url("../../../../public/images/frontend01.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    width:320px;
-    height: 360px;
     margin-right: 50px;
 }
 
 .ProcessInfo .process-box .backend-img {
-    background-image: url("../../../../public/images/백엔드.JPG");
+    background-image: url("../../../../public/images/backend01.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    width:320px;
-    height: 360px;
+}
+
+.ProcessInfo .process-box .more-info {
+    width: 250px;
+    height: 60px;
+    margin-top: 45px;
+    background-color: rgb(39, 235, 196);
+    border-radius: 30px;
+    font-size: 16px;
+    color: white;
+    font-weight: 600;
+    border: 0;
+}
+
+.ProcessInfo .process-box .more-info:click {
+    border: 0;
 }
 
 @media only screen and (max-width:767px) {

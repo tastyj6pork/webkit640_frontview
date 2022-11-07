@@ -18,6 +18,7 @@ function Header() {
     const [dmenu02, setDmenu02] = useState(0);
     const [duser, setDuser] = useState(0);
     const [username, setUsername] = useState(null);
+    const [userpage, setUserpage] = useState(null);
 
     const isBigScreen = useMediaQuery({query: '(min-width:1201px)'});
     const isMediumScreen = useMediaQuery({query: '(min-width:768px) and (max-width: 1200px)'});
@@ -27,10 +28,13 @@ function Header() {
         if(localStorage.getItem("ACCESS_TOKEN") !== "null"){
             setIsLogin(true);
             setUsername(localStorage.getItem("USER_NAME"));
+            setUserpage("마이페이지");
         }
         else setIsLogin(false);
-        if(localStorage.getItem("IS_ADMIN") === "true")
+        if(localStorage.getItem("IS_ADMIN") === "true"){
             setIsAdmin(1);
+            setUserpage("관리페이지");
+        }
         else setIsAdmin(0);
     }
 
@@ -55,6 +59,11 @@ function Header() {
     const sign_out = () => {
         signout();
         setIsLogin(false);
+    }
+
+    const goMypage = () => {
+        if(isAdmin) window.location.href = "/admin";
+        else window.location.href = "/student";
     }
 
     useEffect(()=>{
@@ -82,15 +91,15 @@ function Header() {
             <div id="navBarIncludeDetail">
                 <div id="navBar" className="w3-bar w3-white w3-wide w3-card">
                     <div className="nav-content">
-                        <Link to='/' className="navbar-brand">Logo</Link>
+                        <Link to='/' className="navbar-brand"></Link>
                         {isBigScreen &&
                             <div id="menuList" className="w3-center w3-hide-small w3-hide-medium">
                                 <ul>
                                     <li><Link to='/'>About us</Link></li>
                                     <li><Link id="have-dmenu01"
-                                    onClick={showDetail}><span>게시판</span></Link></li>
+                                    onClick={showDetail}><span>게시판 ∨</span></Link></li>
                                     <li><Link id="have-dmenu02"
-                                    onClick={showDetail}><span>수업소개</span></Link></li>
+                                    onClick={showDetail}><span>수업소개 ∨</span></Link></li>
                                     <li><Link><span>수강후기</span></Link></li>
                                     <li><Link to='/'>Q&A</Link></li>
                                     {!isLogin &&
@@ -106,15 +115,8 @@ function Header() {
                                             <a href="#">로그아웃</a>
                                         </li>
                                     }
-                                    {isLogin && !isAdmin &&
+                                    {isLogin &&
                                         <li className="mypage-btn" style={{float:"right", marginLeft: "40px"}}>
-                                            <p onMouseOver={showMypage} id="welcome">
-                                                어서오세요, {username} 님
-                                            </p>
-                                        </li>
-                                    }
-                                    {isLogin && isAdmin &&
-                                        <li className="adminpage-btn" style={{float:"right", marginLeft: "40px"}}>
                                             <p onMouseOver={showMypage} id="welcome">
                                                 어서오세요, {username} 님
                                             </p>
@@ -132,38 +134,26 @@ function Header() {
                             </div>
                         }
                     </div>
+                    { isBigScreen && isLogin && isHover &&
+                        <div id="userDetailMenu"
+                        style={{top:'70px', left:`${duser}px`}}
+                        onMouseLeave={hideMypage}>
+                            <ul>
+                                <li><button onClick={goMypage}>{userpage}</button></li>
+                                <li><a href="/">회원정보</a></li>
+                            </ul>
+                        </div>
+                    }
                 </div>
                 { isBigScreen && isClick &&
                 <DetailMenu navY={window.scrollY}
                 dmenu01_x={dmenu01} dmenu02_x={dmenu02}/>
                 }
 
-                { isBigScreen && isLogin && !isAdmin && isHover &&
-                    <div id="userDetailMenu"
-                    style={{top:`${window.scrollY+90}px `, left:`${duser}px`}}
-                    onMouseLeave={hideMypage}>
-                        <ul>
-                            <li><a href="/student">마이페이지</a></li>
-                            <li><a href="/">회원정보</a></li>
-                        </ul>
-                    </div>
-                }
-
-                { isBigScreen && isLogin && isAdmin && isHover &&
-                    <div id="userDetailMenu"
-                    style={{top:`${window.scrollY+90}px `, left:`${duser}px`}}
-                    onMouseLeave={hideMypage}>
-                        <ul>
-                            <li><a href="/admin">관리페이지</a></li>
-                            <li><a href="/">회원정보</a></li>
-                        </ul>
-                    </div>
-                }
-
                 {(isMediumScreen || isSmallScreen) && isHideClick &&
                     <HideMenu isLogin={isLogin} isAdmin={isAdmin}
                     user={username} signout={sign_out}
-                    style={{top:`${window.scrollY+60}px`}}/>
+                    style={{top:`${window.scrollY+70}px`}}/>
                 }
             </div>
         </div>

@@ -5,7 +5,7 @@ import "./DetailMenu.css"
 function DetailMenu(props) {
 
     return(
-        <div id="detailMenu" className="DetailMenu" style={{top:`${props.navY+90}px`}}>
+        <div id="detailMenu" className="DetailMenu" style={{top:`${props.navY+70}px`}}>
             <div className="detail-content row">
                 <ul>
                     <ul id="menu01" style={{left:`${props.dmenu01_x}px`}}>

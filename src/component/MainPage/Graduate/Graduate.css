@@ -7,7 +7,9 @@
 .Graduate {
     width: 100vw;
     height: 800px;
-    background-color: rgb(248, 251, 249);
+    background-image: url("../../../../public/images/background01-2.png");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .Graduate .graduate-content {
@@ -17,25 +19,44 @@
 }
 
 .Graduate .graduate-box {
-    width: 1500px;
+    width: 1100px;
     height: auto;
     border: 1px solid pink;
+}
+
+.Graduate .graduate-box h1 {
+    color: rgb(7, 1, 38);
+    font-size: 45px;
+    font-weight: 600;
 }
 
 .Graduate .graduate-box .img-box {
     width: 250px;
     height: 350px;
     display: inline-block;
+    margin-top: 40px;
     border: 1px solid forestgreen;
-}
-
-.Graduate .graduate-box .img-box img {
-    width: 200px;
-    height: 200px;
 }
 
 .Graduate .graduate-box #graduation-box {
     margin-right: 80px;
+}
+
+.Graduate .graduate-box .graduation-img {
+    background-image: url("../../../../public/images/graduate.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 120px;
+    height: 110px;
+
+}
+
+.Graduate .graduate-box .nonmajor-img {
+    background-image: url("../../../../public/images/book01.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 105px;
+    height: 115px;
 }
 
 .Graduate .graduate-box #nonmajor-box {
