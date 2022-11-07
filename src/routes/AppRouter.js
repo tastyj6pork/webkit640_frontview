@@ -15,7 +15,6 @@ import KakaoRedirectHandler from '../service/KakaoRedirectHandler';
 import StudentSchedule from './Student/StudentSchedule';
 import Board from '../component/Board/Board';
 import LectureData from '../component/Board/LectureData';
-import AdminApplyTest from './Admin/AdminApplyTest';
 
 function AppRouter(){
     return (
@@ -31,7 +30,6 @@ function AppRouter(){
                     <Route path="/studentattend" element={<StudentAttend />} />
                     <Route path="/adminschedule" element={<AdminSchedule />} />
                     <Route path="/studentSchedule" element={<StudentSchedule />} />
-                    <Route path="/adminapplytest" element={<AdminApplyTest />} />
                 </Route>
                     <Route path="/" element={<App/>}/>
                     <Route path="/login" element={<Login/>}/>

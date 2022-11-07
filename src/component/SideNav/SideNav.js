@@ -1,7 +1,9 @@
 import { useState } from "react";
 import {BsFillPersonFill, BsFileEarmarkPlusFill, BsPersonCheckFill, BsList, BsCalendarCheck} from "react-icons/bs";
+import Tooltip from '@mui/material/Tooltip';
 import { NavLink, Outlet } from "react-router-dom";
 import '../SideNav/SideNav.css';
+import { IconButton } from "@mui/material";
 
 function SideNav({children}) {
 
@@ -65,12 +67,14 @@ function SideNav({children}) {
                         adminItem.map((item, index) => (
                             <NavLink to={item.path} key={index} className="link">
                                 <div className="sidenav-icon">{item.icon}</div>
+                                <div style={{display : isOpen ? "none" : "block"}} className="sidenav-link-hint">{item.name}</div>
                                 <div style={{display : isOpen ? "block" : "none"}} className="sidenav-link-text">{item.name}</div>
                             </NavLink>
                         )) :
                         menuItem.map((item, index) => (
                             <NavLink to={item.path} key={index} className="link">
                                 <div className="sidenav-icon">{item.icon}</div>
+                                <div style={{display : isOpen ? "none" : "block"}} className="sidenav-link-hint">{item.name}</div>
                                 <div style={{display : isOpen ? "block" : "none"}} className="sidenav-link-text">{item.name}</div>
                             </NavLink>
                         ))
