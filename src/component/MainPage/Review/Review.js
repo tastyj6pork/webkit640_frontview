@@ -4,6 +4,8 @@ import { useMediaQuery } from 'react-responsive';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight, faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import "./Review.css"
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const Review = forwardRef((props, ref) => {
     const isBigScreen = useMediaQuery({query: '(min-width:1201px)'});

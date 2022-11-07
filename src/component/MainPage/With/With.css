@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .With * {
     font-family: 'Pretendard-Regular';
     letter-spacing: normal;
@@ -30,6 +34,12 @@
     width: 130px;
     height: 70px;
     margin-left: 50px;
+}
+
+.With .with-box .wrapper {
+    width: 1000px;
+    border: solid black;
+    overflow: hidden;
 }
 
 @media only screen and (max-width:767px) {

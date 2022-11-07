@@ -144,12 +144,10 @@ function Header() {
                             </ul>
                         </div>
                     }
+                    { isBigScreen && isClick &&
+                    <DetailMenu dmenu01_x={dmenu01} dmenu02_x={dmenu02}/>
+                    }
                 </div>
-                { isBigScreen && isClick &&
-                <DetailMenu navY={window.scrollY}
-                dmenu01_x={dmenu01} dmenu02_x={dmenu02}/>
-                }
-
                 {(isMediumScreen || isSmallScreen) && isHideClick &&
                     <HideMenu isLogin={isLogin} isAdmin={isAdmin}
                     user={username} signout={sign_out}
