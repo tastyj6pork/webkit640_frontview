@@ -8,6 +8,14 @@ function With() {
             <div className="with-content w3-display-container">
                 <div className="with-box w3-display-middle w3-center">
                     <h2>지금 참여중인 컨소시엄들</h2>
+                    <img src="#"/>
+                    <img src="#"/>
+                    <img src="#"/>
+                    <img src="#"/>
+                    <img src="#"/>
+                    <img src="#"/>
+                    <img src="#"/>
+                    <img src="#"/>
                 </div>
             </div>
         </div>

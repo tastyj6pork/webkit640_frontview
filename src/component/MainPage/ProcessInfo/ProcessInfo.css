@@ -18,17 +18,18 @@
 .ProcessInfo .process-box {
     width: 1100px;
     height: auto;
-    border: 1px solid pink;
     
 }
 
 .ProcessInfo .process-box span {
     font-size: 17px;
+    font-weight: 600;
     margin-top: 10px;
 }
 
 .ProcessInfo .process-box h1 {
-    font-size: 45px;
+    font-size: 50px;
+    font-weight: 600;
     margin-top: 0px;
     margin-bottom: 15px;
 }
@@ -42,7 +43,7 @@
     display: inline-block;
     width:500px;
     height: 360px;
-    border-radius: 15px;
+    border-radius: 25px;
 }
 
 .ProcessInfo .process-box .frontend-img {
@@ -76,7 +77,7 @@
 
 @media only screen and (max-width:767px) {
     .ProcessInfo{
-        height: 750px;
+        height: 870px;
     }
     .ProcessInfo .process-box {
         width: 100%;
@@ -92,17 +93,19 @@
     .ProcessInfo .process-box p {
         font-size: 13px;
     }
-    .ProcessInfo .process-box .frontend-img {
-        width: 200px;
+    .ProcessInfo .process-box .frontend-img, .ProcessInfo .process-box .backend-img  {
+        width: 280px;
         height: 230px;
         margin: auto;
         display: block;
     }
     .ProcessInfo .process-box .backend-img {
-        width: 200px;
-        height: 230px;
-        margin: auto;
         margin-top: 18px;
-        display: block;
+    }
+    .ProcessInfo .process-box .more-info {
+        width: 150px;
+        height: 40px;
+        margin-top: 25px;
+        font-size: 13px;
     }
 }

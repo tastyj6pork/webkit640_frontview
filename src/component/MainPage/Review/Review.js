@@ -1,6 +1,8 @@
 import { React, useEffect, useState, forwardRef } from "react";
 import { Link } from "react-router-dom";
 import { useMediaQuery } from 'react-responsive';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronRight, faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import "./Review.css"
 
 const Review = forwardRef((props, ref) => {
@@ -13,49 +15,30 @@ const Review = forwardRef((props, ref) => {
             <div className="review-content w3-display-container">
                 <div className="review-box w3-display-middle w3-center">
                     <h1>웹킷640과 함께한 학생들의 이야기를 들어보세요.</h1>
-                    <div id="reviewCarousel" className="carousel slide" data-ride="carousel">
-                        <ul className="carousel-indicators">
-                            <li data-target="#reviewCarousel" data-slide-to="0" className="active"></li>
-                            <li data-target="#reviewCarousel" data-slide-to="1"></li>
-                            <li data-target="#reviewCarousel" data-slide-to="2"></li>
-                        </ul>
+                    <div id="reviewCarousel">
+                        <button className="carousel-prev-btn">
+                            <FontAwesomeIcon icon={faChevronLeft} size="2x"/>
+                        </button>
                         { (isBigScreen || isMediumScreen) &&
-                            <div className="carousel-inner">
-                                <div className="carousel-item active">
-                                    <img className="item-left"/>
-                                    <img className="item-right"/>
-                                </div>
-                                <div className="carousel-item">
-                                    <img className="item-left"/>
-                                    <img className="item-right"/>
-                                </div>
-                                <div className="carousel-item">
-                                    <img className="item-left"/>
-                                    <img className="item-right"/>
+                            <div className="carousel-content">
+                                <div className="citem">
+                                    <div className="item-left"/>
+                                    <div className="item-right"/>
                                 </div>
                             </div>
                         }
                         { (isSmallScreen) &&
-                            <div className="carousel-inner">
-                                <div className="carousel-item active">
-                                    <img className="item-left"/>
-                                </div>
-                                <div className="carousel-item">
-                                    <img className="item-left"/>
-                                </div>
-                                <div className="carousel-item">
-                                    <img className="item-left"/>
+                            <div className="carousel-content">
+                                <div className="citem">
+                                    <img className="item"/>
                                 </div>
                             </div>
                         }
-                        <a className="carousel-control-prev" href="#demo" data-slide="prev">
-                            <span className="carousel-control-prev-icon"></span>
-                        </a>
-                        <a className="carousel-control-next" href="#demo" data-slide="next">
-                            <span className="carousel-control-next-icon"></span>
-                        </a>
+                        <button className="carousel-next-btn">
+                            <FontAwesomeIcon icon={faChevronRight} size="2x"/>
+                        </button>
                     </div>
-                    <button>더 많은 후기 보기></button>
+                    <button className="more-btn">더 많은 후기 보기></button>
                 </div>
             </div>
         </div>
