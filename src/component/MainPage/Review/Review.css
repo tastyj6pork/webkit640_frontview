@@ -76,6 +76,49 @@
     height: 50px;
 }
 
+.Review .citem .item-content {
+    padding: 30px;
+}
+
+.Review .citem .item-content table {
+    width: 470px;
+    height: 290px;
+}
+
+.Review .citem .item-content table tr {
+    width: 470px;
+}
+
+.Review .citem .item-content table .title-td {
+    width: 390px;
+}
+
+.Review .citem .item-content table .image-td {
+    width: 80px;
+}
+
+.Review .citem .item-content h2 {
+    font-weight: 600;
+    margin: 0;
+}
+
+.Review .citem .item-content img {
+    width: 70px;
+    height: 70px;
+    margin: 0;
+    float: right;
+
+}
+
+.Review .citem .item-content table .writer {
+    font-size: 16px;
+}
+
+.Review .citem .item-content table .writer,
+.Review .citem .item-content table .content {
+    margin-top: 20px;
+}
+
 @media only screen and (max-width:767px) {
     .Review {
         height: 650px;
@@ -95,10 +138,6 @@
         word-break: keep-all;
         white-space: pre-wrap;
     }
-    .Review #reviewCarousel img {
-        width: 310px;
-        height: 280px;
-    }
     .Review .review-content .more-btn {
         font-size: 13px;
         background-color: rgba(44, 250, 209, 0.688);
@@ -111,5 +150,50 @@
         height: 310px;
         line-height: 310px;
         vertical-align: middle;
+    }
+    .item-left {
+        margin: 0;
+        width: 310px;
+        height: 280px;
+    }
+    .Review .citem .item-content table {
+        width: 270px;
+        height: 240px;
+    }
+    .Review .citem .item-content {
+        padding: 20px;
+    }
+    
+    .Review .citem .item-content table tr {
+        width: 100%;
+        font-size: 13px;
+    }
+    
+    .Review .citem .item-content table .title-td {
+        width: 200px;
+    }
+    
+    .Review .citem .item-content table .image-td {
+        width: 60px;
+    }
+    
+    .Review .citem .item-content h2 {
+        font-size: 22px;
+        font-weight: 600;
+        margin: 0;
+    }
+    .Review .citem .item-content img {
+        width: 60px;
+        height: 60px;
+        margin: 0;
+        float: right;
+    
+    }
+    .Review .citem .item-content table .writer,
+    .Review .citem .item-content table .content {
+        margin-top: 6px;
+    }
+    .Review .citem .item-content table .content {
+        font-size: 12px;
     }
 }

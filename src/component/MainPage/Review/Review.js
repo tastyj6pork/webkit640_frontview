@@ -24,7 +24,24 @@ const Review = forwardRef((props, ref) => {
                         { (isBigScreen || isMediumScreen) &&
                             <div className="carousel-content">
                                 <div className="citem">
-                                    <div className="item-left"/>
+                                    <div className="item-left">
+                                        <div className="item-content">
+                                            <table>
+                                                <tbody>
+                                                    <tr className="title-area">
+                                                        <td className="title-td"><h2>제목</h2></td>
+                                                        <td className="image-td"><img src="#"/></td>
+                                                    </tr>
+                                                    <tr className="writer">
+                                                        <td>글쓴이 | 학과</td>
+                                                    </tr>
+                                                    <tr className="content">
+                                                        <td>내용</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
                                     <div className="item-right"/>
                                 </div>
                             </div>
@@ -32,9 +49,28 @@ const Review = forwardRef((props, ref) => {
                         { (isSmallScreen) &&
                             <div className="carousel-content">
                                 <div className="citem">
-                                    <img className="item"/>
+                                <div className="item-left">
+                                    <div className="item-content">
+                                        <table>
+                                            <tbody>
+                                                <tr className="title-area">
+                                                    <td className="title-td">
+                                                        <h2>제목</h2></td>
+                                                    <td className="image-td">
+                                                        <img src="#"/></td>
+                                                </tr>
+                                                <tr className="writer">
+                                                    <td>글쓴이 | 학과</td>
+                                                </tr>
+                                                <tr className="content">
+                                                    <td>내용</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
+                        </div>
                         }
                         <button className="carousel-next-btn">
                             <FontAwesomeIcon icon={faChevronRight} size="2x"/>
