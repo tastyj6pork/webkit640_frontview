@@ -12,6 +12,7 @@ import Graduate from "../../component/MainPage/Graduate/Graduate";
 import Review from "../../component/MainPage/Review/Review";
 import With from "../../component/MainPage/With/With";
 import Footer from "../../component/Footer/Footer";
+import Dday from "../../component/MainPage/Dday/Dday"
 
 function Main() {
     const [isNav, setIsNav] = useState(true);
@@ -78,7 +79,8 @@ function Main() {
             <header id="header" className="w3-display-container">
                 <div className="header-background"/>
                 <div className="w3-display-middle w3-center">
-                    <div>카운트다운</div>
+                    <h2>웹킷640 -기 모집기간</h2>
+                    <Dday/>
                     <button className="apply-btn"
                     onClick={()=>window.location.href="/studentapply"}>지원하기</button>
                 </div>
