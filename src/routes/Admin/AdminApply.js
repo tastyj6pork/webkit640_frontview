@@ -38,7 +38,7 @@ function AdminApply() {
             }
         } else if (selectValue === "schoolYear") {
             var tempSchoolYear = viewList.filter((content) => content.data.schoolYear === searchKeyword);
-            if (tempMajor.length !== 0) {
+            if (tempSchoolYear.length !== 0) {
                 setViewList(tempSchoolYear);
             }
         }
@@ -255,7 +255,7 @@ function AdminApply() {
     }
     const checkedLast = () => {
         let count=0;
-        viewList.map((items) => items.data.adminSelect && count ++)
+        viewList.forEach((items) => items.data.adminSelect && count ++)
         if(count === applyList.length) {return true}
         else {return false}
     }
@@ -263,14 +263,21 @@ function AdminApply() {
     const checkedTotalPut = (checked) => {
         console.log(checked);
         let count=0;
-        viewList.map((items) => items.data.adminSelect && count ++)
+        viewList.forEach((items) => !items.data.adminSelect && count++)
         if(checked) {
-            setApplicantList(viewList);
-            viewList.map((items) => items.checker = true);
+            console.log(count)
+            for(let i=0; i<count; i++) {
+                rawList[i].checker = true;
+                rawList.map((item) => !item.data.adminSelect && setApplicantList())
+            }
         }
         else {
-            viewList.map((items) => items.checker = false);
+            for(let i=0; i<count; i++) {
+                rawList[i].checker = false;
+            }
+            rawList.map((item) => !item.data.adminSelect && setApplicantList([]))
         }
+        console.log(applicantList);
     }
 
     const checkedLastPut = (checked) => {
@@ -318,7 +325,7 @@ function AdminApply() {
                     <TableHead>
                     <TableRow>
                         <TableCell align='center'>
-                            <Checkbox checked={checkedTotal()} onChange={(e) => checkedTotalPut(e.target.checked)}></Checkbox>
+                            <Checkbox onChange={(e) => checkedTotalPut(e.target.checked)}></Checkbox>
                         </TableCell>
                         <TableCell>name</TableCell>
                         <TableCell>email</TableCell>

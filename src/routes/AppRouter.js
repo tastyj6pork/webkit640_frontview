@@ -15,6 +15,7 @@ import KakaoRedirectHandler from '../service/KakaoRedirectHandler';
 import StudentSchedule from './Student/StudentSchedule';
 import Board from '../component/Board/Board';
 import LectureData from '../component/Board/LectureData';
+import Editor from '../component/Board/Editor';
 
 function AppRouter(){
     return (
@@ -37,6 +38,7 @@ function AppRouter(){
                     <Route path="/auth/oauth/kakao" element={<KakaoRedirectHandler/>}/>
                     <Route path="/board" element={<Board />} />
                     <Route path="/lecturedata" element={<LectureData />} />
+                    <Route path="/editor" element={<Editor />} />
             </Routes>
         </BrowserRouter>
     )

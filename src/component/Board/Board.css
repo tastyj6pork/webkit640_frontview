@@ -47,3 +47,94 @@
     width: 80%;
     margin-left: 152.8px;
 }
+.editor-box {
+    margin-top: 50px;
+}
+.editor-title {
+    margin-left: 170px;
+    width: 1280px;
+}
+.editor-title-name, .editor-title-writer, .editor-title-date {
+    list-style: none;
+    width: 90%;
+    height: 65px;
+    display: flex;
+    padding: 10px;
+}
+.editor-title-files {
+    list-style: none;
+    width: 90%;
+    height: 74px;
+    display: flex;
+    padding: 10px;
+}
+.editor-title-name{
+    border-top: 3px solid black;
+}
+.editor-title-writer {
+    border-top: 1px solid darkgray;
+}
+.editor-title-date {
+    border-top: 1px solid darkgray;
+}
+.editor-title-files {
+    border-top: 1px solid darkgray;
+    border-bottom: 1px solid darkgray;
+}
+.editor-title-name li, .editor-title-writer li, .editor-title-date li {
+    width: 180px;
+    height: 65px;
+    line-height: 45px;
+    padding: 0 0 0 30px;
+    font-size: 1rem;
+    font-weight: 500;
+}
+.editor-title-files li {
+    width: 158px;
+    height: 65px;
+    line-height: 45px;
+    padding: 0 0 0 30px;
+    font-size: 1rem;
+    font-weight: 500;
+}
+.editor-title-name input, .editor-title-writer input, .editor-title-date input {
+    width: 100%;
+    height: 45px;
+    border: 1px solid #ebebeb;
+    margin-top: 5px;
+}
+.editor-title-date input {
+    background: whitesmoke;
+    border: 1px solid #ebebeb;
+}
+.editor-submit-btn {
+    text-align: center;
+    position: relative;
+    top: 79px;
+    padding: 10px;
+}
+.editor-submit-btn button {
+    margin: 3px;
+    width: 100px;
+    height: 45px;
+    color: white;
+    display: inline-block;
+    border: none;
+    border-radius: 3px;
+}
+.editor-btn-delete {
+    background: #717171;
+}
+.editor-btn-enter {
+    background: #398ee5;
+}
+.editor-title-files input[type=file]::file-selector-button {
+    width: 150px;
+    height: 45px;
+    border: 1px solid #a1a1a1;
+    color: white;
+    background: #4d4d4d;
+}
+.editor-title-files input{
+    width: 700px;
+}
