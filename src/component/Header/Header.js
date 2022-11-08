@@ -150,7 +150,8 @@ function Header() {
                 </div>
                 {(isMediumScreen || isSmallScreen) && isHideClick &&
                     <HideMenu isLogin={isLogin} isAdmin={isAdmin}
-                    user={username} signout={sign_out}
+                    user={username} signout={sign_out} userpage={userpage}
+                    goMypage={goMypage}
                     style={{top:`${window.scrollY+70}px`}}/>
                 }
             </div>

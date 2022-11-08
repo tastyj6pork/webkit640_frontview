@@ -27,30 +27,25 @@
 .With .with-box h2 {
     font-size: 35px;
     font-weight: 600;
-    margin-bottom: 40px;
+    margin-bottom: 65px;
 }
 
 .With .with-box .wrapper {
     width: 100vw;
-    height: 70px;
-    border: solid black;
+    height: 40px;
     overflow: hidden;
 }
 
 .With .with-box #roller1, .With .with-box #roller2 {
     width: auto;
-    height: 70px;
+    height: 40px;
     float: left;
     position: absolute;
 }
 
 .With .with-box #roller1{
-    border: solid red;
-    
-}
-
-#roller2 {
-    border: solid blue;
+    line-height: 40px;
+    vertical-align: middle;
 }
 
 .With .with-box .wrapper ul {
@@ -66,30 +61,65 @@
 }
 
 .With .with-box .wrapper ul li, .With .with-box img {
-    height: 70px;
+    height: 40px;
 }
 
-.With .with-box img {
-    width: 130px;
+#roller1 ul {
+    border: solid red;
+}
+#roller2 ul {
+    border: solid blue;
+}
+
+.roller.original{
+    animation: 33s linear 0s infinite normal forwards running rollingleft1;
+}
+
+.roller.clone{
+    animation: 33s linear 0s infinite normal none running rollingleft2;
+}
+
+@keyframes rollingleft1 {
+    0% {
+        transform: translateX(0);
+    }
+    /* 50% {
+        transform: translateX(-100%);
+    }
+    50.01%{
+        transform: translateX(100%);
+    }
+    100%{
+        transform: translateX(0);
+    } */
+}
+
+@keyframes rollingleft2 {
+    0% {
+        transform: translateX(0);
+    }
+    /* 100% {
+        transform: translateX(-200%);
+    } */
 }
 
 @media only screen and (max-width:767px) {
-    .With .with-box {
-        width: 100%;
-        height: auto;
-        padding: 15px;
+    .With {
+        height: 250px;
     }
     .With .with-box h2 {
         font-size: 20px;
     }
-    .With .with-box img {
-        width: 100px;
-        height: 50px;
-        float: left;
-        margin-left: 50px;
+    .With .with-box .wrapper ul li, .With .with-box img {
+        height: 32px;
     }
     .With .with-box .wrapper {
-        width: 500px;
-        height: 50px;
+        border: solid black;
+    }
+    #roller1 {
+        border: solid red;
+    }
+    #roller2 {
+        border: solid blue;
     }
 }
