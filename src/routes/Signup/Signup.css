@@ -17,8 +17,8 @@
 }
 
 .Signup .signup-box {
-    width: 540px;
-    height: 720px;
+    width: 440px;
+    height: 580px;
     padding: 40px;
     background-color: white;
     border-radius: 9px;
@@ -26,33 +26,41 @@
 }
 
 .Signup .logo {
-    width: 60px;
-    height: 60px;
+    width: 45px;
     float: left;
+    margin-top: 10px;
     margin-right: 15px;
 }
 
 .Signup h3 {
-    line-height: 34px;
-    font-weight: 800;
+    line-height: 26px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.Signup label {
+    font-size: 13px;
 }
 
 .Signup form {
-    margin-top: 15px;
+    margin-top: 35px;
 }
 
 .Signup .form-group input{
-    width: 300px;
+    width: 220px;
+    font-size: 12px;
 }
 
 .Signup #affiliInput input{
-    width: 220px;
+    width: 140px;
 }
 
 .Signup .form-group select {
     float: left;
-    width: 70px;
+    width: 60px;
     height: 30px;
+    font-size: 12px;
+    margin-left: 10px;
     margin-right: 10px;
 }
 
@@ -71,12 +79,13 @@
 }
 
 .Signup .join-btn {
-    width: 140px;
-    height: 50px;
+    width: 120px;
+    height: 45px;
     margin-top: 20px;
     color: white;
     border: 0;
     border-radius: 10px;
+    font-size: 13px;
     font-weight: 600;
     background-color: rgb(29, 205, 171);
 }

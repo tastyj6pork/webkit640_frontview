@@ -17,41 +17,50 @@
 .Header .navbar-brand {
     float: left;
     margin: 0;
+    margin-top: 6px;
+    background-image: url("../../../public/images/logo2.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 47px;
+    height: 30px;
 }
 
 .Header #navBar {
     width: 100vw;
-    height: 90px;
-    padding: 25px;
+    height: 70px;
+    padding: 1%;
+    padding-left: 0;
     position: fixed;
 }
 
 .Header .nav-content {
-    width: 1480px;
-    height: 40px;
+    width: 1200px;
+    height: 30px;
     margin: auto;
 }
 
 .Header #menuList {
-    width: 1480px;
-    height: 40px;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    vertical-align: middle;
     margin-left: 0;
-    padding: 5px;
+    padding: 8px;
 }
 
 .Header #menuList ul {
     list-style: none;
     margin: 0;
     padding: 0;
-    margin-left: 250px;
+    margin-left: 200px;
 }
 
 .Header #menuList li {
     float: left;
     margin: 0;
     padding: 0;
-    margin-left: 70px;
-    font-size: 20px;
+    margin-left: 60px;
+    font-size: 15px;
 }
 
 .Header #menuList li a{
@@ -70,7 +79,6 @@
 
 .Header #menuList #loginState li{
     float: right;
-    margin-left: 40px;
 }
 
 .Header #menuList #logout li{
@@ -78,30 +86,40 @@
     margin-left: 40px;
 }
 
+.Header #menuList .login-btn, .Header #menuList .logout-btn, .Header #menuList .mypage-btn {
+    font-weight: 400;
+}
+
 .Header #userDetailMenu{
-    width: 160px;
-    height: 100px;
+    width: 130px;
+    height: 90px;
     background-color: white;
-    position: absolute;
+    position: fixed;
     top: 0;
 }
 
 .Header #userDetailMenu ul {
     list-style: none;
     margin: 0;
-    padding: 10px;
+    padding: 7px;
     text-align: center;
 }
 
 .Header #userDetailMenu li {
-    height: 35px;
-    line-height: 35px;
+    height: 15px;
+    line-height: 15x;
     text-align: middle;
+    margin-bottom: 10px;
+}
+
+.Header #userDetailMenu li button {
+    background-color: rgba(240, 248, 255, 0);
+    border: 0;
 }
 
 .Header #userDetailMenu li a {
     text-decoration: none;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 .Header #userDetailMenu li a:hover {

@@ -68,8 +68,6 @@ function ScrollNav(props) {
         }
         else if (!props.isOn && isDropdownClick && (isMediumScreen || isSmallScreen)){
             dropdownMenu.style.position = 'absolute';
-            if(isSmallScreen)
-                dropdownMenu.style.top = `60px`;
         }
         setIsOn(props.isOn);
         if(isMediumScreen || isSmallScreen){
@@ -108,20 +106,20 @@ function ScrollNav(props) {
                     }
                 </div>
             </div>
-                { (isMediumScreen || isSmallScreen) && isDropdownClick &&
-                    <div id="dropdownMenu" style={{left:`${dropdownX}px`}}>
-                        <ul>
-                            <li><button id="recruit"
-                            onClick={onClickEvent}>모집 안내</button></li>
-                            <li><button id="schedule"
-                            onClick={onClickEvent}>주요 일정</button></li>
-                            <li><button id="process"
-                            onClick={onClickEvent}>교육 정보</button></li>
-                            <li><button id="review"
-                            onClick={onClickEvent}>수강 후기</button></li>
-                        </ul>
-                    </div>
-                }
+            { (isMediumScreen || isSmallScreen) && isDropdownClick &&
+                <div id="dropdownMenu" style={{left:`${dropdownX}px`}}>
+                    <ul>
+                        <li><button id="recruit"
+                        onClick={onClickEvent}>모집 안내</button></li>
+                        <li><button id="schedule"
+                        onClick={onClickEvent}>주요 일정</button></li>
+                        <li><button id="process"
+                        onClick={onClickEvent}>교육 정보</button></li>
+                        <li><button id="review"
+                        onClick={onClickEvent}>수강 후기</button></li>
+                    </ul>
+                </div>
+            }
         </div>
     )
 }

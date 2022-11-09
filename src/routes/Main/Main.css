@@ -19,19 +19,30 @@
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
-    height: 800px;
+    height: 630px;
+}
+
+.Main #header h2{
+    font-size: 37px;
+    font-weight: 600;
+    margin-top: 40px;
 }
 
 .Main #header .apply-btn {
     width: 140px;
-    height: 60px;
-    margin-top: 100px;
+    height: 48px;
     border-radius: 50px;
-    font-size: 17px;
-    color: rgb(66, 66, 66);
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
     border: 0;
     box-shadow: 7px 9px 9px -5px rgb(168, 168, 168);
-    background-color: rgb(187, 248, 221);
+    background-color: rgba(44, 250, 209, 0.688);
+}
+
+.Main #header .apply-btn:hover {
+    background-color: rgba(237, 255, 251, 0.896);
+    color: rgba(44, 250, 209);
 }
 
 .Main .outro {
@@ -57,6 +68,8 @@
 .Main .outro span {
     font-size: 32px;
     font-weight: 600;
+    word-break: keep-all;
+    white-space: pre-wrap;
 }
 
 .Main .outro button {
@@ -82,7 +95,26 @@
     .Main #header .header-background {
         height: 520px;
     }
-    .Main .empty-space{
-        height: 80px;
+    .Main #header .apply-btn {
+        width: 110px;
+        height: 40px;
+        font-size: 12.5px;
+    }
+    .Main .outro {
+        height: 270px;
+    }
+    .Main .outro-background {
+        height: 270px;
+    }
+    .Main .outro span {
+        font-size: 23px;
+        font-weight: 600;
+    }
+    .Main .outro button {
+        font-size: 15px;
+        margin-top: 20px;
+    }
+    .Main #header h2{
+        font-size: 21px;
     }
 }

@@ -136,7 +136,7 @@ function Signup() {
             <StickyHeader/>
             <div className="signup-content w3-display-container">
                 <div className="signup-box w3-display-middle">
-                    <img className="logo"/>
+                    <img className="logo" src="/images/logo2.png"/>
                     <h3>회원가입</h3><br/><br/>
                     <form id="signupForm"
                     className="w3-display-middle needs-validation"

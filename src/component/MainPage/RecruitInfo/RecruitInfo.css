@@ -6,8 +6,8 @@
 
 .RecruitInfo {
     width: 100vw;
-    height: 900px;
-    margin-top: 140px;
+    height: 800px;
+    margin-top: 100px;
 }
 
 .RecruitInfo .recruit-content {
@@ -16,17 +16,17 @@
 }
 
 .RecruitInfo .recruit-box {
-    width: 1500px;
+    width: 1100px;
     height: auto;
 }
 
 .RecruitInfo .recruit-box span {
-    font-size: 50px;
+    font-size: 45px;
     color: black;
 }
 
 .RecruitInfo .recruit-box hr {
-    width: 468px;
+    width: 420px;
     height: 1px;
     border: 0;
     margin: 0;
@@ -34,7 +34,7 @@
 }
 
 .RecruitInfo .recruit-box .table {
-    width: 1000px;
+    width: 730px;
     height: auto;
     float: right;
     margin-top: 50px;
@@ -42,19 +42,38 @@
 }
 
 .RecruitInfo .recruit-box .table tr {
-    font-size: 23px;
+    font-size: 17px;
 }
 
 .RecruitInfo .recruit-box .table .label {
-    width: 190px;
-    padding-top: 40px;
-    padding-bottom: 40px;
+    width: 130px;
     font-weight: 600;
 }
 
+.RecruitInfo .recruit-box .table .label,
 .RecruitInfo .recruit-box .table .content {
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-top: 32px;
+    padding-bottom: 32px;
+}
+
+.RecruitInfo .recruit-box .btn-row {
+    width: 650px;
+    text-align: right;
+}
+
+.RecruitInfo .recruit-box .btn-row td {
+    border: 0;
+}
+
+.RecruitInfo .recruit-box .more-btn {
+    border: 0;
+    width: 115px;
+    height: 46px;
+    margin-right: 10px;
+    font-size: 15px;
+    color: rgb(7,1,38);
+    background-color: rgba(44, 250, 209, 0.688);
+    color: rgb(7, 1, 38);
 }
 
 @media only screen and (min-width:768px) and (max-width:1200px) {
@@ -71,7 +90,7 @@
 
 @media only screen and (max-width:767px) {
     .RecruitInfo {
-        height: 700px;
+        height: 750px;
     }
     .RecruitInfo .recruit-box {
         width: 100%;
@@ -101,5 +120,20 @@
     .RecruitInfo .recruit-box ul {
         margin-top: 10px;
         font-weight: 500;
+    }
+    .RecruitInfo .recruit-box .btn-row {
+        width: 100%;
+        text-align: right;
+    }
+    .RecruitInfo .recruit-box .btn-row td {
+        border: 0;
+    }
+    .RecruitInfo .recruit-box .more-btn {
+        border: 0;
+        width: 90px;
+        height: 40px;
+        margin-right: 10px;
+        font-size: 13px;
+        background-color: rgb(187, 248, 221);
     }
 }

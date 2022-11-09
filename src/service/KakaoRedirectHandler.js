@@ -1,11 +1,13 @@
 import { React, useEffect, useState } from "react";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { API_BASE_URL } from '../app-config'
 
 function KakaoRedirectHandler() {
     useEffect(()=>{
         async function kakaoLogin() {
-            await axios.get("http://192.168.232.69:8080/auth/oauth/kakao?code="+new URL(window.location.href).searchParams.get("code"))
+            console.log(API_BASE_URL);
+            await axios.get(`${API_BASE_URL}/auth/oauth/kakao?code=`+new URL(window.location.href).searchParams.get("code"))
             .then((res)=>{
                 if (res.data.error === "No Local User") {
                     window.location.href = "/signup?email=" + res.data.data[0].email;

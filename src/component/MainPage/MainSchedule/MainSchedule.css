@@ -6,8 +6,10 @@
 
 .MainSchedule {
     width: 100vw;
-    height: 1000px;
-    background-color: rgb(248, 251, 249);
+    height: 800px;
+    background-image: url("../../../../public/images/background01.png");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .MainSchedule .schedule-content {
@@ -16,18 +18,23 @@
 }
 
 .MainSchedule .schedule-box {
-    width: 1500px;
+    width: 1100px;
     height: auto;
 }
 
 .MainSchedule .schedule-box span {
     font-size: 40px;
     font-weight: 600;
-    color: black;
+    color: rgb(7, 1, 38);
 }
 
 .MainSchedule .schedule-box .mini-calender {
-    margin-top: 100px;
+    margin-top: 90px;
+    font-size: 17px;
+}
+
+.MainSchedule .schedule-box .mini-calender h3 {
+    font-size: 20px;
 }
 
 .MainSchedule .schedule-box .mini-calender .c-bar {
@@ -38,7 +45,7 @@
 }
 
 .MainSchedule .schedule-box .mini-calender .col {
-    height: 250px;
+    height: 230px;
     margin-right: 20px;
     padding: 40px;
     padding-top: 28px;
@@ -47,14 +54,10 @@
     box-shadow: 3px 4px 13px 1px rgb(198, 198, 198);
 }
 
-.MainSchedule .schedule-box .mini-calender .col p {
-    font-size: 20px;
-}
-
 .MainSchedule .schedule-box .warning {
     float: right;
-    margin-top: 50px;
-    font-size: 21px;
+    margin-top: 40px;
+    font-size: 19px;
     font-weight: 400;
 }
 
@@ -67,11 +70,13 @@
 
 @media only screen and (max-width:767px) {
     .MainSchedule{
-        height: 900px;
+        height: 970px;
+        background-image: url("../../../../public/images/background01-vertical.png");
+        background-repeat: no-repeat;
+        background-size: cover;
     }
     .MainSchedule .schedule-box {
         width: 100%;
-        height: auto;
         padding: 15px;
     }
     .MainSchedule .schedule-box span {
@@ -83,7 +88,7 @@
         margin-top: 20px;
     }
     .MainSchedule .schedule-box .mini-calender h3 {
-        font-size: 16px;
+        font-size: 18px;
     }
     .MainSchedule .schedule-box .mini-calender {
         font-size: 14px;

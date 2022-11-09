@@ -19,36 +19,35 @@
 }
 
 .ScrollNav #navBar {
-    height: 90px;
-    padding: 25px;
+    height: 70px;
     top: 0px;
-    position: relative;
     z-index: 3;
     box-shadow: 0 0 0 0 white;
 }
 
 .ScrollNav .nav-content {
     width: 900px;
+    height: 70px;
+    margin: 0;
     padding: 0;
     margin-left: 100px;
 }
 
 .ScrollNav #menuList {
-    position: absolute;
-    top: 18px;
-    height: 60px;
+    height: 100%;
     list-style: none;
     margin: 0;
-    padding: 0;
+    padding: 7px;
 }
 
 .ScrollNav #menuList li {
+    width: 130px;
+    height: 53px;
     float: left;
     margin: 0;
     padding: 0;
     margin-left: 10px;
     text-align: center;
-    font-size: 150%;
 }
 
 .ScrollNav #menuList li button:hover {
@@ -60,13 +59,13 @@
 }
 
 .ScrollNav #menuList li button {
-    width: 150px;
-    height: 60px;
-    display: inline-block;
-    vertical-align: middle;
+    width: 130px;
+    height: 53px;
     text-decoration: none;
+    font-size: 18px;
     border: 0px;
     color: rgb(66, 66, 66);
+    background-color: rgba(255, 255, 255, 0);
 }
 
 .ScrollNav .nav-content .dropdown-nav span {
@@ -85,7 +84,7 @@
 }
 
 .ScrollNav #dropdownMenu {
-    width: 170px;
+    width: 145px;
     height: auto;
     position: fixed;
 }
@@ -98,8 +97,8 @@
 
 .ScrollNav #dropdownMenu ul li {
     text-align: center;
-    font-size: 150%;
-    line-height: 60px;
+    font-size: 19px;
+    line-height: 50px;
     vertical-align: middle;
     background-color: white;
 }
@@ -114,8 +113,12 @@
 }
 
 @media only screen and (max-width:767px) {
+    .ScrollNav {
+        margin-top: 10px;
+    }
+    
     .ScrollNav #navBar {
-        width: 100%;
+        width: 100vw;
         height: 60px;
         padding: 10px;
         padding-left: 20px;
@@ -149,11 +152,9 @@
     }
 }
 
-@media only screen and (min-width:767px) and (max-width:1200px){
+@media only screen and (min-width:768px) and (max-width:1200px){
     .ScrollNav #navBar {
         width: 100vw;
-        height: 90px;
-        padding: 10px;
         padding-left: 35px;
         border-bottom: 1px solid lightgrey;
     }
@@ -164,10 +165,10 @@
     }
 
     .ScrollNav .nav-content .dropdown-nav span {
-        font-size: 27px;
+        font-size: 21px;
     }
 
     .ScrollNav #dropdownMenu {
-        top: 90px;
+        top: 70px;
     }
 }

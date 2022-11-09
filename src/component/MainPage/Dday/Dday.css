@@ -1,0 +1,53 @@
+.Dday * {
+    font-family: 'Pretendard-Regular';
+    letter-spacing: normal;
+}
+
+.Dday {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.Dday .dday-box label, .Dday .dday-box span {
+    font-size: 46px;
+    font-weight: 600;
+}
+
+.Dday .dday-box label {
+    width: 80px;
+    height: 75px;
+    background-color: white;
+    border-radius: 15px;
+    padding-top: 2px;
+}
+
+.Dday .dday-box .day-span {
+    margin-right: 20px;
+}
+
+.Dday .dday-box span {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+@media only screen and (max-width:767px) {
+    .Dday {
+        margin-top: 28px;
+        margin-bottom: 28px;
+    }
+    .Dday .dday-box label, .Dday .dday-box span {
+        font-size: 22px;
+    }
+    .Dday .dday-box label {
+        width: 41px;
+        height: 41px;
+        padding-top: 4px;
+    }
+    .Dday .dday-box .day-span {
+        margin-right: 7px;
+    }
+    .Dday .dday-box span {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+}
