@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { API_BASE_URL } from '../../app-config';
 import { call } from '../../service/ApiService';
 import '../Student/Student.css';
@@ -78,11 +78,19 @@ function StudentApply() {
         });
     },[])
 
-    const fileExtenstion = (e) => {
-        let pathpoint = e.value.lastIndexOf('.');
-        let filepoint = e.value.substring(pathpoint+1,e.length);
+    const fileInput = useRef();
+
+    const fileExtenstion = (obj) => {
+        let pathpoint = obj.target.value.lastIndexOf('.');
+        let filepoint = obj.target.value.substring(pathpoint+1,obj.length);
         let filetype = filepoint.toLowerCase();
-        console.log(filetype);
+        
+        if(filetype === "hwp" || filetype === "pdf" || filetype === "docs") {
+        } else {
+            alert("hwp, pdf, docs확장자 파일만 제출 가능합니다.");
+            fileInput.current.value = "";
+            return false;
+        }
     }
     
     return(<div className="apply-total">
@@ -113,7 +121,7 @@ function StudentApply() {
                 </li>
                 <li>
                     <p className="apply-text">첨부파일</p>
-                    <input className="apply-file" type="file" id="file" name="file" accept=".hwp, .pdf, .docs" onChange={(e) => {setFile(e.target.files[0]); fileExtenstion(e)}}></input>
+                    <input className="apply-file" type="file" id="file" name="file" ref={fileInput} accept=".hwp, .pdf, .docs" onChange={(e) => {setFile(e.target.files[0]); fileExtenstion(e)}}></input>
                     <p className="file-detail">Webkit640 지원양식은 공지사항에서 다운로드하세요.</p>
                 </li>
             </ul>
