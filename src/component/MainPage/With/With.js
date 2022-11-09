@@ -34,7 +34,7 @@ function With() {
     const isSmallScreen = useMediaQuery({query: '(max-width: 767px)'});
 
     useEffect(()=>{
-        console.log("[rollerWidth] useEffect")
+        //console.log("[rollerWidth] useEffect")
         setRollerWidth(document.querySelector('#roller1 ul').offsetWidth);
     }, [rollerWidth])
     
@@ -56,13 +56,13 @@ function With() {
             clone_ul_style.left = `${rollerWidth}px`;
             clone.classList.add('clone');
         }
-        console.log(document.querySelector('.wrapper'))
+        //console.log(document.querySelector('.wrapper'))
     })
 
     
     return(
         <div className="With">
-            {console.log("return,"+` ${rollerWidth}px`)}
+            {/* {console.log("return,"+` ${rollerWidth}px`)} */}
             <div className="with-content w3-display-container">
                 <div className="with-box w3-display-middle w3-center">
                     <h2>지금 참여중인 컨소시엄들</h2>

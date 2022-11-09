@@ -50,19 +50,12 @@
     vertical-align: middle;
 }
 
-.item-left, .item-right {
+.item {
     background-color: rgb(242, 255, 244);
     border-radius: 25px;
     width: 530px;
     height: 350px;
-}
-
-.item-left {
     margin-right: 15px;
-}
-
-.item-right {
-    margin-left: 15px
 }
 
 .Review .review-content .more-btn {

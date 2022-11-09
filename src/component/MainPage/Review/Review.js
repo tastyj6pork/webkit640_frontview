@@ -4,6 +4,7 @@ import { useMediaQuery } from 'react-responsive';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight, faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import "./Review.css"
+import Slider from 'styled-components';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -11,6 +12,15 @@ const Review = forwardRef((props, ref) => {
     const isBigScreen = useMediaQuery({query: '(min-width:1201px)'});
     const isMediumScreen = useMediaQuery({query: '(min-width:768px) and (max-width: 1200px)'});
     const isSmallScreen = useMediaQuery({query: '(max-width: 767px)'});
+
+    const settings = {
+        dots: false,
+        isFinite: false,
+        speed:1000,
+        autoplay:false,
+        slidesToShow: 2,
+        slidesToScroll: 1,
+    }
 
     return(
         <div className="Review" ref={ref}>
@@ -22,15 +32,65 @@ const Review = forwardRef((props, ref) => {
                             <FontAwesomeIcon icon={faChevronLeft} size="2x"/>
                         </button>
                         { (isBigScreen || isMediumScreen) &&
-                            <div className="carousel-content">
-                                <div className="citem">
+                            <Slider {...settings}>
+                                <div className="carousel-content">
+                                    <div className="citem">
+                                        <div className="item">
+                                            <div className="item-content">
+                                                <table>
+                                                    <tbody>
+                                                        <tr className="title-area">
+                                                            <td className="title-td"><h2>제목</h2></td>
+                                                            <td className="image-td"><img src="#"/></td>
+                                                        </tr>
+                                                        <tr className="writer">
+                                                            <td>글쓴이 | 학과</td>
+                                                        </tr>
+                                                        <tr className="content">
+                                                            <td>내용</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="carousel-content">
+                                    <div className="citem">
+                                        <div className="item">
+                                            <div className="item-content">
+                                                <table>
+                                                    <tbody>
+                                                        <tr className="title-area">
+                                                            <td className="title-td"><h2>제목</h2></td>
+                                                            <td className="image-td"><img src="#"/></td>
+                                                        </tr>
+                                                        <tr className="writer">
+                                                            <td>글쓴이 | 학과</td>
+                                                        </tr>
+                                                        <tr className="content">
+                                                            <td>내용</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </Slider>
+                            }
+                            { (isSmallScreen) &&
+                                <div className="carousel-content">
+                                    <div className="citem">
                                     <div className="item-left">
                                         <div className="item-content">
                                             <table>
                                                 <tbody>
                                                     <tr className="title-area">
-                                                        <td className="title-td"><h2>제목</h2></td>
-                                                        <td className="image-td"><img src="#"/></td>
+                                                        <td className="title-td">
+                                                            <h2>제목</h2></td>
+                                                        <td className="image-td">
+                                                            <img src="#"/></td>
                                                     </tr>
                                                     <tr className="writer">
                                                         <td>글쓴이 | 학과</td>
@@ -42,36 +102,9 @@ const Review = forwardRef((props, ref) => {
                                             </table>
                                         </div>
                                     </div>
-                                    <div className="item-right"/>
                                 </div>
                             </div>
-                        }
-                        { (isSmallScreen) &&
-                            <div className="carousel-content">
-                                <div className="citem">
-                                <div className="item-left">
-                                    <div className="item-content">
-                                        <table>
-                                            <tbody>
-                                                <tr className="title-area">
-                                                    <td className="title-td">
-                                                        <h2>제목</h2></td>
-                                                    <td className="image-td">
-                                                        <img src="#"/></td>
-                                                </tr>
-                                                <tr className="writer">
-                                                    <td>글쓴이 | 학과</td>
-                                                </tr>
-                                                <tr className="content">
-                                                    <td>내용</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        }
+                            }
                         <button className="carousel-next-btn">
                             <FontAwesomeIcon icon={faChevronRight} size="2x"/>
                         </button>
