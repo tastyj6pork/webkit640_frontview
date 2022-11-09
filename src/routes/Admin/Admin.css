@@ -1,3 +1,7 @@
+.container {
+    max-width: 100%;
+    min-width: 1486px;
+}
 .apply-total {
     min-width: 470px;
 }
