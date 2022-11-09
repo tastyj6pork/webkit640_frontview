@@ -14,13 +14,14 @@
 }
 
 .Dday .dday-box label {
+    width: 80px;
+    height: 75px;
     background-color: white;
     border-radius: 15px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-top: 2px;
 }
 
-.Dday .dday-box .day {
+.Dday .dday-box .day-span {
     margin-right: 20px;
 }
 
