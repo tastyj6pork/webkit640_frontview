@@ -1,424 +1,426 @@
 import axios from 'axios';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { API_BASE_URL } from '../../app-config';
-import { call } from '../../service/ApiService';
 import '../Admin/Admin.css';
-import ApplyItems from './ApplyItems';
-import ApplySelector from './ApplySelector';
+import { Button, Checkbox, FormControl, Grid, InputLabel, MenuItem, Paper, Select, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography } from '@mui/material';
+import { Container, Table } from 'react-bootstrap';
 
 function AdminApply() {
-    const [applyList, setApplyList] = useState([
-        {
-            // id : 1,
-            name : "홍길동",
-            school : "메사추세츠공과대학교",
-            major : "컴퓨터공학과",
-            schoolNumber : "20226789",
-            schoolYear: "4",
-            email : "webkit640@google.co.kr"
-        },
-        {
-            // id : 1,
-            name : "홍길동2",
-            school : "메사추세츠공과대학교",
-            major : "소프트웨어공학과",
-            schoolNumber : "20226789",
-            schoolYear: "4",
-            email : "webkit640@google.co.kr"
-        },
-        {
-            // id : 2,
-            name : "김길동",
-            school : "메사추세츠공과대학교",
-            major : "소프트웨어공학과",
-            schoolNumber : "20226789",
-            schoolYear: "1",
-            email : "webkit123@google.co.kr"
-        },
-        {
-            // id : 3,
-            name : "이길동",
-            school : "메사추세츠공과대학교",
-            major : "광시스템공학과",
-            schoolNumber : "20226789",
-            schoolYear: "1",
-            email : "webkit456@google.co.kr"
-        },
-        {
-            // id : 4,
-            name : "박길동",
-            school : "메사추세츠공과대학교",
-            major : "건축학과",
-            schoolNumber : "20226789",
-            schoolYear: "2",
-            email : "webkit789@google.co.kr"
-        },
-        {
-            // id : 5,
-            name : "오길동",
-            school : "메사추세츠공과대학교",
-            major : "응용수리데이터과학과",
-            schoolNumber : "20226789",
-            schoolYear: "3",
-            email : "webkit321@google.co.kr"
-        },
-        {
-            // id : 6,
-            name : "고길동",
-            school : "메사추세츠공과대학교",
-            major : "컴퓨터공학과",
-            schoolNumber : "20226789",
-            schoolYear: "3",
-            email : "webkit8910@google.co.kr"
+    //state 부분
+    const [rawList, setRawList] = useState([]);
+    const [viewList, setViewList] = useState([]);
+    const [applicantList, setApplicantList] = useState([]);
+    const [applyList, setApplyList] = useState([]);
+    const [searchKeyword, setSearchKeyword] = useState("");
+    const [selectValue, setSelectValue] = useState("school");
+
+    //Effect 부분
+    useEffect(()=>{
+        mainRenderingAxios();
+    },[])
+
+    useEffect(()=>{
+        console.log(searchKeyword);
+        if (searchKeyword === "" || searchKeyword === null) {
+            setViewList([]);
+            innerEffect();
         }
-    ])
+        else if (selectValue === "school") {
+            var tempList = viewList.filter((content)=>content.data.school === searchKeyword)
+            if (tempList.length !== 0) {
+                setViewList(tempList);
+            }
+        }
+        else if (selectValue === "major") {
+            var tempMajor = viewList.filter((content) => content.data.major === searchKeyword);
+            if (tempMajor.length !== 0) {
+                setViewList(tempMajor)
+            }
+        } else if (selectValue === "schoolYear") {
+            var tempSchoolYear = viewList.filter((content) => content.data.schoolYear === searchKeyword);
+            if (tempSchoolYear.length !== 0) {
+                setViewList(tempSchoolYear);
+            }
+        }
+    },[searchKeyword])
 
-    //const [applyList, setApplyList] = useState([]);
-    
-    // useEffect(() => {
-    //     call("/apply/all","GET",null).then((res)=>{
-    //         console.log(res);
-    //         setApplyList(res);
-    //     })
-    // }, [])
+    useEffect(()=>{
+        rawList.map((content,idx)=>{
+            setViewList(prevList => [...prevList,{
+                id:idx,
+                data:content.data,
+                checker:false,
+                position:1
+            }])
+        })
+    },[rawList])
 
-    const [showList, setShowList] = useState([]); // 지원학생 목록 리스트
-    const [selectList, setSelectList] = useState([]); // 선발 목록 리스트
-    const [isChecked, setIsChecked] = useState(false); // 체크 선택 여부 리스트
-    const [checkItems, setCheckItems] = useState([]); // 체크 선택 목록 리스트
-    const [nameEmail, setNameEmail] = useState([]);
-
-    const [filterList, setFilterList] = useState([]);
-    const [studentSearch, setStudentSearch] = useState();
-    const [schoolSearch, setSchoolSearch] = useState();
-    const [majorSearch, setMajorSearch] = useState();
-    const [schoolYearSearch, setSchoolYearSearch] = useState();
-
-    const [searchList, setSearchList] = useState([]);
-    const [studentFlag, setStudentFlag] = useState(false);
-    const [schoolFlag, setSchoolFlag] = useState(false);
-    const [majorFlag, setMajorFlag] = useState(false);
-    const [schoolYearFlag, setSchoolYearFlag] = useState(false);
-
-    useEffect(() => {
-        let list = [];
-        applyList.forEach((item, i) => {
-            item.checked = false;
-            list = [...list, item];
+    const innerEffect = () => {
+        rawList.map((content,idx)=>{
+            setViewList(prevList => [...prevList,{
+                id:idx,
+                data:content.data,
+                checker:false,
+                position:1
+            }])
         });
-        setShowList(list);
-    },[applyList])
-
-    // useEffect(() => {
-    //     call("/apply/all","GET",null).then((res)=>{
-    //         console.log(res);
-    //         setApplyList(res.data);
-    //     })
-    // }, [])
-
-    const ACCESS_TOKEN = "ACCESS_TOKEN";
-    const accessToken = localStorage.getItem(ACCESS_TOKEN);
-
-    //선발완료 누를시 체크박스에 담긴 데이터 아래로 내리는 함수
-    function SelectFinish() {
-        setSelectList([...selectList, ...checkItems]);
-        let showTestList = [...showList];
-        for (let i=0; i<checkItems.length; i++) {
-            showTestList = showTestList.filter(content => content.email !== checkItems[i].email);
-        }
-        setShowList(showTestList);
-        console.log(checkItems.length);
-        console.log(checkItems);
-        console.log(showList);
-        setCheckItems([]);
     }
 
-    //선택버튼 작동 시 아래로 데이터 내리는 함수 -ㅈㅇ
-    function fileListDown(content) {
-        setSelectList([...selectList, content]);
-        setShowList(showList.filter(showList => showList !== content));
-    }
-
-    //삭제버튼 작동 시 위로 데이터 올리는 함수 -ㅈㅇ    
-    function fileListUp(content) {
-        setShowList([...showList, content]);
-        setSelectList(selectList.filter(selectList => selectList !== content));
-    }
-
-    //체크박스 true일때의 데이터만 저장해주는 함수
-    function fileCheckList(content) {
-        if(content.checked) {
-            setCheckItems([...checkItems, content]);
-        } else if (!content.checked && checkItems.find(one => one === content)) {
-            const filter = checkItems.filter(one => one !== content)
-            setCheckItems([...filter])
-        }
-    }
-    
-    function onCheckAll(checkAll) {
-        
-        if(checkAll) {
-            setCheckItems(showList);
-            for(let i=0; i<showList.length; i++) {
-                showList[i].checked = true; 
+    const mainRenderingAxios = async () => {
+        await axios.get(API_BASE_URL + "/apply/all",{
+            headers:{
+                Authorization: "Bearer " + localStorage.getItem("ACCESS_TOKEN")
             }
-        }
-        else {
-            setCheckItems([]);
-            for(let i=0; i<showList.length; i++) {
-                showList[i].checked = false; 
-            }
-        }
-    }
-
-    function onChangeEvent(e) {
-        if(e.target.value.length > 0) {
-            switch(e.target.id){
-                case 'student':
-                    setStudentSearch(e.target.value);
-                    setStudentFlag(true);
-                    break;
-                case 'school':
-                    setSchoolSearch(e.target.value);
-                    setSchoolFlag(true);
-                    break;
-                case 'major':
-                    setMajorSearch(e.target.value);
-                    setMajorFlag(true);
-                    break;
-                case 'schoolYear':
-                    setSchoolYearSearch(e.target.value);
-                    setSchoolYearFlag(true);
-                    break;
-            }
-        }
-        else {
-            if(e.target.id === 'student') setStudentFlag(false);
-            if(e.target.id === 'school') setSchoolFlag(false);
-            if(e.target.id === 'major') setMajorFlag(false);
-            if(e.target.id === 'schoolYear') setSchoolYearFlag(false);
-        }
-    }
-
-    //다중 조건 검색 필터링 시켜주는 함수
-    function filterData(none) {
-        let list = []
-        let tmp2List = []
-        if(none === 'none') {
-            console.log('none in');
-            showList.filter((item)=>{
-                tmp2List = [...tmp2List, item];
-            })
-        }
-        else {
-            console.log('option in')
-            let tmpList = []
-            list = showList;
-            if(studentFlag) {
-                console.log("studentFlag in")
-                tmp2List = [];
-                list.filter((item)=>{
-                    console.log("studentFlag filter in");
-                    if(item.name.toLowerCase().includes(studentSearch.toLowerCase())){
-                        console.log(item)
-                        tmpList = [...tmpList, item];
-                        tmp2List = [...tmp2List, item];
-                        list = tmpList;
-                    }
-                })
-            }
-            if(schoolFlag) {
-                console.log("schoolFlag in")
-                console.log(list)
-                tmp2List = [];
-                list.filter((item)=>{
-                    console.log("schoolFlag filter in");
-                    console.log(item)
-                    if(item.school.toLowerCase().includes(schoolSearch.toLowerCase())){
-                        tmpList = [...tmpList, item];
-                        tmp2List = [...tmp2List, item];
-                        list = tmpList; 
-                    }
-                })
-            }
-            if(majorFlag) {
-                console.log("majorFlag in")
-                console.log(list)
-                tmp2List = [];
-                list.filter((item)=>{
-                    console.log("majorFlag filter in");
-                    console.log(item)
-                    if(item.major.toLowerCase().includes(majorSearch.toLowerCase())){
-                        tmpList = [...tmpList, item];
-                        tmp2List = [...tmp2List, item];
-                        list = tmpList;
-                    }
-                })
-            }
-            if(schoolYearFlag) {
-                console.log("schoolYearFlag in")
-                console.log(list)
-                tmp2List = [];
-                list.filter((item)=>{
-                    console.log("schoolYearFlag filter in");
-                    console.log(item)
-                    if(item.schoolYear.toLowerCase().includes(schoolYearSearch.toLowerCase())){
-                        tmpList = [...tmpList, item];
-                        tmp2List = [...tmp2List, item];
-                        list = tmpList; 
-                    }
-                })
-            }
-        }
-        console.log(tmp2List);
-        setSearchList(tmp2List);
-    }
-
-    function onClickSearchBtn() {
-        if(!studentFlag && !schoolFlag && !majorFlag && !schoolYearFlag) filterData('none');
-        else filterData();
-        setShowList(searchList);
-    }
-
-    async function ConfirmBtn() {
-        console.log(selectList);
-        var submitList = [];
-        selectList.map((data)=>{
-            submitList.push({nameEmail:data.email});
-        })
-        console.log(submitList);
-
-        //setNameEmail(selectList.email)
-        
-        await axios({
-            method:"POST",
-            url:API_BASE_URL + "/apply/select",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": "Bearer " + accessToken,
-            },
-            data: submitList
-        }).then((res) => {
-            if(res.status === 200) {
-                console.log(res);
-                alert("POST SUCCESS");
-                window.location.href = "/";
-            }
-        })
-    }
-
-    async function zipDownload() {
-        await axios({
-            method:"POST",
-            url:API_BASE_URL + "/apply/zip-download",
-            responseType: "blob",
-            data: null,
-            headers: {
-                "Authorization": "Bearer " + accessToken,
-            }, 
         }).then((res)=>{
-            console.log(res.headers);
+            console.log(res.data); //받은 데이터
+
+            //데이터 형식에 맞춰서 사용할 state 구성
+            res.data.data.map((content,idx)=>{
+                setRawList(prevList => [...prevList,{
+                    id:idx,
+                    data:content, // -> 백에서 받아온 데이터
+                    checker:false,  // -> 체크박스 처리할부분
+                    position:1 // -> applicant 부분
+                }]);
+            })
+        })
+    }
+
+
+    //Event 부분
+    const searchOnClickEvent = (e) => {
+        //단일 검색
+
+    }
+
+    const resetList = (e) => {
+        window.location.href ="/adminapply"
+    }
+
+    const fileDownloadClickEvent = (e) => {
+        const email = document.getElementById(e.target.dataset.idx).innerText; // 테이블에서 아이디 (0,1,2...) 통해서 이메일 값 가져옴
+        axios({
+            headers:{
+                Authorization: "Bearer " + localStorage.getItem("ACCESS_TOKEN")
+            },
+            method:"POST",
+            url: API_BASE_URL + "/apply/download",
+            data: {email: email}, //이메일 데이터 사용
+            responseType: "blob"
+        }).then((res)=>{
             const blob = new Blob([res.data]);
-
             const fileObjectUrl = window.URL.createObjectURL(blob);
-
             const link = document.createElement("a");
             link.href = fileObjectUrl;
             link.style.display = "none";
-
-            const extractDownloadFilename = (res) =>{
-                const disposition = res.headers["content-disposition"];
-                console.log(disposition)
-                const filename = decodeURI(
-                    disposition.match(/filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/)[1]
-                    .replace(/['"]/g,"")
+            const extractDownloadFilename = (response) => {
+                const disposition = response.headers["content-disposition"];
+                const fileName = decodeURI(
+                disposition
+                    .match(/filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/)[1]
+                    .replace(/['"]/g, "")
                 );
-                return filename;
-            }
+                return fileName;
+            };
             link.download = extractDownloadFilename(res);
+            
             document.body.appendChild(link);
             link.click();
             link.remove();
+            window.URL.revokeObjectURL(fileObjectUrl);
         })
     }
+    const zipDownload = () => {
+        axios({
+            headers:{
+                Authorization: "Bearer " + localStorage.getItem("ACCESS_TOKEN")
+            },
+            method:"POST",
+            responseType:"blob",
+            url:API_BASE_URL + "/apply/zip-download"
+        }).then((res)=>{
+            console.log(res);
+            const blob = new Blob([res.data]);
+            const fileObjectUrl = window.URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.href = fileObjectUrl;
+            link.style.display = "none";
+            const extractDownloadFilename = (response) => {
+                const disposition = response.headers["content-disposition"];
+                const fileName = decodeURI(
+                disposition
+                    .match(/filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/)[1]
+                    .replace(/['"]/g, "")
+                );
+                return fileName;
+            };
+            link.download = extractDownloadFilename(res);
+            
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+            window.URL.revokeObjectURL(fileObjectUrl);
+        })
+    }
+
+    const applicantSelectEvent = (e) => {
+        console.log(e.target.dataset.idx);
+        const email = document.getElementById(e.target.dataset.idx).innerText;
+        console.log(email);
+
+        axios({
+            headers:{
+                Authorization: "Bearer "+localStorage.getItem("ACCESS_TOKEN")
+            },
+            url:API_BASE_URL + "/apply/select",
+            method:"POST",
+            data:[{nameEmail:email}]
+        }).then((res)=>{
+            console.log(res.data);
+            window.location.href = "/adminapply"
+        })
+    }
+    const selectorApplicantList = (arg,event) => {
+        
+        if (event.target.checked) {
+            // let tempList = applicantList;
+            // tempList[arg].checker = true;
+            // setApplicantList(tempList);
+            setApplicantList(prevList => [...prevList, rawList[arg]])
+        } else {
+            const temp = applicantList.filter(content => content.id !== arg)
+            setApplicantList(temp);
+        }
+    }
+
+    const selectorApplyList = (arg,event) => {
+        if (event.target.checked) {
+            setApplyList(prevList => [...prevList, rawList[arg]])
+        } else {
+            const temp = applyList.filter(content => content.id !== arg)
+            setApplyList(temp);
+        }
+    }
+
+    const checkerApplicantApply = (e) => {
+        var sendData = [];
+        applicantList.map((row,idx)=>{
+            sendData.push({nameEmail:row.data.email});
+        })
+        console.log(sendData);
+        axios({
+            headers:{
+                Authorization: "Bearer " + localStorage.getItem("ACCESS_TOKEN")
+            },
+            data: sendData,
+            method:"POST",
+            url: API_BASE_URL + "/apply/select"
+        }).then((res)=>{
+            console.log(res);
+            window.location.href = "/adminapply";
+        })
+    }
+    const cancelApplicantApply = (e) => {
+        var sendData = [];
+        applyList.map((row,idx)=> {
+            sendData.push({nameEmail:row.data.email});
+        });
+        axios({
+            headers:{
+                Authorization: "Bearer " + localStorage.getItem("ACCESS_TOKEN")
+            },
+            data: sendData,
+            method:"POST",
+            url: API_BASE_URL + "/apply/select"
+        }).then((res)=>{
+            console.log(res);
+            window.location.href = "/adminapply";
+        })
+    }
+    const onChangeKeyword = (e) => {
+        console.log(e.target.value);
+        setSearchKeyword(e.target.value);
+    }
+    const onChangeSelect = (e) => {
+        console.log(e.target.value);
+        setSelectValue(e.target.value);
+    }
+
+    // Check Box
+    const checkedTotal = () => {
+        let count=0;
+        viewList.forEach((items) => !items.data.adminSelect && count++)
+        if(count === applicantList.length) {return true}
+        else {return false}   
+    }
+    const checkedLast = () => {
+        let count=0;
+        viewList.forEach((items) => items.data.adminSelect && count ++)
+        if(count === applyList.length) {return true}
+        else {return false}
+    }
+
+    const checkedTotalPut = (checked) => {
+        console.log(checked);
+        let count=0;
+        viewList.forEach((items) => !items.data.adminSelect && count++)
+        if(checked) {
+            console.log(count)
+            for(let i=0; i<count; i++) {
+                rawList[i].checker = true;
+                rawList.map((item) => !item.data.adminSelect && setApplicantList())
+            }
+        }
+        else {
+            for(let i=0; i<count; i++) {
+                rawList[i].checker = false;
+            }
+            rawList.map((item) => !item.data.adminSelect && setApplicantList([]))
+        }
+        console.log(applicantList);
+    }
+
+    const checkedLastPut = (checked) => {
+        
+    }
+
+    //Rendering 부분
+    return(
+    <Grid container spacing={3}>
+        <Grid item xs={12}>
+            <Typography variant='h2' component="h2">
+                <strong>지원자 관리</strong>
+            </Typography>
+        </Grid>
+        <Grid item xs={8}>
+        </Grid>
+        <Grid item xs={4}>
+            <FormControl variant='standard'>
+                <InputLabel id="demo-simple-select-standard-label">검색</InputLabel>
+                    <Select
+                    labelId="demo-simple-select-standard-label"
+                    value={selectValue}
+                    id="demo-simple-select-standard"
+                    onChange={onChangeSelect}
+                    label="Age"
+                    >
+                        <MenuItem value="school">학교</MenuItem>
+                        <MenuItem value="major">학과</MenuItem>
+                        <MenuItem value="schoolYear">학년</MenuItem>
+                    </Select>
+            </FormControl>
+            <TextField
+            onChange = {onChangeKeyword}
+            style={{marginLeft:"10px",marginRight:"15px"}}
+            id="standard-search"
+            label="검색"
+            type="search"
+            variant="standard"
+            />
+            <Button variant='contained' onClick={zipDownload} size="large">ALL DOWNLOAD</Button>
+        </Grid>
+        <Grid item xs={12}>
+            <TableContainer component={Paper}>
+                <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                    <TableHead>
+                    <TableRow>
+                        <TableCell align='center'>
+                            <Checkbox onChange={(e) => checkedTotalPut(e.target.checked)}></Checkbox>
+                        </TableCell>
+                        <TableCell>name</TableCell>
+                        <TableCell>email</TableCell>
+                        <TableCell>school</TableCell>
+                        <TableCell>major</TableCell>
+                        <TableCell>schoolYear</TableCell>
+                        <TableCell>Apply Document</TableCell>
+                        <TableCell>SELECT</TableCell>
+                    </TableRow>
+                </TableHead>
+            <TableBody>
+            {/* 아래 부분은 받아온 데이터를 map으로 표현해줌 */}
+                {viewList.map((row,idx) => (
+                    !row.data.adminSelect &&
+                    <TableRow
+                    key={row.name}
+                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                    hover={true}
+                    >
+                        <TableCell align='center'>
+                            <Checkbox id={"check"+idx} onChange={(e)=>{selectorApplicantList(idx,e)}}></Checkbox>
+                        </TableCell>
+                        <TableCell>{row.data.name}</TableCell>
+                        <TableCell id={idx}>{row.data.email}</TableCell>
+                        <TableCell>{row.data.school}</TableCell>
+                        <TableCell>{row.data.major}</TableCell>
+                        <TableCell>{row.data.schoolYear}</TableCell>
+                        <TableCell>
+                            <Button variant='outlined' onClick={fileDownloadClickEvent} data-idx={idx}>DOWNLOAD</Button>
+                        </TableCell>
+                        <TableCell>
+                            <Button variant='outlined' onClick={applicantSelectEvent} data-idx={idx}>SELECT</Button>
+                        </TableCell>
+                    </TableRow>
+          ))}
+          {/* 여기까지 */}
+        </TableBody>
+      </Table>
+    </TableContainer>
+    </Grid>
+    <Grid item xs={5}></Grid>
+    <Grid item xs={6}>
+        <Button onClick={(e)=>{checkerApplicantApply(e)}} variant='contained'>일괄 등록</Button>
+        <Button color='warning' sx={{marginLeft:1}} onClick={(e)=>{cancelApplicantApply(e)}} variant='contained'>일괄 취소</Button>
+    </Grid>
     
-    return(<div className="apply-total">
-        {/* <button onClick={zipDownload}>asdfasdf</button> */}
-        <div className="apply-title">
-            <h1>지원관리</h1>
-        </div>
-        <div className="apply-insert">
-            <div className="apply-first-label">
-                <h3>지원학생 목록</h3>
-            </div>
-            <div className="apply-insert-algin">
-                <input className="apply-insert-search" placeholder="   이름을 입력해 주세요"
-                onChange={onChangeEvent} id="student"></input>
-                <input className="apply-insert-search" placeholder="   학교를 입력해 주세요"
-                onChange={onChangeEvent} id="school"></input>
-                <input className="apply-insert-search" placeholder="   학과를 입력해 주세요"
-                onChange={onChangeEvent} id="major"></input>
-                <input className="apply-insert-search" placeholder="   학년을 입력해 주세요"
-                onChange={onChangeEvent} id="schoolYear"></input>
-                <button className="apply-search-btn" onClick={onClickSearchBtn}>조회</button>
-            </div>
-        </div>
-        <div className="apply-insert-table">
-            <ul>
-                <input className="items-checkbox" type="checkbox" onChange={(e) => onCheckAll(e.target.checked)}
-                checked={checkItems.length === showList.length ? true : false}></input>
-                <li className="table-first">이름</li>
-                <li className="table-second">학교</li>
-                <li className="table-third">학과</li>
-                <li className="table-fourth">학년</li>
-                <li className="table-fifth">학번</li>
-                <li className="table-sixth">이메일</li>
-                <li className="table-seventh">지원파일</li>
-                <li className="table-last">상태</li>
-            </ul>
-        </div>
-        <div className="apply-items-box">
-            {showList.map((items, index) => (
-                <ApplyItems
-                items={items}
-                key={index}
-                fileListDown={fileListDown}
-                fileCheckList={fileCheckList}
-                />
-            ))}
-        </div>
-        <div className="apply-selection">
-            <button className="apply-select-btn" onClick={SelectFinish}>선발완료</button>
-        </div>
-        <div className="apply-select-container">
-            <div className="apply-last-label">
-                <h3>선발 목록</h3>
-            </div>
-            <div className="apply-insert-table">
-            <ul>
-                <input className="items-checkbox" type="checkbox" style={{dispaly:"none"}}></input>
-                <li className="table-first">이름</li>
-                <li className="table-second">학교</li>
-                <li className="table-third">학과</li>
-                <li className="table-fourth">학년</li>
-                <li className="table-fifth">학번</li>
-                <li className="table-sixth">이메일</li>
-                <li className="table-seventh">지원파일</li>
-                <li className="table-last">상태</li>
-            </ul>
-        </div>
-        <div className="apply-items-box">
-            {selectList.map((itemes, j) => (
-                <ApplySelector
-                itemes={itemes}
-                key={j}
-                fileListUp={fileListUp}
-                />
-            ))}
-        </div>
-            <div className="apply-finish"><button className="apply-finish-btn" onClick={ConfirmBtn}>선발 확정</button></div>
-        </div>
-    </div>)
+    <Grid item xs={12}>
+            <TableContainer component={Paper}>
+                <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                    <TableHead>
+                    <TableRow>
+                        <TableCell align='center'>
+                            <Checkbox checked={checkedLast()} onChange={(e) => checkedLastPut(e.target.checked)}></Checkbox>
+                        </TableCell>
+                        <TableCell>name</TableCell>
+                        <TableCell>email</TableCell>
+                        <TableCell>school</TableCell>
+                        <TableCell>schoolNumber</TableCell>
+                        <TableCell>schoolYear</TableCell>
+                        <TableCell>Apply Document</TableCell>
+                        <TableCell>CANCEL</TableCell>
+                    </TableRow>
+                </TableHead>
+            <TableBody>
+            {/* 아래 부분은 받아온 데이터를 map으로 표현해줌 */}
+                {viewList.map((row,idx) => (
+                    row.data.adminSelect &&
+                    <TableRow
+                    key={row.name}
+                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                    hover={true}
+                    >
+                        <TableCell align='center'>
+                            <Checkbox id={"check"+idx} onChange={(e)=>{selectorApplyList(idx,e)}}></Checkbox>
+                        </TableCell>
+                        <TableCell>{row.data.name}</TableCell>
+                        <TableCell id={idx}>{row.data.email}</TableCell>
+                        <TableCell>{row.data.school}</TableCell>
+                        <TableCell>{row.data.schoolNumber}</TableCell>
+                        <TableCell>{row.data.schoolYear}</TableCell>
+                        <TableCell>
+                            <Button variant='outlined' onClick={fileDownloadClickEvent} data-idx={idx}>DOWNLOAD</Button>
+                        </TableCell>
+                        <TableCell>
+                            <Button variant='outlined' onClick={applicantSelectEvent} data-idx={idx}>CANCEL</Button>
+                        </TableCell>
+                    </TableRow>
+          ))}
+          {/* 여기까지 */}
+        </TableBody>
+      </Table>
+    </TableContainer>
+    </Grid>
+    </Grid>
+    )
 }
 
 export default AdminApply;

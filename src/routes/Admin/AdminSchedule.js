@@ -4,6 +4,7 @@ import interactionPlugin from '@fullcalendar/interaction'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { API_BASE_URL } from '../../app-config';
+import { Grid, Typography } from '@mui/material';
 
 function Adminschedule() {
   const [auth, setAuth] = useState(localStorage.getItem("ACCESS_TOKEN"));
@@ -125,12 +126,14 @@ function Adminschedule() {
     />
   </div> : "NO ADMIN";
   return (
-    <div className="App">
-        <div className="apply-title">
-            <h1>일정관리</h1>
-        </div>
+    <Grid container spacing={3}>
+      <Grid item xs={12}>
+        <Typography variant='h2' component="h2">
+          <strong>일정관리</strong>
+        </Typography>
+      </Grid>
       {showCalendar}
-    </div>
+    </Grid>
   );
 }
 

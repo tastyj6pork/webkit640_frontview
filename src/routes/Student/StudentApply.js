@@ -77,6 +77,13 @@ function StudentApply() {
             }
         });
     },[])
+
+    const fileExtenstion = (e) => {
+        let pathpoint = e.value.lastIndexOf('.');
+        let filepoint = e.value.substring(pathpoint+1,e.length);
+        let filetype = filepoint.toLowerCase();
+        console.log(filetype);
+    }
     
     return(<div className="apply-total">
         <div className="apply-title">
@@ -106,7 +113,7 @@ function StudentApply() {
                 </li>
                 <li>
                     <p className="apply-text">첨부파일</p>
-                    <input className="apply-file" type="file" id="file" name="file" onChange={(e) => {setFile(e.target.files[0])}}></input>
+                    <input className="apply-file" type="file" id="file" name="file" accept=".hwp, .pdf, .docs" onChange={(e) => {setFile(e.target.files[0]); fileExtenstion(e)}}></input>
                     <p className="file-detail">Webkit640 지원양식은 공지사항에서 다운로드하세요.</p>
                 </li>
             </ul>
