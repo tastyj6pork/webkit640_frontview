@@ -1,6 +1,6 @@
 import { Button, Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography } from '@mui/material'
 import axios from 'axios'
-import React from 'react'
+import React, { useState } from 'react'
 import { API_BASE_URL } from '../../app-config'
 
 export default function ShowUserAdmin(props) {
@@ -44,7 +44,7 @@ export default function ShowUserAdmin(props) {
                                             <TableCell>{row.admin ? <strong style={{color:"blue"}}>관리자</strong> : "일반회원"}</TableCell>
                                             <TableCell>{row.email}</TableCell>
                                             <TableCell>{row.memberBelong}</TableCell>
-                                            <TableCell>{row.memberType}</TableCell>
+                                            <TableCell>{row.memberType === "관리자" ? <strong style={{color:"blue"}}>관리자</strong> : row.memberType}</TableCell>
                                             <TableCell>{row.name}</TableCell>    
                                         </TableRow>
                                     )
