@@ -26,7 +26,8 @@ function Dday() {
                     return;
                 }
                 setDay(Math.floor(diffDate / (1000*60*60*24)));
-                setHour(Math.floor((diffDate / (1000*60*60)) % 24));
+                if(Math.floor((diffDate / (1000*60*60)) % 24) < 10) setHour("0"+Math.floor((diffDate / (1000*60*60)) % 24));
+                else setHour(Math.floor((diffDate / (1000*60*60)) % 24));
                 if(Math.floor((diffDate / (1000*60)) % 60) < 10) setMin("0"+Math.floor((diffDate / (1000*60)) % 60))
                 else setMin(Math.floor((diffDate / (1000*60)) % 60));
                 setSec(Math.floor(diffDate / 1000 % 60));
@@ -36,7 +37,6 @@ function Dday() {
     }, [day, hour, min, sec]);
 
     useEffect(()=>{
-        console.log("useEffect");
         countDownTimer('2022-11-22');
     })
 

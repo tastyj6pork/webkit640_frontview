@@ -1,5 +1,6 @@
 import { React, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useMediaQuery } from 'react-responsive';
 import "./With.css"
 
 function With() {
@@ -27,28 +28,41 @@ function With() {
             img:'/images/logo/안동대.png',
         }
     ])
+    const [rollerWidth, setRollerWidth] = useState(null);
+    const isBigScreen = useMediaQuery({query: '(min-width:1201px)'});
+    const isMediumScreen = useMediaQuery({query: '(min-width:768px) and (max-width: 1200px)'});
+    const isSmallScreen = useMediaQuery({query: '(max-width: 767px)'});
 
     useEffect(()=>{
-        console.log("useEffect")
-        if(!makeClone) {
+        console.log("[rollerWidth] useEffect")
+        setRollerWidth(document.querySelector('#roller1 ul').offsetWidth);
+    }, [rollerWidth])
+    
+    useEffect(()=>{
+        if(!makeClone){
             let roller = document.querySelector("#roller1");
             let clone = roller.cloneNode(true);
+            let roller_ul_style = document.querySelector("#roller1 ul").style;
             clone.id = 'roller2';
-            console.log(document.querySelector('#roller1 ul').offsetWidth)
             document.querySelector('.wrapper').appendChild(clone);
             document.querySelector('#roller1').style.left = '0px';
-            document.querySelector('#roller2').style.width = `${document.querySelector('#roller1 ul').offsetWidth}px`;
-            document.querySelector('#roller2').style.left = `${document.querySelector('#roller1 ul').offsetWidth}px`;
+            //if(isSmallScreen) roller_ul_style.width = `${rollerWidth}px`;
             roller.classList.add('original');
-            clone.classList.add('clone');
             setMakeClone(true);
-            console.log(document.querySelector('.wrapper'))
+        } else {
+            let clone = document.querySelector("#roller2");
+            let clone_ul_style = document.querySelector('#roller2 ul').style;
+            //if(isSmallScreen) clone_ul_style.width = `${rollerWidth}px`;
+            clone_ul_style.left = `${rollerWidth}px`;
+            clone.classList.add('clone');
         }
+        console.log(document.querySelector('.wrapper'))
     })
+
     
     return(
         <div className="With">
-            {console.log("return")}
+            {console.log("return,"+` ${rollerWidth}px`)}
             <div className="with-content w3-display-container">
                 <div className="with-box w3-display-middle w3-center">
                     <h2>지금 참여중인 컨소시엄들</h2>

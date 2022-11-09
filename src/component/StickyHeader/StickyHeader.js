@@ -7,7 +7,7 @@ function StickyHeader() {
     return (
         <div className="StickyHeader">
             <nav className="navbar navbar-expand-sm navbar-light">
-                <a href="/" className="navbar-brand">Logo</a>
+                <a href="/" className="navbar-brand"></a>
             </nav>
         </div>
     )
