@@ -18,44 +18,49 @@ function StudentApply() {
     const accessToken = localStorage.getItem(ACCESS_TOKEN);
 
     async function SubmitBtn(e) {
-        
-        e.preventDefault();
 
-        setApplication("test");
-
-        console.log(localStorage.getItem("ACCESS_TOKEN"));
-
-        const formData = new FormData();
-        const data = {
-            name: name,
-            application: application,
-            major: major,
-            schoolNumber: schoolnumber,
-            schoolYear: schoolYear,
-            school: school,
-        }
-        console.log(data);
-        formData.enctype = "multipart/form-data";
-        formData.append("file", file);
-        console.log(file);
-
-        await call("/apply/applicant-data","POST",data).then((res)=>{console.log(res);});
-        await axios({
-            method:"POST",
-            url:API_BASE_URL + "/apply/applicant-application",
-            data: formData,
-            headers: {
-                "Content-Type": "multipart/form-data",
-                "Authorization": "Bearer " + accessToken, 
-            },
-        }).then((res) => {
-            if(res.status === 200) {
-                console.log(res);
-                alert("POST SUCCESS");
-                window.location.href = "/";
+        var fileFind = document.getElementById("file").value;
+        if(!fileFind){
+            alert("파일을 첨부하여 주세요.")
+        } else {
+            e.preventDefault();
+    
+            setApplication("test");
+    
+            console.log(localStorage.getItem("ACCESS_TOKEN"));
+    
+            const formData = new FormData();
+            const data = {
+                name: name,
+                application: application,
+                major: major,
+                schoolNumber: schoolnumber,
+                schoolYear: schoolYear,
+                school: school,
             }
-        });
-    }
+            console.log(data);
+            formData.enctype = "multipart/form-data";
+            formData.append("file", file);
+            console.log(file);
+    
+            await call("/apply/applicant-data","POST",data).then((res)=>{console.log(res);});
+            await axios({
+                method:"POST",
+                url:API_BASE_URL + "/apply/applicant-application",
+                data: formData,
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                    "Authorization": "Bearer " + accessToken, 
+                },
+            }).then((res) => {
+                if(res.status === 200) {
+                    console.log(res);
+                    alert("지원이 완료되었습니다.");
+                    window.location.href = "/";
+                }
+            });
+            }
+        }
     useEffect(() => {
         const ACCESS_TOKEN = "ACCESS_TOKEN";
         const accessToken = localStorage.getItem(ACCESS_TOKEN);
@@ -91,6 +96,7 @@ function StudentApply() {
             fileInput.current.value = "";
             return false;
         }
+        
     }
     
     return(<div className="apply-total">
