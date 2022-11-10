@@ -1,7 +1,7 @@
 import { React, useEffect, useState, useMemo, useRef, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { useMediaQuery } from 'react-responsive';
-import { throttle, debounce } from 'lodash';
+import { throttle } from 'lodash';
 import { call } from '../../service/ApiService';
 import "./Main.css"
 import Header from "../../component/Header/Header";
@@ -28,25 +28,6 @@ function Main() {
     const isMediumScreen = useMediaQuery({query: '(min-width:768px) and (max-width: 1200px)'});
     const isSmallScreen = useMediaQuery({query: '(max-width: 767px)'});
 
-    const handleScroll = () => {
-        if(window.scrollY < 630){
-            setIsNav(true);
-            setIsScrollNavOn(false);
-        }
-        else {
-            setIsNav(false);
-            setIsScrollNavOn(true);
-        }
-    }
-
-    /* [김다함]: Scroll Event 함수 실행 최소화 방법... 추가 공부 필요
-    const throttleScroll  = useMemo(()=>
-        throttle(()=>{
-            console.log("scroll");
-        }, 300),
-    );
-    */
-
     const onRecruitInfoClick = () => {
         recruitRef.current?.scrollIntoView({behavior:'smooth'});
     }
@@ -67,21 +48,30 @@ function Main() {
         mainRef.current?.scrollIntoView({behavior:'smooth'});
     }
 
-    const getMainData = useCallback(()=>{
-        console.log("getMainData called")
-        // call("/main/data", "GET").then((res)=>{
-        //     setMainPageData(res);
-        // })
-    }, [mainPageData])
+    const throttledScroll  = useMemo(()=>
+        throttle(()=>{
+            console.log("scroll");
+            if(window.scrollY < 630){
+                setIsNav(true);
+                setIsScrollNavOn(false);
+            }
+            else {
+                setIsNav(false);
+                setIsScrollNavOn(true);
+            }
+        }, 400), [isScrollNavOn]
+    );
 
     useEffect(()=>{
         console.log("useEffect called")
-        window.addEventListener('scroll', handleScroll);
-        getMainData();
+        window.addEventListener('scroll', throttledScroll);
+        // call("/main/data", "GET").then((res)=>{
+        //     setMainPageData(res);
+        // })
         return() => {
-            window.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('scroll', throttledScroll);
         }
-    });
+    }, [throttledScroll]);
 
     return (
         <div className="Main" ref={mainRef}>
