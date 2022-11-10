@@ -1,9 +1,12 @@
 import { React, useEffect, useState, useCallback } from "react";
 import { Link } from "react-router-dom";
+import { call } from '../../../service/ApiService';
 import "./Dday.css"
 import moment from "moment";
 
-function Dday() {
+function Dday(props) {
+    // const [todayDate, setTodayDate] = useState(null);
+    // const [endDate, setEndDate] = useState(null);
     const [day, setDay] = useState(0);
     const [hour, setHour] = useState(0);
     const [min, setMin] = useState(0);
@@ -37,7 +40,7 @@ function Dday() {
     }, [day, hour, min, sec]);
 
     useEffect(()=>{
-        countDownTimer('2022-11-22');
+        countDownTimer(props.endDate);
     })
 
     return (
