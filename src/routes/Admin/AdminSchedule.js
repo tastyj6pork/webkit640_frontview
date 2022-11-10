@@ -33,14 +33,21 @@ function Adminschedule() {
   async function test2() {
     if (endChecker === true) {
       var title = prompt("INPUT TITLE");
-      
-      var endYear = end.getYear()+1900;
-      var endMonth = end.getMonth()+1;
-      var endDate = end.getDate()+1;
+      var tempStart = start;
+      var tempEnd = end;
+      if (start.getTime() > end.getTime()) {
+        console.log("test");
+        var tmp = tempStart;
+        tempStart = tempEnd;
+        tempEnd = tmp;
+      }
+      var endYear = tempEnd.getYear()+1900;
+      var endMonth = tempEnd.getMonth()+1;
+      var endDate = tempEnd.getDate()+1;
 
-      var startYear = start.getYear()+1900;
-      var startMonth = start.getMonth()+1;
-      var startDate = start.getDate();
+      var startYear = tempStart.getYear()+1900;
+      var startMonth = tempStart.getMonth()+1;
+      var startDate = tempStart.getDate();
 
       if(String(startDate).length === 1) {
         startDate = "0"+String(startDate);
@@ -55,10 +62,10 @@ function Adminschedule() {
         endMonth = "0"+String(endMonth);
       }
 
-      const startResult = String(startYear) + "-" + String(startMonth) + "-" + String(startDate)
-
-      const endResult = String(endYear) + "-" + String(endMonth) + "-" + String(endDate)
-      
+      var startResult = String(startYear) + "-" + String(startMonth) + "-" + String(startDate)
+      var endResult = String(endYear) + "-" + String(endMonth) + "-" + String(endDate)
+      console.log(startResult);
+      console.log(endResult);
       await axios({
         method:"POST",
         url:API_BASE_URL+"/calendar/insert",

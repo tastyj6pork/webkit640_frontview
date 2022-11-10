@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { API_BASE_URL } from '../../app-config';
 import { call } from '../../service/ApiService';
 import '../Student/Student.css';
@@ -18,44 +18,49 @@ function StudentApply() {
     const accessToken = localStorage.getItem(ACCESS_TOKEN);
 
     async function SubmitBtn(e) {
-        
-        e.preventDefault();
 
-        setApplication("test");
-
-        console.log(localStorage.getItem("ACCESS_TOKEN"));
-
-        const formData = new FormData();
-        const data = {
-            name: name,
-            application: application,
-            major: major,
-            schoolNumber: schoolnumber,
-            schoolYear: schoolYear,
-            school: school,
-        }
-        console.log(data);
-        formData.enctype = "multipart/form-data";
-        formData.append("file", file);
-        console.log(file);
-
-        await call("/apply/applicant-data","POST",data).then((res)=>{console.log(res);});
-        await axios({
-            method:"POST",
-            url:API_BASE_URL + "/apply/applicant-application",
-            data: formData,
-            headers: {
-                "Content-Type": "multipart/form-data",
-                "Authorization": "Bearer " + accessToken, 
-            },
-        }).then((res) => {
-            if(res.status === 200) {
-                console.log(res);
-                alert("POST SUCCESS");
-                window.location.href = "/";
+        var fileFind = document.getElementById("file").value;
+        if(!fileFind){
+            alert("파일을 첨부하여 주세요.")
+        } else {
+            e.preventDefault();
+    
+            setApplication("test");
+    
+            console.log(localStorage.getItem("ACCESS_TOKEN"));
+    
+            const formData = new FormData();
+            const data = {
+                name: name,
+                application: application,
+                major: major,
+                schoolNumber: schoolnumber,
+                schoolYear: schoolYear,
+                school: school,
             }
-        });
-    }
+            console.log(data);
+            formData.enctype = "multipart/form-data";
+            formData.append("file", file);
+            console.log(file);
+    
+            await call("/apply/applicant-data","POST",data).then((res)=>{console.log(res);});
+            await axios({
+                method:"POST",
+                url:API_BASE_URL + "/apply/applicant-application",
+                data: formData,
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                    "Authorization": "Bearer " + accessToken, 
+                },
+            }).then((res) => {
+                if(res.status === 200) {
+                    console.log(res);
+                    alert("지원이 완료되었습니다.");
+                    window.location.href = "/";
+                }
+            });
+            }
+        }
     useEffect(() => {
         const ACCESS_TOKEN = "ACCESS_TOKEN";
         const accessToken = localStorage.getItem(ACCESS_TOKEN);
@@ -78,11 +83,20 @@ function StudentApply() {
         });
     },[])
 
-    const fileExtenstion = (e) => {
-        let pathpoint = e.value.lastIndexOf('.');
-        let filepoint = e.value.substring(pathpoint+1,e.length);
+    const fileInput = useRef();
+
+    const fileExtenstion = (obj) => {
+        let pathpoint = obj.target.value.lastIndexOf('.');
+        let filepoint = obj.target.value.substring(pathpoint+1,obj.length);
         let filetype = filepoint.toLowerCase();
-        console.log(filetype);
+        
+        if(filetype === "hwp" || filetype === "pdf" || filetype === "docs") {
+        } else {
+            alert("hwp, pdf, docs확장자 파일만 제출 가능합니다.");
+            fileInput.current.value = "";
+            return false;
+        }
+        
     }
     
     return(<div className="apply-total">
@@ -113,7 +127,7 @@ function StudentApply() {
                 </li>
                 <li>
                     <p className="apply-text">첨부파일</p>
-                    <input className="apply-file" type="file" id="file" name="file" accept=".hwp, .pdf, .docs" onChange={(e) => {setFile(e.target.files[0]); fileExtenstion(e)}}></input>
+                    <input className="apply-file" type="file" id="file" name="file" ref={fileInput} accept=".hwp, .pdf, .docs" onChange={(e) => {setFile(e.target.files[0]); fileExtenstion(e)}}></input>
                     <p className="file-detail">Webkit640 지원양식은 공지사항에서 다운로드하세요.</p>
                 </li>
             </ul>
