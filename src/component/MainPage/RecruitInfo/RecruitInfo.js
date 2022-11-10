@@ -2,11 +2,23 @@ import { React, useEffect, useState, useMemo, forwardRef } from "react";
 import { Link } from "react-router-dom";
 import { useMediaQuery } from 'react-responsive';
 import "./RecruitInfo.css"
+import moment from "moment";
 
 const RecruitInfo = forwardRef((props, ref) => {
+    const [recruitDate, setRecruitDate] = useState(null);
+    const [recruitTarget, setRecruitTarget] = useState(null);
+    const [totalRecruitment, setTotalRecruitment] = useState(null);
+    const [eligibility, setEligibility] = useState(null);
     const isBigScreen = useMediaQuery({query: '(min-width:1201px)'});
     const isMediumScreen = useMediaQuery({query: '(min-width:768px) and (max-width: 1200px)'});
     const isSmallScreen = useMediaQuery({query: '(max-width: 767px)'});
+
+    useEffect(()=>{
+        setRecruitDate(props.mainData.recruitmentDate);
+        setRecruitTarget(props.mainData.recruitmentTarget);
+        setTotalRecruitment(props.mainData.totalRecruitment);
+        setEligibility(props.mainData.eligibility);
+    })
 
     return(
         <div className="RecruitInfo" id="recruit" ref={ref}>
@@ -19,48 +31,52 @@ const RecruitInfo = forwardRef((props, ref) => {
                                 <td className="label">모집 기간
                                 {isSmallScreen &&
                                     <div>
-                                        <br />2023년 -월 -일(월) ~ 2023 -월 -일(일) 오후6시
+                                        <br />~ {moment(recruitDate).format("YYYY")}년 {moment(recruitDate).format("MM")}월 {moment(recruitDate).format("DD")}일 {moment(recruitDate).format("HH")}시
                                     </div>
                                 }</td>
                                 { (isBigScreen || isMediumScreen) &&
-                                <td className="content">2023년 -월 -일(월) ~ 2023 -월 -일(일) 오후6시</td>
+                                <td className="content">~ {moment(recruitDate).format("YYYY")}년 {moment(recruitDate).format("MM")}월 {moment(recruitDate).format("DD")}일 {moment(recruitDate).format("HH")}시</td>
                                 }
                             </tr>
                             <tr>
                                 <td className="label">모집 대상
                                 {isSmallScreen &&
                                     <div>
-                                        <br />금오공과대학교 재학생, 휴학생, 졸업생
+                                        <br />{recruitTarget}
                                     </div>
                                 }</td>
                                 { (isBigScreen || isMediumScreen) &&
-                                <td className="content">금오공과대학교 재학생, 휴학생, 졸업생</td>
+                                <td className="content">{recruitTarget}</td>
                                 }
                             </tr>
                             <tr>
                                 <td className="label">모집 인원
                                 {isSmallScreen &&
                                     <div>
-                                        <br />25명
+                                        <br />{totalRecruitment}명
                                     </div>
                                 }</td>
                                 { (isBigScreen || isMediumScreen) &&
-                                <td className="content">25명</td>
+                                <td className="content">{totalRecruitment}명</td>
                                 }
                             </tr>
                             <tr>
                                 <td className="label">지원 자격
                                 {isSmallScreen &&
                                     <ul>
-                                        <li>2023년 하반기에 풀타임(09:00~18:00)으로 참여할 수 있는 학생</li>
-                                        <li>640시간 동안 꾸준한 출석률을 유지할 수 있는 학생</li>
+                                        {   eligibility && 
+                                            eligibility.split(".").map((item, i)=>(
+                                            <li key={i}>{item}</li>
+                                        ))}
                                     </ul>
                                 }</td>
                                 { (isBigScreen || isMediumScreen) &&
                                 <td className="content">
                                     <ul>
-                                        <li>2023년 하반기에 풀타임(09:00~18:00)으로 참여할 수 있는 학생</li>
-                                        <li>640시간 동안 꾸준한 출석률을 유지할 수 있는 학생</li>
+                                    { eligibility && 
+                                            eligibility.split(".").map((item, i)=>(
+                                            <li key={i}>{item}</li>
+                                        ))}
                                     </ul>
                                 </td>
                                 }

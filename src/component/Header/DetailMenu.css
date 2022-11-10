@@ -1,6 +1,7 @@
 .DetailMenu * {
     font-family: 'Pretendard-Regular';
     letter-spacing: normal;
+    color: rgb(66, 66, 66);
 }
 
 .DetailMenu {
@@ -35,4 +36,12 @@
     margin-top: 5px;
     padding: 0;
     font-size: 15px;
+}
+
+.DetailMenu a {
+    text-decoration: none;
+}
+
+.DetailMenu a:hover {
+    color : rgb(66, 66, 66);
 }

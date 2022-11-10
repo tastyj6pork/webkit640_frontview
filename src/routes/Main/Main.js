@@ -1,7 +1,8 @@
-import { React, useEffect, useState, useMemo, useRef } from "react";
+import { React, useEffect, useState, useMemo, useRef, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { useMediaQuery } from 'react-responsive';
 import { throttle, debounce } from 'lodash';
+import { call } from '../../service/ApiService';
 import "./Main.css"
 import Header from "../../component/Header/Header";
 import ScrollNav from "../../component/MainPage/ScrollNav/ScrollNav";
@@ -12,11 +13,12 @@ import Graduate from "../../component/MainPage/Graduate/Graduate";
 import Review from "../../component/MainPage/Review/Review";
 import With from "../../component/MainPage/With/With";
 import Footer from "../../component/Footer/Footer";
-import Dday from "../../component/MainPage/Dday/Dday"
+import Dday from "../../component/MainPage/Dday/Dday";
 
 function Main() {
     const [isNav, setIsNav] = useState(true);
     const [isScrollNavOn, setIsScrollNavOn] = useState(false);
+    const [mainPageData, setMainPageData] = useState([]);
     const mainRef = useRef(null);
     const recruitRef = useRef(null);
     const scheduleRef = useRef(null);
@@ -65,8 +67,17 @@ function Main() {
         mainRef.current?.scrollIntoView({behavior:'smooth'});
     }
 
+    const getMainData = useCallback(()=>{
+        console.log("getMainData called")
+        // call("/main/data", "GET").then((res)=>{
+        //     setMainPageData(res);
+        // })
+    }, [mainPageData])
+
     useEffect(()=>{
+        console.log("useEffect called")
         window.addEventListener('scroll', handleScroll);
+        getMainData();
         return() => {
             window.removeEventListener('scroll', handleScroll);
         }
@@ -79,8 +90,8 @@ function Main() {
             <header id="header" className="w3-display-container">
                 <div className="header-background"/>
                 <div className="w3-display-middle w3-center">
-                    <h2>웹킷640 -기 모집기간</h2>
-                    <Dday/>
+                    <h2>웹킷640 {parseInt(mainPageData.completeCardinalNumber)+1}기 모집기간</h2>
+                    <Dday endDate={mainPageData.recruitmentDate}/>
                     <button className="apply-btn"
                     onClick={()=>window.location.href="/studentapply"}>지원하기</button>
                 </div>
@@ -94,10 +105,10 @@ function Main() {
             onRecruit={onRecruitInfoClick} onProcess={onProcessInfoClick}
             onSchedule={onMainScheduleClick} onReview={onReviewClick}/>}
 
-            <RecruitInfo ref={recruitRef}/>
-            <MainSchedule ref={scheduleRef}/>
+            <RecruitInfo ref={recruitRef} mainData={mainPageData}/>
+            <MainSchedule ref={scheduleRef} mainData={mainPageData}/>
             <ProcessInfo ref={processRef}/>
-            <Graduate/>
+            <Graduate num={mainPageData.completeCardinalNumber} graduate={mainPageData.cumulativeStudents} nonmajor={mainPageData.nonMajor}/>
             <Review ref={reviewRef}/>
             <With/>
         </div>

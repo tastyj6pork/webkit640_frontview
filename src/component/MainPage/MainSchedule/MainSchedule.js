@@ -2,11 +2,23 @@ import { React, useEffect, useState, useMemo, forwardRef } from "react";
 import { Link } from "react-router-dom";
 import { useMediaQuery } from 'react-responsive';
 import "./MainSchedule.css"
+import moment from "moment";
 
 const MainSchedule = forwardRef((props, ref) => {
+    const [recruitDate, setRecruitDate] = useState(null);
+    const [additionalDate, setAdditionalDate] = useState(null);
+    const [passDate, setPassDate] = useState(null);
+    const [startDate, setStartDate] = useState(null);
     const isBigScreen = useMediaQuery({query: '(min-width:1201px)'});
     const isMediumScreen = useMediaQuery({query: '(min-width:768px) and (max-width: 1200px)'});
     const isSmallScreen = useMediaQuery({query: '(max-width: 767px)'});
+
+    useEffect(()=>{
+        setRecruitDate(props.mainData.documentSubmissionPeriod);
+        setAdditionalDate(props.mainData.additionalRecruitmentPeriod);
+        setPassDate(props.mainData.passAnnouncementDate);
+        setStartDate(props.mainData.trainingStartDate);
+    })
 
     return(
         <div className="MainSchedule" ref={ref}>
@@ -22,19 +34,19 @@ const MainSchedule = forwardRef((props, ref) => {
                             <div className="row">
                                 <div className="col">
                                     <h3>서류 접수</h3><br />
-                                    <label>2023년 -월 -일(월) ~<br/>-월-일(일) 오후 6시</label>
+                                    <label>~ {moment(recruitDate).format("YYYY")}년 {moment(recruitDate).format("MM")}월{moment(recruitDate).format("DD")}일 {moment(recruitDate).format("HH")}시</label>
                                 </div>
                                 <div className="col">
                                     <h3>추가 모집</h3><br />
-                                    <label>2023년 -월 -일(월) ~<br/>-월 -일(일) 오후 6시</label>
+                                    <label>~ {moment(additionalDate).format("YYYY")}년 {moment(additionalDate).format("MM")}월{moment(additionalDate).format("DD")}일 {moment(recruitDate).format("HH")}시</label>
                                 </div>
                                 <div className="col">
                                     <h3>최종 합격자 발표</h3><br />
-                                    <label>2023년 -월 -일(월)</label>
+                                    <label>{moment(passDate).format("YYYY")}년 {moment(passDate).format("MM")}월{moment(passDate).format("DD")}일 {moment(passDate).format("HH")}시</label>
                                 </div>
                                 <div className="col">
                                     <h3>웹킷640 시작</h3><br />
-                                    <label>2023년 -월 -일(월) ~</label>
+                                    <label>{moment(startDate).format("YYYY")}년 {moment(startDate).format("MM")}월{moment(startDate).format("DD")}일 ~</label>
                                 </div>
                             </div>
                         </div>
@@ -44,25 +56,25 @@ const MainSchedule = forwardRef((props, ref) => {
                                 <div className="row">
                                 <div className="col">
                                     <h3>서류 접수</h3>
-                                    <label>2023년 -월 -일(월) ~<br/>-월-일(일) 오후 6시</label>
+                                    <label>~ {moment(recruitDate).format("YYYY")}년 {moment(recruitDate).format("MM")}월{moment(recruitDate).format("DD")}일 {moment(recruitDate).format("HH")}시</label>
                                 </div>
                                 </div>
                                 <div className="row">
                                 <div className="col">
                                     <h3>추가 모집</h3>
-                                    <label>2023년 -월 -일(월) ~<br/>-월 -일(일) 오후 6시</label>
+                                    <label>~ {moment(additionalDate).format("YYYY")}년 {moment(additionalDate).format("MM")}월{moment(additionalDate).format("DD")}일 {moment(recruitDate).format("HH")}시</label>
                                 </div>
                                 </div>
                                 <div className="row">
                                 <div className="col">
                                     <h3>최종 합격자 발표</h3>
-                                    <label>2023년 -월 -일(월)</label>
+                                    <label>{moment(passDate).format("YYYY")}년 {moment(passDate).format("MM")}월{moment(passDate).format("DD")}일 {moment(passDate).format("HH")}시</label>
                                 </div>
                                 </div>
                                 <div className="row">
                                 <div className="col">
                                     <h3>웹킷640 시작</h3>
-                                    <label>2023년 -월 -일(월) ~</label>
+                                    <label>{moment(startDate).format("YYYY")}년 {moment(startDate).format("MM")}월{moment(startDate).format("DD")}일 ~</label>
                                 </div>
                                 </div>
                             </div>
