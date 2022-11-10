@@ -1,15 +1,31 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {BsFillPersonFill, BsFileEarmarkPlusFill, BsPersonCheckFill, BsList, BsCalendarCheck} from "react-icons/bs";
 import Tooltip from '@mui/material/Tooltip';
 import { NavLink, Outlet } from "react-router-dom";
 import '../SideNav/SideNav.css';
 import { IconButton } from "@mui/material";
+import axios from "axios";
+import { API_BASE_URL } from "../../app-config";
 
 function SideNav({children}) {
 
     const [logCheck, setLogCheck] = useState(true) // true = 관리자, false = 학생
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen)
+
+    useEffect(() => {
+
+        axios({
+            method: "GET",
+            url: API_BASE_URL + "/auth/find-user",
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem("ACCESS_TOKEN")
+            },
+        }).then((res) => {
+            console.log(res.data.admin);
+            setLogCheck(res.data.admin);
+        })
+    }, [])
 
     //Login = 학생 List
     const menuItem = [
