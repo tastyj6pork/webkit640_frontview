@@ -99,10 +99,10 @@ function Main() {
             onRecruit={onRecruitInfoClick} onProcess={onProcessInfoClick}
             onSchedule={onMainScheduleClick} onReview={onReviewClick}/>}
 
-            <RecruitInfo ref={recruitRef}/>
-            <MainSchedule ref={scheduleRef}/>
+            <RecruitInfo ref={recruitRef} mainData={mainPageData}/>
+            <MainSchedule ref={scheduleRef} mainData={mainPageData}/>
             <ProcessInfo ref={processRef}/>
-            <Graduate/>
+            <Graduate graduate={mainPageData.totalRecruitment} nonmajor={mainPageData.nonMajor}/>
             <Review ref={reviewRef}/>
             <With/>
         </div>
