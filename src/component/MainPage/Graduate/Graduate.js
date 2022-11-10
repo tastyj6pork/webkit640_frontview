@@ -8,9 +8,9 @@ function Graduate(props) {
     const [graduation, setGnum] = useState(null);
     const [nonMajor, setNMnum] = useState(null);
     const [cardinal, setCNum] = useState(null);
-    const graduateAnimate = useScrollCount(25, 1);
-    const cardinalAnimate = useScrollCount(1, 1);
-    const nonmajorAnimate = useScrollCount(3, 1);
+    const graduateAnimate = useScrollCount(25);
+    const cardinalAnimate = useScrollCount(1);
+    const nonmajorAnimate = useScrollCount(3);
 
     useEffect(()=>{
         setGnum(props.graduate);
@@ -27,7 +27,7 @@ function Graduate(props) {
                         <img className="graduation-img" src="/images/graduate.png"/>
                         <p>누적 수강생</p>
                         <label>
-                            ~<label {...cardinalAnimate}>{cardinal}</label>기 <label {...graduateAnimate}>{graduation}</label>명</label>
+                            ~<label {...cardinalAnimate}>0</label>기 <label {...graduateAnimate}>0</label>명</label>
                     </span>
                     <span id="nonmajor-box" className="img-box">
                         <img className="nonmajor-img" src="/images/book01.png"/>
