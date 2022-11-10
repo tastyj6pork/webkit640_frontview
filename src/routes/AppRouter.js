@@ -16,6 +16,7 @@ import StudentSchedule from './Student/StudentSchedule';
 import Board from '../component/Board/Board';
 import LectureData from '../component/Board/LectureData';
 import Editor from '../component/Board/Editor';
+import BoardDetail from '../component/Board/BoardDetail';
 
 function AppRouter(){
     return (
@@ -39,6 +40,7 @@ function AppRouter(){
                     <Route path="/board" element={<Board />} />
                     <Route path="/lecturedata" element={<LectureData />} />
                     <Route path="/editor" element={<Editor />} />
+                    <Route path="/boarddetail" element={<BoardDetail />} />
             </Routes>
         </BrowserRouter>
     )

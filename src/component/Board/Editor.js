@@ -7,16 +7,15 @@ import { Form } from 'react-router-dom';
 import "../Board/Board.css";
 import { call } from '../../service/ApiService';
 import { API_BASE_URL } from '../../app-config';
+import { text } from '@fortawesome/fontawesome-svg-core';
 
 function Editor() {
     
     const [value, setValue] = useState("");
     const quillRef = useRef();
 
-    const [name, setName] = useState("");
-    const [writer, setWriter] = useState("");
-    const [date, setDate] = useState("");
-    const [files, setFiles] = useState("");
+    const [title, setTitle] = useState("");
+    const [file, setFile] = useState("");
 
     const ACCESS_TOKEN = "ACCESS_TOKEN";
     const accessToken = localStorage.getItem(ACCESS_TOKEN);
@@ -29,30 +28,37 @@ function Editor() {
 
         const formData = new FormData();
         const data = {
-            name: name,
-            writer: writer,
-            date: date,
+            type: "notification",
+            title: title,
+            content: value,
         }
         formData.enctype = "multipart/form-data";
-        formData.append("files", files);
+        formData.append("file", file);
         
-        call("","POST",data).then((res) => {console.log(res);});
-        axios({
-            method:"POST",
-            url:API_BASE_URL + "",
-            data: formData,
-            headers: {
-                "Content-Type": "multipart/form-data",
-                "Authorization": "Bearer " + accessToken, 
-            },
-        }).then((res) => {
-            if(res.status === 200) {
-                console.log(res);
-                alert("게시글 업로드 완료 되었습니다.");
-                window.location.href = "/board";
+        call("/board/save-board","POST",data).then((res) => {
+            console.log(formData.has("file"));
+            if(file === "") {
+                alert("success")
+                window.location.href ="/board"
+            } else {
+                axios({
+                method:"POST",
+                url:API_BASE_URL + "/board/save-file/" + res,
+                data: formData,
+                headers: {
+                    // "Content-Type": "multipart/form-data",
+                    "Authorization": "Bearer " + accessToken,
+                },
+            }).then((res) => {
+                if(res.status === 200) {
+                    console.log(res);
+                    alert("게시글 업로드 완료 되었습니다.");
+                    window.location.href = "/board";
+                }
+            })
             }
-        })
 
+        });
     }
 
     function BackStepBtn() {
@@ -102,27 +108,36 @@ function Editor() {
         }
     }
 
-    function imageHandler() {
-        
+    const imageHandler = () => {
+        const editor = quillRef.current.getEditor();
+        console.log(editor);
+
         const input = document.createElement("input");
         input.setAttribute("type", "file");
-        input.setAttribute("accept", ".png, .jpg, .jpeg");
+        input.setAttribute("accept", "image/*");
+        input.setAttribute("name", "file");
         input.click();
 
-        input.onchange = (e) => {
+        input.onchange = async () => {
 
-            const files = e.target.files;
+            const file = input.files[0];
             const formData = new FormData();
-            formData.append("files", files[0]);
+            formData.append("file", file);
+            var imageUrl;
+            await axios({
+                method:"POST",
+                url:API_BASE_URL + "/board/upload-image",
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                    "Authorization": "Bearer " + accessToken, 
+                },
+                data: formData,
+            }).then((res) => {console.log(res); imageUrl = API_BASE_URL + res.data})
+            console.log(imageUrl)
 
-            const tempFile = API_BASE_URL.file.postTempFileUpload(formData);
-            tempFile.then(response => {
-
-                const fileSrno = response.fileSrno;
-                const range = this.quill.getSelection();
-
-                this.quill.insertEmbed(range.index, "image", "http://" + fileSrno);
-            });
+            const editor = quillRef.current.getEditor();
+            const range = editor.getSelection();
+            editor.insertEmbed(range.index, "image", imageUrl);
         }
     }
     
@@ -146,19 +161,19 @@ function Editor() {
                 <div className="editor-title">
                     <ul className="editor-title-name">
                         <li>제목</li>
-                        <input className="editor-input-name" name="name" onChange={(e) => setName(e.target.value)}></input>
+                        <input className="editor-input-name" name="name" onChange={(e) => setTitle(e.target.value)}></input>
                     </ul>
                     <ul className="editor-title-writer">
                         <li>작성자</li>
-                        <input className="editor-input-writer" name="writer" onChange={(e) => setWriter(e.target.value)}></input>
+                        <input className="editor-input-writer" name="writer"></input>
                     </ul>
                     <ul className="editor-title-date">
                         <li>작성일</li>
-                        <input id="inputFixedDate" className="editor-input-date" name="date" style={{paddingLeft:"10px"}} onChange={(e) => setDate(e.target.value)} readOnly></input>
+                        <input id="inputFixedDate" className="editor-input-date" name="date" style={{paddingLeft:"10px"}} readOnly></input>
                     </ul>
                     <ul className="editor-title-files">
                         <li>첨부파일</li>
-                        <input type="file" className="editor-input-files" name="files" onChange={(e) => setFiles(e.target.files[0])}></input>
+                        <input type="file" className="editor-input-files" name="files" onChange={(e) => setFile(e.target.files[0])}></input>
                     </ul>
                 </div>
                     <ReactQuill

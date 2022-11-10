@@ -73,13 +73,17 @@ function LectureData() {
           setPage(0);
         };
 
+        const BoardChange = () => {
+            window.location.href="/board";
+        }
+
     return(<div>
         <Header />
         <div className="board-container">
             <div className="board-title">
                 <h1>강의자료</h1>
                 <div className="board-title-btn">
-                    <p>공지사항</p>
+                    <p onClick={BoardChange}>공지사항</p>
                     <p style={{border:"3px solid black"}}>강의자료</p>
                 </div>
                 <div className="board-search-container">
