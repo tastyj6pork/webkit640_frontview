@@ -1,38 +1,35 @@
 import { useEffect, useRef, useCallback } from "react";
 
-const useScrollCount = (end, start = 0, duration = 3000) => {
-    const dom = useRef();
-    const stepTime = Math.abs(Math.floor(duration / (end - start))); // 1
-    
+const useScrollCount = (end, start = 0, duration = 1000) => {
+    const element = useRef();
+    const observer = useRef(null);
+    const stepTime = Math.abs(Math.floor(duration / (end - start)));
+
     const handleScroll = useCallback(([entry]) => {
-    const { current } = dom;
-    console.log(dom)
-    if(entry.isIntersecting) {
-        let currentNumber = start;
-        const counter = setInterval(() => {
-        currentNumber += 1;
-    
-        if (currentNumber === end) {
-            clearInterval(counter);
+        const { current } = element;
+        if(entry.isIntersecting) {
+            let currentNumber = start;
+            const counter = setInterval(() => {
+                currentNumber += 1;
+                current.innerHTML = currentNumber;
+                if (currentNumber === end) {
+                    clearInterval(counter);
+                    observer.current.disconnect(element.current);
+                }
+            }, stepTime)
         }
-        }, stepTime)
-    }
-    }, []);
+    }, [end, start, stepTime, element]);
 
     useEffect(() => {
-    let observer;
-    const { current } = dom;
-
-    if (current) {
-        observer = new IntersectionObserver(handleScroll, { threshold: 0.7 });
-        observer.observe(current);
-
+        if (element.current) {
+            observer.current = new IntersectionObserver(handleScroll, { threshold: 0.7 });
+            observer.current.observe(element.current);
+        };
         return () => observer && observer.disconnect();
-    };
     }, [handleScroll]);
 
     return {
-    ref: dom,
+    ref: element,
     };
 }
 
