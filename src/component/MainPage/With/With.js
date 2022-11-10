@@ -34,7 +34,6 @@ function With() {
     const isSmallScreen = useMediaQuery({query: '(max-width: 767px)'});
 
     useEffect(()=>{
-        //console.log("[rollerWidth] useEffect")
         setRollerWidth(document.querySelector('#roller1 ul').offsetWidth);
     }, [rollerWidth])
     

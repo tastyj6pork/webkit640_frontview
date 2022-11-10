@@ -1,4 +1,4 @@
-import { React, useEffect, useState, useMemo, useRef } from "react";
+import { React, useEffect, useState, useMemo, useRef, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { useMediaQuery } from 'react-responsive';
 import { throttle, debounce } from 'lodash';
@@ -67,11 +67,17 @@ function Main() {
         mainRef.current?.scrollIntoView({behavior:'smooth'});
     }
 
+    const getMainData = useCallback(()=>{
+        console.log("getMainData called")
+        // call("/main/data", "GET").then((res)=>{
+        //     setMainPageData(res);
+        // })
+    }, [mainPageData])
+
     useEffect(()=>{
+        console.log("useEffect called")
         window.addEventListener('scroll', handleScroll);
-        call("/main/data", "GET").then((res)=>{
-            setMainPageData(res);
-        })
+        getMainData();
         return() => {
             window.removeEventListener('scroll', handleScroll);
         }
@@ -84,7 +90,7 @@ function Main() {
             <header id="header" className="w3-display-container">
                 <div className="header-background"/>
                 <div className="w3-display-middle w3-center">
-                    <h2>웹킷640 -기 모집기간</h2>
+                    <h2>웹킷640 {parseInt(mainPageData.completeCardinalNumber)+1}기 모집기간</h2>
                     <Dday endDate={mainPageData.recruitmentDate}/>
                     <button className="apply-btn"
                     onClick={()=>window.location.href="/studentapply"}>지원하기</button>
@@ -102,7 +108,7 @@ function Main() {
             <RecruitInfo ref={recruitRef} mainData={mainPageData}/>
             <MainSchedule ref={scheduleRef} mainData={mainPageData}/>
             <ProcessInfo ref={processRef}/>
-            <Graduate graduate={mainPageData.totalRecruitment} nonmajor={mainPageData.nonMajor}/>
+            <Graduate num={mainPageData.completeCardinalNumber} graduate={mainPageData.cumulativeStudents} nonmajor={mainPageData.nonMajor}/>
             <Review ref={reviewRef}/>
             <With/>
         </div>

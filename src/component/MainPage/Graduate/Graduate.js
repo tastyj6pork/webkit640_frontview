@@ -1,12 +1,22 @@
 import { React, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useMediaQuery } from 'react-responsive';
 import "./Graduate.css"
+import useScrollCount from "../../../hooks/useScrollHook"
+import moment from "moment";
 
-function Graduate() {
-    const isBigScreen = useMediaQuery({query: '(min-width:1201px)'});
-    const isMediumScreen = useMediaQuery({query: '(min-width:768px) and (max-width: 1200px)'});
-    const isSmallScreen = useMediaQuery({query: '(max-width: 767px)'});
+function Graduate(props) {
+    const [graduation, setGnum] = useState(null);
+    const [nonMajor, setNMnum] = useState(null);
+    const [cardinal, setCNum] = useState(null);
+    const graduateAnimate = useScrollCount(25, 1);
+    const cardinalAnimate = useScrollCount(1, 1);
+    const nonmajorAnimate = useScrollCount(3, 1);
+
+    useEffect(()=>{
+        setGnum(props.graduate);
+        setNMnum(props.nonmajor);
+        setCNum(props.num);
+    })
 
     return(
         <div className="Graduate">
@@ -16,14 +26,15 @@ function Graduate() {
                     <span id="graduation-box" className="img-box">
                         <img className="graduation-img" src="/images/graduate.png"/>
                         <p>누적 수강생</p>
-                        <label>~1기 25명</label>
+                        <label>
+                            ~<label {...cardinalAnimate}>{cardinal}</label>기 <label {...graduateAnimate}>{graduation}</label>명</label>
                     </span>
                     <span id="nonmajor-box" className="img-box">
                         <img className="nonmajor-img" src="/images/book01.png"/>
                         <p>IT 비전공자 비율</p>
-                        <label>12%</label>
+                        <label><label {...nonmajorAnimate}>{Math.ceil(nonMajor / graduation)}</label>%</label>
                     </span>
-                    <p>2022 1기 웹킷640 수강생들이 무사히 프로그램을 끝마쳤습니다.
+                    <p>{moment().format("YYYY")} {cardinal}기 웹킷640 수강생들이 무사히 프로그램을 끝마쳤습니다.
                         <br />더 나은 교육 과정과 개발된 프로그램으로 계속해서 멋진 결과를 이끌어낼 예정입니다.
                     </p>
                     <p>그 여정을 함께 할 여러분을 언제나 환영합니다.</p>

@@ -31,11 +31,11 @@ const RecruitInfo = forwardRef((props, ref) => {
                                 <td className="label">모집 기간
                                 {isSmallScreen &&
                                     <div>
-                                        <br />~ {moment(recruitDate).format("YYYY")}년 {moment(recruitDate).format("MM")}월 {moment(recruitDate).format("DD")}일(일) {moment(recruitDate).format("HH")}시
+                                        <br />~ {moment(recruitDate).format("YYYY")}년 {moment(recruitDate).format("MM")}월 {moment(recruitDate).format("DD")}일 {moment(recruitDate).format("HH")}시
                                     </div>
                                 }</td>
                                 { (isBigScreen || isMediumScreen) &&
-                                <td className="content">~ {moment(recruitDate).format("YYYY")}년 {moment(recruitDate).format("MM")}월 {moment(recruitDate).format("DD")}일(일) {moment(recruitDate).format("HH")}시</td>
+                                <td className="content">~ {moment(recruitDate).format("YYYY")}년 {moment(recruitDate).format("MM")}월 {moment(recruitDate).format("DD")}일 {moment(recruitDate).format("HH")}시</td>
                                 }
                             </tr>
                             <tr>
@@ -53,18 +53,19 @@ const RecruitInfo = forwardRef((props, ref) => {
                                 <td className="label">모집 인원
                                 {isSmallScreen &&
                                     <div>
-                                        <br />{totalRecruitment}
+                                        <br />{totalRecruitment}명
                                     </div>
                                 }</td>
                                 { (isBigScreen || isMediumScreen) &&
-                                <td className="content">{totalRecruitment}</td>
+                                <td className="content">{totalRecruitment}명</td>
                                 }
                             </tr>
                             <tr>
                                 <td className="label">지원 자격
                                 {isSmallScreen &&
                                     <ul>
-                                        {eligibility.split(".").map((item, i)=>(
+                                        {   eligibility && 
+                                            eligibility.split(".").map((item, i)=>(
                                             <li key={i}>{item}</li>
                                         ))}
                                     </ul>
@@ -72,8 +73,10 @@ const RecruitInfo = forwardRef((props, ref) => {
                                 { (isBigScreen || isMediumScreen) &&
                                 <td className="content">
                                     <ul>
-                                        <li>2023년 하반기에 풀타임(09:00~18:00)으로 참여할 수 있는 학생</li>
-                                        <li>640시간 동안 꾸준한 출석률을 유지할 수 있는 학생</li>
+                                    { eligibility && 
+                                            eligibility.split(".").map((item, i)=>(
+                                            <li key={i}>{item}</li>
+                                        ))}
                                     </ul>
                                 </td>
                                 }
