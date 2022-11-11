@@ -36,23 +36,22 @@ function HideMenu(props) {
                     </li>
                     { isBoardClick && 
                         <ul className="detail-menu">
-                            <li>공지사항</li>
-                            <li>Q&A</li>
+                            <li><a href="/board">공지사항</a></li>
+                            <li><a href="/lecturedata">강의자료</a></li>
                         </ul>
                     }
-                    <li>수업소개
+                    <li>프로그램
                         <button name="process" className="hide-btn" onClick={onClickBtn}>
                             <FontAwesomeIcon name="process" icon={faChevronRight}/>
                         </button>
                     </li>
                     { isProcessClick && 
                         <ul className="detail-menu">
-                            <li>지원하기</li>
-                            <li><Link to="/studentSchedule">수업정보</Link></li>
+                            <li><a href="#">모집안내</a></li>
+                            <li><a href="/adminapply">지원하기</a></li>
                         </ul>
                     }
                     <li>수강후기</li>
-                    <li>Q&A</li>
                 </ul>
                 { !props.isLogin &&
                     <ul className="user-menu-list">

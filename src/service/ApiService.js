@@ -71,7 +71,7 @@ export function call(api, method, request) {
     .catch((error)=> {
         console.log(error.status);
         if(error.status === 403) {
-            window.location.href = "/login";
+            //window.location.href = "/login";
         }
         return Promise.reject(error);
     });

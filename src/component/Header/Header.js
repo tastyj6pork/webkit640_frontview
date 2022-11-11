@@ -42,6 +42,10 @@ function Header() {
         if(isClick) setIsClick(false);
         else setIsClick(true);
     }
+    
+    const hideDetail = (e) => {
+        setIsClick(false);
+    }
 
     const showMypage = (e) => {
         setIsHover(true);
@@ -67,7 +71,6 @@ function Header() {
     }
 
     useEffect(()=>{
-        console.log("Header useEffect")
         isUserLogin();
         let dmenu01 = document.getElementById('have-dmenu01');
         let dmenu02 = document.getElementById('have-dmenu02');
@@ -90,7 +93,7 @@ function Header() {
     return(
         <div className="Header">
             <div id="navBarIncludeDetail">
-                <div id="navBar" className="w3-bar w3-white w3-wide w3-card">
+                <div id="navBar" className="w3-bar w3-wide ">
                     <div className="nav-content">
                         <Link to='/' className="navbar-brand"></Link>
                         {isBigScreen &&
@@ -100,9 +103,8 @@ function Header() {
                                     <li><Link id="have-dmenu01"
                                     onClick={showDetail}><span>게시판 ∨</span></Link></li>
                                     <li><Link id="have-dmenu02"
-                                    onClick={showDetail}><span>수업소개 ∨</span></Link></li>
+                                    onClick={showDetail}><span>모집정보 ∨</span></Link></li>
                                     <li><Link><span>수강후기</span></Link></li>
-                                    <li><Link to='/'>Q&A</Link></li>
                                     {!isLogin &&
                                         <li className="login-btn" style={{float:"right", marginLeft: "40px"}}>
                                             <a href="/login">로그인</a>
@@ -137,7 +139,7 @@ function Header() {
                     </div>
                     { isBigScreen && isLogin && isHover &&
                         <div id="userDetailMenu"
-                        style={{top:'70px', left:`${duser}px`}}
+                        style={{top:'55px', left:`${duser}px`}}
                         onMouseLeave={hideMypage}>
                             <ul>
                                 <li><button onClick={goMypage}>{userpage}</button></li>
@@ -146,7 +148,7 @@ function Header() {
                         </div>
                     }
                     { isBigScreen && isClick &&
-                    <DetailMenu dmenu01_x={dmenu01} dmenu02_x={dmenu02}/>
+                    <DetailMenu dmenu01_x={dmenu01} dmenu02_x={dmenu02} hideDetail={hideDetail}/>
                     }
                 </div>
                 {(isMediumScreen || isSmallScreen) && isHideClick &&

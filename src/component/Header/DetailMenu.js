@@ -5,7 +5,7 @@ import "./DetailMenu.css"
 function DetailMenu(props) {
 
     return(
-        <div id="detailMenu" className="DetailMenu" style={{top:"70px"}}>
+        <div id="detailMenu" className="DetailMenu" style={{top:"70px"}} onMouseLeave={props.hideDetail}>
             <div className="detail-content row">
                 <ul>
                     <ul id="menu01" style={{left:`${props.dmenu01_x}px`}}>
@@ -13,7 +13,7 @@ function DetailMenu(props) {
                         <li><a href="/lecturedata">강의자료</a></li>
                     </ul>
                     <ul id="menu02" style={{left:`${props.dmenu02_x}px`}}>
-                        <li><a href="#">수업정보</a></li>
+                        <li><a href="#">모집안내</a></li>
                         <li><a href="/adminapply">지원하기</a></li>
                     </ul>
                 </ul>

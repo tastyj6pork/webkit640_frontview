@@ -161,7 +161,7 @@ export default function AdminMainPage() {
               dataOnChange("eligibility", e);
             }}
             variant="standard"
-            label="지원 자격"
+            label="지원 자격('/'로 구분하세요.)"
             fullWidth
           />
         </Paper>

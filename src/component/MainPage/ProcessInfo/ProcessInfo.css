@@ -39,24 +39,62 @@
     margin-bottom: 20px;
 }
 
-.ProcessInfo .process-box .frontend-img, .ProcessInfo .process-box .backend-img {
+.ProcessInfo .process-box .frontend-process, 
+.ProcessInfo .process-box .backend-process {
+    background-repeat: no-repeat;
+    background-size: cover;
     display: inline-block;
     width:500px;
     height: 360px;
     border-radius: 25px;
 }
 
-.ProcessInfo .process-box .frontend-img {
+.ProcessInfo .process-box .frontend-process {
     background-image: url("../../../../public/images/frontend01.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
     margin-right: 50px;
 }
-
-.ProcessInfo .process-box .backend-img {
+.ProcessInfo .process-box .backend-process {
     background-image: url("../../../../public/images/backend01.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
+}
+
+.ProcessInfo .process-box .process-content {
+    background-color: rgba(45, 45, 45, 0.475);
+    border-radius: 25px;
+    padding: 30px;
+    padding-left: 46px;
+    text-align: left;
+    transition-property: background-color;
+    transition-duration: 0.5s;
+}
+
+.ProcessInfo .process-box .process-content:hover {
+    background-color: rgba(0, 0, 0, 0.723);
+}
+
+.ProcessInfo .process-box .process-content p {
+    margin: 0;
+    font-size: 40px;
+    font-weight: 600;
+    color: white;
+}
+
+.ProcessInfo .process-box .process-content-box {
+    border: solid salmon;
+    width: 400px;
+    height: 230px;
+    padding: 20px;
+}
+
+.ProcessInfo .process-box .process-item {
+    font-size: 23px;
+    font-weight: 600;
+    background-color: white;
+    padding: 1px;
+    padding-left: 9px;
+    padding-right: 9px;
+    border-radius: 25px;
+    position: absolute;
+    border: solid blue;
 }
 
 .ProcessInfo .process-box .more-info {
@@ -93,13 +131,14 @@
     .ProcessInfo .process-box p {
         font-size: 13px;
     }
-    .ProcessInfo .process-box .frontend-img, .ProcessInfo .process-box .backend-img  {
+    .ProcessInfo .process-box .frontend-process, 
+    .ProcessInfo .process-box .backend-process  {
         width: 280px;
         height: 230px;
         margin: auto;
         display: block;
     }
-    .ProcessInfo .process-box .backend-img {
+    .ProcessInfo .process-box .backend-process {
         margin-top: 18px;
     }
     .ProcessInfo .process-box .more-info {

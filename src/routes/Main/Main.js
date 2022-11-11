@@ -31,19 +31,15 @@ function Main() {
     const onRecruitInfoClick = () => {
         recruitRef.current?.scrollIntoView({behavior:'smooth'});
     }
-
     const onMainScheduleClick = () => {
         scheduleRef.current?.scrollIntoView({behavior:'smooth'});
     }
-
     const onProcessInfoClick = () => {
         processRef.current?.scrollIntoView({behavior:'smooth'});
     }
-
     const onReviewClick = () => {
         reviewRef.current?.scrollIntoView({behavior:'smooth'});
     }
-
     const scrollUp = () => {
         mainRef.current?.scrollIntoView({behavior:'smooth'});
     }
@@ -59,18 +55,16 @@ function Main() {
                 setIsNav(false);
                 setIsScrollNavOn(true);
             }
-        }, 400), [isScrollNavOn]
+        }, 300), [isScrollNavOn]
     );
 
     useEffect(()=> {
-        //console.log("setMainData useEffect called");
-        // call("/main/data", "GET").then((res)=>{
-        //     setMainPageData(res);
-        // })
-    },[mainPageData]);
+        call("/main/data", "GET").then((res)=>{
+            setMainPageData(res);
+        })
+    },[]);
 
     useEffect(()=>{
-        //console.log("useEffect called")
         window.addEventListener('scroll', throttledScroll);
         return() => {
             console.log("removeScrollEventListener")
