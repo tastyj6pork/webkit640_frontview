@@ -40,7 +40,7 @@ function AppRouter(){
                     <Route path="/board" element={<Board />} />
                     <Route path="/lecturedata" element={<LectureData />} />
                     <Route path="/editor" element={<Editor />} />
-                    <Route path="/boarddetail" element={<BoardDetail />} />
+                    <Route path="/boarddetail/:id" element={<BoardDetail />} />
             </Routes>
         </BrowserRouter>
     )
