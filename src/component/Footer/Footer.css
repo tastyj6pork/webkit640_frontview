@@ -6,7 +6,6 @@
 
 .Footer {
     width: 100vw;
-    height: 350px;
 }
 
 .Footer hr {
@@ -30,5 +29,5 @@
 .Footer .footer-box {
     width: 100%;
     height: auto;
-    margin-top: 30px;
+    margin-top: 50px;
 }
