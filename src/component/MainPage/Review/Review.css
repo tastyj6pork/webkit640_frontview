@@ -98,10 +98,11 @@
     .Review .review-box {
         width: 100%;
         height: auto;
-        padding: 20px;
+        padding: 40px;
     }
     .Review .review-box #reviewCarousel {
-        margin-top: 40px;
+        margin-top: 30px;
+        margin-bottom: 30px;
     }
     .Review .review-box h1 {
         font-size: 23px;
@@ -121,7 +122,7 @@
         float: right;
     }
     .Review .review-slider .slid-item {
-        padding: 20px;
+        padding: 14px;
     }
     .Review .item-content table .writer,
     .Review .item-content table .content {
