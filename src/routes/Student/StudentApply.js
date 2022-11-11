@@ -53,7 +53,7 @@ function StudentApply() {
                     "Authorization": "Bearer " + accessToken, 
                 },
             }).then((res) => {
-                if(res.status === 200) {
+                if(res.status === 200) {    
                     console.log(res);
                     alert("지원이 완료되었습니다.");
                     window.location.href = "/";
