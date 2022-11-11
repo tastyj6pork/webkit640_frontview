@@ -5,7 +5,7 @@ import { API_BASE_URL } from "../../app-config";
 import { call } from "../../service/ApiService";
 import Header from "../Header/Header";
 
-function BoardDetail() {
+function LectureBoardDetail() {
 
     const {id} = useParams()
     const [boardList, setBoardList] = useState([]);
@@ -104,4 +104,4 @@ function BoardDetail() {
     </div>)
 }
 
-export default BoardDetail;
+export default LectureBoardDetail;

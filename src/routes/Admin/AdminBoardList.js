@@ -1,6 +1,7 @@
 import { Button, Checkbox, Grid, Input, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { API_BASE_URL } from '../../app-config'
 
 export default function AdminBoardList() {
@@ -104,7 +105,7 @@ export default function AdminBoardList() {
                                 <TableCell align='center'>{row.writer}</TableCell>
                                 <TableCell align='center'>{row.writeDate}</TableCell>
                                 <TableCell align='center'>{row.title}</TableCell>
-                                <TableCell align='center'>http://test.com/board/{row.id}</TableCell>
+                                <TableCell align='center'><Link to={`/boarddetail/${row.id}`}>게시글로 이동하기</Link></TableCell>
                                 <TableCell align='center'>
                                     <Button variant='contained' onClick={(e)=>{changeViewBtnOnClick(e,row.id)}}>CLICK</Button>
                                 </TableCell>
