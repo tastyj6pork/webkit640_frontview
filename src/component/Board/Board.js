@@ -15,6 +15,7 @@ import axios from 'axios';
 import { call } from '../../service/ApiService';
 import { API_BASE_URL } from '../../app-config';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 
 function Board() {
@@ -112,9 +113,9 @@ function Board() {
                                         .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                                         .map((row) => {
                                             return (
-                                                <TableRow hover role="checkbox" tabIndex={-1} key={row.id}>
+                                                <TableRow hover role="checkbox" className="board-tablerow-list" tabIndex={-1} key={row.id}>
                                                     <TableCell>{row.id}</TableCell>
-                                                    <TableCell>{row.title}</TableCell>
+                                                    <TableCell><Link to={`/boarddetail/${row.id}`}>{row.title}</Link></TableCell>
                                                     <TableCell align="right">{row.writer}</TableCell>
                                                     <TableCell align="right">{row.writeDate}</TableCell>
                                                     <TableCell align="right">{row.cnt}</TableCell>
