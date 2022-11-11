@@ -4,7 +4,6 @@ import StickyHeader from '../../component/StickyHeader/StickyHeader';
 import {call, signup} from "../../service/ApiService";
 
 function Signup() {
-    const [isstudent, setIsStudent] = useState(false);
     const [kakaoEmail, setKakaoEmail] = useState(null);
 
     useEffect = (()=>{
@@ -86,12 +85,6 @@ function Signup() {
         let input_pwd = document.getElementById('pwdInput');
         let input_pwdh = document.getElementById('pwdhInput');
 
-        if(e.target.id === 's_affili'){
-            if(e.target.value === '학생')
-                setIsStudent(true);
-            else setIsStudent(false);
-        }
-
         if (e.target.value.length === 0){
             e.target.classList.remove('is-valid');
             e.target.classList.add('is-invalid');
@@ -112,6 +105,10 @@ function Signup() {
                 default:
                     break;
             }
+        }
+        else {
+            e.target.classList.remove('is-invalid');
+            e.target.classList.add('is-valid');
         }
 
         if(e.target.id === 'email' && e.target.value.length > 0 && !(e.target.value.includes('@'))){

@@ -67,6 +67,7 @@ function Header() {
     }
 
     useEffect(()=>{
+        console.log("Header useEffect")
         isUserLogin();
         let dmenu01 = document.getElementById('have-dmenu01');
         let dmenu02 = document.getElementById('have-dmenu02');

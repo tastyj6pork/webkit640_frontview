@@ -87,6 +87,11 @@ export function login(userDTO) {
             window.location.href="/";
         }
     })
+    .catch((error)=>{
+        window.location.herf="/login";
+        alert("존재하지 않는 아이디거나 비밀번호가 일치하지 않습니다.");
+        return Promise.reject(error);
+    })
 }
 
 export function signup(userDTO){

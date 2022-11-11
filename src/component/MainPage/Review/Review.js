@@ -71,8 +71,9 @@ const Review = forwardRef((props, ref) => {
                         { isSmallScreen ?
                             <Slider {...settingsForSmall} className="review-slider">
                                 {reviewItems}
-                            </Slider>
-                            :
+                                <div>2</div>
+                                <div>2</div>
+                            </Slider> :
                             <Slider {...settingsForBig} className="review-slider">
                                 {reviewItems}
                                 <div>2</div>
