@@ -58,6 +58,9 @@ function ScrollNav(props) {
         if(props.isOn){
             navBar.style.position='fixed';
         }
+        else if (!props.isOn && isDropdownClick && (isMediumScreen || isSmallScreen)){
+            dropdownMenu.style.position = 'absolute';
+        }
         if(isMediumScreen) {
             dropdownBtn.childNodes[1].classList.add('fa-2x');
             setFaSize(2);
@@ -65,9 +68,6 @@ function ScrollNav(props) {
         if(isSmallScreen) {
             dropdownBtn.childNodes[1].classList.remove('fa-2x');
             setFaSize(1);
-        }
-        else if (!props.isOn && isDropdownClick && (isMediumScreen || isSmallScreen)){
-            dropdownMenu.style.position = 'absolute';
         }
         setIsOn(props.isOn);
         if(isMediumScreen || isSmallScreen){
