@@ -8,24 +8,35 @@ function Footer() {
             <div className="footer-content w3-display-container">
                 <div className="footer-box">
                     <div className="footer-contents">
-                        <footer class="w3-container w3-padding-32">
-                            <div class="w3-row-padding">
-                                <div class="w3-third" style={{marginRight:"100px"}}>
-                                <h3>FOOTER</h3>
-                                <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-                                <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+                        <footer className="w3-container w3-padding-32">
+                            <div className="w3-row-padding">
+                                <div className="w3-third">
+                                <h5>Contact</h5>
+                                <p></p>
+                                <p>기업교육 문의</p>
+                                <p></p>
+                                <p>조교 연락처</p>
+                                <p style={{fontSize:"12px", color:"grey"}}>Copyrightⓒ2008 by </p>
                                 </div>
                             
-                                <div class="w3-third">
-                                <h3>LINKS</h3>
-                                <ul class="w3-ul">
-                                    <li class="w3-padding-16">
-                                    <span class="w3-large">Lorem</span><br/>
-                                    <span>Sed mattis nunc</span>
+                                <div className="w3-third">
+                                <h5>관련 홈페이지</h5>
+                                <ul className="w3-ul">
+                                    <li className="w3-padding-16">
+                                    <span>금오공과대학교 컴퓨터소프트웨어공학과</span><br/>
+                                    <span>
+                                        <a href="https://cs.kumoh.ac.kr/cs/index.do">
+                                            https://cs.kumoh.ac.kr/cs/index.do
+                                        </a>
+                                    </span>
                                     </li>
-                                    <li class="w3-padding-16">
-                                    <span class="w3-large">Ipsum</span><br/>
-                                    <span>Praes tinci sed</span>
+                                    <li className="w3-padding-16">
+                                    <span>금오공과대학교 컴퓨터공학과</span><br/>
+                                    <span>
+                                        <a href="https://ce.kumoh.ac.kr/ce/index.do">
+                                            https://ce.kumoh.ac.kr/ce/index.do
+                                        </a>
+                                    </span>
                                     </li> 
                                 </ul>
                                 </div>

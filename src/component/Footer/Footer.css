@@ -1,7 +1,7 @@
 .Footer * {
     font-family: 'Pretendard-Regular';
     letter-spacing: normal;
-    color: rgb(51, 51, 51);
+    color: rgb(92, 92, 92);
 }
 
 .Footer {
@@ -11,12 +11,13 @@
 .Footer .footer-content {
     width: 100%;
     height: 100%;
-}
-
-.Footer .footer-contents{
     background-image: url("../../../public/images/background01-2.png");
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.Footer .footer-contents{
+    padding-left: 50px;
 }
 
 .Footer .footer-box {

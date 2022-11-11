@@ -58,8 +58,43 @@
 }
 
 .ProcessInfo .process-box .process-content {
-    background-color: rgba(255, 255, 255, 0.389);
+    background-color: rgba(45, 45, 45, 0.475);
     border-radius: 25px;
+    padding: 30px;
+    padding-left: 46px;
+    text-align: left;
+    transition-property: background-color;
+    transition-duration: 0.5s;
+}
+
+.ProcessInfo .process-box .process-content:hover {
+    background-color: rgba(0, 0, 0, 0.723);
+}
+
+.ProcessInfo .process-box .process-content p {
+    margin: 0;
+    font-size: 40px;
+    font-weight: 600;
+    color: white;
+}
+
+.ProcessInfo .process-box .process-content-box {
+    border: solid salmon;
+    width: 400px;
+    height: 230px;
+    padding: 20px;
+}
+
+.ProcessInfo .process-box .process-item {
+    font-size: 23px;
+    font-weight: 600;
+    background-color: white;
+    padding: 1px;
+    padding-left: 9px;
+    padding-right: 9px;
+    border-radius: 25px;
+    position: absolute;
+    border: solid blue;
 }
 
 .ProcessInfo .process-box .more-info {
