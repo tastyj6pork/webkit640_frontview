@@ -48,9 +48,9 @@ function Main() {
         mainRef.current?.scrollIntoView({behavior:'smooth'});
     }
 
-    const throttledScroll  = useMemo(()=>
+    const throttledScroll = useMemo(()=>
         throttle(()=>{
-            console.log("scroll");
+            //console.log("scroll");
             if(window.scrollY < 630){
                 setIsNav(true);
                 setIsScrollNavOn(false);
@@ -62,13 +62,18 @@ function Main() {
         }, 400), [isScrollNavOn]
     );
 
-    useEffect(()=>{
-        console.log("useEffect called")
-        window.addEventListener('scroll', throttledScroll);
+    useEffect(()=> {
+        //console.log("setMainData useEffect called");
         // call("/main/data", "GET").then((res)=>{
         //     setMainPageData(res);
         // })
+    },[mainPageData]);
+
+    useEffect(()=>{
+        //console.log("useEffect called")
+        window.addEventListener('scroll', throttledScroll);
         return() => {
+            console.log("removeScrollEventListener")
             window.removeEventListener('scroll', throttledScroll);
         }
     }, [throttledScroll]);
