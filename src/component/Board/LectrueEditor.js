@@ -11,7 +11,7 @@ import { text } from '@fortawesome/fontawesome-svg-core';
 import ImageResize from 'quill-image-resize';
 Quill.register('modules/ImageResize', ImageResize);
 
-function Editor() {
+function LectrueEditor() {
     
     const [value, setValue] = useState("");
     const quillRef = useRef();
@@ -200,4 +200,4 @@ function Editor() {
     </div>)
 }
 
-export default Editor;
+export default LectrueEditor;
