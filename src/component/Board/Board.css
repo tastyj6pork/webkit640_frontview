@@ -47,6 +47,9 @@
     width: 80%;
     margin-left: 152.8px;
 }
+.board-tablerow-list {
+    text-decoration: none;
+}
 .editor-box {
     margin-top: 50px;
 }
