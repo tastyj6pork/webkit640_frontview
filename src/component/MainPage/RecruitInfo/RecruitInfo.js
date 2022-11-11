@@ -65,7 +65,7 @@ const RecruitInfo = forwardRef((props, ref) => {
                                 {isSmallScreen &&
                                     <ul>
                                         {   eligibility && 
-                                            eligibility.split(".").map((item, i)=>(
+                                            eligibility.split("/").map((item, i)=>(
                                             <li key={i}>{item}</li>
                                         ))}
                                     </ul>
@@ -74,7 +74,7 @@ const RecruitInfo = forwardRef((props, ref) => {
                                 <td className="content">
                                     <ul>
                                     { eligibility && 
-                                            eligibility.split(".").map((item, i)=>(
+                                            eligibility.split("/").map((item, i)=>(
                                             <li key={i}>{item}</li>
                                         ))}
                                     </ul>
