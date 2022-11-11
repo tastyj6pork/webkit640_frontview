@@ -9,6 +9,7 @@
     font-size: 38px;
     text-align: center;
     margin-top: 147px;
+    display: block;
 }
 .board-title-btn p {
     font-size: 25px;
@@ -16,11 +17,13 @@
     padding: 16px;
     width: 40%;
     height: 79px;
-    border-bottom: 3px solid black;
-    
 }
 .board-title-btn p:hover {
-    border: 3px solid black;
+    border: none;
+    background: whitesmoke;
+}
+.board-whole-line {
+    display: block;
 }
 .board-search-container {
     text-align: end;
