@@ -410,7 +410,7 @@ function AdminApply() {
                             <Button variant='outlined' onClick={fileDownloadClickEvent} data-idx={idx}>DOWNLOAD</Button>
                         </TableCell>
                         <TableCell>
-                            {!row.data.select ? "미결정" : "결정"}
+                            {!row.data.select ? "미결정" : <strong style={{color:"red"}}>지원자 결정처리, 수정필요!</strong>}
                         </TableCell>
                         <TableCell>
                             <Button variant='outlined' onClick={applicantSelectEvent} data-idx={idx}>SELECT</Button>
