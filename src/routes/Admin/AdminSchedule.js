@@ -4,7 +4,7 @@ import interactionPlugin from '@fullcalendar/interaction'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { API_BASE_URL } from '../../app-config';
-import { Grid, Typography } from '@mui/material';
+import { Grid, Paper, Typography } from '@mui/material';
 
 function Adminschedule() {
   const [auth, setAuth] = useState(localStorage.getItem("ACCESS_TOKEN"));
@@ -139,7 +139,17 @@ function Adminschedule() {
           <strong>일정관리</strong>
         </Typography>
       </Grid>
-      {showCalendar}
+      <Grid item xs={12}>
+        <Paper>
+        <p style={{padding:"20px"}}>
+            <p><strong>일정 추가 : 캘린더에 추가하실 시작 날짜와 종료 날짜를 클릭하시고 일정에 대한 제목을 추가하시면 생성됩니다.</strong></p>
+            <p><strong>일정 삭제 : 등록하신 일정을 클릭하시면 삭제됩니다.</strong></p>
+          </p>
+        </Paper>
+      </Grid>
+      <Grid item xs={12}>
+        {showCalendar}
+      </Grid>
     </Grid>
   );
 }
