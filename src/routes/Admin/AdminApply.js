@@ -183,19 +183,20 @@ function AdminApply() {
     const selectorApplicantList = (arg,event) => {
         
         if (event.target.checked) {
-            // let tempList = applicantList;
-            // tempList[arg].checker = true;
-            // setApplicantList(tempList);
-            setApplicantList(prevList => [...prevList, rawList[arg]])
+            setApplicantList(prevList => [...prevList, viewList[arg]]);
         } else {
             const temp = applicantList.filter(content => content.id !== arg)
             setApplicantList(temp);
         }
     }
 
+    useEffect(()=>{
+        console.log(applicantList);
+    },[applicantList])
+
     const selectorApplyList = (arg,event) => {
         if (event.target.checked) {
-            setApplyList(prevList => [...prevList, rawList[arg]])
+            setApplyList(prevList => [...prevList, viewList[arg]])
         } else {
             const temp = applyList.filter(content => content.id !== arg)
             setApplyList(temp);
@@ -283,10 +284,58 @@ function AdminApply() {
     const checkedLastPut = (checked) => {
         
     }
-
+    const applicantAllCheckHandler = (checked) => {
+        if (checked) {
+            const idArray = []
+            viewList.forEach((content)=> {
+                if (!content.data.adminSelect) {
+                    idArray.push(content)
+                }
+            })
+            setApplicantList(idArray);
+        } else {
+            setApplicantList([]);
+        }
+    }
+    const applyAllCheckHandler = (checked) => {
+        if (checked) {
+            const idArrays = []
+            viewList.forEach((content)=> {
+                if (content.data.adminSelect) {
+                    idArrays.push(content)
+                }
+            })
+            setApplyList(idArrays);
+        } else {
+            setApplyList([])
+        }
+    }
+    const forcedSelectApplicant = (e,email) => {
+        axios({
+            url:API_BASE_URL + "/apply/forced-select",
+            method:"POST",
+            headers:{
+                Authorization: "Bearer " + localStorage.getItem("ACCESS_TOKEN"),
+            },
+            data: {email:email}
+        }).then((res)=>{
+            window.location.href = "/adminapply"
+        });
+    }
+    const checkerSelect = (idx) => {
+        applicantList.map((content)=>{
+            if (content.id === idx) {
+                return true;
+            } else {
+                return false;
+            }
+        })
+    }
+    
     //Rendering 부분
     return(
     <Grid container spacing={3}>
+        {console.log(viewList)}
         <Grid item xs={12}>
             <Typography variant='h2' component="h2">
                 <strong>지원자 관리</strong>
@@ -325,14 +374,16 @@ function AdminApply() {
                     <TableHead>
                     <TableRow>
                         <TableCell align='center'>
-                            <Checkbox onChange={(e) => checkedTotalPut(e.target.checked)}></Checkbox>
+                            <Checkbox onChange={(e) => applicantAllCheckHandler(e.target.checked)}
+                            checked={viewList.filter((element)=>!element.data.adminSelect).length === applicantList.length ? true : false}></Checkbox>
                         </TableCell>
-                        <TableCell>name</TableCell>
-                        <TableCell>email</TableCell>
-                        <TableCell>school</TableCell>
-                        <TableCell>major</TableCell>
-                        <TableCell>schoolYear</TableCell>
-                        <TableCell>Apply Document</TableCell>
+                        <TableCell>이름</TableCell>
+                        <TableCell>이메일</TableCell>
+                        <TableCell>학교</TableCell>
+                        <TableCell>학과</TableCell>
+                        <TableCell>학년</TableCell>
+                        <TableCell>지원서</TableCell>
+                        <TableCell>지원자 결정</TableCell>
                         <TableCell>SELECT</TableCell>
                     </TableRow>
                 </TableHead>
@@ -346,7 +397,9 @@ function AdminApply() {
                     hover={true}
                     >
                         <TableCell align='center'>
-                            <Checkbox id={"check"+idx} onChange={(e)=>{selectorApplicantList(idx,e)}}></Checkbox>
+                            <Checkbox id={"check"+idx}
+                            checked = {applicantList.includes(row) ? true : false}
+                            onChange={(e)=>{selectorApplicantList(idx,e)}}></Checkbox>
                         </TableCell>
                         <TableCell>{row.data.name}</TableCell>
                         <TableCell id={idx}>{row.data.email}</TableCell>
@@ -355,6 +408,9 @@ function AdminApply() {
                         <TableCell>{row.data.schoolYear}</TableCell>
                         <TableCell>
                             <Button variant='outlined' onClick={fileDownloadClickEvent} data-idx={idx}>DOWNLOAD</Button>
+                        </TableCell>
+                        <TableCell>
+                            {!row.data.select ? "미결정" : "결정"}
                         </TableCell>
                         <TableCell>
                             <Button variant='outlined' onClick={applicantSelectEvent} data-idx={idx}>SELECT</Button>
@@ -378,14 +434,16 @@ function AdminApply() {
                     <TableHead>
                     <TableRow>
                         <TableCell align='center'>
-                            <Checkbox checked={checkedLast()} onChange={(e) => checkedLastPut(e.target.checked)}></Checkbox>
+                            <Checkbox checked={viewList.filter((element)=>element.data.adminSelect).length === applyList.length ? true : false}
+                            onChange={(e) => applyAllCheckHandler(e.target.checked)}></Checkbox>
                         </TableCell>
-                        <TableCell>name</TableCell>
-                        <TableCell>email</TableCell>
-                        <TableCell>school</TableCell>
-                        <TableCell>schoolNumber</TableCell>
-                        <TableCell>schoolYear</TableCell>
-                        <TableCell>Apply Document</TableCell>
+                        <TableCell>이름</TableCell>
+                        <TableCell>이메일</TableCell>
+                        <TableCell>학교</TableCell>
+                        <TableCell>학번</TableCell>
+                        <TableCell>학년</TableCell>
+                        <TableCell>지원서</TableCell>
+                        <TableCell>지원자 결정</TableCell>
                         <TableCell>CANCEL</TableCell>
                     </TableRow>
                 </TableHead>
@@ -399,7 +457,7 @@ function AdminApply() {
                     hover={true}
                     >
                         <TableCell align='center'>
-                            <Checkbox id={"check"+idx} onChange={(e)=>{selectorApplyList(idx,e)}}></Checkbox>
+                            <Checkbox checked = {applyList.includes(row) ? true : false} id={"check"+idx} onChange={(e)=>{selectorApplyList(idx,e)}}></Checkbox>
                         </TableCell>
                         <TableCell>{row.data.name}</TableCell>
                         <TableCell id={idx}>{row.data.email}</TableCell>
@@ -409,6 +467,7 @@ function AdminApply() {
                         <TableCell>
                             <Button variant='outlined' onClick={fileDownloadClickEvent} data-idx={idx}>DOWNLOAD</Button>
                         </TableCell>
+                        <TableCell>{row.data.select ? <Button variant='contained' color='warning' onClick={(e)=>{forcedSelectApplicant(e,row.data.email)}}>지원 취소</Button> : <Button variant='outlined' onClick={(e)=>{forcedSelectApplicant(e,row.data.email)}}>강제 결정</Button>}</TableCell>
                         <TableCell>
                             <Button variant='outlined' onClick={applicantSelectEvent} data-idx={idx}>CANCEL</Button>
                         </TableCell>
