@@ -26,18 +26,18 @@ function AdminApply() {
             innerEffect();
         }
         else if (selectValue === "school") {
-            var tempList = viewList.filter((content)=>content.data.school === searchKeyword)
+            var tempList = viewList.filter((content)=>content.data.school.includes(searchKeyword));
             if (tempList.length !== 0) {
                 setViewList(tempList);
             }
         }
         else if (selectValue === "major") {
-            var tempMajor = viewList.filter((content) => content.data.major === searchKeyword);
+            var tempMajor = viewList.filter((content) => content.data.major.includes(searchKeyword));
             if (tempMajor.length !== 0) {
                 setViewList(tempMajor)
             }
         } else if (selectValue === "schoolYear") {
-            var tempSchoolYear = viewList.filter((content) => content.data.schoolYear === searchKeyword);
+            var tempSchoolYear = viewList.filter((content) => content.data.schoolYear.includes(searchKeyword));
             if (tempSchoolYear.length !== 0) {
                 setViewList(tempSchoolYear);
             }
