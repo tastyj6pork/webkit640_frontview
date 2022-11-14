@@ -41,6 +41,11 @@ function AdminApply() {
             if (tempSchoolYear.length !== 0) {
                 setViewList(tempSchoolYear);
             }
+        } else if (selectValue === "date") {
+            var tempSchoolDate = viewList.filter((content) => content.data.date.includes(searchKeyword))
+            if (tempSchoolDate !== 0) {
+                setViewList(tempSchoolDate)
+            }
         }
     },[searchKeyword])
 
@@ -356,6 +361,7 @@ function AdminApply() {
                         <MenuItem value="school">학교</MenuItem>
                         <MenuItem value="major">학과</MenuItem>
                         <MenuItem value="schoolYear">학년</MenuItem>
+                        <MenuItem value="date">지원일</MenuItem>
                     </Select>
             </FormControl>
             <TextField
@@ -377,10 +383,12 @@ function AdminApply() {
                             <Checkbox onChange={(e) => applicantAllCheckHandler(e.target.checked)}
                             checked={viewList.filter((element)=>!element.data.adminSelect).length === applicantList.length ? true : false}></Checkbox>
                         </TableCell>
+                        <TableCell>지원일</TableCell>
                         <TableCell>이름</TableCell>
                         <TableCell>이메일</TableCell>
                         <TableCell>학교</TableCell>
                         <TableCell>학과</TableCell>
+                        <TableCell>학번</TableCell>
                         <TableCell>학년</TableCell>
                         <TableCell>지원서</TableCell>
                         <TableCell>지원자 결정</TableCell>
@@ -401,10 +409,12 @@ function AdminApply() {
                             checked = {applicantList.includes(row) ? true : false}
                             onChange={(e)=>{selectorApplicantList(idx,e)}}></Checkbox>
                         </TableCell>
+                        <TableCell>{row.data.date}</TableCell>
                         <TableCell>{row.data.name}</TableCell>
                         <TableCell id={idx}>{row.data.email}</TableCell>
                         <TableCell>{row.data.school}</TableCell>
                         <TableCell>{row.data.major}</TableCell>
+                        <TableCell>{row.data.schoolNumber}</TableCell>
                         <TableCell>{row.data.schoolYear}</TableCell>
                         <TableCell>
                             <Button variant='outlined' onClick={fileDownloadClickEvent} data-idx={idx}>DOWNLOAD</Button>
@@ -437,9 +447,11 @@ function AdminApply() {
                             <Checkbox checked={viewList.filter((element)=>element.data.adminSelect).length === applyList.length ? true : false}
                             onChange={(e) => applyAllCheckHandler(e.target.checked)}></Checkbox>
                         </TableCell>
+                        <TableCell>지원일</TableCell>
                         <TableCell>이름</TableCell>
                         <TableCell>이메일</TableCell>
                         <TableCell>학교</TableCell>
+                        <TableCell>학과</TableCell>
                         <TableCell>학번</TableCell>
                         <TableCell>학년</TableCell>
                         <TableCell>지원서</TableCell>
@@ -459,9 +471,11 @@ function AdminApply() {
                         <TableCell align='center'>
                             <Checkbox checked = {applyList.includes(row) ? true : false} id={"check"+idx} onChange={(e)=>{selectorApplyList(idx,e)}}></Checkbox>
                         </TableCell>
+                        <TableCell>{row.data.date}</TableCell>
                         <TableCell>{row.data.name}</TableCell>
                         <TableCell id={idx}>{row.data.email}</TableCell>
                         <TableCell>{row.data.school}</TableCell>
+                        <TableCell>{row.data.major}</TableCell>
                         <TableCell>{row.data.schoolNumber}</TableCell>
                         <TableCell>{row.data.schoolYear}</TableCell>
                         <TableCell>
