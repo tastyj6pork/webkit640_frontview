@@ -17,6 +17,8 @@ import Board from '../component/Board/Board';
 import LectureData from '../component/Board/LectureData';
 import Editor from '../component/Board/Editor';
 import BoardDetail from '../component/Board/BoardDetail';
+import LectrueEditor from '../component/Board/LectrueEditor';
+import LectureBoardDetail from '../component/Board/LectureBoardDetail';
 
 function AppRouter(){
     return (
@@ -41,6 +43,8 @@ function AppRouter(){
                     <Route path="/lecturedata" element={<LectureData />} />
                     <Route path="/editor" element={<Editor />} />
                     <Route path="/boarddetail/:id" element={<BoardDetail />} />
+                    <Route path="/lectureeditor" element={<LectrueEditor />} />
+                    <Route path="lectureboarddetail/:id" element={<LectureBoardDetail />} />
             </Routes>
         </BrowserRouter>
     )

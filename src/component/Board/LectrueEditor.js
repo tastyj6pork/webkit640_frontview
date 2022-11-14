@@ -30,7 +30,7 @@ function LectrueEditor() {
 
         const formData = new FormData();
         const data = {
-            type: "notification",
+            type: "lecture",
             title: title,
             content: value,
         }
@@ -41,7 +41,7 @@ function LectrueEditor() {
             console.log(formData.has("file"));
             if(file === "") {
                 alert("success")
-                window.location.href ="/board"
+                window.location.href ="/lecturedata"
             } else {
                 axios({
                 method:"POST",
@@ -55,7 +55,7 @@ function LectrueEditor() {
                 if(res.status === 200) {
                     console.log(res);
                     alert("게시글 업로드 완료 되었습니다.");
-                    window.location.href = "/board";
+                    window.location.href = "/lecturedata";
                 }
             })
             }
@@ -64,7 +64,7 @@ function LectrueEditor() {
     }
 
     function BackStepBtn() {
-        window.location.href = "/board"
+        window.location.href = "/lecturedata"
     }
 
     console.log(value);
@@ -159,7 +159,7 @@ function LectrueEditor() {
     return(<div className="editor-container">
         <Header />
         <div className="board-title">
-            <h1>공지사항</h1>
+            <h1>강의자료</h1>
         </div>
         <form>
             <div className="editor-box">

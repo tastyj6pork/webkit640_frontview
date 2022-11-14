@@ -51,7 +51,7 @@ function LectureData() {
         const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
         useEffect(() => {
-            call("/board/list?type=notification", "GET").then((res) => setList(res));
+            call("/board/list?type=lecture", "GET").then((res) => setList(res));
         }, [])  
         console.log(list);
       
@@ -69,14 +69,14 @@ function LectureData() {
         }
 
         const GoToEdit = () => {
-            window.location.href="/editor";
+            window.location.href="/lectureeditor";
         }
 
     return(<div>
         <Header />
         <div className="board-container">
             <div className="board-title">
-                <h1>강의자료</h1> 
+                <h1>강의자료</h1>
                 <div className="board-title-btn">
                     <p onClick={BoardChange}>공지사항</p>
                     <p style={{background:"whitesmoke"}}>강의자료</p>
