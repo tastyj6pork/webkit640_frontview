@@ -298,3 +298,45 @@
     margin-left: 705px;
     margin-top: 14px;
 }
+.detail-ripple-content {
+    margin-top: 30px;
+    height: auto;
+    max-height: 500px;
+    overflow:scroll;
+    overflow-x: hidden;
+}
+.reply-container {
+    border-top: 1px dotted black;
+    margin: auto;
+    width: 80%;
+}
+.reply-container ul {
+    list-style: none;
+}
+.reply-container li {
+    display: inline-block;
+    padding: 9px;
+}
+.reply-container li button {
+    width: 50px;
+    height: auto;
+    border: 1px solid #717171;
+    background: #717171;
+    color: white;
+}
+.reply-container p {
+    padding-left: 9px;
+}
+.detail-delete-btn {
+    display: inline-block;
+    width: 6.154rem;
+    height: 2.692rem;
+    border: 1px solid #717171;
+    background-color: #717171;
+    color: #fff;
+    padding: 0 1.071rem;
+    border-radius: 3px;
+    font-weight: 500;
+    margin-left: 1180px;
+    margin-top: 30px;
+}
