@@ -18,7 +18,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 
-function Board() {
+function Review() {
 
     const [list, setList] = useState([]);
     const [keyword,setKeyword] = useState();
@@ -54,7 +54,7 @@ function Board() {
         const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
         useEffect(() => {
-            call("/board/list?type=notification", "GET").then((res) => {setList(res);});
+            call("/board/list?type=review", "GET").then((res) => {setList(res);});
         }, [])  
         console.log(list);
         
@@ -69,17 +69,13 @@ function Board() {
           setPage(0);
         };
 
-        const BoardChange = () => {
-            window.location.href="/lecturedata";
-        }
-
         const GoToEdit = () => {
-            window.location.href="/editor";
+            window.location.href="/revieweditor";
         }
         useEffect(()=>{
             if (keyword === "" || keyword === null || keyword === " ") {
                 setViewList([]);
-                call("/board/list?type=notification", "GET").then((res) => {setViewList(res);});
+                call("/board/list?type=review", "GET").then((res) => {setViewList(res);});
             }
             if (selectValue === "제목") {
                 var tempList = viewList.filter((content)=>content.title.includes(keyword));
@@ -100,14 +96,10 @@ function Board() {
         <Header />
         <div className="board-container">
             <div className="board-title">
-                <h1>공지사항</h1>
-                <div className="board-title-btn">
-                    <p style={{background:"whitesmoke"}}>공지사항</p>
-                    <p onClick={BoardChange}>강의자료</p>
-                </div>
+                <h1>리뷰</h1>
                 <div className="board-whole-line">
                     <div className="board-search-container">
-                        <button className="board-eidit-btn" onClick={GoToEdit}>글 작성</button>
+                        <button className="board-eidit-btn" onClick={GoToEdit}>리뷰 작성</button>
                         <select name="type" value={selectValue} onChange={(e)=>{setSelectValue(e.target.value)}} className="board-search-select">
                             <option value="제목">제목</option>
                             <option value="작성자">작성자</option>
@@ -173,4 +165,4 @@ function Board() {
     </div>)
 }
 
-export default Board;
+export default Review;
