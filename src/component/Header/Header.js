@@ -43,7 +43,7 @@ function Header(props=false) {
         if(isClick) setIsClick(false);
         else setIsClick(true);
     }
-    
+
     const hideDetail = (e) => {
         setIsClick(false);
     }
@@ -100,7 +100,9 @@ function Header(props=false) {
             <div id="navBarIncludeDetail">
                 <div id="navBar" className="w3-bar w3-wide ">
                     <div className="nav-content">
-                        <Link to='/' className="navbar-brand"></Link>
+                        <Link to='/' className="navbar-brand">
+                            <img src="/images/logo2.png"/>
+                        </Link>
                         {isBigScreen &&
                             <div id="menuList" className="w3-center w3-hide-small w3-hide-medium">
                                 <ul>

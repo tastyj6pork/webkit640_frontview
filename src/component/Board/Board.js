@@ -8,7 +8,7 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import Header from "../../component/Header/Header";
-import Footer from "../../component/Footer/Footer"; 
+import Footer from "../../component/Footer/Footer";
 import "../Board/Board.css";
 import { useEffect } from 'react';
 import axios from 'axios';
@@ -50,22 +50,22 @@ function Board() {
 
     const rows = viewList;
     console.log(rows)
-    
+
         const [page, setPage] = React.useState(0);
         const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
         useEffect(() => {
             call("/board/list?type=notification", "GET").then((res) => {setList(res);});
             call("/auth/find-user","GET").then((res)=>{setIsAdmin(res.admin)})
-        }, [])  
+        }, [])
         console.log(list);
-        
+
         useEffect(()=>{setViewList(list)},[list])
 
         const handleChangePage = (event, newPage) => {
         setPage(newPage);
         };
-    
+
         const handleChangeRowsPerPage = (event) => {
         setRowsPerPage(+event.target.value);
         setPage(0);
@@ -97,7 +97,7 @@ function Board() {
         },[keyword])
         useEffect(()=>{console.log(keyword)},[keyword])
         useEffect(()=>{console.log(selectValue)},[selectValue])
-        
+
 
     return(<div>
         <Header />
@@ -118,7 +118,7 @@ function Board() {
                         <input type="text"
                             value={keyword}
                             onChange={(e)=>{setKeyword(e.target.value)}}
-                            className="board-search-input" 
+                            className="board-search-input"
                             placeholder="검색어를 입력해 주세요"></input>
                     </div>
                     <div className="board-list-container">
