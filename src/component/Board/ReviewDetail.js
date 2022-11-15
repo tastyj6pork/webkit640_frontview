@@ -6,7 +6,7 @@ import { call } from "../../service/ApiService";
 import Header from "../Header/Header";
 import Reply from "./Reply";
 
-function BoardDetail() {
+function ReviewDetail() {
 
     const {id} = useParams()
     const [boardList, setBoardList] = useState([]);
@@ -78,7 +78,7 @@ function BoardDetail() {
                 "content": boardRipple,
             }
         }).then((res) => { 
-            window.location.href="/boarddetail/" + id;
+            window.location.href="/reviewdetail/" + id;
         })
     }
 
@@ -92,21 +92,21 @@ function BoardDetail() {
                     method: "DELETE",
                     url: API_BASE_URL + "/board/delete-board/" + id,
                 }).then((res) => {  
-                    window.location.href="/board/";
+                    window.location.href="/review";
                 })
             } else {
             }
     }
 
     const Teleportation = () => {
-        window.location.href="/board"
+        window.location.href="/review"
     }
 
     return(<div>
         <Header />
         <div>
             <div className="board-title">
-                <h1 onClick={Teleportation}>공지사항</h1>
+                <h1 onClick={Teleportation}>리뷰</h1>
             </div>
             <div className="board-detail-container">
                 <div className="board-detail-title">
@@ -170,4 +170,4 @@ function BoardDetail() {
     </div>)
 }
 
-export default BoardDetail;
+export default ReviewDetail;
