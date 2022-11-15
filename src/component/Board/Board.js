@@ -22,7 +22,6 @@ function Board() {
 
     const [list, setList] = useState([]);
     const [keyword,setKeyword] = useState();
-    const [isAdmin,setIsAdmin] = useState();
     const [selectValue, setSelectValue] = useState("제목");
     const [viewList, setViewList] = useState([]);
     const [isAdmin, setIsAdmin] = useState(0);
