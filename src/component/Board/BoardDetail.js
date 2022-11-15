@@ -45,14 +45,15 @@ function BoardDetail() {
             link.style.display = "none";
             const extractDownloadFilename = (response) => {
                 const disposition = response.headers["content-disposition"];
-                // const fileName = decodeURI(
-                //     disposition
-                //     .match(/filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/)[1]
-                //     .replace(/['"]/g, "")
-                // );
+                console.log(disposition)
                 const fileName = decodeURI(
                     disposition
-                )
+                    .match(/filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/)[1]
+                    .replace(/['"]/g, "")
+                );
+                // const fileName = decodeURI(
+                //     disposition
+                // )
                 return fileName;
             };
             link.download = extractDownloadFilename(res);
