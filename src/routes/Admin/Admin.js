@@ -13,6 +13,7 @@ import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import DesktopDatePicker from "@mui/lab/DesktopDatePicker";
 import AdminMainPage from "./AdminMainPage";
 import AdminBoardList from "./AdminBoardList";
+import AdminTrainee from "./AdminTrainee";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -89,6 +90,7 @@ function Admin() {
               <Tab label="관리자 계정 관리" {...a11yProps(0)} />
               <Tab label="메인화면 관리" {...a11yProps(1)} />
               <Tab label="게시판 열람 여부 변경" {...a11yProps(2)} />
+              <Tab label="교육생 리스트" {...a11yProps(3)} />
             </Tabs>
           </Box>
           <TabPanel value={value} index={0}>
@@ -99,6 +101,9 @@ function Admin() {
           </TabPanel>
           <TabPanel value={value} index={2}>
             <AdminBoardList/>
+          </TabPanel>
+          <TabPanel value={value} index={3}>
+            <AdminTrainee/>
           </TabPanel>
         </Box>
       </Grid>
