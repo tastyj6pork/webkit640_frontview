@@ -41,7 +41,7 @@
     border-radius: 25px;
     padding: 15px;
     padding-left: 35px;
-    padding-right: 35px;
+    padding-right: 40px;
 }
 
 .Review .item-content table {
@@ -51,10 +51,13 @@
 .Review .item-content table td {
     text-align: left;
     padding-top: 10px;
+    margin-right: 30px;
+
 }
 
 .Review .item-content h2 {
     float: left;
+    font-size: 38px;
     font-weight: 600;
     margin: 0;
 }
@@ -67,7 +70,33 @@
 }
 
 .Review .item-content table .writer {
-    font-size: 16px;
+    font-size: 17px;
+    font-weight: 600;
+    font-style: italic;
+}
+
+.Review .item-content .review-content {
+    width: 100%;
+    word-break: break-all;
+    white-space: pre-wrap;
+    filter: blur(3.5px);
+    margin-top: 10px;
+}
+
+.Review .item-content .review-link {
+    position: relative;
+    width: 100px;
+    height: 42px;
+    background-color: white;
+    border: 1px solid rgb(226, 226, 226);
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 14px;
+    text-align: center;
+    vertical-align: middle;
+    top: -60px;
+    left: 200px;
+    text-decoration:none;
 }
 
 .Review .item-content table .writer,
@@ -130,6 +159,16 @@
     }
     .Review .item-content table {
         font-size: 12px;
+    }
+    .Review .item-content .review-content{
+        width: 300px;
+    }
+    .Review .item-content .review-link {
+        width: 80px;
+        height: 38px;
+        font-size: 12px;
+        top: -70px;
+        left: 100px;
     }
     .Review .review-content .more-btn {
         font-size: 13px;

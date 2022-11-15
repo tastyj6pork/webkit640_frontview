@@ -148,7 +148,6 @@ function Header(props=false) {
                         onMouseLeave={hideMypage}>
                             <ul>
                                 <li><button onClick={goMypage}>{userpage}</button></li>
-                                <li><a href="/">회원정보</a></li>
                             </ul>
                         </div>
                     }
