@@ -47,7 +47,7 @@ function Review() {
         },
       ];
 
-      const rows = viewList;
+      const rows = viewList.filter((content)=>content.add);
       console.log(rows)
     
         const [page, setPage] = React.useState(0);
