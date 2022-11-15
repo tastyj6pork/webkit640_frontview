@@ -1,3 +1,9 @@
+* {
+    font-family: 'Pretendard-Regular';
+    letter-spacing: normal;
+    color: rgb(66, 66, 66);
+}
+
 .board-container {
     margin-bottom: 50px;
 }
@@ -6,17 +12,20 @@
     text-align: center;
 }
 .board-title h1 {
-    font-size: 38px;
+    font-size: 35px;
     text-align: center;
     margin-top: 147px;
+    margin-bottom: 30px;
+    font-weight: 600;
     display: block;
 }
 .board-title-btn p {
-    font-size: 25px;
+    font-size: 22px;
     display: inline-block;
-    padding: 16px;
-    width: 40%;
-    height: 79px;
+    width: 30%;
+    height: 65px;
+    line-height: 65px;
+    vertical-align: middle;
 }
 .board-title-btn p:hover {
     border: none;
@@ -151,6 +160,7 @@
     color: white;
     float:left;
     margin-left: 153.8px;
+    margin-bottom: 15px;
     border: none;
 }
 .board-detail-container {

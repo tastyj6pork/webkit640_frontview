@@ -41,13 +41,9 @@ const Review = forwardRef((props, ref) => {
             <FontAwesomeIcon icon={faChevronLeft} size="2x"/>
         ),
     };
-    const gotoReview = (e) => {
-        window.location.href("/review");
-    }
 
     useEffect(()=>{
         call("/main/review", "GET").then((res)=>{
-            console.log(res)
             setReviewData(res);
         })
     },[])

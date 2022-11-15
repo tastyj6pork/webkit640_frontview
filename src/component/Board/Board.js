@@ -22,34 +22,34 @@ function Board() {
 
     const [list, setList] = useState([]);
     const [keyword,setKeyword] = useState();
-    const [isAdmin,setIsAdmin] = useState();
     const [selectValue, setSelectValue] = useState("제목");
     const [viewList, setViewList] = useState([]);
+    const [isAdmin, setIsAdmin] = useState(0);
     const columns = [
         { id: 'no', label: '번호', minWidth: 100},
         { id: 'title', label: '제목', minWidth: 250 },
         {
-          id: 'writer',
-          label: '작성자',
-          minWidth: 140,
-          align: 'right',
+        id: 'writer',
+        label: '작성자',
+        minWidth: 140,
+        align: 'right',
         },
         {
-          id: 'date',
-          label: '등록일',
-          minWidth: 170,
-          align: 'right',
+        id: 'date',
+        label: '등록일',
+        minWidth: 170,
+        align: 'right',
         },
         {
-          id: 'look',
-          label: '조회',
-          minWidth: 140,
-          align: 'right',
+        id: 'look',
+        label: '조회',
+        minWidth: 140,
+        align: 'right',
         },
-      ];
+    ];
 
-      const rows = viewList;
-      console.log(rows)
+    const rows = viewList;
+    console.log(rows)
     
         const [page, setPage] = React.useState(0);
         const [rowsPerPage, setRowsPerPage] = React.useState(10);
@@ -63,12 +63,12 @@ function Board() {
         useEffect(()=>{setViewList(list)},[list])
 
         const handleChangePage = (event, newPage) => {
-          setPage(newPage);
+        setPage(newPage);
         };
-      
+    
         const handleChangeRowsPerPage = (event) => {
-          setRowsPerPage(+event.target.value);
-          setPage(0);
+        setRowsPerPage(+event.target.value);
+        setPage(0);
         };
 
         const BoardChange = () => {
@@ -97,6 +97,7 @@ function Board() {
         },[keyword])
         useEffect(()=>{console.log(keyword)},[keyword])
         useEffect(()=>{console.log(selectValue)},[selectValue])
+        
 
     return(<div>
         <Header />
@@ -109,7 +110,7 @@ function Board() {
                 </div>
                 <div className="board-whole-line">
                     <div className="board-search-container">
-                        {isAdmin && <button className="board-eidit-btn" onClick={GoToEdit}>글 작성</button>}
+                        <button className="board-eidit-btn" onClick={GoToEdit}>작성하기</button>
                         <select name="type" value={selectValue} onChange={(e)=>{setSelectValue(e.target.value)}} className="board-search-select">
                             <option value="제목">제목</option>
                             <option value="작성자">작성자</option>
