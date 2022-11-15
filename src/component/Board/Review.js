@@ -96,10 +96,10 @@ function Review() {
         <Header />
         <div className="board-container">
             <div className="board-title">
-                <h1>리뷰</h1>
+                <h1>수강 후기</h1>
                 <div className="board-whole-line">
                     <div className="board-search-container">
-                        <button className="board-eidit-btn" onClick={GoToEdit}>리뷰 작성</button>
+                        <button className="board-eidit-btn" onClick={GoToEdit}>작성하기</button>
                         <select name="type" value={selectValue} onChange={(e)=>{setSelectValue(e.target.value)}} className="board-search-select">
                             <option value="제목">제목</option>
                             <option value="작성자">작성자</option>
