@@ -19,6 +19,9 @@ import Editor from '../component/Board/Editor';
 import BoardDetail from '../component/Board/BoardDetail';
 import LectrueEditor from '../component/Board/LectrueEditor';
 import LectureBoardDetail from '../component/Board/LectureBoardDetail';
+import Review from '../component/Board/Review';
+import ReviewDetail from '../component/Board/ReviewDetail';
+import ReviewEditor from '../component/Board/ReviewEditor';
 
 function AppRouter(){
     return (
@@ -44,7 +47,10 @@ function AppRouter(){
                     <Route path="/editor" element={<Editor />} />
                     <Route path="/boarddetail/:id" element={<BoardDetail />} />
                     <Route path="/lectureeditor" element={<LectrueEditor />} />
-                    <Route path="lectureboarddetail/:id" element={<LectureBoardDetail />} />
+                    <Route path="/lectureboarddetail/:id" element={<LectureBoardDetail />} />
+                    <Route path="/review" element={<Review />} />
+                    <Route path="/reviewdetail/:id" element={<ReviewDetail />} />
+                    <Route path="/revieweditor" element={<ReviewEditor />} />
             </Routes>
         </BrowserRouter>
     )
