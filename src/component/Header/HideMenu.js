@@ -51,7 +51,7 @@ function HideMenu(props) {
                             <li><a href="/adminapply">지원하기</a></li>
                         </ul>
                     }
-                    <li>수강후기</li>
+                    <li><a href="/review">수강후기</a></li>
                 </ul>
                 { !props.isLogin &&
                     <ul className="user-menu-list">
