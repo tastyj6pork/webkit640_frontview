@@ -46,7 +46,6 @@ function Main() {
 
     const throttledScroll = useMemo(()=>
         throttle(()=>{
-            //console.log("scroll");
             if(window.scrollY < 630){
                 setIsNav(true);
                 setIsScrollNavOn(false);
@@ -67,7 +66,6 @@ function Main() {
     useEffect(()=>{
         window.addEventListener('scroll', throttledScroll);
         return() => {
-            console.log("removeScrollEventListener")
             window.removeEventListener('scroll', throttledScroll);
         }
     }, [throttledScroll]);
