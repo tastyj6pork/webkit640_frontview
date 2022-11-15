@@ -63,13 +63,13 @@
 
 
 @media all and (max-width: 1536px) {
-    
+
     .apply-submit {
         border-top: 0.5px solid gray;
         margin-top: 10px;
     }
     .apply-container {
-        height: 576px; 
+        height: 576px;
     }
-    
+
 }
