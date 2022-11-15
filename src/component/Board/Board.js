@@ -22,6 +22,7 @@ function Board() {
 
     const [list, setList] = useState([]);
     const [keyword,setKeyword] = useState();
+    const [isAdmin,setIsAdmin] = useState();
     const [selectValue, setSelectValue] = useState("제목");
     const [viewList, setViewList] = useState([]);
     const columns = [
@@ -55,6 +56,7 @@ function Board() {
 
         useEffect(() => {
             call("/board/list?type=notification", "GET").then((res) => {setList(res);});
+            call("/auth/find-user","GET").then((res)=>{setIsAdmin(res.admin)})
         }, [])  
         console.log(list);
         
@@ -107,7 +109,7 @@ function Board() {
                 </div>
                 <div className="board-whole-line">
                     <div className="board-search-container">
-                        <button className="board-eidit-btn" onClick={GoToEdit}>글 작성</button>
+                        {isAdmin && <button className="board-eidit-btn" onClick={GoToEdit}>글 작성</button>}
                         <select name="type" value={selectValue} onChange={(e)=>{setSelectValue(e.target.value)}} className="board-search-select">
                             <option value="제목">제목</option>
                             <option value="작성자">작성자</option>
