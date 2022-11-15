@@ -128,7 +128,7 @@ function AdminApply() {
                 return fileName;
             };
             link.download = extractDownloadFilename(res);
-            
+
             document.body.appendChild(link);
             link.click();
             link.remove();
@@ -160,7 +160,7 @@ function AdminApply() {
                 return fileName;
             };
             link.download = extractDownloadFilename(res);
-            
+
             document.body.appendChild(link);
             link.click();
             link.remove();
@@ -186,7 +186,7 @@ function AdminApply() {
         })
     }
     const selectorApplicantList = (arg,event) => {
-        
+
         if (event.target.checked) {
             setApplicantList(prevList => [...prevList, viewList[arg]]);
         } else {
@@ -257,7 +257,7 @@ function AdminApply() {
         let count=0;
         viewList.forEach((items) => !items.data.adminSelect && count++)
         if(count === applicantList.length) {return true}
-        else {return false}   
+        else {return false}
     }
     const checkedLast = () => {
         let count=0;
@@ -287,7 +287,7 @@ function AdminApply() {
     }
 
     const checkedLastPut = (checked) => {
-        
+
     }
     const applicantAllCheckHandler = (checked) => {
         if (checked) {
@@ -336,13 +336,13 @@ function AdminApply() {
             }
         })
     }
-    
+
     //Rendering 부분
     return(
     <Grid container spacing={3}>
         {console.log(viewList)}
         <Grid item xs={12}>
-            <Typography variant='h2' component="h2">
+            <Typography variant='h3' component="h3">
                 <strong>지원자 관리</strong>
             </Typography>
         </Grid>
@@ -391,7 +391,7 @@ function AdminApply() {
                         <TableCell>학번</TableCell>
                         <TableCell>학년</TableCell>
                         <TableCell>지원서</TableCell>
-                        <TableCell>지원자 결정</TableCell>
+                        <TableCell>최종 승인</TableCell>
                         <TableCell>SELECT</TableCell>
                     </TableRow>
                 </TableHead>
@@ -434,10 +434,9 @@ function AdminApply() {
     </Grid>
     <Grid item xs={5}></Grid>
     <Grid item xs={6}>
-        <Button onClick={(e)=>{checkerApplicantApply(e)}} variant='contained'>일괄 등록</Button>
-        <Button color='warning' sx={{marginLeft:1}} onClick={(e)=>{cancelApplicantApply(e)}} variant='contained'>일괄 취소</Button>
+        <Button onClick={(e)=>{checkerApplicantApply(e)}} variant='contained'>선택 등록</Button>
     </Grid>
-    
+
     <Grid item xs={12}>
             <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -455,7 +454,7 @@ function AdminApply() {
                         <TableCell>학번</TableCell>
                         <TableCell>학년</TableCell>
                         <TableCell>지원서</TableCell>
-                        <TableCell>지원자 결정</TableCell>
+                        <TableCell>최종 승인</TableCell>
                         <TableCell>CANCEL</TableCell>
                     </TableRow>
                 </TableHead>
@@ -491,6 +490,10 @@ function AdminApply() {
         </TableBody>
       </Table>
     </TableContainer>
+    </Grid>
+    <Grid item xs={5}></Grid>
+    <Grid item xs={6}>
+        <Button color='warning' sx={{marginLeft:1}} onClick={(e)=>{cancelApplicantApply(e)}} variant='contained'>선택 취소</Button>
     </Grid>
     </Grid>
     )

@@ -79,7 +79,7 @@ function BoardDetail() {
                 "type": "reply",
                 "content": boardRipple,
             }
-        }).then((res) => { 
+        }).then((res) => {
             window.location.href="/boarddetail/" + id;
         })
     }
@@ -93,7 +93,7 @@ function BoardDetail() {
                     },
                     method: "DELETE",
                     url: API_BASE_URL + "/board/delete-board/" + id,
-                }).then((res) => {  
+                }).then((res) => {
                     window.location.href="/board/";
                 })
             } else {
@@ -104,12 +104,13 @@ function BoardDetail() {
         window.location.href="/board"
     }
 
-    return(<div>
+    return (
+    <div className="BoardDetail">
         <Header />
-        <div>
-            <div className="board-title">
-                <h1 onClick={Teleportation}>공지사항</h1>
-            </div>
+        <div className="board-title">
+            <h1 onClick={Teleportation}>공지사항</h1>
+        </div>
+        <div className="">
             <div className="board-detail-container">
                 <div className="board-detail-title">
                     <h4>{boardList.title}</h4>
@@ -169,7 +170,8 @@ function BoardDetail() {
             </div>
             <button className="detail-gotolist-btn" onClick={Teleportation}>목록</button>
         </div>
-    </div>)
+    </div>
+    )
 }
 
 export default BoardDetail;

@@ -4,7 +4,12 @@
     color: rgb(66, 66, 66);
 }
 
+.Board {
+    width: 100vw;
+}
+
 .board-container {
+    width: 100%;
     margin-bottom: 50px;
 }
 .board-title {
@@ -32,12 +37,15 @@
     background: whitesmoke;
 }
 .board-whole-line {
-    display: block;
+    width: 1300px;
+    display: inline-block;
 }
 .board-search-container {
-    text-align: end;
-    margin-right: 10%;
+    width: 100%;
     margin-top: 50px;
+}
+.board-search-box {
+    float: right;
 }
 .board-search-select {
     width: 120px;
@@ -56,8 +64,7 @@
     border: none;
 }
 .board-list-container {
-    width: 80%;
-    margin-left: 152.8px;
+    width: 100%;
 }
 .board-tablerow-list {
     text-decoration: none;
@@ -153,18 +160,19 @@
 .editor-title-files input{
     width: 700px;
 }
-.board-eidit-btn {
+.board-edit-btn {
     width: 75px;
     height: 40px;
     background: #31343f;
     color: white;
     float:left;
-    margin-left: 153.8px;
     margin-bottom: 15px;
     border: none;
 }
 .board-detail-container {
     margin-top: 47px;
+    border: solid red;
+
 }
 .board-detail-title {
     width: 1200px;
