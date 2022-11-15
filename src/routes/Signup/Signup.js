@@ -6,15 +6,16 @@ import {call, signup} from "../../service/ApiService";
 function Signup() {
     const [kakaoEmail, setKakaoEmail] = useState(null);
 
-    useEffect = (()=>{
+    useEffect(()=>{
         const urlParams = new URL(document.location).searchParams;
         const email = urlParams.get('email');
+        console.log(email)
         const email_input = document.getElementById('email');
         setKakaoEmail(email);
-        if(email){
+        if(kakaoEmail){
             email_input.classList.add('readonly');
         }
-    })
+    },[])
 
     const handleSubmit = e => {
         e.preventDefault();
