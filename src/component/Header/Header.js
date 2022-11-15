@@ -109,7 +109,7 @@ function Header(props=false) {
                                     onClick={showDetail}><span>게시판 ∨</span></Link></li>
                                     <li><Link id="have-dmenu02"
                                     onClick={showDetail}><span>모집정보 ∨</span></Link></li>
-                                    <li><Link><span>수강후기</span></Link></li>
+                                    <li><Link to='/review'><span>수강후기</span></Link></li>
                                     {!isLogin &&
                                         <li className="login-btn" style={{float:"right", marginLeft: "40px"}}>
                                             <a href="/login">로그인</a>
@@ -148,7 +148,6 @@ function Header(props=false) {
                         onMouseLeave={hideMypage}>
                             <ul>
                                 <li><button onClick={goMypage}>{userpage}</button></li>
-                                <li><a href="/">회원정보</a></li>
                             </ul>
                         </div>
                     }
