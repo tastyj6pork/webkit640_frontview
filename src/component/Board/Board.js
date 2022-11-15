@@ -22,6 +22,7 @@ function Board() {
 
     const [list, setList] = useState([]);
     const [keyword,setKeyword] = useState();
+    const [isAdmin,setIsAdmin] = useState();
     const [selectValue, setSelectValue] = useState("제목");
     const [viewList, setViewList] = useState([]);
     const [isAdmin, setIsAdmin] = useState(0);
@@ -56,6 +57,7 @@ function Board() {
 
         useEffect(() => {
             call("/board/list?type=notification", "GET").then((res) => {setList(res);});
+            call("/auth/find-user","GET").then((res)=>{setIsAdmin(res.admin)})
         }, [])  
         console.log(list);
         
