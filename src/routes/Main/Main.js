@@ -97,7 +97,7 @@ function Main() {
             <ProcessInfo ref={processRef}/>
             <Graduate cardi={parseInt(mainPageData.completeCardinalNumber) || 10} 
             graduate={parseInt(mainPageData.cumulativeStudents) || 10} 
-            nonmajor={parseInt(mainPageData.nonMajor) || 10}/>
+            nonmajor={parseInt(mainPageData.nonMajor) ||  10}/>
             <Review ref={reviewRef}/>
             <With/>
         </div>
