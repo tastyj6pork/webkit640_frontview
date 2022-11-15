@@ -21,6 +21,9 @@ import { Link } from 'react-router-dom';
 function Board() {
 
     const [list, setList] = useState([]);
+    const [keyword,setKeyword] = useState();
+    const [selectValue, setSelectValue] = useState("제목");
+    const [viewList, setViewList] = useState([]);
     const columns = [
         { id: 'no', label: '번호', minWidth: 100},
         { id: 'title', label: '제목', minWidth: 250 },
@@ -44,17 +47,19 @@ function Board() {
         },
       ];
 
-      const rows = list;
+      const rows = viewList;
       console.log(rows)
     
         const [page, setPage] = React.useState(0);
         const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
         useEffect(() => {
-            call("/board/list?type=notification", "GET").then((res) => setList(res));
+            call("/board/list?type=notification", "GET").then((res) => {setList(res);});
         }, [])  
         console.log(list);
-      
+        
+        useEffect(()=>{setViewList(list)},[list])
+
         const handleChangePage = (event, newPage) => {
           setPage(newPage);
         };
@@ -71,6 +76,25 @@ function Board() {
         const GoToEdit = () => {
             window.location.href="/editor";
         }
+        useEffect(()=>{
+            if (keyword === "" || keyword === null || keyword === " ") {
+                setViewList([]);
+                call("/board/list?type=notification", "GET").then((res) => {setViewList(res);});
+            }
+            if (selectValue === "제목") {
+                var tempList = viewList.filter((content)=>content.title.includes(keyword));
+                if (tempList.length !== 0) {
+                    setViewList(tempList)
+                }
+            } else if(selectValue === "작성자") {
+                var nameList = viewList.filter((content)=>content.writer.includes(keyword));
+                if (tempList.length !== 0) {
+                    setViewList(nameList);
+                }
+            }
+        },[keyword])
+        useEffect(()=>{console.log(keyword)},[keyword])
+        useEffect(()=>{console.log(selectValue)},[selectValue])
 
     return(<div>
         <Header />
@@ -84,12 +108,15 @@ function Board() {
                 <div className="board-whole-line">
                     <div className="board-search-container">
                         <button className="board-eidit-btn" onClick={GoToEdit}>글 작성</button>
-                        <select name="type" className="board-search-select">
+                        <select name="type" value={selectValue} onChange={(e)=>{setSelectValue(e.target.value)}} className="board-search-select">
                             <option value="제목">제목</option>
                             <option value="작성자">작성자</option>
-                            <option value="내용">내용</option>
                         </select>
-                        <input className="board-search-input" placeholder="검색어를 입력해 주세요"></input>
+                        <input type="text"
+                            value={keyword}
+                            onChange={(e)=>{setKeyword(e.target.value)}}
+                            className="board-search-input" 
+                            placeholder="검색어를 입력해 주세요"></input>
                         <button className="board-search-btn">검색</button>
                     </div>
                     <div className="board-list-container">
