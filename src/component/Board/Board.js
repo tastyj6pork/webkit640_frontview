@@ -88,7 +88,7 @@ function Board() {
                 }
             } else if(selectValue === "작성자") {
                 var nameList = viewList.filter((content)=>content.writer.includes(keyword));
-                if (tempList.length !== 0) {
+                if (nameList.length !== 0) {
                     setViewList(nameList);
                 }
             }
