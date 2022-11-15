@@ -97,7 +97,9 @@ function Main() {
             <RecruitInfo ref={recruitRef} mainData={mainPageData}/>
             <MainSchedule ref={scheduleRef} mainData={mainPageData}/>
             <ProcessInfo ref={processRef}/>
-            <Graduate num={mainPageData.completeCardinalNumber} graduate={mainPageData.cumulativeStudents} nonmajor={mainPageData.nonMajor}/>
+            <Graduate cardi={parseInt(mainPageData.completeCardinalNumber) || 10} 
+            graduate={parseInt(mainPageData.cumulativeStudents) || 10} 
+            nonmajor={parseInt(mainPageData.nonMajor) || 10}/>
             <Review ref={reviewRef}/>
             <With/>
         </div>
