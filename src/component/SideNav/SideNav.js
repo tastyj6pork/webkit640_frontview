@@ -39,11 +39,11 @@ function SideNav({children}) {
             name:"지원신청",
             icon:<BsFileEarmarkPlusFill />
         },
-        {
-            path:"/studentattend",
-            name:"출석확인",
-            icon:<BsPersonCheckFill />
-        },
+        // {
+        //     path:"/studentattend",
+        //     name:"출석확인",
+        //     icon:<BsPersonCheckFill />
+        // },
     ]
 
     //Login = 관리자 List
@@ -96,10 +96,10 @@ function SideNav({children}) {
                         ))
                     }
                 <h3 style={{display : isOpen ? "block" : "none"}} className="sidenav-foot">로그아웃</h3>
-            </div>            
+            </div>
             <main><Outlet /></main>
         </div>
-        
+
     )
 }
 
