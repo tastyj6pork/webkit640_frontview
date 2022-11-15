@@ -13,9 +13,11 @@ function BoardDetail() {
     const [boardRipple, setBoardRipple] = useState([]);
     const [textList, setTextList] = useState([]);
     const [userData, setUserData] = useState();
+    const [isAdmin, setIsAdmin] = useState();
 
     useEffect(() => {
         call("/board/list/"+id, "GET").then((res) => {setBoardList(res); setTextList(res.replies)});
+        call("/auth/find-user","GET").then((res)=>{setIsAdmin(res.admin)});
         axios({
             headers:{
                 Authorization: "Bearer " + localStorage.getItem("ACCESS_TOKEN")
@@ -153,7 +155,7 @@ function BoardDetail() {
                 })}
             </div>
             <div>
-                <button className="detail-delete-btn" onClick={DeleteText}>삭제</button>
+                {isAdmin && <button className="detail-delete-btn" onClick={DeleteText}>삭제</button>}
             </div>
             <div className="board-detail-next">
                 <ul className="detail-next-first">
