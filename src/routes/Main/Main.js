@@ -74,7 +74,7 @@ function Main() {
 
     return (
         <div className="Main" ref={mainRef}>
-        {isNav && <Header/>}
+        {isNav && <Header isMain={true}/>}
         <div id="mainContent" className="w3-wide">
             <header id="header" className="w3-display-container">
                 <div className="header-background"/>
