@@ -35,6 +35,7 @@
 .With .with-box #roller1, .With .with-box #roller2 {
     float: left;
     position: absolute;
+    width: 1420px;
 }
 
 .With .with-box .wrapper ul {
@@ -97,7 +98,7 @@
         height: 40px;
     }
     .With .with-box #roller1, .With .with-box #roller2 {
-        width: 940px;
+        width: 980px;
     }
     .With .with-box .wrapper ul li, .With .with-box img {
         height: 30px;

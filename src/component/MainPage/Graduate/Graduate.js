@@ -8,15 +8,15 @@ function Graduate(props) {
     const [graduation, setGnum] = useState(null);
     const [nonMajor, setNMnum] = useState(null);
     const [cardinal, setCNum] = useState(null);
-    const graduateAnimate = useScrollCount(25);
-    const cardinalAnimate = useScrollCount(1);
-    const nonmajorAnimate = useScrollCount(3);
+    let graduateAnimate = useScrollCount(props.graduate);
+    let cardinalAnimate = useScrollCount(props.cardi);
+    let nonmajorAnimate = useScrollCount(props.nonmajor);
 
     useEffect(()=>{
         setGnum(props.graduate);
         setNMnum(props.nonmajor);
-        setCNum(props.num);
-    })
+        setCNum(props.cardinal);
+    },[])
 
     return(
         <div className="Graduate">
