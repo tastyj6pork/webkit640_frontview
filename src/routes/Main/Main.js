@@ -46,7 +46,6 @@ function Main() {
 
     const throttledScroll = useMemo(()=>
         throttle(()=>{
-            //console.log("scroll");
             if(window.scrollY < 630){
                 setIsNav(true);
                 setIsScrollNavOn(false);
@@ -67,14 +66,13 @@ function Main() {
     useEffect(()=>{
         window.addEventListener('scroll', throttledScroll);
         return() => {
-            console.log("removeScrollEventListener")
             window.removeEventListener('scroll', throttledScroll);
         }
     }, [throttledScroll]);
 
     return (
         <div className="Main" ref={mainRef}>
-        {isNav && <Header/>}
+        {isNav && <Header isMain={true}/>}
         <div id="mainContent" className="w3-wide">
             <header id="header" className="w3-display-container">
                 <div className="header-background"/>
@@ -97,7 +95,9 @@ function Main() {
             <RecruitInfo ref={recruitRef} mainData={mainPageData}/>
             <MainSchedule ref={scheduleRef} mainData={mainPageData}/>
             <ProcessInfo ref={processRef}/>
-            <Graduate num={mainPageData.completeCardinalNumber} graduate={mainPageData.cumulativeStudents} nonmajor={mainPageData.nonMajor}/>
+            <Graduate cardi={parseInt(mainPageData.completeCardinalNumber) || 10} 
+            graduate={parseInt(mainPageData.cumulativeStudents) || 10} 
+            nonmajor={parseInt(mainPageData.nonMajor) ||  10}/>
             <Review ref={reviewRef}/>
             <With/>
         </div>

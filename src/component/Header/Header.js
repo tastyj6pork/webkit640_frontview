@@ -7,8 +7,9 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import DetailMenu from "./DetailMenu";
 import HideMenu from "./HideMenu";
 import "./Header.css"
+import { propTypes } from "react-bootstrap/esm/Image";
 
-function Header() {
+function Header(props=false) {
     const [isLogin, setIsLogin] = useState(false);
     const [isAdmin, setIsAdmin] = useState(0);
     const [isClick, setIsClick] = useState(false);
@@ -72,6 +73,7 @@ function Header() {
 
     useEffect(()=>{
         isUserLogin();
+        let navBar = document.getElementById('navBar');
         let dmenu01 = document.getElementById('have-dmenu01');
         let dmenu02 = document.getElementById('have-dmenu02');
         let duser = null;
@@ -87,6 +89,9 @@ function Header() {
             let dmenu02_x = dmenu02.getBoundingClientRect().left;
             setDmenu01(dmenu01_x);
             setDmenu02(dmenu02_x);
+        }
+        if(!props.isMain) {
+            navBar.style.backgroundColor = 'rgba(255, 255, 255)';
         }
     })
 
