@@ -168,10 +168,6 @@ function ReviewEditor() {
                         <li>제목</li>
                         <input className="editor-input-name" name="name" onChange={(e) => setTitle(e.target.value)}></input>
                     </ul>
-                    <ul className="editor-title-writer">
-                        <li>작성자</li>
-                        <input className="editor-input-writer" name="writer"></input>
-                    </ul>
                     <ul className="editor-title-date">
                         <li>작성일</li>
                         <input id="inputFixedDate" className="editor-input-date" name="date" style={{paddingLeft:"10px"}} readOnly></input>

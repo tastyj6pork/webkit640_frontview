@@ -22,6 +22,10 @@ function LectureData() {
 
     const [list, setList] = useState([]);
     const [isAdmin, setIsAdmin] = useState();
+    const [keyword, setKeyword] = useState();
+    const [viewList, setViewList] = useState([]);
+    const [selectValue, setSelectValue] = useState("제목");
+
     const columns = [
         { id: 'no', label: '번호', minWidth: 100},
         { id: 'title', label: '제목', minWidth: 250 },
@@ -45,18 +49,41 @@ function LectureData() {
         },
       ];
 
-      const rows = list;
+      const rows = viewList;
       console.log(rows)
     
         const [page, setPage] = React.useState(0);
         const [rowsPerPage, setRowsPerPage] = React.useState(10);
+        
 
         useEffect(() => {
-            call("/board/list?type=lecture", "GET").then((res) => setList(res));
+            call("/board/list?type=lecture", "GET").then((res) => {
+                setList(res);
+                setViewList(res);
+            });
             call("/auth/find-user","GET").then((res)=>{setIsAdmin(res.admin)})
         }, [])  
         console.log(list);
-      
+        
+        useEffect(()=>{
+            if (keyword === "" || keyword === null || keyword === " ") {
+                setViewList([]);
+                call("/board/list?type=lecture", "GET").then((res) => {setViewList(res);});
+            }
+            if (selectValue === "제목") {
+                var tempList = viewList.filter((content)=>content.title.includes(keyword));
+                if (tempList.length !== 0) {
+                    setViewList(tempList)
+                }
+            } else if(selectValue === "작성자") {
+                var nameList = viewList.filter((content)=>content.writer.includes(keyword));
+                if (nameList.length !== 0) {
+                    setViewList(nameList);
+                }
+            }
+        },[keyword])
+
+
         const handleChangePage = (event, newPage) => {
           setPage(newPage);
         };
@@ -85,14 +112,18 @@ function LectureData() {
                 </div>
                 <div className="board-whole-line">
                     <div className="board-search-container">
-                        {isAdmin && <button className="board-eidit-btn" onClick={GoToEdit}>글 작성</button>}
-                        <select name="type" className="board-search-select">
-                            <option value="제목">제목</option>
-                            <option value="작성자">작성자</option>
-                            <option value="내용">내용</option>
-                        </select>
-                        <input className="board-search-input" placeholder="검색어를 입력해 주세요"></input>
-                        <button className="board-search-btn">검색</button>
+                        {isAdmin && <button className="board-edit-btn" onClick={GoToEdit}>글 작성</button>}
+                        <div className='board-search-box'>
+                                <select name="type" value={selectValue} onChange={(e)=>{setSelectValue(e.target.value)}} className="board-search-select">
+                                    <option value="제목">제목</option>
+                                    <option value="작성자">작성자</option>
+                                </select>
+                                <input type="text"
+                                    value={keyword}
+                                    onChange={(e)=>{setKeyword(e.target.value)}}
+                                    className="board-search-input"
+                                    placeholder="검색어를 입력해 주세요"></input>
+                            </div>
                     </div>
                     <div className="board-list-container">
                         <Paper sx={{ width: '100%', overflow: 'hidden' }}>
@@ -118,7 +149,7 @@ function LectureData() {
                                                 return (
                                                     <TableRow hover role="checkbox" className="board-tablerow-list" tabIndex={-1} key={row.id}>
                                                         <TableCell>{row.id}</TableCell>
-                                                        <TableCell><Link to={`/boarddetail/${row.id}`}>{row.title}</Link></TableCell>
+                                                        <TableCell><Link to={`/lectureboarddetail/${row.id}`}>{row.title}</Link></TableCell>
                                                         <TableCell align="right">{row.writer}</TableCell>
                                                         <TableCell align="right">{row.writeDate}</TableCell>
                                                         <TableCell align="right">{row.cnt}</TableCell>

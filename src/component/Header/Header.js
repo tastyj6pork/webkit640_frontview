@@ -96,6 +96,10 @@ function Header(props=false) {
         }
     })
 
+    const ReviewInsert = () => {
+        window.location.href="/review"
+    }
+
     return(
         <div className="Header">
             <div id="navBarIncludeDetail">
@@ -112,6 +116,7 @@ function Header(props=false) {
                                     onClick={showDetail}><span>게시판 ∨</span></Link></li>
                                     <li><Link id="have-dmenu02"
                                     onClick={showDetail}><span>모집정보 ∨</span></Link></li>
+                                    <li><Link><span onClick={ReviewInsert}>수강후기</span></Link></li>
                                     <li><Link to='/review'><span>수강후기</span></Link></li>
                                     {!isLogin &&
                                         <li className="login-btn" style={{float:"right", marginLeft: "40px"}}>
