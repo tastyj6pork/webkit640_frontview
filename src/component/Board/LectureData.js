@@ -100,7 +100,7 @@ function LectureData() {
         const GoToEdit = () => {
             window.location.href="/lectureeditor";
         }
-
+        const keys = localStorage.getItem("ACCESS_TOKEN");
     return(<div>
         <Header />
         <div className="board-container">
@@ -110,6 +110,8 @@ function LectureData() {
                     <p onClick={BoardChange}>공지사항</p>
                     <p style={{background:"whitesmoke"}}>강의자료</p>
                 </div>
+                { keys !== "null" ? 
+                        (
                 <div className="board-whole-line">
                     <div className="board-search-container">
                         {isAdmin && <button className="board-edit-btn" onClick={GoToEdit}>글 작성</button>}
@@ -171,6 +173,7 @@ function LectureData() {
                         </Paper>
                     </div>
                 </div>
+                        ) : window.location.href = "/"}
             </div>
         </div>
         <Footer />

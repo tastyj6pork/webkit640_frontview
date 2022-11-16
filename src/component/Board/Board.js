@@ -97,7 +97,7 @@ function Board() {
         },[keyword])
         useEffect(()=>{console.log(keyword)},[keyword])
         useEffect(()=>{console.log(selectValue)},[selectValue])
-
+        const keys = localStorage.getItem("ACCESS_TOKEN");
 
     return(
         <div className='Board'>
@@ -109,72 +109,77 @@ function Board() {
                         <p style={{background:"whitesmoke"}}>공지사항</p>
                         <p onClick={BoardChange}>강의자료</p>
                     </div>
-                    <div className="board-whole-line w3-center">
-                        <div className="board-search-container w3-container w3-center">
-                            { isAdmin && 
-                                <button className="board-edit-btn" onClick={GoToEdit}>작성하기</button>
-                            }
-                            <div className='board-search-box'>
-                                <select name="type" value={selectValue} onChange={(e)=>{setSelectValue(e.target.value)}} className="board-search-select">
-                                    <option value="제목">제목</option>
-                                    <option value="작성자">작성자</option>
-                                </select>
-                                <input type="text"
-                                    value={keyword}
-                                    onChange={(e)=>{setKeyword(e.target.value)}}
-                                    className="board-search-input"
-                                    placeholder="검색어를 입력해 주세요"></input>
+                    { keys !== "null" ? 
+                        (
+                            <div className="board-whole-line w3-center">
+                            <div className="board-search-container w3-container w3-center">
+                                { isAdmin && 
+                                    <button className="board-edit-btn" onClick={GoToEdit}>작성하기</button>
+                                }
+                                <div className='board-search-box'>
+                                    <select name="type" value={selectValue} onChange={(e)=>{setSelectValue(e.target.value)}} className="board-search-select">
+                                        <option value="제목">제목</option>
+                                        <option value="작성자">작성자</option>
+                                    </select>
+                                    <input type="text"
+                                        value={keyword}
+                                        onChange={(e)=>{setKeyword(e.target.value)}}
+                                        className="board-search-input"
+                                        placeholder="검색어를 입력해 주세요"></input>
+                                </div>
+                            </div>
+                            <div className="board-list-container">
+                                <Paper sx={{ width: '100%', overflow: 'hidden' }}>
+                                    <TableContainer sx={{ maxHeight: 750 }}>
+                                        <Table stickyHeader aria-label="sticky table">
+                                            <TableHead>
+                                                <TableRow>
+                                                    {columns.map((column) => (
+                                                        <TableCell
+                                                            key={column.id}
+                                                            align={column.align}
+                                                            style={{ minWidth: column.minWidth }}
+                                                        >
+                                                            {column.label}
+                                                        </TableCell>
+                                                    ))}
+                                                </TableRow>
+                                            </TableHead>
+                                            <TableBody>
+                                                {rows
+                                                    .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                                                    .map((row) => {
+                                                        return (
+                                                            <TableRow hover role="checkbox" className="board-tablerow-list"
+                                                            tabIndex={-1}
+                                                            key={row.id}
+                                                            >
+                                                                <TableCell>{row.id}</TableCell>
+                                                                <TableCell><Link to={`/boarddetail/${row.id}`}>{row.title}</Link></TableCell>
+                                                                <TableCell align="right">{row.writer}</TableCell>
+                                                                <TableCell align="right">{row.writeDate}</TableCell>
+                                                                <TableCell align="right">{row.cnt}</TableCell>
+                                                            </TableRow>
+                                                        );
+                                                    })}
+                                                </TableBody>
+                                            </Table>
+                                        </TableContainer>
+                                        <TablePagination
+                                            rowsPerPageOptions={[10, 25, 100]}
+                                            component="div"
+                                            count={list.length}
+                                            rowsPerPage={rowsPerPage}
+                                            page={page}
+                                            onPageChange={handleChangePage}
+                                            onRowsPerPageChange={handleChangeRowsPerPage}
+                                        />
+                                </Paper>
                             </div>
                         </div>
-                        <div className="board-list-container">
-                            <Paper sx={{ width: '100%', overflow: 'hidden' }}>
-                                <TableContainer sx={{ maxHeight: 750 }}>
-                                    <Table stickyHeader aria-label="sticky table">
-                                        <TableHead>
-                                            <TableRow>
-                                                {columns.map((column) => (
-                                                    <TableCell
-                                                        key={column.id}
-                                                        align={column.align}
-                                                        style={{ minWidth: column.minWidth }}
-                                                    >
-                                                        {column.label}
-                                                    </TableCell>
-                                                ))}
-                                            </TableRow>
-                                        </TableHead>
-                                        <TableBody>
-                                            {rows
-                                                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                                                .map((row) => {
-                                                    return (
-                                                        <TableRow hover role="checkbox" className="board-tablerow-list"
-                                                        tabIndex={-1}
-                                                        key={row.id}
-                                                        >
-                                                            <TableCell>{row.id}</TableCell>
-                                                            <TableCell><Link to={`/boarddetail/${row.id}`}>{row.title}</Link></TableCell>
-                                                            <TableCell align="right">{row.writer}</TableCell>
-                                                            <TableCell align="right">{row.writeDate}</TableCell>
-                                                            <TableCell align="right">{row.cnt}</TableCell>
-                                                        </TableRow>
-                                                    );
-                                                })}
-                                            </TableBody>
-                                        </Table>
-                                    </TableContainer>
-                                    <TablePagination
-                                        rowsPerPageOptions={[10, 25, 100]}
-                                        component="div"
-                                        count={list.length}
-                                        rowsPerPage={rowsPerPage}
-                                        page={page}
-                                        onPageChange={handleChangePage}
-                                        onRowsPerPageChange={handleChangeRowsPerPage}
-                                    />
-                            </Paper>
-                        </div>
-                    </div>
+                        ) : window.location.href = "/"
+                    }
+
                 </div>
             </div>
             <Footer />
