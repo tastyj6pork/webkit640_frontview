@@ -112,15 +112,18 @@ function LectureData() {
                 </div>
                 <div className="board-whole-line">
                     <div className="board-search-container">
-                        {isAdmin && <button className="board-eidit-btn" onClick={GoToEdit}>글 작성</button>}
-                        <select name="type"
-                            value={selectValue}
-                            onChange={(e)=>{setSelectValue(e.target.value)}} 
-                            className="board-search-select">
-                            <option value="제목">제목</option>
-                            <option value="작성자">작성자</option>
-                        </select>
-                        <input value={keyword} onChange={(e)=>{setKeyword(e.target.value)}} className="board-search-input" placeholder="검색어를 입력해 주세요"></input>
+                        {isAdmin && <button className="board-edit-btn" onClick={GoToEdit}>글 작성</button>}
+                        <div className='board-search-box'>
+                                <select name="type" value={selectValue} onChange={(e)=>{setSelectValue(e.target.value)}} className="board-search-select">
+                                    <option value="제목">제목</option>
+                                    <option value="작성자">작성자</option>
+                                </select>
+                                <input type="text"
+                                    value={keyword}
+                                    onChange={(e)=>{setKeyword(e.target.value)}}
+                                    className="board-search-input"
+                                    placeholder="검색어를 입력해 주세요"></input>
+                            </div>
                     </div>
                     <div className="board-list-container">
                         <Paper sx={{ width: '100%', overflow: 'hidden' }}>
