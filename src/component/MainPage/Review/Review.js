@@ -69,7 +69,7 @@ const Review = forwardRef((props, ref) => {
                                         {reviewContent}
                                     </div>
                                     <button className="review-link" 
-                                    onClick={()=> document.location.href="/boarddetail/"+item.id}>
+                                    onClick={()=> document.location.href="/reviewdetail/"+item.id}>
                                         읽어 보기 〉
                                     </button>
                                 </td>

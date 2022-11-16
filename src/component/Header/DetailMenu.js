@@ -14,7 +14,7 @@ function DetailMenu(props) {
                     </ul>
                     <ul id="menu02" style={{left:`${props.dmenu02_x}px`}}>
                         <li><a href="#">모집안내</a></li>
-                        <li><a href="/adminapply">지원하기</a></li>
+                        <li><a href="/studentapply">지원하기</a></li>
                     </ul>
                 </ul>
             </div>
