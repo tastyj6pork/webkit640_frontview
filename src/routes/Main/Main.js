@@ -5,6 +5,7 @@ import { throttle } from 'lodash';
 import { call } from '../../service/ApiService';
 import "./Main.css"
 import Header from "../../component/Header/Header";
+import Footer from "../../component/Footer/Footer";
 import ScrollNav from "../../component/MainPage/ScrollNav/ScrollNav";
 import RecruitInfo from "../../component/MainPage/RecruitInfo/RecruitInfo";
 import MainSchedule from "../../component/MainPage/MainSchedule/MainSchedule";
@@ -12,7 +13,6 @@ import ProcessInfo from "../../component/MainPage/ProcessInfo/ProcessInfo";
 import Graduate from "../../component/MainPage/Graduate/Graduate";
 import Review from "../../component/MainPage/Review/Review";
 import With from "../../component/MainPage/With/With";
-import Footer from "../../component/Footer/Footer";
 import Dday from "../../component/MainPage/Dday/Dday";
 
 function Main() {

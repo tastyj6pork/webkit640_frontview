@@ -111,7 +111,7 @@ function BoardDetail() {
         <div className="board-title">
             <h1 onClick={Teleportation}>공지사항</h1>
         </div>
-        <div className="">
+        <div className="board-detail-all w3-container w3-center">
             <div className="board-detail-container">
                 <div className="board-detail-title">
                     <h4>{boardList.title}</h4>
@@ -142,7 +142,7 @@ function BoardDetail() {
                 <h4>전체댓글</h4>
                 <h4>{"(" + textList.length + ")"}</h4>
                 <textarea className="detail-ripple-container" onChange={(e) => setBoardRipple(e.target.value)} />
-            </div>
+            </div><br/>
             <button className="detail-ripple-btn" onClick={RippleInputBtn}>입력</button>
             <div className="detail-ripple-content" style={textList.length === 0 ? {display:"none"} : {display:"block"}}>
                 {textList.map((row,idx) => {
@@ -159,6 +159,16 @@ function BoardDetail() {
             <div>
                 {isAdmin && <button className="detail-delete-btn" onClick={DeleteText}>삭제</button>}
             </div>
+            <div className="board-detail-next">
+                <ul className="detail-next-first">
+                    <li className="detail-updown">이전글</li>
+                    <li className="detail-updown-title">대충 이전글 제목</li>
+                </ul>
+                <ul className="detail-next-last">
+                    <li className="detail-updown">다음글</li>
+                    <li className="detail-updown-title">대충 다음글 제목</li>
+                </ul>
+            </div><br/>
             <button className="detail-gotolist-btn" onClick={Teleportation}>목록</button>
         </div>
     </div>
