@@ -57,7 +57,7 @@
 
 .Review .item-content h2 {
     float: left;
-    font-size: 38px;
+    font-size: 30px;
     font-weight: 600;
     margin: 0;
 }
@@ -94,9 +94,10 @@
     font-size: 14px;
     text-align: center;
     vertical-align: middle;
-    top: -60px;
+    top: -85px;
     left: 200px;
     text-decoration:none;
+    box-shadow: 4px 4px 6px -4px rgb(152, 152, 152);
 }
 
 .Review .item-content table .writer,

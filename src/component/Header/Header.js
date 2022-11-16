@@ -92,6 +92,7 @@ function Header(props=false) {
         }
         if(!props.isMain) {
             navBar.style.backgroundColor = 'rgba(255, 255, 255)';
+            navBar.style.boxShadow = '0 3px 4px -4px grey';
         }
     })
 
@@ -106,7 +107,7 @@ function Header(props=false) {
                         {isBigScreen &&
                             <div id="menuList" className="w3-center w3-hide-small w3-hide-medium">
                                 <ul>
-                                    <li><Link to='/'>About us</Link></li>
+                                    <li><Link to='/aboutus'>About us</Link></li>
                                     <li><Link id="have-dmenu01"
                                     onClick={showDetail}><span>게시판 ∨</span></Link></li>
                                     <li><Link id="have-dmenu02"
@@ -137,9 +138,8 @@ function Header(props=false) {
                         }
                         {(isMediumScreen || isSmallScreen) &&
                             <div className="hide-menu">
-                                <button className="hide-menu-btn"
-                                onClick={showHideMenu}>
-                                    <FontAwesomeIcon icon={faBars} size="2x"/>
+                                <button className="hide-menu-btn" onClick={showHideMenu}>
+                                    ☰
                                 </button>
                             </div>
                         }

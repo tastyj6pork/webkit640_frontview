@@ -110,7 +110,7 @@ function Board() {
                         <p onClick={BoardChange}>강의자료</p>
                     </div>
                     <div className="board-whole-line w3-center">
-                        <div className="board-search-container">
+                        <div className="board-search-container w3-container w3-center">
                             <button className="board-edit-btn" onClick={GoToEdit}>작성하기</button>
                             <div className='board-search-box'>
                                 <select name="type" value={selectValue} onChange={(e)=>{setSelectValue(e.target.value)}} className="board-search-select">

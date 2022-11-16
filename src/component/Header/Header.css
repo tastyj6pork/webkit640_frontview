@@ -131,7 +131,6 @@
 }
 
 .Header .hide-menu {
-    width: 40px;
     float: right;
     padding: 5px;
     padding-left: 0;
@@ -140,12 +139,11 @@
 
 .Header .hide-menu .hide-menu-btn {
     border: 0;
+    font-size: 33px;
+    top: -8px;
     position: relative;
+    color: rgb(72, 72, 72);
     background-color: rgba(255, 255, 255, 0);
-}
-
-.Header .hide-menu .hide-menu-btn:click {
-    border: 0;
 }
 
 @media only screen and (min-width:768px) and (max-width:1200px){
@@ -157,10 +155,13 @@
 @media only screen and (max-width:767px){
     .Header #navBar {
         height: 60px;
-        padding: 10px;
-        padding-left: 20px;
+        padding-left: 10px;
+        padding-right: 20px;
     }
     .Header .nav-content {
         width: 100%;
+        height: 60px;
+        line-height: 60px;
+        vertical-align: middle;
     }
 }
