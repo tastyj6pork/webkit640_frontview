@@ -55,16 +55,14 @@ const Review = forwardRef((props, ref) => {
                     <table>
                         <tbody>
                             <tr className="title-area">
-                                <td className="title-td">
-                                    <h2>{item.title}</h2>
-                                </td>
-                                    <td><img src="#"/></td>
+                                <td className="title-td"><h2>{item.title}</h2></td>
+                                <td><img src="#"/></td>
                             </tr>
                             <tr className="writer">
-                                <td>{item.writer}</td>
+                                <td colspan="2">{item.writer}</td>
                             </tr>
                             <tr className="content">
-                                <td>
+                                <td colspan="2">
                                     <div className="review-content">
                                         {reviewContent}
                                     </div>
