@@ -274,6 +274,7 @@
     border-radius: 3px;
     font-weight: 500;
     margin-top: 14px;
+    margin-bottom: 60px;
 }
 .board-detail-next {
     width: 1200px;
@@ -361,5 +362,6 @@
     padding: 0 1.071rem;
     border-radius: 3px;
     font-weight: 500;
-    margin-top: 30px;
+    margin-top: 60px;
+    float: right;
 }
