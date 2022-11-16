@@ -27,14 +27,18 @@ function Header(props=false) {
 
     const isUserLogin = () => {
         if(localStorage.getItem("ACCESS_TOKEN")){
-            setIsLogin(true);
-            setUsername(localStorage.getItem("USER_NAME"));
-            setUserpage("마이페이지");
+            if(localStorage.getItem("ACCESS_TOKEN") !== "null"){
+                setIsLogin(true);
+                setUsername(localStorage.getItem("USER_NAME"));
+                setUserpage("마이페이지");
+            }
         }
         else setIsLogin(false);
         if(localStorage.getItem("IS_ADMIN")){
-            setIsAdmin(1);
-            setUserpage("관리페이지");
+            if(localStorage.getItem("IS_ADMIN") !== "null"){
+                setIsAdmin(1);
+                setUserpage("관리페이지");
+            }
         }
         else setIsAdmin(0);
     }
