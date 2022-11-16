@@ -73,3 +73,57 @@
     }
 
 }
+
+.apply-result-container {
+    width: 88%;
+    height: 180px;
+    background: white;
+    margin: auto;
+    position: relative;
+    top: 30%;
+}
+.apply-result-container h2 {
+    padding-top: 10px;
+    padding-left: 30px;
+    font-weight: bold;
+}
+.result-title-first {
+    display: flex;
+}
+.apply-result-container p {
+    padding-top: 30px;
+    padding-left: 30px;
+    display: inline-block;
+    font-size: large;
+    font-weight: bold;
+}
+.result-title-second input {
+    width: 180px;
+    height: 50px;
+    border: none;
+    border-radius: 5px;
+    font-size: large;
+    font-weight: bold;
+    float: right;
+    margin-right: 50px;
+}
+.modal-title {
+    text-align: center;
+    font-weight: bold;
+}
+.modal-content {
+    text-align: center;
+    margin-top: 30px;
+    padding: 95px;
+    font-size: large;
+}
+.modal-btn {
+    width: 79px;
+    height: 35px;
+    border-radius: 3px;
+    border: 1px solid #717171;
+    color: white;
+    background: #717171;
+    margin-top: 80px;
+    margin-left: 318px;
+}
