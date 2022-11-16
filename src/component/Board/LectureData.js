@@ -149,7 +149,7 @@ function LectureData() {
                                                 return (
                                                     <TableRow hover role="checkbox" className="board-tablerow-list" tabIndex={-1} key={row.id}>
                                                         <TableCell>{row.id}</TableCell>
-                                                        <TableCell><Link to={`/boarddetail/${row.id}`}>{row.title}</Link></TableCell>
+                                                        <TableCell><Link to={`/lectureboarddetail/${row.id}`}>{row.title}</Link></TableCell>
                                                         <TableCell align="right">{row.writer}</TableCell>
                                                         <TableCell align="right">{row.writeDate}</TableCell>
                                                         <TableCell align="right">{row.cnt}</TableCell>
