@@ -47,8 +47,8 @@ function HideMenu(props) {
                     </li>
                     { isProcessClick && 
                         <ul className="detail-menu">
-                            <li><a href="/aboutus">모집안내</a></li>
-                            <li><a href="/apply">지원하기</a></li>
+                            <li><a href="#">모집안내</a></li>
+                            <li><a href="/studentapply">지원하기</a></li>
                         </ul>
                     }
                     <li><a href="/review">수강후기</a></li>

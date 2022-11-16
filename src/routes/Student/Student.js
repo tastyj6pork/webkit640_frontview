@@ -40,7 +40,7 @@ function Student() {
 
     useEffect(() => {
         if (applyResult.select) {
-            alert("꺼져");
+            alert("이미 최종선발 완료되었습니다.");
             window.location.href="/";
         }
     },[applyResult])
