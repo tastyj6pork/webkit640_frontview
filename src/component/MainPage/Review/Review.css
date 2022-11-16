@@ -46,14 +46,13 @@
 
 .Review .item-content table {
     width: 100%;
+    height: 250px;
 }
 
 .Review .item-content table td {
     text-align: left;
     padding-top: 10px;
     margin-right: 30px;
-    border: solid green;
-
 }
 
 .Review .item-content .title-td {
@@ -131,12 +130,13 @@
 
 @media only screen and (max-width:767px) {
     .Review {
-        width: 440px;
+        width: 400px;
         height: 650px;
     }
     .Review .review-box {
         width: 100%;
         height: auto;
+        padding-left: 30px;
     }
     .Review .review-box #reviewCarousel {
         margin-top: 30px;
@@ -153,6 +153,16 @@
         font-weight: 600;
         margin: 0;
     }
+    .Review .review-slider .item-content {
+        padding: 18px;
+    }
+    .Review .item-content table {
+        height: 280px;
+    }
+    .Review .item-content table td {
+        margin-right: 0;
+        padding: 10px;
+    }
     .Review .item-content img {
         width: 65px;
         height: 65px;
@@ -162,24 +172,17 @@
     .Review .review-slider .slid-item {
         padding: 14px;
     }
-    .Review .item-content table .writer,
-    .Review .item-content table .content {
-        margin-top: 6px;
-    }
     .Review .item-content table .writer {
         font-size: 13px;
     }
     .Review .item-content table {
         font-size: 12px;
     }
-    .Review .item-content .review-content{
-        width: 300px;
-    }
     .Review .item-content .review-link {
         width: 80px;
         height: 38px;
         font-size: 12px;
-        top: -70px;
+        top: -100px;
         left: 100px;
     }
     .Review .review-content .more-btn {
