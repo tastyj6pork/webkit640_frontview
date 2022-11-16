@@ -26,13 +26,13 @@ function Header(props=false) {
     const isSmallScreen = useMediaQuery({query: '(max-width: 767px)'});
 
     const isUserLogin = () => {
-        if(localStorage.getItem("ACCESS_TOKEN") !== "null"){
+        if(localStorage.getItem("ACCESS_TOKEN")){
             setIsLogin(true);
             setUsername(localStorage.getItem("USER_NAME"));
             setUserpage("마이페이지");
         }
         else setIsLogin(false);
-        if(localStorage.getItem("IS_ADMIN") === "true"){
+        if(localStorage.getItem("IS_ADMIN")){
             setIsAdmin(1);
             setUserpage("관리페이지");
         }
