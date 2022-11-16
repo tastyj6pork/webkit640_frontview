@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import App from '../App';
 import Login from '../routes/Login/Login'
 import Signup from '../routes/Signup/Signup'
+import Aboutus from '../routes/About/Aboutus'
 import SideNav from "../component/SideNav/SideNav";
 import Admin from "../routes/Admin/Admin";
 import AdminApply from "../routes/Admin/AdminApply";
@@ -41,6 +42,7 @@ function AppRouter(){
                     <Route path="/" element={<App/>}/>
                     <Route path="/login" element={<Login/>}/>
                     <Route path="/signup" element={<Signup/>}/>
+                    <Route path="/aboutus" element={<Aboutus/>}/>
                     <Route path="/auth/oauth/kakao" element={<KakaoRedirectHandler/>}/>
                     <Route path="/board" element={<Board />} />
                     <Route path="/lecturedata" element={<LectureData />} />

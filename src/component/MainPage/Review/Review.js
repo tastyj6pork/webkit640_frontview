@@ -57,8 +57,8 @@ const Review = forwardRef((props, ref) => {
                             <tr className="title-area">
                                 <td className="title-td">
                                     <h2>{item.title}</h2>
-                                    <img src="#"/>
                                 </td>
+                                    <td><img src="#"/></td>
                             </tr>
                             <tr className="writer">
                                 <td>{item.writer}</td>
