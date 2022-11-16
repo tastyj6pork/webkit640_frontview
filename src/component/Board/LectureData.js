@@ -121,7 +121,6 @@ function LectureData() {
                             <option value="작성자">작성자</option>
                         </select>
                         <input value={keyword} onChange={(e)=>{setKeyword(e.target.value)}} className="board-search-input" placeholder="검색어를 입력해 주세요"></input>
-                        <button className="board-search-btn">검색</button>
                     </div>
                     <div className="board-list-container">
                         <Paper sx={{ width: '100%', overflow: 'hidden' }}>
