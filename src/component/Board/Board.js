@@ -111,7 +111,9 @@ function Board() {
                     </div>
                     <div className="board-whole-line w3-center">
                         <div className="board-search-container w3-container w3-center">
-                            <button className="board-edit-btn" onClick={GoToEdit}>작성하기</button>
+                            { isAdmin && 
+                                <button className="board-edit-btn" onClick={GoToEdit}>작성하기</button>
+                            }
                             <div className='board-search-box'>
                                 <select name="type" value={selectValue} onChange={(e)=>{setSelectValue(e.target.value)}} className="board-search-select">
                                     <option value="제목">제목</option>
