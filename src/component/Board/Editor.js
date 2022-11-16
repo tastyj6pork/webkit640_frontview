@@ -12,7 +12,7 @@ import ImageResize from 'quill-image-resize';
 Quill.register('modules/ImageResize', ImageResize);
 
 function Editor() {
-    
+
     const [value, setValue] = useState("");
     const quillRef = useRef();
 
@@ -36,7 +36,7 @@ function Editor() {
         }
         formData.enctype = "multipart/form-data";
         formData.append("file", file);
-        
+
         call("/board/save-board","POST",data).then((res) => {
             console.log(formData.has("file"));
             if(file === "") {
@@ -79,7 +79,7 @@ function Editor() {
         [{ color: [] }, { background: [] }],
         [{ align: [] }],
       ];
-    
+
       const formats = [
         "header",
         "font",
@@ -131,7 +131,7 @@ function Editor() {
                 url:API_BASE_URL + "/board/upload-image",
                 headers: {
                     "Content-Type": "multipart/form-data",
-                    "Authorization": "Bearer " + accessToken, 
+                    "Authorization": "Bearer " + accessToken,
                 },
                 data: formData,
             }).then((res) => {console.log(res); imageUrl = API_BASE_URL + res.data})
@@ -142,7 +142,7 @@ function Editor() {
             editor.insertEmbed(range.index, "image", imageUrl);
         }
     }
-    
+
     const modules = useMemo(() => ({
         toolbar: {
             container: toolbarOptions,
@@ -156,48 +156,48 @@ function Editor() {
         }
     }), []);
 
-    return(<div className="editor-container">
-        <Header />
-        <div className="board-title">
-            <h1>공지사항</h1>
-        </div>
-        <form>
-            <div className="editor-box">
-                <div className="editor-title">
-                    <ul className="editor-title-name">
-                        <li>제목</li>
-                        <input className="editor-input-name" name="name" onChange={(e) => setTitle(e.target.value)}></input>
-                    </ul>
-                    <ul className="editor-title-writer">
-                        <li>작성자</li>
-                        <input className="editor-input-writer" name="writer"></input>
-                    </ul>
-                    <ul className="editor-title-date">
-                        <li>작성일</li>
-                        <input id="inputFixedDate" className="editor-input-date" name="date" style={{paddingLeft:"10px"}} readOnly></input>
-                    </ul>
-                    <ul className="editor-title-files">
-                        <li>첨부파일</li>
-                        <input type="file" className="editor-input-files" name="files" onChange={(e) => setFile(e.target.files[0])}></input>
-                    </ul>
+    return(
+        <div className='Editor'>
+            <Header />
+            <div className="editor-container w3-display-middle">
+                <div className="board-title">
+                    <h1>공지사항</h1>
                 </div>
-                    <ReactQuill
-                        ref={quillRef}
-                        placeholder="내용을 입력해주세요."
-                        theme="snow"
-                        value={value}
-                        modules={modules}
-                        formats={formats}
-                        onChange={setValue}
-                        style={{width:"1164.8px", height:"350px", marginLeft:"165px"}}
-                    />
-            </div>
-        </form>
+                <form>
+                    <div className="editor-box">
+                        <div className="editor-title">
+                            <ul className="editor-title-name">
+                                <li>제목</li>
+                                <input className="editor-input-name" name="name" onChange={(e) => setTitle(e.target.value)}></input>
+                            </ul>
+                            <ul className="editor-title-date">
+                                <li>작성일</li>
+                                <input id="inputFixedDate" className="editor-input-date" name="date" style={{paddingLeft:"10px"}} readOnly></input>
+                            </ul>
+                            <ul className="editor-title-files">
+                                <li>첨부파일</li>
+                                <input type="file" className="editor-input-files" name="files" onChange={(e) => setFile(e.target.files[0])}></input>
+                            </ul>
+                        </div>
+                            <ReactQuill
+                                ref={quillRef}
+                                placeholder="내용을 입력해주세요."
+                                theme="snow"
+                                value={value}
+                                modules={modules}
+                                formats={formats}
+                                onChange={setValue}
+                                style={{width:"1164.8px", height:"350px", marginLeft:"165px"}}
+                            />
+                        </div>
+                </form>
                 <div className="editor-submit-btn">
                     <button className="editor-btn-delete" onClick={BackStepBtn}>취소</button>
                     <button className="editor-btn-enter" onClick={EditBtn}>등록</button>
                 </div>
-    </div>)
+            </div>
+        </div>
+    )
 }
 
 export default Editor;

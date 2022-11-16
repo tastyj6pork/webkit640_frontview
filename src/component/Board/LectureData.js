@@ -21,6 +21,7 @@ import { Link } from 'react-router-dom';
 function LectureData() {
 
     const [list, setList] = useState([]);
+    const [isAdmin, setIsAdmin] = useState();
     const columns = [
         { id: 'no', label: '번호', minWidth: 100},
         { id: 'title', label: '제목', minWidth: 250 },
@@ -52,6 +53,7 @@ function LectureData() {
 
         useEffect(() => {
             call("/board/list?type=lecture", "GET").then((res) => setList(res));
+            call("/auth/find-user","GET").then((res)=>{setIsAdmin(res.admin)})
         }, [])  
         console.log(list);
       
@@ -83,7 +85,7 @@ function LectureData() {
                 </div>
                 <div className="board-whole-line">
                     <div className="board-search-container">
-                        <button className="board-eidit-btn" onClick={GoToEdit}>글 작성</button>
+                        {isAdmin && <button className="board-eidit-btn" onClick={GoToEdit}>글 작성</button>}
                         <select name="type" className="board-search-select">
                             <option value="제목">제목</option>
                             <option value="작성자">작성자</option>

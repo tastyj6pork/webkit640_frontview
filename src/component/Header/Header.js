@@ -7,8 +7,9 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import DetailMenu from "./DetailMenu";
 import HideMenu from "./HideMenu";
 import "./Header.css"
+import { propTypes } from "react-bootstrap/esm/Image";
 
-function Header() {
+function Header(props=false) {
     const [isLogin, setIsLogin] = useState(false);
     const [isAdmin, setIsAdmin] = useState(0);
     const [isClick, setIsClick] = useState(false);
@@ -42,7 +43,7 @@ function Header() {
         if(isClick) setIsClick(false);
         else setIsClick(true);
     }
-    
+
     const hideDetail = (e) => {
         setIsClick(false);
     }
@@ -72,6 +73,7 @@ function Header() {
 
     useEffect(()=>{
         isUserLogin();
+        let navBar = document.getElementById('navBar');
         let dmenu01 = document.getElementById('have-dmenu01');
         let dmenu02 = document.getElementById('have-dmenu02');
         let duser = null;
@@ -88,6 +90,9 @@ function Header() {
             setDmenu01(dmenu01_x);
             setDmenu02(dmenu02_x);
         }
+        if(!props.isMain) {
+            navBar.style.backgroundColor = 'rgba(255, 255, 255)';
+        }
     })
 
     const ReviewInsert = () => {
@@ -99,7 +104,9 @@ function Header() {
             <div id="navBarIncludeDetail">
                 <div id="navBar" className="w3-bar w3-wide ">
                     <div className="nav-content">
-                        <Link to='/' className="navbar-brand"></Link>
+                        <Link to='/' className="navbar-brand">
+                            <img src="/images/logo2.png"/>
+                        </Link>
                         {isBigScreen &&
                             <div id="menuList" className="w3-center w3-hide-small w3-hide-medium">
                                 <ul>
@@ -108,7 +115,11 @@ function Header() {
                                     onClick={showDetail}><span>게시판 ∨</span></Link></li>
                                     <li><Link id="have-dmenu02"
                                     onClick={showDetail}><span>모집정보 ∨</span></Link></li>
+<<<<<<< HEAD
                                     <li><Link><span onClick={ReviewInsert}>수강후기</span></Link></li>
+=======
+                                    <li><Link to='/review'><span>수강후기</span></Link></li>
+>>>>>>> 7060b5e8e949afaedd5f0fcd4c6a5b369dd27301
                                     {!isLogin &&
                                         <li className="login-btn" style={{float:"right", marginLeft: "40px"}}>
                                             <a href="/login">로그인</a>
@@ -147,7 +158,6 @@ function Header() {
                         onMouseLeave={hideMypage}>
                             <ul>
                                 <li><button onClick={goMypage}>{userpage}</button></li>
-                                <li><a href="/">회원정보</a></li>
                             </ul>
                         </div>
                     }

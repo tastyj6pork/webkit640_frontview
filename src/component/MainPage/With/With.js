@@ -32,39 +32,31 @@ function With() {
     const isBigScreen = useMediaQuery({query: '(min-width:1201px)'});
     const isMediumScreen = useMediaQuery({query: '(min-width:768px) and (max-width: 1200px)'});
     const isSmallScreen = useMediaQuery({query: '(max-width: 767px)'});
-
-    useEffect(()=>{
-        setRollerWidth(document.querySelector('#roller1 ul').offsetWidth);
-    }, [rollerWidth])
     
     useEffect(()=>{
         if(!makeClone){
             let roller = document.querySelector("#roller1");
             let clone = roller.cloneNode(true);
-            let roller_ul_style = document.querySelector("#roller1 ul").style;
             clone.id = 'roller2';
             document.querySelector('.wrapper').appendChild(clone);
-            document.querySelector('#roller1').style.left = '0px';
-            //if(isSmallScreen) roller_ul_style.width = `${rollerWidth}px`;
+            document.querySelector('#roller1 ul').style.left = '0px';
             roller.classList.add('original');
             setMakeClone(true);
         } else {
             let clone = document.querySelector("#roller2");
             let clone_ul_style = document.querySelector('#roller2 ul').style;
-            //if(isSmallScreen) clone_ul_style.width = `${rollerWidth}px`;
-            clone_ul_style.left = `${rollerWidth}px`;
+            if(isBigScreen||isMediumScreen) clone_ul_style.left = `1421px`;
+            if(isSmallScreen) clone_ul_style.left = `980px`;
             clone.classList.add('clone');
         }
-        //console.log(document.querySelector('.wrapper'))
     })
 
     
     return(
         <div className="With">
-            {/* {console.log("return,"+` ${rollerWidth}px`)} */}
             <div className="with-content w3-display-container">
                 <div className="with-box w3-display-middle w3-center">
-                    <h2>지금 참여중인 컨소시엄들</h2>
+                    <h2>지금까지 참여했던 컨소시엄들</h2>
                     <div className="wrapper">
                         <div id="roller1" className="roller animate-slider">
                             <ul>

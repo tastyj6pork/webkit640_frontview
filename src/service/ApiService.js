@@ -1,5 +1,7 @@
 import {API_BASE_URL} from "../app-config";
 const ACCESS_TOKEN = "ACCESS_TOKEN";
+const IS_ADMIN = "IS_ADMIN";
+const USER_NAME = "USER_NAME";
 
 export function applyCall(api, method, request) {
     let headers = new Headers({
@@ -81,8 +83,8 @@ export function login(userDTO) {
     return call("/auth/login", "POST", userDTO)
     .then((response)=>{
         if(response.token !== null) {
-            localStorage.setItem("IS_ADMIN", response.data[0]._admin);
-            localStorage.setItem("USER_NAME", response.data[0].name);
+            localStorage.setItem(IS_ADMIN, response.data[0]._admin);
+            localStorage.setItem(USER_NAME, response.data[0].name);
             localStorage.setItem(ACCESS_TOKEN, response.data[0].token);
             window.location.href="/";
         }
@@ -112,5 +114,7 @@ export function signup(userDTO){
 
 export function signout() {
     localStorage.setItem(ACCESS_TOKEN,null);
+    localStorage.setItem(IS_ADMIN,null);
+    localStorage.setItem(USER_NAME,null);
     window.location.href="/";
 }

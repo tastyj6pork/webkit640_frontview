@@ -1,5 +1,6 @@
 import { React, useEffect, useState, forwardRef } from "react";
 import { Link } from "react-router-dom";
+import { call } from '../../../service/ApiService';
 import { useMediaQuery } from 'react-responsive';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight, faChevronLeft } from "@fortawesome/free-solid-svg-icons";
@@ -9,6 +10,8 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 
 const Review = forwardRef((props, ref) => {
+    const [reviewData, setReviewData] = useState([]);
+    const [reviewContent, setReviewContent] = useState("이건 가짜리뷰다. 어쩌다보니 가짜 리뷰를 블러 처리 하게 되었다. 그래도 디자인적으로는 완벽하다. 잡플래닛 최고~ 이제 이 위에 링크를 걸면 아주 완벽한 리뷰 슬라이더가 완성 된다. 보기 좋을 것 같다. 비록 메인 페이지에 리뷰 슬라이더가 있는 의미는 50%정도 사라졌지만 복잡한 건 절대 하기 싫으니까 어쩔 수 없다. 난..글렀다");
     const isBigScreen = useMediaQuery({query: '(min-width:1201px)'});
     const isMediumScreen = useMediaQuery({query: '(min-width:768px) and (max-width: 1200px)'});
     const isSmallScreen = useMediaQuery({query: '(max-width: 767px)'});
@@ -39,27 +42,43 @@ const Review = forwardRef((props, ref) => {
         ),
     };
 
+    useEffect(()=>{
+        call("/main/review", "GET").then((res)=>{
+            setReviewData(res);
+        })
+    },[])
+
     const reviewItems = (
-        <div className="slid-item">
-            <div className="item-content">
-                <table>
-                    <tbody>
-                        <tr className="title-area">
-                            <td className="title-td">
-                                <h2>제목</h2>
-                                <img src="#"/>
-                            </td>
-                        </tr>
-                        <tr className="writer">
-                            <td>글쓴이 | 학과</td>
-                        </tr>
-                        <tr className="content">
-                            <td>내용</td>
-                        </tr>
-                    </tbody>
-                </table>
+        reviewData.map((item, i)=>(
+            <div className="slid-item" key={i}>
+                <div className="item-content">
+                    <table>
+                        <tbody>
+                            <tr className="title-area">
+                                <td className="title-td">
+                                    <h2>{item.title}</h2>
+                                    <img src="#"/>
+                                </td>
+                            </tr>
+                            <tr className="writer">
+                                <td>{item.writer}</td>
+                            </tr>
+                            <tr className="content">
+                                <td>
+                                    <div className="review-content">
+                                        {reviewContent}
+                                    </div>
+                                    <button className="review-link" 
+                                    onClick={()=> document.location.href="/boarddetail/"+item.id}>
+                                        읽어 보기 〉
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
+        ))
     )
 
     return(
@@ -71,17 +90,16 @@ const Review = forwardRef((props, ref) => {
                         { isSmallScreen ?
                             <Slider {...settingsForSmall} className="review-slider">
                                 {reviewItems}
-                                <div>2</div>
-                                <div>2</div>
                             </Slider> :
                             <Slider {...settingsForBig} className="review-slider">
                                 {reviewItems}
-                                <div>2</div>
-                                <div>2</div>
                             </Slider>
                         }
                     </div>
-                    <button className="more-btn">더 많은 후기 보기></button>
+                    <button className="more-btn"
+                        onClick={()=> document.location.href="/review"}>
+                            더 많은 후기 보러 가기 〉
+                    </button>
                 </div>
             </div>
         </div>

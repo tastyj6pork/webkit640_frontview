@@ -64,11 +64,11 @@
     padding-left: 46px;
     text-align: left;
     transition-property: background-color;
-    transition-duration: 0.5s;
+    transition-duration: 0.7s;
 }
 
 .ProcessInfo .process-box .process-content:hover {
-    background-color: rgba(0, 0, 0, 0.723);
+    background-color: rgba(0, 0, 0, 0.601);
 }
 
 .ProcessInfo .process-box .process-content p {
@@ -79,22 +79,28 @@
 }
 
 .ProcessInfo .process-box .process-content-box {
-    border: solid salmon;
     width: 400px;
     height: 230px;
     padding: 20px;
 }
 
 .ProcessInfo .process-box .process-item {
-    font-size: 23px;
+    width: fit-content;
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 12px;
+    font-size: 21px;
     font-weight: 600;
     background-color: white;
-    padding: 1px;
+    padding: 2px;
     padding-left: 9px;
     padding-right: 9px;
     border-radius: 25px;
-    position: absolute;
-    border: solid blue;
+}
+
+.ProcessInfo .process-box .process-item:hover {
+    color: white;
+    background-color: black;
 }
 
 .ProcessInfo .process-box .more-info {
@@ -140,6 +146,31 @@
     }
     .ProcessInfo .process-box .backend-process {
         margin-top: 18px;
+    }
+    .ProcessInfo .process-box .process-content {
+        padding: 20px;
+        padding-left: 25px;
+    }
+    .ProcessInfo .process-box .process-content p {
+        font-size: 25px;
+    }
+    .ProcessInfo .process-box .process-content-box {
+        width: 230px;
+        height: 150px;
+        padding: 10px;
+    }
+    .ProcessInfo .process-box .process-item {
+        width: fit-content;
+        float: left;
+        margin-right: 10px;
+        margin-bottom: 12px;
+        font-size: 16px;
+        font-weight: 600;
+        background-color: white;
+        padding: 1px;
+        padding-left: 9px;
+        padding-right: 9px;
+        border-radius: 25px;
     }
     .ProcessInfo .process-box .more-info {
         width: 150px;

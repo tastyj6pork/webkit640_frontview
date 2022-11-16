@@ -5,8 +5,6 @@ import "./Dday.css"
 import moment from "moment";
 
 function Dday(props) {
-    // const [todayDate, setTodayDate] = useState(null);
-    // const [endDate, setEndDate] = useState(null);
     const [day, setDay] = useState(0);
     const [hour, setHour] = useState(0);
     const [min, setMin] = useState(0);

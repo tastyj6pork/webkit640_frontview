@@ -39,11 +39,11 @@ function SideNav({children}) {
             name:"지원신청",
             icon:<BsFileEarmarkPlusFill />
         },
-        {
-            path:"/studentattend",
-            name:"출석확인",
-            icon:<BsPersonCheckFill />
-        },
+        // {
+        //     path:"/studentattend",
+        //     name:"출석확인",
+        //     icon:<BsPersonCheckFill />
+        // },
     ]
 
     //Login = 관리자 List
@@ -58,11 +58,11 @@ function SideNav({children}) {
             name:"지원관리",
             icon:<BsFileEarmarkPlusFill />
         },
-        {
-            path:"/adminattend",
-            name:"출석관리",
-            icon:<BsPersonCheckFill />
-        },
+        // {
+        //     path:"/adminattend",
+        //     name:"출석관리",
+        //     icon:<BsPersonCheckFill />
+        // },
         {
             path:"/adminschedule",
             name:"일정관리",
@@ -74,7 +74,7 @@ function SideNav({children}) {
         <div className="sidenav-container">
             <div style={{width : isOpen ? "300px" : "50px"}} className="sidenav-box">
                 <div className="sidenav-top">
-                    <NavLink to="/"><h1 style={{display : isOpen ? "block" : "none", textDecoration : "none", color : "white"}} className="sidenav-logo">Webkit</h1></NavLink>
+                    <NavLink to="/" className="navLink"><h1 style={{display : isOpen ? "block" : "none", textDecoration : "none", color : "white"}} className="sidenav-logo">Webkit</h1></NavLink>
                     <div style={{marginLeft : isOpen ? "94px" : "-3px"}} className="sidenav-webkitbars">
                         <BsList onClick={toggle}/>
                     </div>
@@ -96,10 +96,10 @@ function SideNav({children}) {
                         ))
                     }
                 <h3 style={{display : isOpen ? "block" : "none"}} className="sidenav-foot">로그아웃</h3>
-            </div>            
+            </div>
             <main><Outlet /></main>
         </div>
-        
+
     )
 }
 

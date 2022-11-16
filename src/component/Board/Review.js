@@ -8,7 +8,7 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import Header from "../../component/Header/Header";
-import Footer from "../../component/Footer/Footer"; 
+import Footer from "../../component/Footer/Footer";
 import "../Board/Board.css";
 import { useEffect } from 'react';
 import axios from 'axios';
@@ -47,23 +47,23 @@ function Review() {
         },
       ];
 
-      const rows = viewList;
+      const rows = viewList.filter((content)=>content.add);
       console.log(rows)
-    
+
         const [page, setPage] = React.useState(0);
         const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
         useEffect(() => {
             call("/board/list?type=review", "GET").then((res) => {setList(res);});
-        }, [])  
+        }, [])
         console.log(list);
-        
+
         useEffect(()=>{setViewList(list)},[list])
 
         const handleChangePage = (event, newPage) => {
           setPage(newPage);
         };
-      
+
         const handleChangeRowsPerPage = (event) => {
           setRowsPerPage(+event.target.value);
           setPage(0);
@@ -96,19 +96,21 @@ function Review() {
         <Header />
         <div className="board-container">
             <div className="board-title">
-                <h1>리뷰</h1>
+                <h1>수강 후기</h1>
                 <div className="board-whole-line">
                     <div className="board-search-container">
-                        <button className="board-eidit-btn" onClick={GoToEdit}>리뷰 작성</button>
-                        <select name="type" value={selectValue} onChange={(e)=>{setSelectValue(e.target.value)}} className="board-search-select">
-                            <option value="제목">제목</option>
-                            <option value="작성자">작성자</option>
-                        </select>
-                        <input type="text"
-                            value={keyword}
-                            onChange={(e)=>{setKeyword(e.target.value)}}
-                            className="board-search-input" 
-                            placeholder="검색어를 입력해 주세요"></input>
+                        <button className="board-edit-btn" onClick={GoToEdit}>작성하기</button>
+                        <div className='board-search-box'>
+                                <select name="type" value={selectValue} onChange={(e)=>{setSelectValue(e.target.value)}} className="board-search-select">
+                                    <option value="제목">제목</option>
+                                    <option value="작성자">작성자</option>
+                                </select>
+                                <input type="text"
+                                    value={keyword}
+                                    onChange={(e)=>{setKeyword(e.target.value)}}
+                                    className="board-search-input"
+                                    placeholder="검색어를 입력해 주세요"></input>
+                        </div>
                     </div>
                     <div className="board-list-container">
                         <Paper sx={{ width: '100%', overflow: 'hidden' }}>
