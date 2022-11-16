@@ -101,7 +101,7 @@ function StudentApply() {
     
     return(<div className="apply-total">
         <div className="apply-title">
-            <h1>지원하기</h1>
+            <h1><strong>지원서 작성</strong></h1>
         </div>
         <div className="apply-container">
             <ul>
