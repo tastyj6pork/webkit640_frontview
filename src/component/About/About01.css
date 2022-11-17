@@ -2,11 +2,13 @@
     font-family: 'Pretendard-Regular';
     letter-spacing: normal;
     color: rgb(7, 1, 38);
+    word-break: keep-all;
+    white-space: pre-wrap;
 }
 
 .About01 {
     width: 100vw;
-    height: 700px;
+    height: 800px;
     background-image: url("../../../public/images/background07.png");
     background-repeat: no-repeat;
     background-size: cover;
@@ -15,25 +17,180 @@
 .About01 .about01-content {
     width: 100%;
     height: 100%;
-    border: solid black;
 }
 
 .About01 .about01-box {
-    width: 1200px;
+    width: 80%;
     height: auto;
-    border: solid red;
+}
+
+.About01 .left-content, .About01 .right-content {
+    width: 50%;
+    height: auto;
 }
 
 .About01 .left-content {
-    width: 590px;
-    height: auto;
     float: left;
-    border: solid orange;
+    margin-top: 40px;
+}
+
+.About01 .left-content .text-box p {
+    font-size: 23px;
+    font-weight: 600;
+    color: rgb(66, 218, 187);
+}
+
+.About01 .left-content .text-box h2 {
+    font-size: 58px;
+    font-weight: 600;
+
+}
+
+.About01 .left-content .text-box label {
+    font-size: 19px;
+    color: rgb(80, 80, 80);
+    margin-top: 20px;
+}
+
+.About01 .left-content .text-box ul {
+    list-style: none;
+    margin-top: 20px;
+}
+
+.About01 .left-content .text-box li {
+    font-size: 21px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+.About01 .left-content .text-box li img {
+    height: 22px;
+    margin-right: 10px;
 }
 
 .About01 .right-content {
-    width: 590px;
-    height: auto;
+    width: 650px;
+    float: left;
+}
+
+.About01 .right-content .grid-container {
+    width: 600px;
     float: right;
-    border: solid green;
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.About01 .right-content .grid-item {
+    text-align: center;
+    padding: 20px;
+    padding-right: 0;
+}
+
+.About01 .right-content .white-box {
+    width: 290px;
+    height: 290px;
+    padding: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
+    background-color: white;
+    /* border: 1px solid rgb(109, 109, 109); */
+    border-radius: 20px;
+    transition: all 0.7s;
+}
+
+.About01 .right-content .white-box:hover{
+    transform: translate(0px, -10px);
+}
+
+.About01 .right-content .white-box p {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.About01 .right-content .white-box img {
+    height: 110px;
+}
+
+.About01 .right-content .white-box .circle {
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    vertical-align: middle;
+    text-align: center;
+    border-radius: 50px;
+    background-color: rgb(66, 218, 187);
+    color: white;
+    font-weight: 600;
+    font-size: 18px;
+    display: inline-block;
+    margin: auto;
+}
+
+@media only screen and (max-width:767px) {
+    .About01 {
+        height: 900px;
+    }
+    .About01 .about01-box {
+        width: 80%;
+        height: auto;
+    }
+    .About01 .left-content, .About01 .right-content {
+        width: 100%;
+        height: auto;
+    }
+    .About01 .left-content {
+        float: none;
+        margin-top: 0;
+    }
+    .About01 .left-content .text-box p {
+        font-size: 13px;
+    }
+    .About01 .left-content .text-box h2 {
+        font-size: 34px;
+    }
+    .About01 .left-content .text-box label {
+        font-size: 13px;
+        margin-top: 10px;
+    }
+    .About01 .left-content .text-box ul {
+        margin-top: 10px;
+    }
+    .About01 .right-content {
+        width: 100%;
+        float: none;
+    }
+    .About01 .right-content .grid-container {
+        width: 100%;
+        float: none;
+        grid-template-columns: auto auto;
+    }
+    .About01 .right-content .grid-item {
+        text-align: center;
+        padding: 10px;
+        padding-right: 0;
+    }
+    .About01 .right-content .white-box {
+        width: 140px;
+        height: 160px;
+        padding: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .About01 .right-content .white-box p {
+        font-size: 11px;
+        font-weight: 600;
+    }
+    .About01 .right-content .white-box img {
+        height: 50px;
+    }
+    .About01 .right-content .white-box .circle {
+        width: 25px;
+        height: 25px;
+        line-height: 25px;
+        border-radius: 25px;
+        font-weight: 600;
+        font-size: 12px;
+        display: inline-block;
+        margin: auto;
+    }
 }
