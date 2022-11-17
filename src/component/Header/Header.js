@@ -99,7 +99,6 @@ function Header(props=false) {
             navBar.style.boxShadow = '0 3px 4px -4px grey';
         }
     })
-
     const ReviewInsert = () => {
         window.location.href="/review"
     }
