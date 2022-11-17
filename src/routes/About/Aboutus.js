@@ -4,6 +4,9 @@ import { useMediaQuery } from 'react-responsive';
 import "./Aboutus.css"
 import Header from "../../component/Header/Header";
 import Footer from "../../component/Footer/Footer";
+import About01 from "../../component/About/About01";
+import About02 from "../../component/About/About02";
+import About03 from "../../component/About/About03";
 
 function Aboutus() {
     return (
