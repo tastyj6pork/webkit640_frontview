@@ -35,7 +35,7 @@ function Header(props=false) {
         }
         else setIsLogin(false);
         if(localStorage.getItem("IS_ADMIN")){
-            if(localStorage.getItem("IS_ADMIN") !== "null"){
+            if(localStorage.getItem("IS_ADMIN") !== "null" && localStorage.getItem("IS_ADMIN") !== "false"){
                 setIsAdmin(1);
                 setUserpage("관리페이지");
             }
