@@ -1,17 +1,16 @@
-// import { React, useEffect, useState } from "react";
-// import { Link } from "react-router-dom";
-// import { useMediaQuery } from 'react-responsive';
-// import "./About01.css"
+import { React, useEffect, useState, useMemo, forwardRef } from "react";
+import { Link } from "react-router-dom";
+import { useMediaQuery } from 'react-responsive';
+import "./About01.css"
 
-// function About01() {
-//     return (
-//         <div className="About01">
-//             <Header/>
-//             <div className="about01-content w3-wide">
+const About01 = forwardRef((props, ref) => {
+    return (
+        <div className="About01" ref={ref}>
+            <div className="about01-content w3-wide">
                 
-//             </div>
-//         </div>
-//     )
-// }
+            </div>
+        </div>
+    )
+})
 
-// export default About01;
+export default About01;

@@ -1,0 +1,17 @@
+.About03 * {
+    font-family: 'Pretendard-Regular';
+    letter-spacing: normal;
+}
+
+.About03 {
+    width: 100vw;
+    height: 700px;
+    background-image: url("../../../public/images/background09.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.About03 .about03-content {
+    width: 100%;
+    height: 100%;
+}

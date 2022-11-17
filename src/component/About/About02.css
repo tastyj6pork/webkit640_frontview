@@ -1,0 +1,17 @@
+.About02 * {
+    font-family: 'Pretendard-Regular';
+    letter-spacing: normal;
+}
+
+.About02 {
+    width: 100vw;
+    height: 700px;
+    background-image: url("../../../public/images/background08.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.About02 .about02-content {
+    width: 100%;
+    height: 100%;
+}
