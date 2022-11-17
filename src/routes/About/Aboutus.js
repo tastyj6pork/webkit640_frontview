@@ -52,11 +52,11 @@ function Aboutus() {
                 setIsNavWhite(false);
                 setArrow('﹀');
             }
-            else if(window.scrollY > 1500 && window.scrollY < 2200) {
+            else if(window.scrollY > 1500 && window.scrollY < 2000) {
                 setIsNavWhite(false);
                 setArrow('﹀');
             }
-            else if(window.scrollY >= 2200){
+            else if(window.scrollY >= 2000){
                 setIsNavWhite(false);
                 setArrow('︿');
             }
