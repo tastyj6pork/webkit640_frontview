@@ -1,0 +1,30 @@
+.About02 * {
+    font-family: 'Pretendard-Regular';
+    letter-spacing: normal;
+    color: rgb(7, 1, 38);
+}
+
+.About02 {
+    width: 100vw;
+    height: 700px;
+    background-image: url("../../../public/images/background08.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.About02 .about02-content {
+    width: 100%;
+    height: 100%;
+    border: solid black;
+}
+
+.About02 .about02-box {
+    width: 1200px;
+    height: auto;
+    border: solid red;
+}
+
+.About02 .right-content {
+    width: 500px;
+    height: auto;
+}
