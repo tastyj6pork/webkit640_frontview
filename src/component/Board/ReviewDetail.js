@@ -101,8 +101,9 @@ function ReviewDetail() {
     const Teleportation = () => {
         window.location.href="/review"
     }
-
+    const keys = localStorage.getItem("ACCESS_TOKEN");
     return(<div>
+        {keys === "null" && (window.location.href = "/login")}
         <Header />
         <div>
             <div className="board-title">

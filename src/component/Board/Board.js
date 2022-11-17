@@ -177,7 +177,7 @@ function Board() {
                                 </Paper>
                             </div>
                         </div>
-                        ) : window.location.href = "/"
+                        ) : window.location.href = "/login"
                     }
 
                 </div>

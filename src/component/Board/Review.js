@@ -91,8 +91,9 @@ function Review() {
         },[keyword])
         useEffect(()=>{console.log(keyword)},[keyword])
         useEffect(()=>{console.log(selectValue)},[selectValue])
-
+        const keys = localStorage.getItem("ACCESS_TOKEN");
     return(<div>
+        { keys === "null" && (window.location.href = "/login")}
         <Header />
         <div className="board-container">
             <div className="board-title">
