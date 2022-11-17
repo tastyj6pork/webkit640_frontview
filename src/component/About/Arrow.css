@@ -1,0 +1,13 @@
+.Arrow .arrow {
+    z-index: 999;
+    position: fixed;
+    top: 640px;
+    font-size: 70px;
+    font-weight: 600;
+    color: white;
+    text-shadow: 0 0 20px rgb(182, 182, 182);
+    display: inline-block;
+    margin: auto;
+    background-color: rgba(240, 248, 255, 0);
+    border: 0;
+} 
