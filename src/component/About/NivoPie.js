@@ -12,7 +12,7 @@ function NivoPie () {
             cornerRadius={4}
             activeOuterRadiusOffset={8}
             colors={{ scheme: 'pastel2' }}
-            borderWidth={1}
+            borderWidth={0}
             borderColor={{ theme: 'grid.line.stroke' }}
             enableArcLinkLabels={false}
             arcLinkLabelsSkipAngle={10}

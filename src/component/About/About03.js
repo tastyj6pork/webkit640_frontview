@@ -12,6 +12,12 @@ const About03 = forwardRef((props, ref) => {
                     <div className="nivo-pie">
                         <NivoPie/>
                     </div>
+                    <div className="contents">
+                        <h2>교육 일정</h2>
+                        <div>
+                            아...
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
