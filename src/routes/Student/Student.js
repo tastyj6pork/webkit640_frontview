@@ -31,10 +31,10 @@ function Student() {
 
     useEffect(() => {
         call("/apply/member-applicant", "GET").then((res) => {
-            console.log(res)
+            console.log(res);
             setApplyResult(res);
-            setFinalResult(res.adminApply)
-             });
+            setFinalResult(res.adminApply);
+            })
         call("/main/data", "GET").then((res) => setResultDate(new Date (res.passAnnouncementDate)));
     },[])
 
@@ -45,12 +45,6 @@ function Student() {
         }
     },[applyResult])
     
-    console.log(applyResult);
-    console.log(resultDate);
-    console.log(today);
-    console.log(today > resultDate);
-    console.log(finalResult);
-
     let FinalDate = (today > resultDate);
     
 
