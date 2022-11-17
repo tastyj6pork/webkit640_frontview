@@ -24,7 +24,16 @@
     border: solid red;
 }
 
-.About01 .right-content {
-    width: 500px;
+.About01 .left-content {
+    width: 590px;
     height: auto;
+    float: left;
+    border: solid orange;
+}
+
+.About01 .right-content {
+    width: 590px;
+    height: auto;
+    float: right;
+    border: solid green;
 }

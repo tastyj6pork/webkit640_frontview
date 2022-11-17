@@ -8,7 +8,12 @@ const About02 = forwardRef((props, ref) => {
         <div className="About02" ref={ref}>
             <div className="about02-content w3-wide w3-display-container">
                 <div className="about02-box w3-display-middle">
-                    <div className="right-content">아이우에오</div>
+                    <div className="left-content">
+                        왼쪽 내용
+                    </div>
+                    <div className="right-content">
+                        오른쪽 내용
+                    </div>
                 </div>
             </div>
         </div>
