@@ -159,16 +159,6 @@ function BoardDetail() {
             <div>
                 {isAdmin && <button className="detail-delete-btn" onClick={DeleteText}>삭제</button>}
             </div>
-            <div className="board-detail-next">
-                <ul className="detail-next-first">
-                    <li className="detail-updown">이전글</li>
-                    <li className="detail-updown-title">대충 이전글 제목</li>
-                </ul>
-                <ul className="detail-next-last">
-                    <li className="detail-updown">다음글</li>
-                    <li className="detail-updown-title">대충 다음글 제목</li>
-                </ul>
-            </div><br/>
             <button className="detail-gotolist-btn" onClick={Teleportation}>목록</button>
         </div>
     </div>
