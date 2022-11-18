@@ -4,6 +4,7 @@ import { useMediaQuery } from 'react-responsive';
 import { throttle } from 'lodash';
 import { call } from '../../service/ApiService';
 import "./Main.css"
+import moment from "moment";
 import Header from "../../component/Header/Header";
 import Footer from "../../component/Footer/Footer";
 import ScrollNav from "../../component/MainPage/ScrollNav/ScrollNav";
@@ -78,9 +79,12 @@ function Main() {
                 <div className="header-background"/>
                 <div className="w3-display-middle w3-center">
                     <h2>웹킷640 {parseInt(mainPageData.completeCardinalNumber)+1}기 모집기간</h2>
+                    <p>~{moment(mainPageData.recruitmentDate).format("MM")}월 {moment(mainPageData.recruitmentDate).format("DD")}일 {moment(mainPageData.recruitmentDate).format("HH")}시 까지</p>
                     <Dday endDate={mainPageData.recruitmentDate}/>
                     <button className="apply-btn"
                     onClick={()=>window.location.href="/studentapply"}>지원하기</button>
+                    <button className="info-btn"
+                    onClick={()=>window.location.href="/#"}>사업안내</button>
                 </div>
             </header>
 

@@ -38,7 +38,14 @@ const MainSchedule = forwardRef((props, ref) => {
                                 </div>
                                 <div className="col">
                                     <h3>추가 모집</h3><br />
-                                    <label>~ {moment(additionalDate).format("YYYY")}년 {moment(additionalDate).format("MM")}월{moment(additionalDate).format("DD")}일 {moment(recruitDate).format("HH")}시</label>
+                                    { moment(additionalDate).format("YYYY") !== 'Invalid date' && 
+                                        <label>
+                                            ~ {moment(additionalDate).format("YYYY")}년 {moment(additionalDate).format("MM")}월{moment(additionalDate).format("DD")}일 {moment(recruitDate).format("HH")}시
+                                        </label>
+                                    }
+                                    { moment(additionalDate).format("YYYY") === 'Invalid date' &&
+                                        <label>―</label>
+                                    }
                                 </div>
                                 <div className="col">
                                     <h3>최종 합격자 발표</h3><br />

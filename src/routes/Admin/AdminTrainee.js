@@ -48,15 +48,19 @@ export default function AdminTrainee() {
                 교육생 리스트
             </Typography>
         </Grid>
-        <Grid item xs={2}>
+        <Grid item xs={2} style={{border:'solid red'}}>
             <TextField
                 sx={{ marginTop: "15px"}}
                 value={textFieldValue}
                 onChange={(e)=>{setTextFieldValue(e.target.value)}}
                 variant="standard"
-                label="등록 일자별 검색"
+                label="YYYY-MM-DD"
+                style={{border:'solid salmon', float:'left'}}
                 fullWidth
             />
+            <span style={{border:'solid green'}}>
+                검색 날짜 이후 등록된 수강생 확인이 가능합니다.
+            </span>
         </Grid>
         
         <Grid item xs={12}>

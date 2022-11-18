@@ -10,8 +10,7 @@ main {
     padding: 20px;
 }
 .sidenav-box {
-    background: rgba(29, 223, 144); /*SideNavbar 전체 색상코드*/
-    color: white;
+    background: rgb(86, 243, 180); /*SideNavbar 전체 색상코드*/
     height: 100vh;
     width: 300px;
     transition: all 0.7s; /*SideNavbar 이벤트 스크롤 속도 CSS*/

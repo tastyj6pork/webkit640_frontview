@@ -52,7 +52,7 @@
 }
 
 .Signup #affiliInput input{
-    width: 140px;
+    width: 150px;
 }
 
 .Signup .form-group select {
@@ -60,7 +60,6 @@
     width: 60px;
     height: 30px;
     font-size: 12px;
-    margin-left: 10px;
     margin-right: 10px;
 }
 

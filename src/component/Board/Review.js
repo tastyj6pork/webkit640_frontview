@@ -162,7 +162,6 @@ function Review() {
                 </div>
             </div>
         </div>
-        <Footer />
     </div>)
 }
 

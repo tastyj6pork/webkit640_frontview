@@ -178,7 +178,7 @@ export default function AdminMainPage() {
               }}
             ></Input>
             <FormHelperText id="documentSubmissionPeriod">
-              과제 제출 기한
+              서류 접수 기한
             </FormHelperText>
             <Input
               sx={{ marginTop: "40px" }}

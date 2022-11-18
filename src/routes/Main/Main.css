@@ -28,7 +28,12 @@
     margin-top: 40px;
 }
 
-.Main #header .apply-btn {
+.Main #header p {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.Main #header .apply-btn, .Main #header .info-btn {
     width: 140px;
     height: 48px;
     border-radius: 50px;
@@ -37,12 +42,25 @@
     color: white;
     border: 0;
     box-shadow: 7px 9px 9px -5px rgb(168, 168, 168);
+}
+
+.Main #header .apply-btn {
     background-color: rgba(44, 250, 209, 0.688);
 }
 
 .Main #header .apply-btn:hover {
     background-color: rgba(237, 255, 251, 0.896);
     color: rgba(44, 250, 209);
+}
+
+.Main #header .info-btn {
+    margin-left: 10px;
+    background-color: rgba(191, 191, 191, 0.688);
+}
+
+.Main #header .info-btn:hover {
+    background-color: rgba(81, 81, 81, 0.896);
+    color: rgb(255, 255, 255);
 }
 
 .Main .outro {

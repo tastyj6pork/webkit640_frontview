@@ -13,7 +13,7 @@ const About01 = forwardRef((props, ref) => {
                     <div className="left-content">
                         <div className="text-box">
                             <p>OUR PURPOSE</p>
-                            <h2>We Provide Best Virtual Assistant Services</h2>
+                            <h2>We Provide Best Pratical Web Developers</h2>
                             <label>
                                 We have created a fictional band website. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
                                 ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.

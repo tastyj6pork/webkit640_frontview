@@ -51,6 +51,7 @@ function Dday(props) {
                 <label className="min">{min}</label>
                 <span>:</span>
                 <label className="sec">{sec < 10 ? `0${sec}` : sec}</label>
+                <span> 남음</span>
             </div>
         </div>
     )

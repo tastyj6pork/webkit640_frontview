@@ -60,6 +60,10 @@
     width: 81px;
     height: 39px;
 }
+.modal-title, .modal-content {
+    word-break: keep-all;
+    white-space: pre-wrap;
+}
 
 
 @media all and (max-width: 1536px) {
