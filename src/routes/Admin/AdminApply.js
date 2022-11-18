@@ -14,6 +14,8 @@ function AdminApply() {
     const [searchKeyword, setSearchKeyword] = useState("");
     const [selectValue, setSelectValue] = useState("school");
 
+    
+
     //Effect 부분
     useEffect(()=>{
         mainRenderingAxios();
@@ -336,11 +338,11 @@ function AdminApply() {
             }
         })
     }
-
+    
     //Rendering 부분
     return(
     <Grid container spacing={3}>
-        {console.log(viewList)}
+        
         <Grid item xs={12}>
             <Typography variant='h3' component="h3">
                 <strong>지원자 관리</strong>
