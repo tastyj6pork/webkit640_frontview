@@ -34,7 +34,10 @@ function Student() {
             console.log(res);
             setApplyResult(res);
             setFinalResult(res.adminApply);
-            })
+            }).catch (
+                alert("지원신청을 하지 않으셨습니다."),
+                window.location.href="studentapply"
+            )
         call("/main/data", "GET").then((res) => setResultDate(new Date (res.passAnnouncementDate)));
     },[])
 

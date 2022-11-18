@@ -107,54 +107,60 @@ function LectureBoardDetail() {
             <div className="board-title">
                 <h1 onClick={Teleportation}>강의자료</h1>
             </div>
-            <div className="board-detail-container">
-                <div className="board-detail-title">
-                    <h4>{boardList.title}</h4>
+            <div className="lectureboard-centerplz">
+                <div className="board-detail-container">
+                    <div className="board-detail-title">
+                        <h4>{boardList.title}</h4>
+                    </div>
+                    <div className="board-detail-sublist">
+                        <ul>
+                            <li className="li-title-first">작성자</li>
+                            <li className="li-text">{boardList.writer}</li>
+                            <li className="li-title-second">조회</li>
+                            <li className="li-text">{boardList.cnt}</li>
+                            <li className="li-title-third">작성일</li>
+                            <li className="li-text">{boardList.createDate}</li>
+                        </ul>
+                    </div>
+                    <div className="board-detail-files">
+                        <ul className="detail-files-title">
+                            <p>첨부</p>
+                        </ul>
+                        <ul className="detail-files-list">
+                            <li onClick={fileNamesDownload}>{boardList.fileNames}</li>
+                        </ul>
+                    </div>
+                    <div className="board-detail-content">
+                        <div dangerouslySetInnerHTML={{ __html : boardList.content}} />
+                    </div>
+                    <div>
+                        {isAdmin && <button className="detail-delete-btn" onClick={DeleteText}>삭제</button>}
+                    </div>
                 </div>
-                <div className="board-detail-sublist">
-                    <ul>
-                        <li className="li-title-first">작성자</li>
-                        <li className="li-text">{boardList.writer}</li>
-                        <li className="li-title-second">조회</li>
-                        <li className="li-text">{boardList.cnt}</li>
-                        <li className="li-title-third">작성일</li>
-                        <li className="li-text">{boardList.createDate}</li>
-                    </ul>
+                <div className="board-detail-ripple">
+                    <h4>전체댓글</h4>
+                    <h4>{"(" + textList.length + ")"}</h4>
+                    <textarea className="detail-ripple-container" onChange={(e) => setBoardRipple(e.target.value)} />
                 </div>
-                <div className="board-detail-files">
-                    <ul className="detail-files-title">
-                        <p>첨부</p>
-                    </ul>
-                    <ul className="detail-files-list">
-                        <li onClick={fileNamesDownload}>{boardList.fileNames}</li>
-                    </ul>
+                <div>
+                    <button className="detail-ripple-btn" onClick={RippleInputBtn}>입력</button>
                 </div>
-                <div className="board-detail-content">
-                    <div dangerouslySetInnerHTML={{ __html : boardList.content}} />
+                <div className="detail-ripple-content" style={textList.length === 0 ? {display:"none"} : {display:"block"}}>
+                    {textList.map((row,idx) => {
+                        return(
+                            <Reply
+                            key={row.id}
+                            row={row}
+                            boardId={id}
+                            userData={userData}
+                            />
+                        )
+                    })}
                 </div>
-            </div>
-            <div className="board-detail-ripple">
-                <h4>전체댓글</h4>
-                <h4>{"(" + textList.length + ")"}</h4>
-                <textarea className="detail-ripple-container" onChange={(e) => setBoardRipple(e.target.value)} />
-            </div>
-            <button className="detail-ripple-btn" onClick={RippleInputBtn}>입력</button>
-            <div className="detail-ripple-content" style={textList.length === 0 ? {display:"none"} : {display:"block"}}>
-                {textList.map((row,idx) => {
-                    return(
-                        <Reply
-                        key={row.id}
-                        row={row}
-                        boardId={id}
-                        userData={userData}
-                        />
-                    )
-                })}
-            </div>
-            <div>
-                {isAdmin && <button className="detail-delete-btn" onClick={DeleteText}>삭제</button>}
-            </div>
-            <button className="detail-gotolist-btn" onClick={Teleportation}>목록</button>
+                <div>
+                    <button className="detail-gotolist-btn" onClick={Teleportation}>목록</button>
+                </div>
+                </div>
         </div>
     </div>)
 }

@@ -137,6 +137,9 @@ function BoardDetail() {
                 <div className="board-detail-content">
                     <div dangerouslySetInnerHTML={{ __html : boardList.content}} />
                 </div>
+                <div>
+                    {isAdmin && <button className="detail-delete-btn" onClick={DeleteText}>삭제</button>}
+                </div>
             </div>
             <div className="board-detail-ripple">
                 <h4>전체댓글</h4>
@@ -157,9 +160,8 @@ function BoardDetail() {
                 })}
             </div>
             <div>
-                {isAdmin && <button className="detail-delete-btn" onClick={DeleteText}>삭제</button>}
+                <button className="detail-gotolist-btn" onClick={Teleportation}>목록</button>
             </div>
-            <button className="detail-gotolist-btn" onClick={Teleportation}>목록</button>
         </div>
     </div>
     )
