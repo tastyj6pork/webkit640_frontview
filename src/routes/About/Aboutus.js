@@ -18,8 +18,6 @@ function Aboutus() {
     const about01Ref = useRef(null);
     const about02Ref = useRef(null);
     const about03Ref = useRef(null);
-    const isBigScreen = useMediaQuery({query: '(min-width:1201px)'});
-    const isMediumScreen = useMediaQuery({query: '(min-width:768px) and (max-width: 1200px)'});
     const isSmallScreen = useMediaQuery({query: '(max-width: 767px)'});
 
     const arrowClick = () => {
@@ -74,7 +72,7 @@ function Aboutus() {
         <div className="Aboutus" ref={headerRef}>
             { isNavWhite && <Header/>}
             { !isNavWhite && <Header isMain={true}/>}
-            <Arrow onclick={arrowClick} shape={arrow}/>
+            {!isSmallScreen && <Arrow onclick={arrowClick} shape={arrow}/>}
             <div className="aboutus-content w3-wide">
                 <header id="aboutus-header" className="w3-display-container">
                     <div className="aboutus-background"></div>
@@ -82,7 +80,7 @@ function Aboutus() {
                         <p>웹 개발자 양성 프로그램</p>
                         <h2>웹킷 WebKIT640</h2>
                         <label>웹 개발자로 취업할 사람 모여라!</label>
-                        <label>어떤 문구가 있으면 좋겠는데 떠오르지 않는다</label>
+                        <label>어떤 문구</label>
                     </div>
                 </header>
                 <About01 ref={about01Ref}/>

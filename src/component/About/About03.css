@@ -6,7 +6,7 @@
 
 .About03 {
     width: 100vw;
-    height: 700px;
+    height: 800px;
     background-image: url("../../../public/images/background09.png");
     background-repeat: no-repeat;
     background-size: cover;
@@ -15,31 +15,105 @@
 .About03 .about03-content {
     width: 100%;
     height: 100%;
-    border: solid black;
 }
 
 .About03 .about03-box {
-    width: 1200px;
+    width: 80%;
     height: auto;
-    border: solid red;
-}
-
-.About03 .about03-box h2 {
-    font-size: 50px;
-    font-weight: 600;
-    margin: 0;
 }
 
 .About03 .nivo-pie {
-    width: 520px;
-    height: 470px;
+    width: 45%;
+    height: 580px;
     margin-top: 50px;
-    float: left;
-    border: solid blue;
+    float: right;
 }
 
 .About03 .contents {
-    width: 670px;
-    border: solid green;
-    float: right;
+    width: 55%;
+    float: left;
+}
+
+.About03 .contents h2 {
+    width: fit-content;
+    font-size: 48px;
+    margin-left: 15%;
+}
+
+.About03 .contents ul {
+    list-style: none;
+    margin: 0;
+    margin-top: 60px;
+    margin-left:15%;
+    margin-bottom: 50px;
+}
+
+.About03 .contents li {
+    width: 100%;
+    height: 48px;
+    line-height: 48px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 20px;
+    margin-bottom: 18px;
+    border-radius: 45px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: white;
+    transition-property: background-color;
+    transition-duration: 0.5s;
+}
+
+.About03 .contents .li01:hover {
+    background-color: rgb(255, 244, 244);
+}
+.About03 .contents .li02:hover {
+    background-color: rgb(246, 255, 234);
+}
+.About03 .contents .li03:hover {
+    background-color: rgb(246, 235, 255);
+}
+.About03 .contents .li04:hover {
+    background-color: rgb(255, 254, 238);
+}
+.About03 .contents .li05:hover {
+    background-color: rgb(238, 244, 255);
+}
+.About03 .contents .li06:hover {
+    background-color: rgb(255, 245, 252);
+}
+.About03 .contents .li07:hover {
+    background-color: rgb(242, 255, 235);
+}
+
+@media only screen and (max-width:767px) {
+    .About03 {
+        height: 600px;
+    }
+    .About03 .about03-box {
+        width: 100%;
+        height: auto;
+    }
+    .About03 .contents {
+        width: 100%;
+        float: none;
+    }
+    .About03 .contents h2 {
+        width: fit-content;
+        font-size: 24px;
+        font-weight: 600;
+    }
+    .About03 .contents ul {
+        margin-top: 40px;
+        margin-bottom: 0;
+    }
+    .About03 .contents li {
+        width: 95%;
+        height: 35px;
+        line-height: 35px;
+        font-size: 13px;
+        margin-bottom: 14px;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
 }
