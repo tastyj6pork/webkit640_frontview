@@ -30,8 +30,9 @@
 }
 
 .About03 .contents {
-    width: 55%;
+    width: 50%;
     float: left;
+    margin-top: 30px;
 }
 
 .About03 .contents h2 {
@@ -44,21 +45,19 @@
     list-style: none;
     margin: 0;
     margin-top: 60px;
-    margin-left:15%;
+    margin-left:5%;
     margin-bottom: 50px;
 }
 
 .About03 .contents li {
     width: 100%;
-    height: 48px;
-    line-height: 48px;
+    height: 43px;
+    line-height: 43px;
     text-align: center;
     vertical-align: middle;
-    font-size: 20px;
+    font-size: 18px;
     margin-bottom: 18px;
     border-radius: 45px;
-    padding-left: 20px;
-    padding-right: 20px;
     background-color: white;
     transition-property: background-color;
     transition-duration: 0.5s;
