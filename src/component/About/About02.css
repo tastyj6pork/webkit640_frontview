@@ -20,12 +20,12 @@
 }
 
 .About02 .about02-box {
-    width: 80%;
+    width: 70%;
     height: auto;
 }
 
 .About02 .content-box {
-    width: 70%;
+    width: 80%;
     height: auto;
     display: inline-block;
     text-align: left;
@@ -37,13 +37,13 @@
 }
 
 .About02 .content-box li {
-    height: 50px;
-    line-height: 50px;
+    height: 40px;
+    line-height: 40px;
     vertical-align: middle;
-    font-size: 23px;
+    font-size: 21px;
     background-color: white;
     padding-left: 160px;
-    margin-top: 40px;
+    margin-top: 30px;
     border-radius: 45px;
     font-weight: 600;
 }
@@ -52,34 +52,34 @@
     position: absolute;
     z-index: 999;
     width: fit-content;
-    height: 60px;
-    line-height: 60px;
+    height: 45px;
+    line-height: 45px;
     vertical-align: middle;
     padding-left: 25px;
     padding-right: 25px;
     border-radius: 40px;
     text-align: center;
-    font-size: 22px;
+    font-size: 20px;
     background-color: white;
 }
 
 .About02 .content-box .title01 {
-    top: 35px;
+    top: 28px;
 }
 .About02 .content-box .title02 {
-    top: 125px;
+    top: 98px;
 }
 .About02 .content-box .title03 {
-    top: 215px;
+    top: 168px;
 }
 .About02 .content-box .title04 {
-    top: 305px;
+    top: 238px;
 }
 .About02 .content-box .title05 {
-    top: 395px;
+    top: 308px;
 }
 .About02 .content-box .title06 {
-    top: 485px;
+    top: 378px;
 }
 
 @media only screen and (max-width:767px) {

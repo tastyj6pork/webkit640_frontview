@@ -18,14 +18,13 @@ function Aboutus() {
     const about01Ref = useRef(null);
     const about02Ref = useRef(null);
     const about03Ref = useRef(null);
-    const isSmallScreen = useMediaQuery({query: '(max-width: 767px)'});
 
     const arrowClick = () => {
-        if(window.scrollY < 800) {
+        if(window.scrollY < 720) {
             about01Ref.current?.scrollIntoView({behavior:'smooth'});
             setIsNavWhite(true);
         }
-        else if(window.scrollY >= 800 && window.scrollY < 1500) {
+        else if(window.scrollY >= 720 && window.scrollY < 1500) {
             about02Ref.current?.scrollIntoView({behavior:'smooth'});
             setIsNavWhite(false);
         }
@@ -72,7 +71,7 @@ function Aboutus() {
         <div className="Aboutus" ref={headerRef}>
             { isNavWhite && <Header/>}
             { !isNavWhite && <Header isMain={true}/>}
-            {!isSmallScreen && <Arrow onclick={arrowClick} shape={arrow}/>}
+            <Arrow onclick={arrowClick} shape={arrow}/>
             <div className="aboutus-content w3-wide">
                 <header id="aboutus-header" className="w3-display-container">
                     <div className="aboutus-background"></div>
