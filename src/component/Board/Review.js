@@ -54,7 +54,7 @@ function Review() {
         const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
         useEffect(() => {
-            call("/board/list?type=review", "GET").then((res) => {setList(res);});
+            call("/board/list-review?type=review", "GET").then((res) => {setList(res);});
         }, [])
         console.log(list);
 
@@ -75,7 +75,7 @@ function Review() {
         useEffect(()=>{
             if (keyword === "" || keyword === null || keyword === " ") {
                 setViewList([]);
-                call("/board/list?type=review", "GET").then((res) => {setViewList(res);});
+                call("/board/list-review?type=review", "GET").then((res) => {setViewList(res);});
             }
             if (selectValue === "제목") {
                 var tempList = viewList.filter((content)=>content.title.includes(keyword));
@@ -91,9 +91,7 @@ function Review() {
         },[keyword])
         useEffect(()=>{console.log(keyword)},[keyword])
         useEffect(()=>{console.log(selectValue)},[selectValue])
-        const keys = localStorage.getItem("ACCESS_TOKEN");
     return(<div>
-        { keys === "null" && (window.location.href = "/login")}
         <Header />
         <div className="board-container">
             <div className="board-title">

@@ -98,6 +98,10 @@ function StudentApply() {
         }
         
     }
+
+    const warpNotice = () => {
+        window.location.href="/boarddetail/17"
+    }
     const keys = localStorage.getItem("ACCESS_TOKEN");
     return(<div className="apply-total">
         {keys === "null" && (window.location.href="/login")}
@@ -129,7 +133,7 @@ function StudentApply() {
                 <li>
                     <p className="apply-text">첨부파일</p>
                     <input className="apply-file" type="file" id="file" name="file" ref={fileInput} accept=".hwp, .pdf, .docs" onChange={(e) => {setFile(e.target.files[0]); fileExtenstion(e)}}></input>
-                    <p className="file-detail">Webkit640 지원양식은 공지사항에서 다운로드하세요.</p>
+                    <p className="file-detail" onClick={warpNotice}>Webkit640 지원양식은 공지사항에서 다운로드하세요. ← 클릭</p>
                 </li>
             </ul>
             <div className="apply-submit">

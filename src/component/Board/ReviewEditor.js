@@ -156,7 +156,10 @@ function ReviewEditor() {
         }
     }), []);
 
+    const keys = localStorage.getItem("ACCESS_TOKEN");
+
     return(<div className="editor-container">
+        {keys === "null" && (window.location.href = "/login")}
         <Header />
         <div className="board-title">
             <h1>리뷰</h1>
