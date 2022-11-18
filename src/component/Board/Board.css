@@ -363,5 +363,8 @@
     border-radius: 3px;
     font-weight: 500;
     margin-top: 60px;
-    float: right;
+}
+.lectureboard-centerplz {
+    display: block;
+    text-align: center;
 }

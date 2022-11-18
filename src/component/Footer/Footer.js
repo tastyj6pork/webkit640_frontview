@@ -16,7 +16,7 @@ function Footer() {
                                 <p>기업교육 문의</p>
                                 <p></p>
                                 <p>조교 연락처</p>
-                                <p style={{fontSize:"12px", color:"grey"}}>Copyrightⓒ2008 by </p>
+                                <p style={{fontSize:"12px", color:"grey"}}>Copyrightⓒ2008 by 송민규 김제윤 김다함 강승우 </p>
                                 </div>
                             
                                 <div className="w3-third">
