@@ -182,7 +182,6 @@ function Board() {
 
                 </div>
             </div>
-            <Footer />
         </div>
     )
 }

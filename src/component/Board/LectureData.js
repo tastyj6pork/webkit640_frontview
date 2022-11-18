@@ -176,7 +176,6 @@ function LectureData() {
                         ) : window.location.href = "/login"}
             </div>
         </div>
-        <Footer />
     </div>)
 }
 
