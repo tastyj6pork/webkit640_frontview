@@ -25,3 +25,16 @@
     height: auto;
     margin-top: 50px;
 }
+
+@media only screen and (max-width:767px) {
+    .Footer h5{
+        font-size: 15px;
+    }
+    .Footer .footer-contents{
+        font-size: 13px;
+        padding-left: 10px;
+    }
+    .Footer .footer-box {
+        margin-top: 10px;
+    }
+}

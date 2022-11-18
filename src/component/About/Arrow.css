@@ -1,7 +1,7 @@
 .Arrow .arrow {
     z-index: 999;
     position: fixed;
-    top: 640px;
+    top: 740px;
     font-size: 70px;
     font-weight: 600;
     color: white;
@@ -10,4 +10,11 @@
     margin: auto;
     background-color: rgba(240, 248, 255, 0);
     border: 0;
-} 
+}
+
+@media only screen and (max-width:767px) {
+    .Arrow .arrow{
+        top: 460px;
+        font-size: 40px;
+    }
+}
