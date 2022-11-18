@@ -35,19 +35,19 @@
 }
 
 .About01 .left-content .text-box p {
-    font-size: 23px;
+    font-size: 20px;
     font-weight: 600;
     color: rgb(66, 218, 187);
 }
 
 .About01 .left-content .text-box h2 {
-    font-size: 58px;
+    font-size: 48px;
     font-weight: 600;
 
 }
 
 .About01 .left-content .text-box label {
-    font-size: 19px;
+    font-size: 16px;
     color: rgb(80, 80, 80);
     margin-top: 20px;
 }
@@ -58,7 +58,7 @@
 }
 
 .About01 .left-content .text-box li {
-    font-size: 21px;
+    font-size: 17px;
     font-weight: 600;
     margin-bottom: 7px;
 }
@@ -69,13 +69,12 @@
 }
 
 .About01 .right-content {
-    width: 650px;
-    float: left;
+    width: 560px;
+    float: right;
 }
 
 .About01 .right-content .grid-container {
-    width: 600px;
-    float: right;
+    width: 500px;
     display: grid;
     grid-template-columns: auto auto;
 }
@@ -87,11 +86,11 @@
 }
 
 .About01 .right-content .white-box {
-    width: 290px;
-    height: 290px;
-    padding: 20px;
-    padding-left: 50px;
-    padding-right: 50px;
+    width: 240px;
+    height: 240px;
+    padding: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
     background-color: white;
     /* border: 1px solid rgb(109, 109, 109); */
     border-radius: 20px;
@@ -103,25 +102,25 @@
 }
 
 .About01 .right-content .white-box p {
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 600;
 }
 
 .About01 .right-content .white-box img {
-    height: 110px;
+    height: 90px;
 }
 
 .About01 .right-content .white-box .circle {
-    width: 50px;
-    height: 50px;
-    line-height: 50px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
     vertical-align: middle;
     text-align: center;
-    border-radius: 50px;
+    border-radius: 40px;
     background-color: rgb(66, 218, 187);
     color: white;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 17px;
     display: inline-block;
     margin: auto;
 }
