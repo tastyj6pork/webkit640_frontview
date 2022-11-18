@@ -32,7 +32,7 @@
 
 @media only screen and (max-width:767px) {
     .Dday {
-        margin-top: 28px;
+        margin-top: 20px;
         margin-bottom: 28px;
     }
     .Dday .dday-box label, .Dday .dday-box span {
