@@ -15,7 +15,7 @@ function ReviewDetail() {
     const [userData, setUserData] = useState();
 
     useEffect(() => {
-        call("/board/list/"+id, "GET").then((res) => {setBoardList(res); setTextList(res.replies)});
+        call("/board/list-review/"+id, "GET").then((res) => {setBoardList(res); setTextList(res.replies)});
         axios({
             headers:{
                 Authorization: "Bearer " + localStorage.getItem("ACCESS_TOKEN")
@@ -101,9 +101,7 @@ function ReviewDetail() {
     const Teleportation = () => {
         window.location.href="/review"
     }
-    const keys = localStorage.getItem("ACCESS_TOKEN");
     return(<div>
-        {keys === "null" && (window.location.href = "/login")}
         <Header />
         <div>
             <div className="board-title">
