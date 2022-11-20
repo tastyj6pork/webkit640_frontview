@@ -2,10 +2,8 @@ import { React, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Footer.css"
 
-function Footer() {
-    const [assistantPhone, setAssistantPhone] = useState(null);
+function Footer(props) {
 
-    
     return(
         <div className="Footer">
             <div className="footer-content w3-display-container">
@@ -18,11 +16,10 @@ function Footer() {
                                 <p></p>
                                 <p>기업교육 문의</p>
                                 <p>컴퓨터소프트웨어공학과 김성렬 교수<br/>054-478-7549</p>
-                                <p>조교 연락처</p>
-                                <p>{assistantPhone}</p>
+                                <p>조교 연락처<br/>{props.contact || 0}</p>
                                 <p style={{fontSize:"12px", color:"grey"}}>Copyrightⓒ2008 by 송민규 김제윤 김다함 강승우 </p>
                                 </div>
-                            
+
                                 <div className="w3-third">
                                 <h5>관련 홈페이지</h5>
                                 <ul className="w3-ul">
@@ -41,7 +38,7 @@ function Footer() {
                                             https://ce.kumoh.ac.kr/ce/index.do
                                         </a>
                                     </span>
-                                    </li> 
+                                    </li>
                                 </ul>
                                 </div>
                             </div>
