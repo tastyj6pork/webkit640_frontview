@@ -103,6 +103,7 @@ function LectureData() {
         const keys = localStorage.getItem("ACCESS_TOKEN");
     return(<div>
         <Header />
+        {keys === "null" && (window.location.href="/login")}
         <div className="board-container">
             <div className="board-title">
                 <h1>강의자료</h1>
