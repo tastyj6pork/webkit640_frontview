@@ -105,6 +105,7 @@ function StudentApply() {
     const keys = localStorage.getItem("ACCESS_TOKEN");
     return(<div className="apply-total">
         {keys === "null" && (window.location.href="/login")}
+        {keys === null && (window.location.href="/login")}
         <div className="apply-title">
             <h1><strong>지원서 작성</strong></h1>
         </div>

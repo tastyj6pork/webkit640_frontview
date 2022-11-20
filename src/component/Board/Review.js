@@ -70,7 +70,14 @@ function Review() {
         };
 
         const GoToEdit = () => {
-            window.location.href="/revieweditor";
+            if (localStorage.getItem("ACCESS_TOKEN") === null) {
+                window.location.href = "/login"
+            } else if (localStorage.getItem("ACCESS_TOKEN") === "null") {
+                window.location.href = "/login"
+            } else {
+                window.location.href="/revieweditor";
+            }
+            
         }
         useEffect(()=>{
             if (keyword === "" || keyword === null || keyword === " ") {

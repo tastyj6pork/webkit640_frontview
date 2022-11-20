@@ -104,6 +104,7 @@ function LectureData() {
     return(<div>
         <Header />
         {keys === "null" && (window.location.href="/login")}
+        {keys === null && (window.location.href="/login")}
         <div className="board-container">
             <div className="board-title">
                 <h1>강의자료</h1>
