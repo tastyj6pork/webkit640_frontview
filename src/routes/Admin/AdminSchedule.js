@@ -33,6 +33,11 @@ function Adminschedule() {
   async function test2() {
     if (endChecker === true) {
       var title = prompt("INPUT TITLE");
+      if (title === null) {
+        window.location.href = "/adminschedule"
+      } else {
+
+      
       var tempStart = start;
       var tempEnd = end;
       if (start.getTime() > end.getTime()) {
@@ -87,6 +92,7 @@ function Adminschedule() {
       setEndChecker(false);
       setStart("");
       setEnd("");
+    }
   }
 }
   function deleteCall(args) {
@@ -130,6 +136,8 @@ function Adminschedule() {
       eventClick={(args)=>{
         deleteCall(args);
       }}
+      eventColor="#FFCCFF"
+      eventBorderColor='RED'
     />
   </div> : "NO ADMIN";
   return (

@@ -23,6 +23,8 @@ function StudentSchedule() {
       plugins={[dayGridPlugin]}
       initialView="dayGridMonth"
       events={event}
+      eventColor="#FFCCFF"
+      eventBorderColor="RED"
     />
   </div>
     </div>)

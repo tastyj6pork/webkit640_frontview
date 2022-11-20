@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./Footer.css"
 
 function Footer(props) {
+    const [assistantPhone, setAssistantPhone] = useState(null);
 
     return(
         <div className="Footer">
@@ -16,8 +17,9 @@ function Footer(props) {
                                 <p></p>
                                 <p>기업교육 문의</p>
                                 <p>컴퓨터소프트웨어공학과 김성렬 교수<br/>054-478-7549</p>
-                                <p>조교 연락처<br/>{props.contact || 0}</p>
-                                <p style={{fontSize:"12px", color:"grey"}}>Copyrightⓒ2008 by 송민규 김제윤 김다함 강승우 </p>
+                                <p>조교 연락처 {props.contact}</p>
+                                <p>{assistantPhone}</p>
+                                <p style={{fontSize:"12px", color:"grey"}}>Copyrightⓒ2022 by 송민규 김제윤 김다함 강승우 </p>
                                 </div>
 
                                 <div className="w3-third">

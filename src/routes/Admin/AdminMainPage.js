@@ -25,6 +25,7 @@ export default function AdminMainPage() {
     cumulativeStudents: "",
     completeCardinalNumber: "",
     nonMajor: "",
+    contact:"",
   });
 
   useEffect(() => {
@@ -88,6 +89,10 @@ export default function AdminMainPage() {
       setRawData((prev) => {
         return { ...prev, eligibility: e.target.value };
       });
+    } else if (type === "contact") {
+      setRawData((prev)=> {
+        return {...prev, contact: e.target.value};
+      });
     }
   };
 
@@ -106,6 +111,7 @@ export default function AdminMainPage() {
 
   return (
     <Grid container spacing={3}>
+      {console.log(rawData)}
       <Grid item xs={12}>
         <Typography component="h5" variant="h5">
           메인 페이지 관리
@@ -253,6 +259,17 @@ export default function AdminMainPage() {
               dataOnChange("nonMajor", e);
             }}
             label="비전공자 수"
+            variant="standard"
+          />
+          <TextField
+            fullWidth
+            sx={{ marginBottom: "15px" }}
+            id="standard-basic"
+            value={rawData.contact}
+            onChange={(e) => {
+              dataOnChange("contact", e);
+            }}
+            label="조교 연락처"
             variant="standard"
           />
         </Paper>
