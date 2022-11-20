@@ -114,7 +114,7 @@ function BoardDetail() {
         <div className="board-detail-all w3-container w3-center">
             <div className="board-detail-container">
                 <div className="board-detail-title">
-                    <h4>{boardList.title}</h4>
+                    <h4 style={{paddingLeft:"19.4px",paddingTop:"9.4px"}}><strong>{boardList.title}</strong></h4>
                 </div>
                 <div className="board-detail-sublist">
                     <ul>

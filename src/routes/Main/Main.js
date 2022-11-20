@@ -113,7 +113,7 @@ function Main() {
                 <br/><button onClick={scrollUp}>놓치지 말고 신청하세요↑</button>
             </div>
         </div>
-        <Footer/>
+        <Footer contact={mainPageData.contact}/>
     </div>
     )
 }
