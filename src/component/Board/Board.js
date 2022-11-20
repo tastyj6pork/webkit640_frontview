@@ -101,6 +101,7 @@ function Board() {
 
     return(
         <div className='Board'>
+            {keys === "null" && (window.location.href="/login")}
             <Header />
             <div className="board-container">
                 <div className="board-title">
