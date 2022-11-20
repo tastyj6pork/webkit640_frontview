@@ -156,8 +156,9 @@ function LectrueEditor() {
         }
     }), []);
 
-    return(<div className="editor-container">
-        <Header />
+    return(<div className='Editor'>
+    <Header />
+    <div className="editor-container w3-display-middle">
         <div className="board-title">
             <h1>강의자료</h1>
         </div>
@@ -168,7 +169,6 @@ function LectrueEditor() {
                         <li>제목</li>
                         <input className="editor-input-name" name="name" onChange={(e) => setTitle(e.target.value)}></input>
                     </ul>
-
                     <ul className="editor-title-date">
                         <li>작성일</li>
                         <input id="inputFixedDate" className="editor-input-date" name="date" style={{paddingLeft:"10px"}} readOnly></input>
@@ -188,13 +188,14 @@ function LectrueEditor() {
                         onChange={setValue}
                         style={{width:"1164.8px", height:"350px", marginLeft:"165px"}}
                     />
-            </div>
-        </form>
-                <div className="editor-submit-btn">
-                    <button className="editor-btn-delete" onClick={BackStepBtn}>취소</button>
-                    <button className="editor-btn-enter" onClick={EditBtn}>등록</button>
                 </div>
-    </div>)
+        </form>
+        <div className="editor-submit-btn">
+            <button className="editor-btn-delete" onClick={BackStepBtn}>취소</button>
+            <button className="editor-btn-enter" onClick={EditBtn}>등록</button>
+        </div>
+    </div>
+</div>)
 }
 
 export default LectrueEditor;
