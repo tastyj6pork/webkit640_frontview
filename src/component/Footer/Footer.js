@@ -5,7 +5,6 @@ import "./Footer.css"
 function Footer(props) {
     const [assistantPhone, setAssistantPhone] = useState(null);
 
-    
     return(
         <div className="Footer">
             <div className="footer-content w3-display-container">
@@ -22,7 +21,7 @@ function Footer(props) {
                                 <p>{assistantPhone}</p>
                                 <p style={{fontSize:"12px", color:"grey"}}>Copyrightⓒ2022 by 송민규 김제윤 김다함 강승우 </p>
                                 </div>
-                            
+
                                 <div className="w3-third">
                                 <h5>관련 홈페이지</h5>
                                 <ul className="w3-ul">
@@ -41,7 +40,7 @@ function Footer(props) {
                                             https://ce.kumoh.ac.kr/ce/index.do
                                         </a>
                                     </span>
-                                    </li> 
+                                    </li>
                                 </ul>
                                 </div>
                             </div>

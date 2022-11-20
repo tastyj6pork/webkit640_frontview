@@ -159,7 +159,7 @@ function Editor() {
     return(
         <div className='Editor'>
             <Header />
-            <div className="editor-container">
+            <div className="editor-container w3-display-middle">
                 <div className="board-title">
                     <h1>공지사항</h1>
                 </div>
