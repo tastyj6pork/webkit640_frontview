@@ -30,8 +30,11 @@
 }
 
 .Main #header p {
-    font-size: 18px;
+    font-size: 23px;
     font-weight: 600;
+    background-color: rgb(31, 246, 203);
+    border-radius: 20px;
+    color: white;
 }
 
 .Main #header .apply-btn, .Main #header .info-btn {
@@ -106,6 +109,9 @@
     .Main #header {
         height: 520px;
     }
+    .Main #header h2{
+        font-size: 26px;
+    }
     .Main #header .apply-btn {
         width: 110px;
         height: 50px;
@@ -113,6 +119,18 @@
     }
     .Main #header .header-background {
         height: 520px;
+    }
+    .Main #header .header-content {
+        width: 70%;
+    }
+    .Main #header p {
+        width: 250px;
+        font-size: 18px;
+        font-weight: 600;
+        background-color: rgb(25, 227, 187);
+        border-radius: 20px;
+        color: white;
+        margin: auto;
     }
     .Main #header .apply-btn, .Main #header .info-btn {
         width: 110px;
@@ -136,8 +154,5 @@
     .Main .outro button {
         font-size: 15px;
         margin-top: 20px;
-    }
-    .Main #header h2{
-        font-size: 21px;
     }
 }
