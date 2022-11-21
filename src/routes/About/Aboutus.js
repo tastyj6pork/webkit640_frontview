@@ -76,10 +76,11 @@ function Aboutus() {
                 <header id="aboutus-header" className="w3-display-container">
                     <div className="aboutus-background"></div>
                     <div className="w3-display-middle w3-center">
+                        <span>SW전문인재양성사업</span>
                         <p>웹 개발자 양성 프로그램</p>
                         <h2>웹킷 WebKIT640</h2>
                         <label>웹 개발자로 취업할 사람 모여라!</label>
-                        <label>어떤 문구</label>
+                        <label>실무 중심의 SW전문교육 수강하고 현장수요에 걸맞는 인재 되자!</label>
                     </div>
                 </header>
                 <About01 ref={about01Ref}/>
