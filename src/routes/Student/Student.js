@@ -48,9 +48,9 @@ function Student() {
             window.location.href="/";
         }
     },[applyResult])
-    
+
     let FinalDate = (today > resultDate);
-    
+
 
     const ApplyResult = () => {
         if (FinalDate) {

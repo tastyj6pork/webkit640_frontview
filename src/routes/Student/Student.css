@@ -59,6 +59,7 @@
 }
 .apply-result-btn {
     background-color: rgba(44, 250, 209, 0.688);
+    color: white;
 }
 .apply-result-btn:hover {
     background-color: rgba(237, 255, 251, 0.896);
