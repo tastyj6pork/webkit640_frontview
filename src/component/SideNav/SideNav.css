@@ -1,21 +1,27 @@
 * {
     margin: 0;
     padding: 0;
+    font-family: 'Pretendard-Regular';
+    letter-spacing: normal;
 }
 .sidenav-container {
     display: flex;
+    background-image: url("../../../public/images/background10.JPG");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 main {
     width: 100%;
     padding: 20px;
 }
 .sidenav-box {
-    background: rgb(86, 243, 180); /*SideNavbar 전체 색상코드*/
+    background: rgb(173, 255, 222); /*SideNavbar 전체 색상코드*/
     height: 100vh;
     width: 300px;
     transition: all 0.7s; /*SideNavbar 이벤트 스크롤 속도 CSS*/
     position: sticky;
     top: 0;
+    border-radius: 38px;
 }
 .sidenav-top {
     display: flex;

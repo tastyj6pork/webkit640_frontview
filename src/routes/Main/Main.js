@@ -15,11 +15,14 @@ import Graduate from "../../component/MainPage/Graduate/Graduate";
 import Review from "../../component/MainPage/Review/Review";
 import With from "../../component/MainPage/With/With";
 import Dday from "../../component/MainPage/Dday/Dday";
+import BusinessModal from "../../component/MainPage/BusinessModal/BusinessModal";
+import { PropaneSharp } from "@mui/icons-material";
 
 function Main() {
     const [isNav, setIsNav] = useState(true);
     const [isScrollNavOn, setIsScrollNavOn] = useState(false);
     const [mainPageData, setMainPageData] = useState([]);
+    const [modalOpen, setModalOpen] = useState(false);
     const mainRef = useRef(null);
     const recruitRef = useRef(null);
     const scheduleRef = useRef(null);
@@ -44,6 +47,9 @@ function Main() {
     const scrollUp = () => {
         mainRef.current?.scrollIntoView({behavior:'smooth'});
     }
+    const showModal = () => {
+        setModalOpen(true);
+    }
 
     const throttledScroll = useMemo(()=>
         throttle(()=>{
@@ -61,6 +67,7 @@ function Main() {
     useEffect(()=> {
         call("/main/data", "GET").then((res)=>{
             setMainPageData(res);
+            console.log(res);
         })
     },[]);
 
@@ -73,7 +80,8 @@ function Main() {
 
     return (
         <div className="Main" ref={mainRef}>
-        {isNav && <Header isMain={true}/>}
+        {modalOpen && <BusinessModal setModalOpen={setModalOpen} imageUrl={mainPageData.imagePath}/>}
+        {isNav && <Header isMain={true} recruitImg={mainPageData.imagePath}/>}
         <div id="mainContent" className="w3-wide">
             <header id="header" className="w3-display-container">
                 <div className="header-background"/>
@@ -83,11 +91,11 @@ function Main() {
                     <Dday endDate={mainPageData.recruitmentDate}/>
                     <button className="apply-btn"
                     onClick={()=>window.location.href="/studentapply"}>지원하기</button>
+                    {isSmallScreen && <br/>}
                     <button className="info-btn"
-                    onClick={()=>window.location.href="/#"}>사업안내</button>
+                    onClick={showModal}>사업안내</button>
                 </div>
             </header>
-
             {isNav && <ScrollNav isOn={isScrollNavOn}
             onRecruit={onRecruitInfoClick} onProcess={onProcessInfoClick}
             onSchedule={onMainScheduleClick} onReview={onReviewClick}/>}
@@ -103,7 +111,9 @@ function Main() {
             graduate={parseInt(mainPageData.cumulativeStudents) || 10}
             nonmajor={parseInt(mainPageData.nonMajor) || 10}/>
             <Review ref={reviewRef}/>
-            <With/>
+            { (isMediumScreen || isBigScreen) &&
+                <With/>
+            }
         </div>
         <br /><br />
         <div className="outro w3-display-container">

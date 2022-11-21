@@ -23,6 +23,7 @@ import LectureBoardDetail from '../component/Board/LectureBoardDetail';
 import Review from '../component/Board/Review';
 import ReviewDetail from '../component/Board/ReviewDetail';
 import ReviewEditor from '../component/Board/ReviewEditor';
+import RecruitPoster from '../component/MainPage/RecruitPoster/RecruitPoster';
 
 function AppRouter(){
     return (
@@ -53,6 +54,7 @@ function AppRouter(){
                     <Route path="/review" element={<Review />} />
                     <Route path="/reviewdetail/:id" element={<ReviewDetail />} />
                     <Route path="/revieweditor" element={<ReviewEditor />} />
+                    <Route path="/recruitPoster" element={<RecruitPoster/>} />
             </Routes>
         </BrowserRouter>
     )
