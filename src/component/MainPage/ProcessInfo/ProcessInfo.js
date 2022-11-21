@@ -16,7 +16,7 @@ const ProcessInfo = forwardRef((props, ref) => {
                 <div className="process-box w3-display-middle w3-center">
                     <span>OUR PROCESS</span>
                     <h1>640시간의 웹 개발자 양성 교육</h1>
-                    <span>지도교수 5인과 웹 전문 교원 2명으로 이루어진...</span>
+                    <span>지도교수 5인과 웹 전문 교원 2명으로 이루어진 교육생 집중 관리 시스템</span>
                     <div className="code-stack-box">
                         <div className="frontend-process">
                             <div className="process-content">

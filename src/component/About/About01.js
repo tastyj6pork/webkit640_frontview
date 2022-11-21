@@ -13,10 +13,10 @@ const About01 = forwardRef((props, ref) => {
                     <div className="left-content">
                         <div className="text-box">
                             <p>OUR PURPOSE</p>
-                            <h2>We Provide Best Pratical Web Developers</h2>
+                            <h2>기업 수요 기반의 SW전문<br/>웹 개발 전문가 양성</h2>
                             <label>
-                                We have created a fictional band website. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                                현장수요에 맞는 교육과정을 기업·대학이 공동 설계하고, 기업 주도 집중교육을 통해 산업체에서 즉시 활용 가능한 인력 적기 공급을 위한 SW전문 인재 양성 사업입니다.
+                                지역 SW인재양성 플랫폼 및 대학과 산업체의 지속 가능한 협업 체계로 지역산업의 SW인력 수요 대응 및 지역 청년 일자리 확대를 위한 실무 중심의 SW전문 교육을 제공합니다.
                             </label>
                             { !isSmallScreen &&
                                 <ul>
@@ -30,7 +30,7 @@ const About01 = forwardRef((props, ref) => {
                                     </li>
                                     <li>
                                         <img src="/images/check.png"/>
-                                        음...
+                                        취·창업 연계 프로그램 운영 및 아이디어 발굴 확대
                                     </li>
                                 </ul>
                             }

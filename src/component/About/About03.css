@@ -37,8 +37,9 @@
 
 .About03 .contents h2 {
     width: fit-content;
+    font-weight: 600;
     font-size: 48px;
-    margin-left: 15%;
+    margin-left: 10%;
 }
 
 .About03 .contents ul {
@@ -101,6 +102,7 @@
         width: fit-content;
         font-size: 24px;
         font-weight: 600;
+        margin-left: 30px;
     }
     .About03 .contents ul {
         margin-top: 40px;

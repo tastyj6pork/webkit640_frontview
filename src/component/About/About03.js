@@ -11,7 +11,7 @@ const About03 = forwardRef((props, ref) => {
             <div className="about03-content w3-wide w3-display-container">
                 <div className="about03-box w3-display-middle">
                     <div className="contents">
-                        <h2>수업 일정 소개 문구</h2>
+                        <h2>640시간의 SW 커리큘럼</h2>
                         <ul>
                             <li className="w3-card li01">SW이론교육 웹 프론트엔드(약 108시간)</li>
                             <li className="w3-card li02">SW이론교육 웹 백엔드(약 108시간)</li>

@@ -120,7 +120,7 @@ function Header(props=false) {
                                     <li><Link id="have-dmenu02"
                                     onClick={showDetail}><span>모집정보 ∨</span></Link></li>
                                     <li><Link to='/review'><span onClick={ReviewInsert}>수강후기</span></Link></li>
-                                    <li><Link to="/studentschedule"><span>교육일정</span></Link></li>
+                                    {isLogin && <li><Link to="/studentschedule"><span>교육일정</span></Link></li>}
                                     {!isLogin &&
                                         <li className="login-btn" style={{float:"right", marginLeft: "40px"}}>
                                             <a href="/login">로그인</a>
