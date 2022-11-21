@@ -9,7 +9,7 @@ import HideMenu from "./HideMenu";
 import "./Header.css"
 import { propTypes } from "react-bootstrap/esm/Image";
 
-function Header(props=false) {
+function Header(props) {
     const [isLogin, setIsLogin] = useState(false);
     const [isAdmin, setIsAdmin] = useState(0);
     const [isClick, setIsClick] = useState(false);
@@ -61,13 +61,17 @@ function Header(props=false) {
     }
 
     const showHideMenu = (e) => {
+        let navBar = document.getElementById('navBar');
         if(isHideClick) {
             setIsHideClick(false);
-            //window.removeEventListener('DOMMouseScroll', preventDefault, false);
+            navBar.style.backgroundColor = 'rgba(255, 255, 255, 0)';
+            props.scrollLock(false);
         }
         else {
             setIsHideClick(true);
-            //window.addEventListener('DOMMouseScroll', preventDefault, false);
+            navBar.style.backgroundColor = 'white';
+            props.main.classList.remove('scrollLock');
+            props.scrollLock(true);
         }
     }
 
@@ -99,9 +103,6 @@ function Header(props=false) {
             let dmenu02_x = dmenu02.getBoundingClientRect().left;
             setDmenu01(dmenu01_x);
             setDmenu02(dmenu02_x);
-        }
-        if(isSmallScreen) {
-            navBar.style.backgroundColor = 'white';
         }
         if(!props.isMain) {
             navBar.style.backgroundColor = 'rgba(255, 255, 255)';

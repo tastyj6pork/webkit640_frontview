@@ -40,7 +40,6 @@ const ProcessInfo = forwardRef((props, ref) => {
                         </div>
                     </div>
                     <p className="warning">※교육 일정 및 내용은 변동 될 수 있습니다.</p>
-                    <button className="more-info">자세히 알아보기></button>
                 </div>
             </div>
         </div>
