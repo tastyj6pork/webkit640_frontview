@@ -175,6 +175,7 @@ function Board() {
                                             page={page}
                                             onPageChange={handleChangePage}
                                             onRowsPerPageChange={handleChangeRowsPerPage}
+                                            className="board-pagination"
                                         />
                                 </Paper>
                             </div>
