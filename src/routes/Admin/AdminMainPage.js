@@ -150,24 +150,18 @@ export default function AdminMainPage() {
   };
 
   return (
-    <Grid container spacing={3}>
-      {console.log(rawData)}
+    <Grid container className="admin-content">
       <Grid item xs={12}>
-        <Typography component="h5" variant="h5">
-          메인 페이지 관리
-        </Typography>
-        <Button
-          onClick={(e) => {
-            saveMainData();
-          }}
-          variant="contained"
-          sx={{ marginTop: "20px" }}
-        >
-          저장
-        </Button>
+      <Typography variant='h5' component="h5">
+          <strong>메인 페이지 관리</strong>
+      </Typography>
+      <button onClick={(e)=>{saveMainData();}} className="admin-btn btn"
+      style={{width:'60px', marginTop:'20px', marginBottom:'15px'}}>
+        저장
+      </button>
       </Grid>
       <Grid item xs={4}>
-        <Paper sx={{ padding: "30px" }}>
+        <Paper sx={{ padding: "30px" }} className="admin-maindata-paper">
           <FormControl>
             <Input
               aria-describedby="recruitmentDate"
@@ -213,7 +207,7 @@ export default function AdminMainPage() {
         </Paper>
       </Grid>
       <Grid item xs={4}>
-        <Paper sx={{ padding: "30px" }}>
+        <Paper sx={{ padding: "30px" }} className="admin-maindata-paper">
           <FormControl>
             <Input
               aria-describedby="documentSubmissionPeriod"
@@ -266,7 +260,7 @@ export default function AdminMainPage() {
         </Paper>
       </Grid>
       <Grid item xs={4}>
-        <Paper sx={{ padding: "30px" }}>
+        <Paper sx={{ padding: "30px" }} className="admin-maindata-paper">
           <TextField
             fullWidth
             id="standard-basic"

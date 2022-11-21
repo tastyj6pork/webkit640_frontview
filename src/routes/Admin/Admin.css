@@ -10,15 +10,41 @@
     background-color: white;
     border-radius: 15px;
 }
-.admin-showUserAdmin {
+.admin-content {
     background-color: white;
-    padding: 20px;
     border-radius: 15px;
+    padding: 20px;
 }
 .admin-search-box {
     height: 40px;
     line-height:40px;
     vertical-align: middle;
+}
+.admin-btn {
+    height: 40px;
+    border: 0;
+    border-radius: 6px;
+    background-color: rgba(29, 223, 144, 0.99);
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+}
+.admin-btn-02 {
+    background-color: white;
+    border: 1px solid rgb(25, 176, 116);
+    color: rgb(20, 151, 99);
+    font-size: 13px;
+}
+.admin-btn:hover {
+    color: white;
+    background-color: rgba(23, 137, 92, 0.99);
+}
+.admin-btn-02:hover {
+    color: rgba(29, 223, 144);
+}
+.admin-maindata-paper {
+    height: 400px;
+    margin-right:20px;
 }
 .apply-total {
     min-width: 470px;

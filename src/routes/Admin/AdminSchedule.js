@@ -140,10 +140,11 @@ function Adminschedule() {
       eventBorderColor='RED'
     />
   </div> : "NO ADMIN";
+
   return (
     <Grid container spacing={3}>
       <Grid item xs={12}>
-        <Typography variant='h2' component="h2">
+        <Typography variant='h4' component="h2">
           <strong>일정관리</strong>
         </Typography>
       </Grid>
@@ -155,7 +156,7 @@ function Adminschedule() {
           </p>
         </Paper>
       </Grid>
-      <Grid item xs={12}>
+      <Grid item xs={12} className="admin-content" style={{marginLeft:'30px'}}>
         {showCalendar}
       </Grid>
     </Grid>

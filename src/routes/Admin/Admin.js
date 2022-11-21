@@ -76,9 +76,9 @@ function Admin() {
     <Grid container spacing={3} className="Admin">
       <Grid item xs={12}>
         <Typography variant="h2" component="h2">
-          <h1 style={{fontWeight:'600'}}>
+          <h3 style={{fontWeight:'600'}}>
             관리자 페이지
-          </h1>
+          </h3>
         </Typography>
       </Grid>
       <Grid item xs={12}>
@@ -88,7 +88,8 @@ function Admin() {
               value={value}
               onChange={handleChange}
               aria-label="basic tabs example"
-              className="admin-navtabs w3-card"
+              className="admin-navtabs"
+              style={{width:'fit-content', paddingRight:'20px'}}
             >
               <Tab label="관리자 계정 관리" {...a11yProps(0)} />
               <Tab label="메인화면 관리" {...a11yProps(1)} />

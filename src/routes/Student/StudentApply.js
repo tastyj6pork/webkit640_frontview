@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { Button, Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography } from '@mui/material'
 import { useEffect, useRef, useState } from 'react';
 import { API_BASE_URL } from '../../app-config';
 import { call } from '../../service/ApiService';
@@ -103,13 +104,14 @@ function StudentApply() {
         window.location.href="/boarddetail/17"
     }
     const keys = localStorage.getItem("ACCESS_TOKEN");
-    return(<div className="apply-total">
+    return(
+    <div className="apply-total">
         {keys === "null" && (window.location.href="/login")}
         {keys === null && (window.location.href="/login")}
-        <div className="apply-title">
-            <h1><strong>지원서 작성</strong></h1>
-        </div>
-        <div className="apply-container">
+        <Typography variant='h4' component="h4">
+            <strong>지원서 작성</strong>
+        </Typography>
+        <div className="apply-container w3-card">
             <ul>
                 <li>
                     <p className="apply-text">이름</p>
@@ -125,7 +127,7 @@ function StudentApply() {
                 </li>
                 <li className="schoolnumber">
                     <p className="apply-text">학번</p>
-                    <input className="apply-schoolnumber" name="schoolnumber" onChange={(e) => {setSchoolnumber(e.target.value)}} placeholder='숫자로 공백없이 입력해주세요.'></input>
+                    <input className="apply-schoolnumber" name="schoolnumber" onChange={(e) => {setSchoolnumber(e.target.value)}} placeholder='ex) 20220001'></input>
                 </li>
                 <li className="schoolgrade">
                     <p className="apply-text">학년</p>
@@ -134,11 +136,14 @@ function StudentApply() {
                 <li>
                     <p className="apply-text">첨부파일</p>
                     <input className="apply-file" type="file" id="file" name="file" ref={fileInput} accept=".hwp, .pdf, .docs" onChange={(e) => {setFile(e.target.files[0]); fileExtenstion(e)}}></input>
-                    <p className="file-detail" onClick={warpNotice}>Webkit640 지원양식은 공지사항에서 다운로드하세요. ← 클릭</p>
+                    <p className="file-detail" onClick={warpNotice} style={{color:'grey'}}>Webkit640 지원 양식 다운로드</p>
                 </li>
             </ul>
             <div className="apply-submit">
-                <button className="apply-submit-btn" onClick={SubmitBtn}>제출하기</button>
+                <button onClick={SubmitBtn} className="admin-btn btn"
+                style={{width:'80px', float:'right', marginRight:'30px'}}>
+                    지원하기
+                </button>
             </div>
         </div>
     </div>)

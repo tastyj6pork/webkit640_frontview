@@ -70,14 +70,17 @@ export default function AdminBoardList() {
     }
 
   return (
-    <Grid container spacing={3}>
+    <Grid container className="admin-content">
         <Grid item xs={12}>
-            <Typography variant='h5' component='h5'>
-                게시글 열람 관리
+            <Typography variant='h5' component="h5">
+                <strong>게시글 열람 관리</strong>
             </Typography>
         </Grid>
         <Grid item xs={12}>
-            <Button variant='contained' onClick={(e)=>{selectBoardAcceptOnClick(e);}}>선택 일괄 처리</Button>
+            <button onClick={(e)=>{selectBoardAcceptOnClick(e);}} className="admin-btn btn"
+            style={{width:'80px', marginTop:'30px'}}>
+                선택 승인
+            </button>
         </Grid>
         <Grid item xs={12}>
             <TableContainer>
@@ -101,13 +104,16 @@ export default function AdminBoardList() {
                                         checkboxOnChange(e,row.id);
                                         }} sx={{ '& .MuiSvgIcon-root': { fontSize: 28 } }}/>
                                 </TableCell>
-                                <TableCell align='center'>{!row.add ? <strong style={{color:"blue"}}>미승인</strong>:"승인"}</TableCell>
+                                <TableCell align='center'>{!row.add ? <strong style={{color:"rgba(27, 199, 130)"}}>미승인</strong>:"승인"}</TableCell>
                                 <TableCell align='center'>{row.writer}</TableCell>
                                 <TableCell align='center'>{row.writeDate}</TableCell>
                                 <TableCell align='center'>{row.title}</TableCell>
                                 <TableCell align='center'><Link to={`/boarddetail/${row.id}`}>게시글로 이동하기</Link></TableCell>
                                 <TableCell align='center'>
-                                    <Button variant='contained' onClick={(e)=>{changeViewBtnOnClick(e,row.id)}}>CLICK</Button>
+                                    <button onClick={(e)=>{changeViewBtnOnClick(e,row.id);}} className="admin-btn-02 btn"
+                                        style={{width:'60px'}}>
+                                            승인
+                                    </button>
                                 </TableCell>
                             </TableRow>
                         ))}
