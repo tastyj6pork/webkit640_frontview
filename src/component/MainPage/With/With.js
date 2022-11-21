@@ -56,7 +56,7 @@ function With() {
         <div className="With">
             <div className="with-content w3-display-container">
                 <div className="with-box w3-display-middle w3-center">
-                    <h2>지금까지 참여했던 컨소시엄들</h2>
+                    <h2>지금까지 참여한 컨소시엄들</h2>
                     <div className="wrapper">
                         <div id="roller1" className="roller animate-slider">
                             <ul>
