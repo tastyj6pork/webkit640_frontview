@@ -70,7 +70,8 @@ function Student() {
         window.location.href="/student"
     }
 
-    return(<div className="apply-total">
+    return(
+    <div className="apply-total">
         <div className="apply-title">
             <h1>지원결과</h1>
         </div>
@@ -107,7 +108,8 @@ function Student() {
             </div>
             </Box>
         </Modal>
-    </div>)
+    </div>
+    )
 }
 
 export default Student;

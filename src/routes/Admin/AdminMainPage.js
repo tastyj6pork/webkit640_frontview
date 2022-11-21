@@ -9,10 +9,15 @@ import {
   Typography,
 } from "@mui/material";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { call } from '../../service/ApiService';
 import { API_BASE_URL } from "../../app-config";
+import { red } from "@mui/material/colors";
 
 export default function AdminMainPage() {
+  const ACCESS_TOKEN = "ACCESS_TOKEN";
+  const accessToken = localStorage.getItem(ACCESS_TOKEN);
+  const [file, setFile] = useState("");
   const [rawData, setRawData] = useState({
     recruitmentDate: "",
     recruitmentTarget: "",
@@ -43,6 +48,22 @@ export default function AdminMainPage() {
       }
     });
   }, []);
+
+  const fileInput = useRef();
+
+    const fileExtenstion = (obj) => {
+        let pathpoint = obj.target.value.lastIndexOf('.');
+        let filepoint = obj.target.value.substring(pathpoint+1,obj.length);
+        let filetype = filepoint.toLowerCase();
+        
+        if(filetype === "jpg" || filetype === "png") {
+        } else {
+            alert("jpg, png 파일만 제출 가능합니다.");
+            fileInput.current.value = "";
+            return false;
+        }
+        
+    }
 
   const dataOnChange = (type, e) => {
     if (type === "recruitmentDate") {
@@ -93,6 +114,24 @@ export default function AdminMainPage() {
       setRawData((prev)=> {
         return {...prev, contact: e.target.value};
       });
+    } else if(type === "imageUpload") {
+      var imageUrl;
+      console.log(e.target)
+      const file = e.target.files[0];
+        const formData = new FormData();
+        formData.append("file", file);
+        axios({
+            method:"POST",
+            url:API_BASE_URL + "/board/upload-image",
+            headers: {
+                "Content-Type": "multipart/form-data",
+                "Authorization": "Bearer " + accessToken,
+            },
+            data: formData,
+        }).then((res) => {
+          setRawData((prev)=>{return {...prev, imagePath:API_BASE_URL + res.data}})
+        })
+        console.log(imageUrl)
     }
   };
 
@@ -107,6 +146,7 @@ export default function AdminMainPage() {
     }).then((res) => {
       console.log(res);
     });
+    alert('저장 되었습니다.');
   };
 
   return (
@@ -272,6 +312,8 @@ export default function AdminMainPage() {
             label="조교 연락처"
             variant="standard"
           />
+          <p style={{fontSize:"12px", color:"grey"}}>모집안내 이미지 첨부</p>
+          <input className="apply-file" type="file" id="file" name="file" ref={fileInput} accept=".jpg, .png" onChange={(e) => {setFile(e.target.files[0]); fileExtenstion(e); dataOnChange("imageUpload", e)}}></input>
         </Paper>
       </Grid>
     </Grid>
