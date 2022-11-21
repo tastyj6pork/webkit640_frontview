@@ -25,11 +25,11 @@ function StudentApply() {
             alert("파일을 첨부하여 주세요.")
         } else {
             e.preventDefault();
-    
+
             setApplication("test");
-    
+
             console.log(localStorage.getItem("ACCESS_TOKEN"));
-    
+
             const formData = new FormData();
             const data = {
                 name: name,
@@ -43,7 +43,7 @@ function StudentApply() {
             formData.enctype = "multipart/form-data";
             formData.append("file", file);
             console.log(file);
-    
+
             await call("/apply/applicant-data","POST",data).then((res)=>{console.log(res);});
             await axios({
                 method:"POST",
@@ -51,10 +51,10 @@ function StudentApply() {
                 data: formData,
                 headers: {
                     "Content-Type": "multipart/form-data",
-                    "Authorization": "Bearer " + accessToken, 
+                    "Authorization": "Bearer " + accessToken,
                 },
             }).then((res) => {
-                if(res.status === 200) {    
+                if(res.status === 200) {
                     console.log(res);
                     alert("지원이 완료되었습니다.");
                     window.location.href = "/";
@@ -90,14 +90,14 @@ function StudentApply() {
         let pathpoint = obj.target.value.lastIndexOf('.');
         let filepoint = obj.target.value.substring(pathpoint+1,obj.length);
         let filetype = filepoint.toLowerCase();
-        
+
         if(filetype === "hwp" || filetype === "pdf" || filetype === "docs") {
         } else {
             alert("hwp, pdf, docs확장자 파일만 제출 가능합니다.");
             fileInput.current.value = "";
             return false;
         }
-        
+
     }
 
     const warpNotice = () => {
@@ -111,7 +111,7 @@ function StudentApply() {
         <Typography variant='h4' component="h4">
             <strong>지원서 작성</strong>
         </Typography>
-        <div className="apply-container w3-card">
+        <div className="apply-container w3-card" style={{height:'580px'}}>
             <ul>
                 <li>
                     <p className="apply-text">이름</p>
