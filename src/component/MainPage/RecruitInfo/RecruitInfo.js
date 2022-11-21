@@ -87,7 +87,7 @@ const RecruitInfo = forwardRef((props, ref) => {
                                 }
                                 <td>
                                     <button className="more-btn"
-                                    onClick={()=>document.location.href="/boarddetail/"+1}>MORE ></button>
+                                    onClick={()=>document.location.href="/recruitPoster"}>MORE ></button>
                                 </td>
                             </tr>
                         </tbody>
