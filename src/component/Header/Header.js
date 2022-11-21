@@ -162,7 +162,8 @@ function Header(props=false) {
                         </div>
                     }
                     { isBigScreen && isClick &&
-                    <DetailMenu dmenu01_x={dmenu01} dmenu02_x={dmenu02} hideDetail={hideDetail}/>
+                    <DetailMenu dmenu01_x={dmenu01} dmenu02_x={dmenu02} hideDetail={hideDetail}
+                    recruitImg={props.recruitImg}/>
                     }
                 </div>
                 {(isMediumScreen || isSmallScreen) && isHideClick &&

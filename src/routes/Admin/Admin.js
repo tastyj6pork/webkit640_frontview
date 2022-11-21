@@ -73,19 +73,22 @@ function Admin() {
   };
 
   return (
-    <Grid container spacing={3}>
+    <Grid container spacing={3} className="Admin">
       <Grid item xs={12}>
         <Typography variant="h2" component="h2">
-          <strong>관리자 페이지</strong>
+          <h1 style={{fontWeight:'600'}}>
+            관리자 페이지
+          </h1>
         </Typography>
       </Grid>
       <Grid item xs={12}>
         <Box sx={{ width: "100%" }}>
-          <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+          <Box sx={{ borderColor: "divider" }}>
             <Tabs
               value={value}
               onChange={handleChange}
               aria-label="basic tabs example"
+              className="admin-navtabs w3-card"
             >
               <Tab label="관리자 계정 관리" {...a11yProps(0)} />
               <Tab label="메인화면 관리" {...a11yProps(1)} />

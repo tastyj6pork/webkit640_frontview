@@ -81,7 +81,7 @@ function Main() {
     return (
         <div className="Main" ref={mainRef}>
         {modalOpen && <BusinessModal setModalOpen={setModalOpen} imageUrl={mainPageData.imagePath}/>}
-        {isNav && <Header isMain={true}/>}
+        {isNav && <Header isMain={true} recruitImg={mainPageData.imagePath}/>}
         <div id="mainContent" className="w3-wide">
             <header id="header" className="w3-display-container">
                 <div className="header-background"/>
@@ -91,6 +91,7 @@ function Main() {
                     <Dday endDate={mainPageData.recruitmentDate}/>
                     <button className="apply-btn"
                     onClick={()=>window.location.href="/studentapply"}>지원하기</button>
+                    {isSmallScreen && <br/>}
                     <button className="info-btn"
                     onClick={showModal}>사업안내</button>
                 </div>
@@ -110,7 +111,9 @@ function Main() {
             graduate={parseInt(mainPageData.cumulativeStudents) || 10}
             nonmajor={parseInt(mainPageData.nonMajor) || 10}/>
             <Review ref={reviewRef}/>
-            <With/>
+            { (isMediumScreen || isBigScreen) &&
+                <With/>
+            }
         </div>
         <br /><br />
         <div className="outro w3-display-container">

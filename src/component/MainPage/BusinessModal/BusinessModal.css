@@ -38,24 +38,6 @@
     object-fit: contain;
 }
 
-.modal > section > footer {
-    padding: 12px 16px;
-    text-align: right;
-}
-.modal > section > footer button {
-    padding: 6px 12px;
-    color: #fff;
-    background-color: #6c757d;
-    border-radius: 5px;
-    font-size: 13px;
-}
-
-.close {
-position: absolute;
-right: 10px;
-top: 10px;
-}
-
 @keyframes modal-show {
     from {
     opacity: 0;
