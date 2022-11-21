@@ -14,7 +14,7 @@ function AdminApply() {
     const [searchKeyword, setSearchKeyword] = useState("");
     const [selectValue, setSelectValue] = useState("school");
 
-    
+
 
     //Effect 부분
     useEffect(()=>{
@@ -338,7 +338,7 @@ function AdminApply() {
             }
         })
     }
-    
+
     //Rendering 부분
     return(
     <Grid container className="admin-content">
@@ -438,7 +438,7 @@ function AdminApply() {
     </TableContainer>
     </Grid>
     <Grid item xs={5}></Grid>
-    <Grid item xs={6}>
+    <Grid item xs={12} className="w3-center">
         <Button onClick={(e)=>{checkerApplicantApply(e)}} variant='contained'
         style={{marginTop:'20px', marginBottom:'20px'}}>선택 등록</Button>
     </Grid>
@@ -497,8 +497,8 @@ function AdminApply() {
     </TableContainer>
     </Grid>
     <Grid item xs={5}></Grid>
-    <Grid item xs={6}>
-        <Button color='warning' sx={{marginLeft:1}} 
+    <Grid item xs={12} className="w3-center">
+        <Button color='warning' sx={{marginLeft:1}}
         style={{marginTop:'20px', marginBottom:'20px'}}
         onClick={(e)=>{cancelApplicantApply(e)}} variant='contained'>선택 취소</Button>
     </Grid>
