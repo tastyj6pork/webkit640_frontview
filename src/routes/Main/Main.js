@@ -79,9 +79,9 @@ function Main() {
     }, [throttledScroll]);
 
     return (
-        <div className="Main" ref={mainRef}>
+        <div id="Main" className="Main" ref={mainRef}>
         {modalOpen && <BusinessModal setModalOpen={setModalOpen} imageUrl={mainPageData.imagePath}/>}
-        {isNav && <Header isMain={true} recruitImg={mainPageData.imagePath}/>}
+        {isNav && <Header isMain={true} recruitImg={mainPageData.imagePath} main={document.getElementById('Main')}/>}
         <div id="mainContent" className="w3-wide">
             <header id="header" className="w3-display-container">
                 <div className="header-background"/>

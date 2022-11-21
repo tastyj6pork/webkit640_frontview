@@ -61,8 +61,14 @@ function Header(props=false) {
     }
 
     const showHideMenu = (e) => {
-        if(isHideClick) setIsHideClick(false);
-        else setIsHideClick(true);
+        if(isHideClick) {
+            setIsHideClick(false);
+            //window.removeEventListener('DOMMouseScroll', preventDefault, false);
+        }
+        else {
+            setIsHideClick(true);
+            //window.addEventListener('DOMMouseScroll', preventDefault, false);
+        }
     }
 
     const sign_out = () => {
@@ -93,6 +99,9 @@ function Header(props=false) {
             let dmenu02_x = dmenu02.getBoundingClientRect().left;
             setDmenu01(dmenu01_x);
             setDmenu02(dmenu02_x);
+        }
+        if(isSmallScreen) {
+            navBar.style.backgroundColor = 'white';
         }
         if(!props.isMain) {
             navBar.style.backgroundColor = 'rgba(255, 255, 255)';
