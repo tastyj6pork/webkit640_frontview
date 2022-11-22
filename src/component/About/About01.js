@@ -42,7 +42,7 @@ const About01 = forwardRef((props, ref) => {
                             <div class="grid-item">
                                 <div className="white-box w3-card w3-center">
                                     <img src="/images/money.png"/>
-                                    <p>교육비 전액 무료&<br/>매월 30만원의 지원비</p>
+                                    <p>교육비 전액 무료&<br/>매월 교육지원비 지급</p>
                                     <div className="circle">1</div>
                                 </div>
                             </div>
@@ -63,7 +63,7 @@ const About01 = forwardRef((props, ref) => {
                             <div class="grid-item">
                                 <div className="white-box w3-card w3-center">
                                     <img src="/images/point.png"/>
-                                    <p>학점 인정&<br/>최대 10학점 이수</p>
+                                    <p>학점 인정&<br/>최대 14학점 이수</p>
                                     <div className="circle">4</div>
                                 </div>
                             </div>
