@@ -22,7 +22,6 @@ function SideNav({children}) {
                 Authorization: "Bearer " + localStorage.getItem("ACCESS_TOKEN")
             },
         }).then((res) => {
-            console.log(res.data.admin);
             setLogCheck(res.data.admin);
         })
     }, [])

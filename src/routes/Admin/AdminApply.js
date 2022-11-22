@@ -14,15 +14,12 @@ function AdminApply() {
     const [searchKeyword, setSearchKeyword] = useState("");
     const [selectValue, setSelectValue] = useState("school");
 
-
-
     //Effect 부분
     useEffect(()=>{
         mainRenderingAxios();
     },[])
 
     useEffect(()=>{
-        console.log(searchKeyword);
         if (searchKeyword === "" || searchKeyword === null) {
             setViewList([]);
             innerEffect();
@@ -79,8 +76,6 @@ function AdminApply() {
                 Authorization: "Bearer " + localStorage.getItem("ACCESS_TOKEN")
             }
         }).then((res)=>{
-            console.log(res.data); //받은 데이터
-
             //데이터 형식에 맞춰서 사용할 state 구성
             res.data.data.map((content,idx)=>{
                 setRawList(prevList => [...prevList,{
@@ -196,10 +191,6 @@ function AdminApply() {
             setApplicantList(temp);
         }
     }
-
-    useEffect(()=>{
-        console.log(applicantList);
-    },[applicantList])
 
     const selectorApplyList = (arg,event) => {
         if (event.target.checked) {

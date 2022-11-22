@@ -11,7 +11,6 @@ function Login() {
     const LoginKakao = () => {
         call("https://kauth.kakao.com/oauth/authorize?client_id=ceff3c3a5ff411df946f1aa557ffc001&redirect_uri=http://192.168.227.163:8080/auth/oauth/kakao&response_type=code",
         "GET").then((res)=>{
-            console.log(res);
             setCode(res.code);
         })
     }
@@ -21,7 +20,6 @@ function Login() {
         const data = new FormData(e.target);
         const email = data.get("email");
         const password = data.get("password");
-        console.log(email + "/" + password);
         login({email: email, password: password});
     }
 

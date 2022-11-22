@@ -33,7 +33,7 @@ export function applyCall(api, method, request) {
     })
 )
 .catch((error) => {
-    console.log(error.status);
+    //console.log(error.status);
     if(error.status === 403) {
         window.location.href = "/login";
     }
@@ -71,7 +71,7 @@ export function call(api, method, request) {
         })
     )
     .catch((error)=> {
-        console.log(error.status);
+        //console.log(error.status);
         if(error.status === 403) {
             //window.location.href = "/login";
         }

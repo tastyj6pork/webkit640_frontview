@@ -9,7 +9,6 @@ function Signup() {
     useEffect(()=>{
         const urlParams = new URL(document.location).searchParams;
         const email = urlParams.get('email');
-        console.log(email)
         const email_input = document.getElementById('email');
         setKakaoEmail(email);
         if(kakaoEmail){

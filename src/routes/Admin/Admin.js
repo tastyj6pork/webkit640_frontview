@@ -63,9 +63,7 @@ function Admin() {
       setUserList(res.data.data);
     });
   }, []);
-  useEffect(() => {
-    console.log(userList);
-  });
+  
   const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {

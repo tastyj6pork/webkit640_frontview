@@ -47,13 +47,11 @@ function LectureData() {
           minWidth: 140,
           align: 'right',
         },
-      ];
+    ];
 
-      const rows = viewList;
-      console.log(rows)
-    
-        const [page, setPage] = React.useState(0);
-        const [rowsPerPage, setRowsPerPage] = React.useState(10);
+    const rows = viewList;
+    const [page, setPage] = React.useState(0);
+    const [rowsPerPage, setRowsPerPage] = React.useState(10);
         
 
         useEffect(() => {
@@ -63,7 +61,6 @@ function LectureData() {
             });
             call("/auth/find-user","GET").then((res)=>{setIsAdmin(res.admin)})
         }, [])  
-        console.log(list);
         
         useEffect(()=>{
             if (keyword === "" || keyword === null || keyword === " ") {
