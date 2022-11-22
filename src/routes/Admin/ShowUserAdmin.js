@@ -17,14 +17,14 @@ export default function ShowUserAdmin(props) {
         })
     }
   return (
-    <Grid container className="admin-showUserAdmin w3-card">
+    <Grid container className="admin-content">
         <Grid item xs={12}>
                     <Typography variant='h5' component="h5">
                         <strong>회원 계정 리스트</strong>
                     </Typography>
                     <div style={{float:'right'}}>
                         <Grid xs={12} sx={{marginTop:"15px"}}>
-                            <p>관리자 권한 부여 (재입력시 권한 해제)</p>
+                            <p style={{color:'grey'}}>관리자 권한 부여 (재입력 시 권한 해제)</p>
                         </Grid>
                         <Grid xs={12} sx={{marginTop:"15px", marginBottom:"15px"}}
                             className='admin-search-box'>
@@ -34,10 +34,9 @@ export default function ShowUserAdmin(props) {
                                 type={"email"}
                                 variant="standard"
                             />
-                            <Button  onClick={()=>{sendEmail()}} 
-                                variant='outlined' sx={{padding:"5px",marginLeft:"5px"}}>
+                            <button onClick={()=>{sendEmail()}} className="admin-btn btn">
                                 권한 부여
-                            </Button>
+                            </button>
                         </Grid>
                     </div>
                     <TableContainer component={Paper}>
@@ -59,10 +58,10 @@ export default function ShowUserAdmin(props) {
                                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                         hover={true}
                                         >
-                                            <TableCell>{row.admin ? <strong style={{color:"blue"}}>관리자</strong> : "일반회원"}</TableCell>
+                                            <TableCell>{row.admin ? <strong style={{color:"rgba(27, 199, 130)"}}>관리자</strong> : "일반회원"}</TableCell>
                                             <TableCell>{row.email}</TableCell>
                                             <TableCell>{row.memberBelong}</TableCell>
-                                            <TableCell>{row.memberType === "관리자" ? <strong style={{color:"blue"}}>관리자</strong> : row.memberType}</TableCell>
+                                            <TableCell>{row.memberType === "관리자" ? <strong style={{color:"rgba(27, 199, 130)"}}>관리자</strong> : row.memberType}</TableCell>
                                             <TableCell>{row.name}</TableCell>    
                                         </TableRow>
                                     )

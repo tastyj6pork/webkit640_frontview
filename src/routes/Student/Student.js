@@ -48,9 +48,9 @@ function Student() {
             window.location.href="/";
         }
     },[applyResult])
-    
+
     let FinalDate = (today > resultDate);
-    
+
 
     const ApplyResult = () => {
         if (FinalDate) {
@@ -72,10 +72,10 @@ function Student() {
 
     return(
     <div className="apply-total">
-        <div className="apply-title">
-            <h1>지원결과</h1>
-        </div>
-        <div className="apply-container">
+        <Typography variant='h4' component="h4">
+            <strong>마이페이지</strong>
+        </Typography>
+        <div className="apply-container" style={{width:'1200px'}}>
             <div className="apply-result-container">
                 <div className="result-title-first">
                     <h2>Webkit640 지원모집 결과</h2>
@@ -88,7 +88,7 @@ function Student() {
                         />
                     </p>
                     <p>지원일자 : {applyResult.date}</p>
-                    <input type="button" onClick={ApplyResult} value={FinalDate ? "결과확인" : "지원중"} style={FinalDate ? {background:"green", color:"white"} : {background:"blue", color:"white"}}></input>
+                    <input type="button" onClick={ApplyResult} value={FinalDate ? "결과확인" : "지원중"} className={FinalDate ? 'apply-result-btn' : 'apply-block-btn'}></input>
                 </div>
             </div>
         </div>

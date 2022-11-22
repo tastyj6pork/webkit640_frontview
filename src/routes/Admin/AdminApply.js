@@ -14,7 +14,7 @@ function AdminApply() {
     const [searchKeyword, setSearchKeyword] = useState("");
     const [selectValue, setSelectValue] = useState("school");
 
-    
+
 
     //Effect 부분
     useEffect(()=>{
@@ -338,46 +338,49 @@ function AdminApply() {
             }
         })
     }
-    
+
     //Rendering 부분
     return(
-    <Grid container spacing={3}>
-        
+    <Grid container className="admin-content">
+        <Typography variant='h4' component="h3" style={{marginBottom:'20px'}}>
+            <strong>지원자 관리</strong>
+        </Typography>
         <Grid item xs={12}>
-            <Typography variant='h3' component="h3">
-                <strong>지원자 관리</strong>
-            </Typography>
         </Grid>
         <Grid item xs={8}>
         </Grid>
         <Grid item xs={4}>
-            <FormControl variant='standard'>
-                <InputLabel id="demo-simple-select-standard-label">검색</InputLabel>
-                    <Select
-                    labelId="demo-simple-select-standard-label"
-                    value={selectValue}
-                    id="demo-simple-select-standard"
-                    onChange={onChangeSelect}
-                    label="Age"
-                    >
-                        <MenuItem value="school">학교</MenuItem>
-                        <MenuItem value="major">학과</MenuItem>
-                        <MenuItem value="schoolYear">학년</MenuItem>
-                        <MenuItem value="date">지원일</MenuItem>
-                    </Select>
-            </FormControl>
-            <TextField
-            onChange = {onChangeKeyword}
-            style={{marginLeft:"10px",marginRight:"15px"}}
-            id="standard-search"
-            label="검색"
-            type="search"
-            variant="standard"
-            />
-            <Button variant='contained' onClick={zipDownload} size="large">ALL DOWNLOAD</Button>
+            <div style={{float:'right', marginBottom:'20px'}}>
+                <FormControl variant='standard'>
+                    <InputLabel id="demo-simple-select-standard-label">검색</InputLabel>
+                        <Select
+                        labelId="demo-simple-select-standard-label"
+                        value={selectValue}
+                        id="demo-simple-select-standard"
+                        onChange={onChangeSelect}
+                        label="Age"
+                        >
+                            <MenuItem value="school">학교</MenuItem>
+                            <MenuItem value="major">학과</MenuItem>
+                            <MenuItem value="schoolYear">학년</MenuItem>
+                            <MenuItem value="date">지원일</MenuItem>
+                        </Select>
+                </FormControl>
+                <TextField
+                onChange = {onChangeKeyword}
+                style={{marginLeft:"10px",marginRight:"15px"}}
+                id="standard-search"
+                label="검색"
+                type="search"
+                variant="standard"
+                />
+                <button onClick={zipDownload} className="admin-btn btn">
+                    전체 다운로드
+                </button>
+            </div>
         </Grid>
         <Grid item xs={12}>
-            <TableContainer component={Paper}>
+            <TableContainer component={Paper} style={{height:'400px'}}>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>
                     <TableRow>
@@ -419,13 +422,13 @@ function AdminApply() {
                         <TableCell>{row.data.schoolNumber}</TableCell>
                         <TableCell>{row.data.schoolYear}</TableCell>
                         <TableCell>
-                            <Button variant='outlined' onClick={fileDownloadClickEvent} data-idx={idx}>DOWNLOAD</Button>
+                            <Button variant='outlined' onClick={fileDownloadClickEvent} data-idx={idx}>다운로드</Button>
                         </TableCell>
                         <TableCell>
                             {!row.data.select ? "미결정" : <strong style={{color:"red"}}>지원자 결정처리, 수정필요!</strong>}
                         </TableCell>
                         <TableCell>
-                            <Button variant='outlined' onClick={applicantSelectEvent} data-idx={idx}>SELECT</Button>
+                            <Button variant='outlined' onClick={applicantSelectEvent} data-idx={idx}>선발</Button>
                         </TableCell>
                     </TableRow>
           ))}
@@ -435,12 +438,12 @@ function AdminApply() {
     </TableContainer>
     </Grid>
     <Grid item xs={5}></Grid>
-    <Grid item xs={6}>
-        <Button onClick={(e)=>{checkerApplicantApply(e)}} variant='contained'>선택 등록</Button>
+    <Grid item xs={12} className="w3-center">
+        <Button onClick={(e)=>{checkerApplicantApply(e)}} variant='contained'
+        style={{marginTop:'20px', marginBottom:'20px'}}>선택 등록</Button>
     </Grid>
-
     <Grid item xs={12}>
-            <TableContainer component={Paper}>
+            <TableContainer component={Paper} style={{height:'400px'}}>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>
                     <TableRow>
@@ -480,11 +483,11 @@ function AdminApply() {
                         <TableCell>{row.data.schoolNumber}</TableCell>
                         <TableCell>{row.data.schoolYear}</TableCell>
                         <TableCell>
-                            <Button variant='outlined' onClick={fileDownloadClickEvent} data-idx={idx}>DOWNLOAD</Button>
+                            <Button variant='outlined' onClick={fileDownloadClickEvent} data-idx={idx}>다운로드</Button>
                         </TableCell>
-                        <TableCell>{row.data.select ? <Button variant='contained' color='warning' onClick={(e)=>{forcedSelectApplicant(e,row.data.email)}}>지원 취소</Button> : <Button variant='outlined' onClick={(e)=>{forcedSelectApplicant(e,row.data.email)}}>강제 결정</Button>}</TableCell>
+                        <TableCell>{row.data.select ? <Button variant='contained' color='warning' onClick={(e)=>{forcedSelectApplicant(e,row.data.email)}}>지원취소</Button> : <Button variant='outlined' onClick={(e)=>{forcedSelectApplicant(e,row.data.email)}}>강제확정</Button>}</TableCell>
                         <TableCell>
-                            <Button variant='outlined' onClick={applicantSelectEvent} data-idx={idx}>CANCEL</Button>
+                            <Button variant='outlined' onClick={applicantSelectEvent} data-idx={idx}>취소</Button>
                         </TableCell>
                     </TableRow>
           ))}
@@ -494,8 +497,10 @@ function AdminApply() {
     </TableContainer>
     </Grid>
     <Grid item xs={5}></Grid>
-    <Grid item xs={6}>
-        <Button color='warning' sx={{marginLeft:1}} onClick={(e)=>{cancelApplicantApply(e)}} variant='contained'>선택 취소</Button>
+    <Grid item xs={12} className="w3-center">
+        <Button color='warning' sx={{marginLeft:1}}
+        style={{marginTop:'20px', marginBottom:'20px'}}
+        onClick={(e)=>{cancelApplicantApply(e)}} variant='contained'>선택 취소</Button>
     </Grid>
     </Grid>
     )

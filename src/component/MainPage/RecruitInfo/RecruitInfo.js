@@ -25,6 +25,7 @@ const RecruitInfo = forwardRef((props, ref) => {
             <div className="recruit-content w3-display-container">
                 <div className="recruit-box w3-display-middle">
                     <span>웹킷640은<br/>이런 인재를 기다립니다.</span><hr/>
+                    {isBigScreen && <img src="/images/image01.png"/>}
                     <table className="table">
                         <tbody>
                             <tr>

@@ -42,10 +42,10 @@ export default function AdminTrainee() {
         }
     },[textFieldValue])
   return (
-    <Grid container spacing={3}>
+    <Grid container className="admin-content">
         <Grid item xs={12}>
             <Typography variant='h5' component="h5">
-                교육생 리스트
+                <strong>교육생 리스트</strong>
             </Typography>
         </Grid>
         <Grid item xs={2}>
@@ -57,11 +57,11 @@ export default function AdminTrainee() {
                 label="YYYY-MM-DD"
                 style={{float:'left'}}
                 fullWidth
-            />
-            <span>
-                검색 날짜에 등록 된 수강생 확인이 가능합니다.
-            </span>
+                />
         </Grid>
+        <span style={{color:'grey', marginTop:'30px'}}>
+            검색 날짜에 등록 된 수강생 확인이 가능합니다.
+        </span>
         
         <Grid item xs={12}>
             <TableContainer>

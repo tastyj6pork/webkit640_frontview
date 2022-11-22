@@ -50,6 +50,13 @@ function Main() {
     const showModal = () => {
         setModalOpen(true);
     }
+    const scrollLock = (isopen) => {
+        console.log('in')
+        const body = document.getElementById('Main');
+        if(isopen) {console.log('isopen'); body.classList.add('scrollLock');}
+        else {console.log('block'); body.classList.remove('scrollLock');}
+        console.log(body)
+    }
 
     const throttledScroll = useMemo(()=>
         throttle(()=>{
@@ -67,7 +74,6 @@ function Main() {
     useEffect(()=> {
         call("/main/data", "GET").then((res)=>{
             setMainPageData(res);
-            console.log(res);
         })
     },[]);
 
@@ -79,13 +85,13 @@ function Main() {
     }, [throttledScroll]);
 
     return (
-        <div className="Main" ref={mainRef}>
+        <div id="Main" className="Main" ref={mainRef}>
         {modalOpen && <BusinessModal setModalOpen={setModalOpen} imageUrl={mainPageData.imagePath}/>}
-        {isNav && <Header isMain={true} recruitImg={mainPageData.imagePath}/>}
+        {isNav && <Header isMain={true} recruitImg={mainPageData.imagePath} scrollLock={scrollLock}/>}
         <div id="mainContent" className="w3-wide">
             <header id="header" className="w3-display-container">
                 <div className="header-background"/>
-                <div className="w3-display-middle w3-center">
+                <div className="w3-display-middle w3-center header-content">
                     <h2>웹킷640 {parseInt(mainPageData.completeCardinalNumber)+1}기 모집기간</h2>
                     <p>~{moment(mainPageData.recruitmentDate).format("MM")}월 {moment(mainPageData.recruitmentDate).format("DD")}일 {moment(mainPageData.recruitmentDate).format("HH")}시 까지</p>
                     <Dday endDate={mainPageData.recruitmentDate}/>
