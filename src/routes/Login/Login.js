@@ -9,7 +9,7 @@ function Login() {
     const[code, setCode] = useState('');
 
     const LoginKakao = () => {
-        call("https://kauth.kakao.com/oauth/authorize?client_id=ceff3c3a5ff411df946f1aa557ffc001&redirect_uri=http://192.168.227.163:8080/auth/oauth/kakao&response_type=code",
+        call("https://kauth.kakao.com/oauth/authorize?client_id=ceff3c3a5ff411df946f1aa557ffc001&redirect_uri=http://118.67.134.114:8080/auth/oauth/kakao&response_type=code",
         "GET").then((res)=>{
             setCode(res.code);
         })
@@ -43,7 +43,7 @@ function Login() {
                                 placeholder="비밀번호"/>
                         </div>
                     </form>
-                    <a href="https://kauth.kakao.com/oauth/authorize?client_id=ceff3c3a5ff411df946f1aa557ffc001&redirect_uri=http://localhost:3000/auth/oauth/kakao/&response_type=code">
+                    <a href="https://kauth.kakao.com/oauth/authorize?client_id=ceff3c3a5ff411df946f1aa557ffc001&redirect_uri=http://www.webkit640.com/auth/oauth/kakao/&response_type=code">
                         <img className="kakao-btn" src="/images/kakao_login.png"/></a>
                     <div className="w3-center">
                             <button type="submit" 
