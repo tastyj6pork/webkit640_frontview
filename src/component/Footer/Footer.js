@@ -15,8 +15,6 @@ function Footer(props) {
                                 <div className="w3-third">
                                 <h5>Contact</h5>
                                 <p></p>
-                                <p>기업교육 문의</p>
-                                <p>컴퓨터소프트웨어공학과 김성렬 교수<br/>054-478-7549</p>
                                 <p>조교 연락처 {props.contact}</p>
                                 <p>{assistantPhone}</p>
                                 <p style={{fontSize:"12px", color:"grey"}}>Copyrightⓒ2022 by 송민규 김제윤 김다함 강승우 </p>
@@ -26,18 +24,10 @@ function Footer(props) {
                                 <h5>관련 홈페이지</h5>
                                 <ul className="w3-ul">
                                     <li className="w3-padding-16">
-                                    <span>금오공과대학교 컴퓨터소프트웨어공학과</span><br/>
+                                    <span>금오공과대학교</span><br/>
                                     <span>
-                                        <a href="https://cs.kumoh.ac.kr/cs/index.do">
-                                            https://cs.kumoh.ac.kr/cs/index.do
-                                        </a>
-                                    </span>
-                                    </li>
-                                    <li className="w3-padding-16">
-                                    <span>금오공과대학교 컴퓨터공학과</span><br/>
-                                    <span>
-                                        <a href="https://ce.kumoh.ac.kr/ce/index.do">
-                                            https://ce.kumoh.ac.kr/ce/index.do
+                                        <a href="https://www.kumoh.ac.kr">
+                                            https://www.kumoh.ac.kr
                                         </a>
                                     </span>
                                     </li>
