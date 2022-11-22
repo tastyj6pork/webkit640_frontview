@@ -28,7 +28,7 @@ function HideMenu(props) {
         <div id="hideMenu" className="HideMenu">
             <div className="hide-content">
                 <ul className="menuList">
-                    <li>About us</li>
+                    <li><a href="/aboutus">About us</a></li>
                     <li>게시판
                         <button name="board" className="hide-btn" onClick={onClickBtn}>
                             <FontAwesomeIcon name="board" icon={faChevronRight}/>

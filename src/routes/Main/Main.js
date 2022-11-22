@@ -51,10 +51,9 @@ function Main() {
         setModalOpen(true);
     }
     const scrollLock = (isopen) => {
-        console.log('in')
         const body = document.getElementById('Main');
-        if(isopen) {console.log('isopen'); body.classList.add('scrollLock');}
-        else {console.log('block'); body.classList.remove('scrollLock');}
+        if(isopen) {body.classList.add('scrollLock');}
+        else {body.classList.remove('scrollLock');}
         console.log(body)
     }
 
