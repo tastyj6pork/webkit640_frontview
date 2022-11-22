@@ -59,7 +59,7 @@
     width: 100%;
 }
 
-.Review .item-content .title-td h2{
+.Review .item-content h2{
     width: 400px;
     word-break: keep-all;
     overflow:hidden;
@@ -135,35 +135,31 @@
 
 @media only screen and (max-width:767px) {
     .Review {
-        width: 400px;
         height: 650px;
     }
     .Review .review-box {
         width: 100%;
         height: auto;
-        padding-left: 30px;
     }
     .Review .review-box #reviewCarousel {
+        width: 90%;
+        margin: auto;
         margin-top: 30px;
         margin-bottom: 30px;
+        padding: 20px;
     }
     .Review .review-box h1 {
+        width: 90%;
         font-size: 23px;
         margin: auto;
         word-break: keep-all;
         white-space: pre-wrap;
     }
-    .Review .item-content h2 {
-        height: 100px;
-        font-size: 21px;
-        font-weight: 600;
-        margin: 0;
-    }
     .Review .review-slider .item-content {
         padding: 18px;
     }
     .Review .item-content table {
-        height: 280px;
+        width: 100%;
     }
     .Review .item-content table td {
         margin-right: 0;
@@ -172,9 +168,14 @@
     .Review .item-content .title-td {
         width: 100%;
     }
-    .Review .item-content .title-td h2{
-        width: 200px;
-        height: 50px;
+    .Review .item-content h2 {
+        width: 100%;
+        height: 45px;
+        font-size: 18px;
+        font-weight: 600;
+        margin: 0;
+        word-break: keep-all;
+        white-space: pre-wrap;
     }
     .Review .item-content img {
         width: 65px;
@@ -183,10 +184,15 @@
         float: right;
     }
     .Review .review-slider .slid-item {
-        padding: 14px;
+        width: 300px;
+        height: 300px;
+        padding: 0px;
     }
     .Review .item-content table .writer {
         font-size: 13px;
+    }
+    .review-content {
+        overflow: hidden;
     }
     .Review .item-content table {
         font-size: 12px;
@@ -195,8 +201,9 @@
         width: 80px;
         height: 38px;
         font-size: 12px;
-        top: -100px;
-        left: 100px;
+        top: -90px;
+        left: 50%;
+        transform: translate3d(-50%, 0, 0);
     }
     .Review .review-content .more-btn {
         font-size: 13px;
