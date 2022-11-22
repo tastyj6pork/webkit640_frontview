@@ -41,9 +41,7 @@ export default function AdminMainPage() {
       },
       method: "GET",
     }).then((res) => {
-      console.log(res);
       if (res.data !== "") {
-        console.log(res.data);
         setRawData(res.data);
       }
     });

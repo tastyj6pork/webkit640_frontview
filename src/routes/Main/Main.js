@@ -54,7 +54,6 @@ function Main() {
         const body = document.getElementById('Main');
         if(isopen) {body.classList.add('scrollLock');}
         else {body.classList.remove('scrollLock');}
-        console.log(body)
     }
 
     const throttledScroll = useMemo(()=>

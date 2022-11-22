@@ -25,10 +25,7 @@ function StudentApply() {
             alert("파일을 첨부하여 주세요.")
         } else {
             e.preventDefault();
-
             setApplication("test");
-
-            console.log(localStorage.getItem("ACCESS_TOKEN"));
 
             const formData = new FormData();
             const data = {
@@ -39,10 +36,8 @@ function StudentApply() {
                 schoolYear: schoolYear,
                 school: school,
             }
-            console.log(data);
             formData.enctype = "multipart/form-data";
             formData.append("file", file);
-            console.log(file);
 
             await call("/apply/applicant-data","POST",data).then((res)=>{console.log(res);});
             await axios({
@@ -55,7 +50,6 @@ function StudentApply() {
                 },
             }).then((res) => {
                 if(res.status === 200) {
-                    console.log(res);
                     alert("지원이 완료되었습니다.");
                     window.location.href = "/";
                 }
@@ -65,7 +59,6 @@ function StudentApply() {
     useEffect(() => {
         const ACCESS_TOKEN = "ACCESS_TOKEN";
         const accessToken = localStorage.getItem(ACCESS_TOKEN);
-        console.log(accessToken);
         axios({
             method:"GET",
             url:API_BASE_URL + "/apply/checkApplicant",
@@ -75,7 +68,6 @@ function StudentApply() {
             }
         }).then((res)=>{
             if(res.status === 200) {
-                console.log(res.data);
                 if(res.data.error === "400") {
                     alert("이미 지원하셨습니다.");
                     window.location.href="/";

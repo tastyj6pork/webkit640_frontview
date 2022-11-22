@@ -15,7 +15,6 @@ export default function AdminTrainee() {
                 Authorization: "Bearer " + localStorage.getItem("ACCESS_TOKEN")
             }
         }).then((res)=>{
-            console.log(res.data)
             setRawList(res.data);
             setViewList(res.data);
         })
@@ -30,7 +29,6 @@ export default function AdminTrainee() {
                     Authorization: "Bearer " + localStorage.getItem("ACCESS_TOKEN")
                 }
             }).then((res)=>{
-                console.log(res.data)
                 setRawList(res.data);
                 setViewList(res.data);
             })

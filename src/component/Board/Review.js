@@ -47,16 +47,13 @@ function Review() {
         },
       ];
 
-      const rows = viewList.filter((content)=>content.add);
-      console.log(rows)
-
-        const [page, setPage] = React.useState(0);
-        const [rowsPerPage, setRowsPerPage] = React.useState(10);
+    const rows = viewList.filter((content)=>content.add);
+    const [page, setPage] = React.useState(0);
+    const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
         useEffect(() => {
             call("/board/list-review?type=review", "GET").then((res) => {setList(res);});
         }, [])
-        console.log(list);
 
         useEffect(()=>{setViewList(list)},[list])
 
@@ -96,8 +93,8 @@ function Review() {
                 }
             }
         },[keyword])
-        useEffect(()=>{console.log(keyword)},[keyword])
-        useEffect(()=>{console.log(selectValue)},[selectValue])
+        useEffect(()=>{},[keyword])
+        useEffect(()=>{},[selectValue])
     return(<div>
         <Header />
         <div className="board-container">

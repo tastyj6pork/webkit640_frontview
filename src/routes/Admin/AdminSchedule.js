@@ -69,8 +69,6 @@ function Adminschedule() {
 
       var startResult = String(startYear) + "-" + String(startMonth) + "-" + String(startDate)
       var endResult = String(endYear) + "-" + String(endMonth) + "-" + String(endDate)
-      console.log(startResult);
-      console.log(endResult);
       await axios({
         method:"POST",
         url:API_BASE_URL+"/calendar/insert",
