@@ -116,9 +116,7 @@ function Main() {
             graduate={parseInt(mainPageData.cumulativeStudents) || 10}
             nonmajor={parseInt(mainPageData.nonMajor) || 10}/>
             <Review ref={reviewRef}/>
-            { (isMediumScreen || isBigScreen) &&
-                <With/>
-            }
+            <With/>
         </div>
         <br /><br />
         <div className="outro w3-display-container">
