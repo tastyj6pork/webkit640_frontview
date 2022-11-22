@@ -63,7 +63,7 @@ const About01 = forwardRef((props, ref) => {
                             <div class="grid-item">
                                 <div className="white-box w3-card w3-center">
                                     <img src="/images/point.png"/>
-                                    <p>학점 인정&<br/>최대 14학점 이수</p>
+                                    <p>학점 인정&<br/>최대 13학점 이수</p>
                                     <div className="circle">4</div>
                                 </div>
                             </div>
