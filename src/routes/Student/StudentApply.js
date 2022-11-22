@@ -93,7 +93,7 @@ function StudentApply() {
     }
 
     const warpNotice = () => {
-        window.location.href="/boarddetail/17"
+        window.location.href="/board"
     }
     const keys = localStorage.getItem("ACCESS_TOKEN");
     return(
