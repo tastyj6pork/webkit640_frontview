@@ -13,9 +13,11 @@ function StudentApply() {
     const [schoolYear, setSchoolYear] = useState("");
     const [school, setSchool] = useState("")
     const [file, setFile] = useState("");
+    const [applyDate, setApplyDate] = useState("");
 
     const ACCESS_TOKEN = "ACCESS_TOKEN";
     const accessToken = localStorage.getItem(ACCESS_TOKEN);
+    let today = new Date();
 
     async function SubmitBtn(e) {
 
@@ -81,7 +83,16 @@ function StudentApply() {
                 }
             }
         });
+
+        call("/main/data", "GET").then((res) => setApplyDate(new Date (res.passAnnouncementDate)));
     },[])
+
+    useEffect(() => {
+        if (applyDate < today) {
+            alert("아직 신청기간이 아닙니다.");
+            window.location.href="/";
+        }
+    })
 
     const fileInput = useRef();
 
