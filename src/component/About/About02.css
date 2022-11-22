@@ -51,7 +51,7 @@
 .About02 .content-box .title {
     position: absolute;
     z-index: 999;
-    width: fit-content;
+    width: 120px;
     height: 45px;
     line-height: 45px;
     vertical-align: middle;
@@ -102,10 +102,11 @@
         padding-right: 15px;
     }
     .About02 .content-box .title {
+        width: 70px;
         height: 30px;
         line-height: 30px;
-        padding-left: 15px;
-        padding-right: 15px;
+        padding-left: 5px;
+        padding-right: 5px;
         border-radius: 40px;
         font-size: 13px;
         background-color: white;

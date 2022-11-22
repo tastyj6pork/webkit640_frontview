@@ -15,7 +15,7 @@ function Footer(props) {
                                 <div className="w3-third">
                                 <h5>Contact</h5>
                                 <p></p>
-                                <p>조교 연락처 {props.contact}</p>
+                                <p>담당자 연락처 {props.contact}</p>
                                 <p>{assistantPhone}</p>
                                 <p style={{fontSize:"12px", color:"grey"}}>Copyrightⓒ2022 by WebKIT 1기 송민규 김제윤 김다함 강승우 </p>
                                 </div>
