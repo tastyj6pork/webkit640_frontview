@@ -11,7 +11,7 @@ import Slider from "react-slick";
 
 const Review = forwardRef((props, ref) => {
     const [reviewData, setReviewData] = useState([]);
-    const [images, setImages] = useState(["images/emoji-01.png", "images/emoji-02.png", "images/emoji-03.png", "images/emoji-01.png", "images/emoji-02.png", "images/emoji-03.png", "images/emoji-01.png", "images/emoji-02.png", "images/emoji-03.png", "images/emoji-01.png"]);
+    const [images, setImages] = useState(["images/emoji-01.png", "images/emoji-02.png", "images/emoji-03.png", "images/emoji-01.png", "images/emoji-02.png", "images/emoji-03.png", "images/emoji-01.png", "images/emoji-02.png", "images/emoji-03.png", "images/emoji-01.png",  "images/emoji-02.png"]);
     const [reviewContent, setReviewContent] = useState("이건 가짜리뷰다. 어쩌다보니 가짜 리뷰를 블러 처리 하게 되었다. 그래도 디자인적으로는 완벽하다. 잡플래닛 최고~ 이제 이 위에 링크를 걸면 아주 완벽한 리뷰 슬라이더가 완성 된다. 보기 좋을 것 같다. 비록 메인 페이지에 리뷰 슬라이더가 있는 의미는 50%정도 사라졌지만 복잡한 건 절대 하기 싫으니까 어쩔 수 없다. 난..글렀다");
     const isBigScreen = useMediaQuery({query: '(min-width:1201px)'});
     const isMediumScreen = useMediaQuery({query: '(min-width:768px) and (max-width: 1200px)'});
