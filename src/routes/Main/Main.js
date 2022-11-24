@@ -72,6 +72,7 @@ function Main() {
     useEffect(()=> {
         call("/main/data", "GET").then((res)=>{
             setMainPageData(res);
+            //console.log(res)
         })
     },[]);
 
