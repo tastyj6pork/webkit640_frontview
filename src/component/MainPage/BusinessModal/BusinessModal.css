@@ -18,8 +18,8 @@
 }
 
 .modal > section {
-    width: 40%;
-    max-height: 700px;
+    width: 50%;
+    height: 90%;
     margin: 0 auto;
     border-radius: 0.3rem;
     background-color: #fff;
@@ -29,7 +29,7 @@
 }
 
 .modal > section > main {
-    height: 700px;
+    height: 100%;
     padding: 16px;
     overflow: hidden;
     overflow-y: auto;
@@ -62,5 +62,14 @@
 @media only screen and (max-width:767px) {
     .modal > section {
         width: 90%;
+    }
+}
+
+@media only screen and (max-width:767px) {
+    .modal > section {
+        height: auto;
+    }
+    .modal > section > main {
+        height: auto;
     }
 }

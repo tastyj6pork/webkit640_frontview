@@ -17,9 +17,9 @@ function RecruitPoster() {
     return (
         <div className="RecruitPoster">
             <StickyHeader/>
-            <div className="recruitPoster w3-display-container">
-                <div className="recruitPoster-box w3-display-middle w3-center">
-                    <img src={recruitImg} />
+            <div className="recruitPoster-container w3-display-container w3-center">
+                <div className="recruitPoster-box">
+                    <img src={recruitImg} onClick={()=>window.open(recruitImg)}/>
                 </div>
             </div>
         </div>
