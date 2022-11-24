@@ -53,6 +53,9 @@ function Admin() {
   const [userList, setUserList] = useState([]);
 
   useEffect(() => {
+    if(!localStorage.getItem("IS_ADMIN")){
+      window.location.href='/';
+  }
     axios({
       url: API_BASE_URL + "/auth/view-members",
       method: "GET",
@@ -63,7 +66,7 @@ function Admin() {
       setUserList(res.data.data);
     });
   }, []);
-  
+
   const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {

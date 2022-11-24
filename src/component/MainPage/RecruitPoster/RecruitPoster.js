@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import "./RecruitPoster.css"
 import StickyHeader from '../../StickyHeader/StickyHeader';
+import { call } from '../../../service/ApiService';
+import { API_BASE_URL } from '../../../app-config';
 
 function RecruitPoster() {
     const urlParams = new URL(document.location).searchParams;
@@ -17,8 +19,7 @@ function RecruitPoster() {
             <StickyHeader/>
             <div className="recruitPoster w3-display-container">
                 <div className="recruitPoster-box w3-display-middle w3-center">
-                    <img src={urlParams.get('recruitImg')} />
-                    {console.log(recruitImg)}
+                    <img src={recruitImg} />
                 </div>
             </div>
         </div>
