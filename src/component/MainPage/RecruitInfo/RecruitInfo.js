@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useMediaQuery } from 'react-responsive';
 import "./RecruitInfo.css"
 import moment from "moment";
+import { call } from "../../../service/ApiService";
 
 const RecruitInfo = forwardRef((props, ref) => {
     const [recruitDate, setRecruitDate] = useState(null);
@@ -12,13 +13,18 @@ const RecruitInfo = forwardRef((props, ref) => {
     const isBigScreen = useMediaQuery({query: '(min-width:1201px)'});
     const isMediumScreen = useMediaQuery({query: '(min-width:768px) and (max-width: 1200px)'});
     const isSmallScreen = useMediaQuery({query: '(max-width: 767px)'});
-
+    const [imagePath, setImagePath] = useState();
+    useEffect(()=>{
+        call("/main/data","GET",null).then((res)=>{
+            setImagePath(res.imagePath);
+        });
+    },[]);
     useEffect(()=>{
         setRecruitDate(props.mainData.recruitmentDate);
         setRecruitTarget(props.mainData.recruitmentTarget);
         setTotalRecruitment(props.mainData.totalRecruitment);
         setEligibility(props.mainData.eligibility);
-    })
+    });
 
     return(
         <div className="RecruitInfo" id="recruit" ref={ref}>
@@ -88,7 +94,7 @@ const RecruitInfo = forwardRef((props, ref) => {
                                 }
                                 <td>
                                     <button className="more-btn"
-                                    onClick={()=>document.location.href="/recruitPoster"}>MORE ></button>
+                                    onClick={()=>document.location.href="/recruitPoster?recruitImg="+imagePath}>MORE &gt;</button>
                                 </td>
                             </tr>
                         </tbody>
