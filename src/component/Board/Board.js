@@ -95,8 +95,8 @@ function Board() {
                 }
             }
         },[keyword])
-        useEffect(()=>{console.log(keyword)},[keyword])
-        useEffect(()=>{console.log(selectValue)},[selectValue])
+        useEffect(()=>{},[keyword])
+        useEffect(()=>{},[selectValue])
         const keys = localStorage.getItem("ACCESS_TOKEN");
 
     return(

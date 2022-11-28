@@ -28,13 +28,13 @@ function HideMenu(props) {
         <div id="hideMenu" className="HideMenu">
             <div className="hide-content">
                 <ul className="menuList">
-                    <li>About us</li>
+                    <li><a href="/aboutus">About us</a></li>
                     <li>게시판
                         <button name="board" className="hide-btn" onClick={onClickBtn}>
                             <FontAwesomeIcon name="board" icon={faChevronRight}/>
                         </button>
                     </li>
-                    { isBoardClick && 
+                    { isBoardClick &&
                         <ul className="detail-menu">
                             <li><a href="/board">공지사항</a></li>
                             <li><a href="/lecturedata">강의자료</a></li>
@@ -45,9 +45,9 @@ function HideMenu(props) {
                             <FontAwesomeIcon name="process" icon={faChevronRight}/>
                         </button>
                     </li>
-                    { isProcessClick && 
+                    { isProcessClick &&
                         <ul className="detail-menu">
-                            <li><a href="/recruitPoster">모집안내</a></li>
+                            <li><a href={"/recruitPoster?recruitImg="+`${props.recruitImg}`}>모집안내</a></li>
                             <li><a href="/studentapply">지원하기</a></li>
                         </ul>
                     }
@@ -66,7 +66,7 @@ function HideMenu(props) {
                         </li>
                     </ul>
                 }
-                { props.isLogin && 
+                { props.isLogin &&
                     <ul className="user-menu-list">
                         <li onClick={props.signout}><a href="#">로그아웃</a></li>
                     </ul>

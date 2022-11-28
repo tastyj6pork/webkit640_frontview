@@ -36,8 +36,8 @@ function LectureBoardDetail() {
             headers:{
                 Authorization: "Bearer " + localStorage.getItem("ACCESS_TOKEN")
             },
-            method:"POST",
-            url: API_BASE_URL + "/board/download" + id,
+            method:"GET",
+            url: API_BASE_URL + "/board/download-upload-file?boardId=" + id,
             data: {id: id},
             responseType: "blob"
         }).then((res) => {

@@ -6,7 +6,6 @@ import { API_BASE_URL } from '../app-config'
 function KakaoRedirectHandler() {
     useEffect(()=>{
         async function kakaoLogin() {
-            console.log(API_BASE_URL);
             await axios.get(`${API_BASE_URL}/auth/oauth/kakao?code=`+new URL(window.location.href).searchParams.get("code"))
             .then((res)=>{
                 if (res.data.error === "No Local User") {

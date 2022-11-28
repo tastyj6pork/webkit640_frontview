@@ -6,7 +6,7 @@
 }
 
 .ScrollNav {
-    width: 100vh;
+    width: 100vw;
     position: absolute;
     display: block;
     margin-top: 20px;
@@ -26,7 +26,7 @@
 }
 
 .ScrollNav .nav-content {
-    width: 900px;
+    width: 70%;
     height: 70px;
     margin: 0;
     padding: 0;

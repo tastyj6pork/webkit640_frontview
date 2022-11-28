@@ -23,6 +23,7 @@ function Main() {
     const [isScrollNavOn, setIsScrollNavOn] = useState(false);
     const [mainPageData, setMainPageData] = useState([]);
     const [modalOpen, setModalOpen] = useState(false);
+    const [eduStart, setEduStart] = useState(false);
     const mainRef = useRef(null);
     const recruitRef = useRef(null);
     const scheduleRef = useRef(null);
@@ -51,11 +52,9 @@ function Main() {
         setModalOpen(true);
     }
     const scrollLock = (isopen) => {
-        console.log('in')
         const body = document.getElementById('Main');
-        if(isopen) {console.log('isopen'); body.classList.add('scrollLock');}
-        else {console.log('block'); body.classList.remove('scrollLock');}
-        console.log(body)
+        if(isopen) {body.classList.add('scrollLock');}
+        else {body.classList.remove('scrollLock');}
     }
 
     const throttledScroll = useMemo(()=>
@@ -74,6 +73,7 @@ function Main() {
     useEffect(()=> {
         call("/main/data", "GET").then((res)=>{
             setMainPageData(res);
+            //console.log(res)
         })
     },[]);
 
@@ -92,14 +92,7 @@ function Main() {
             <header id="header" className="w3-display-container">
                 <div className="header-background"/>
                 <div className="w3-display-middle w3-center header-content">
-                    <h2>웹킷640 {parseInt(mainPageData.completeCardinalNumber)+1}기 모집기간</h2>
-                    <p>~{moment(mainPageData.recruitmentDate).format("MM")}월 {moment(mainPageData.recruitmentDate).format("DD")}일 {moment(mainPageData.recruitmentDate).format("HH")}시 까지</p>
-                    <Dday endDate={mainPageData.recruitmentDate}/>
-                    <button className="apply-btn"
-                    onClick={()=>window.location.href="/studentapply"}>지원하기</button>
-                    {isSmallScreen && <br/>}
-                    <button className="info-btn"
-                    onClick={showModal}>사업안내</button>
+                    <Dday mainData={mainPageData} showModal={showModal}/>
                 </div>
             </header>
             {isNav && <ScrollNav isOn={isScrollNavOn}
@@ -117,9 +110,7 @@ function Main() {
             graduate={parseInt(mainPageData.cumulativeStudents) || 10}
             nonmajor={parseInt(mainPageData.nonMajor) || 10}/>
             <Review ref={reviewRef}/>
-            { (isMediumScreen || isBigScreen) &&
-                <With/>
-            }
+            <With/>
         </div>
         <br /><br />
         <div className="outro w3-display-container">

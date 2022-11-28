@@ -121,7 +121,9 @@
         height: 520px;
     }
     .Main #header .header-content {
-        width: 70%;
+        width: 65%;
+        word-break: keep-all;
+        white-space: pre-wrap;
     }
     .Main #header p {
         width: 250px;

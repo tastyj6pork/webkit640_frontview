@@ -44,7 +44,7 @@ const MainSchedule = forwardRef((props, ref) => {
                                         </label>
                                     }
                                     { moment(additionalDate).format("YYYY") === 'Invalid date' &&
-                                        <label>―</label>
+                                        <label>추가모집 예정이 없습니다.</label>
                                     }
                                 </div>
                                 <div className="col">

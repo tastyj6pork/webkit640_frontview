@@ -37,7 +37,7 @@ export default function AdminBoardList() {
         return tempRawData;
     }
     useEffect(()=>{innerRenderEffect().then((res)=>setRawData(res))},[]);
-    useEffect(()=>{console.log(rawData)},[rawData]);
+    useEffect(()=>{},[rawData]);
 
     const changeViewBtnOnClick = async (e,id) => {
         await axios({
@@ -49,7 +49,6 @@ export default function AdminBoardList() {
             },
             data: id
         }).then((res)=>{
-            console.log(res.data);
         });
         innerRenderEffect().then((res)=>setRawData(res));
     }
@@ -62,7 +61,6 @@ export default function AdminBoardList() {
             setCheckElement(checkElement.filter((content)=>content.id !== id));
         }
     }
-    useEffect(()=>{console.log(checkElement)},[checkElement])
     const selectBoardAcceptOnClick = (e) => {
         checkList.map((row)=>{
             changeViewBtnOnClick(e,row);

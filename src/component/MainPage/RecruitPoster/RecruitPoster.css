@@ -5,17 +5,21 @@
     z-index: 1;
 }
 
-.RecruitPoster .recruitPoster{
+.RecruitPoster .recruitPoster-container{
     width: 100%;
-    height: 1100px;
+    height: auto;
+    padding: 50px;
+    padding-left: 0;
+    padding-right: 0;
     margin: 0;
     background-color: rgb(248, 251, 249);
 }
 
 .RecruitPoster .recruitPoster-box {
-    width: 900px;
+    width: 80%;
     height: auto;
     padding: 40px;
+    margin: auto;
     background-color: white;
     border-radius: 9px;
     box-shadow: 0px 0px 10px 3px lightgrey;
@@ -23,19 +27,13 @@
 
 .RecruitPoster img {
     width: 100%;
-    height: 900px;
     object-fit: contain;
+    position: relative;
 }
 
 @media only screen and (max-width:767px) {
-    .RecruitPoster .recruitPoster{
-        height: 750px;
-    }
     .RecruitPoster .recruitPoster-box {
         width: 85%;
-        padding: 30px;
-    }
-    .RecruitPoster img {
-        height: 600px;
+        padding: 15px;
     }
 }

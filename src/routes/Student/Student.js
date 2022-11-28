@@ -31,7 +31,6 @@ function Student() {
 
     useEffect(() => {
         call("/apply/member-applicant", "GET").then((res) => {
-                console.log(res);
                 setApplyResult(res);
                 setFinalResult(res.adminApply);
         })

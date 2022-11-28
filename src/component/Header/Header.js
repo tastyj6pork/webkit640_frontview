@@ -179,7 +179,7 @@ function Header(props) {
                 {(isMediumScreen || isSmallScreen) && isHideClick &&
                     <HideMenu isLogin={isLogin} isAdmin={isAdmin}
                     user={username} signout={sign_out} userpage={userpage}
-                    goMypage={goMypage}
+                    goMypage={goMypage} recruitImg={props.recruitImg}
                     style={{top:`${window.scrollY+70}px`}}/>
                 }
             </div>

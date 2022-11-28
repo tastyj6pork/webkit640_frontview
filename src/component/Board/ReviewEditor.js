@@ -67,8 +67,6 @@ function ReviewEditor() {
         window.location.href = "/review"
     }
 
-    console.log(value);
-
     const toolbarOptions = [
         ["link", "image"],
         [{ font: [] }],
