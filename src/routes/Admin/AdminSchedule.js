@@ -123,10 +123,13 @@ function Adminschedule() {
       }
     }).then((res)=>setIsAdmin(res.data.admin));
   },[]);
-
+  const styleCalendar = {
+    width: ""
+  }
   const showCalendar = isAdmin ? 
   <div style={{width:"84%", marginLeft:"100px", marginTop:"38px"}}>
     <FullCalendar
+      style={{color:"white"}}
       plugins={[dayGridPlugin, interactionPlugin]}
       initialView="dayGridMonth"
       events={event}
@@ -140,6 +143,7 @@ function Adminschedule() {
   </div> : "NO ADMIN";
 
   return (
+    <div>
     <Grid container spacing={3}>
       <Grid item xs={12}>
         <Typography variant='h4' component="h2">
@@ -158,6 +162,7 @@ function Adminschedule() {
         {showCalendar}
       </Grid>
     </Grid>
+    </div>
   );
 }
 
