@@ -3,7 +3,7 @@ import {BsFillPersonFill, BsFileEarmarkPlusFill, BsPersonCheckFill, BsList, BsCa
 import Tooltip from '@mui/material/Tooltip';
 import { NavLink, Outlet } from "react-router-dom";
 import '../SideNav/SideNav.css';
-import { IconButton } from "@mui/material";
+import { IconButton, rgbToHex } from "@mui/material";
 import axios from "axios";
 import { API_BASE_URL } from "../../app-config";
 
@@ -73,7 +73,7 @@ function SideNav({children}) {
         <div className="sidenav-container">
             <div style={{width : isOpen ? "300px" : "50px"}} className="sidenav-box">
                 <div className="sidenav-top">
-                    <NavLink to="/" className="navLink"><h1 style={{display : isOpen ? "block" : "none", textDecoration : "none", color : "white"}} className="sidenav-logo">Webkit</h1></NavLink>
+                    <NavLink to="/" className="navLink"><h1 style={{display : isOpen ? "block" : "none", textDecoration : "none", color : "black"}} className="sidenav-logo">Webkit</h1></NavLink>
                     <div style={{marginLeft : isOpen ? "94px" : "-3px"}} className="sidenav-webkitbars">
                         <BsList onClick={toggle}/>
                     </div>
@@ -81,16 +81,16 @@ function SideNav({children}) {
                     { logCheck ?
                         adminItem.map((item, index) => (
                             <NavLink to={item.path} key={index} className="link">
-                                <div className="sidenav-icon">{item.icon}</div>
-                                <div style={{display : isOpen ? "none" : "block"}} className="sidenav-link-hint">{item.name}</div>
-                                <div style={{display : isOpen ? "block" : "none"}} className="sidenav-link-text">{item.name}</div>
+                                <div className="sidenav-icon" style={{color:"#424242"}}>{item.icon}</div>
+                                <div style={{display : isOpen ? "none" : "block", color:"#424242"}} className="sidenav-link-hint">{item.name}</div>
+                                <div style={{display : isOpen ? "block" : "none", color:"#424242"}} className="sidenav-link-text">{item.name}</div>
                             </NavLink>
                         )) :
                         menuItem.map((item, index) => (
                             <NavLink to={item.path} key={index} className="link">
-                                <div className="sidenav-icon">{item.icon}</div>
-                                <div style={{display : isOpen ? "none" : "block"}} className="sidenav-link-hint">{item.name}</div>
-                                <div style={{display : isOpen ? "block" : "none"}} className="sidenav-link-text">{item.name}</div>
+                                <div className="sidenav-icon" style={{color:"#424242"}}>{item.icon}</div>
+                                <div style={{display : isOpen ? "none" : "block", color:"#424242"}} className="sidenav-link-hint">{item.name}</div>
+                                <div style={{display : isOpen ? "block" : "none", color:"#424242"}} className="sidenav-link-text">{item.name}</div>
                             </NavLink>
                         ))
                     }
