@@ -8,9 +8,12 @@ function Graduate(props) {
     const [graduation, setGnum] = useState(null);
     const [nonMajor, setNMnum] = useState(null);
     const [cardinal, setCNum] = useState(null);
+    const [worker, setWorker] = useState(null);
+    const [isOn, setIsOn] = useState(true);
     let graduateAnimate = useScrollCount(props.graduate);
     let cardinalAnimate = useScrollCount(props.cardi);
     let nonmajorAnimate = useScrollCount(props.nonmajor);
+    let workerAnimate = useScrollCount(10);
 
     useEffect(()=>{
         setGnum(props.graduate);
@@ -34,6 +37,12 @@ function Graduate(props) {
                         <p>IT 비전공자 비율</p>
                         <label><label {...nonmajorAnimate}>{Math.ceil(nonMajor / graduation)}</label>%</label>
                     </span>
+                    {isOn &&
+                    <span id="worker-box" className="img-box">
+                        <img className="worker-img" src="/images/worker.png"/>
+                        <p>졸업 후 취업률</p>
+                        <label><label {...workerAnimate}>{Math.ceil(worker / graduation)}</label>%</label>
+                    </span>}
                     <p>{moment().format("YYYY")} {cardinal}기 웹킷640 수강생들이 무사히 프로그램을 끝마쳤습니다.
                         <br />더 나은 교육 과정과 개발된 프로그램으로 계속해서 멋진 결과를 이끌어낼 예정입니다.
                     </p>
