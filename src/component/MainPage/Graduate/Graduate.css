@@ -35,7 +35,7 @@
     white-space: pre-wrap;
 }
 
-.Graduate #graduation-box p, .Graduate #nonmajor-box p {
+.Graduate #graduation-box p, .Graduate #nonmajor-box p, .Graduate #worker-box p {
     font-size: 15px;
     font-weight: 500;
 }
@@ -50,9 +50,13 @@
     margin-top: 55px;
 }
 
-.Graduate .graduate-box #graduation-box {
-    margin-right: 80px;
+.Graduate #graduation-box {
+    margin-right: 40px;
     margin-bottom: 45px;
+}
+
+.Graduate #worker-box {
+    margin-left: 80px;
 }
 
 .Graduate .graduate-box img {
@@ -67,6 +71,10 @@
 
 .Graduate .graduate-box .nonmajor-img {
     width: 117px;
+}
+
+.Graduate .graduate-box .worker-img {
+    width: 120px;
 }
 
 .Graduate .graduate-box #nonmajor-box {
@@ -93,7 +101,7 @@
         width: 200px;
         margin: auto;
         display: block;
-    } 
+    }
     .Graduate .graduate-box #graduation-box {
         margin-bottom: 20px;
     }
