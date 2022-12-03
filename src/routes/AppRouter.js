@@ -24,6 +24,7 @@ import Review from '../component/Board/Review';
 import ReviewDetail from '../component/Board/ReviewDetail';
 import ReviewEditor from '../component/Board/ReviewEditor';
 import RecruitPoster from '../component/MainPage/RecruitPoster/RecruitPoster';
+import Frequently from '../component/Frequently/Frequently';
 
 function AppRouter(){
     return (
@@ -55,6 +56,7 @@ function AppRouter(){
                     <Route path="/reviewdetail/:id" element={<ReviewDetail />} />
                     <Route path="/revieweditor" element={<ReviewEditor />} />
                     <Route path="/recruitPoster" element={<RecruitPoster/>} />
+                    <Route path="/frequently" element={<Frequently />} />
             </Routes>
         </BrowserRouter>
     )
