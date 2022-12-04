@@ -23,7 +23,8 @@ function Main() {
     const [isScrollNavOn, setIsScrollNavOn] = useState(false);
     const [mainPageData, setMainPageData] = useState([]);
     const [modalOpen, setModalOpen] = useState(false);
-    const [eduStart, setEduStart] = useState(false);
+    const [nonMajorRate, setNonMajorRate] = useState(0);
+    const [workerRate, setWorkerRate] = useState(0);
     const mainRef = useRef(null);
     const recruitRef = useRef(null);
     const scheduleRef = useRef(null);
@@ -73,7 +74,9 @@ function Main() {
     useEffect(()=> {
         call("/main/data", "GET").then((res)=>{
             setMainPageData(res);
-            //console.log(res)
+            // console.log(res);
+            setNonMajorRate(Math.ceil((res.nonMajor / res.cumulativeStudents)*100));
+            setWorkerRate(Math.ceil((res.employmentRate / res.cumulativeStudents)*100));
         })
     },[]);
 
@@ -106,9 +109,11 @@ function Main() {
             <RecruitInfo ref={recruitRef} mainData={mainPageData}/>
             <MainSchedule ref={scheduleRef} mainData={mainPageData}/>
             <ProcessInfo ref={processRef}/>
-            <Graduate cardi={parseInt(mainPageData.completeCardinalNumber) || 10}
-            graduate={parseInt(mainPageData.cumulativeStudents) || 10}
-            nonmajor={parseInt(mainPageData.nonMajor) || 10}/>
+            <Graduate cardi={mainPageData.completeCardinalNumber || 10}
+            graduate={mainPageData.cumulativeStudents || 10}
+            nonmajor={nonMajorRate || 10}
+            worker={workerRate || 10}
+            showWorker={mainPageData.showEmployment || false}/>
             <Review ref={reviewRef}/>
             <With/>
         </div>

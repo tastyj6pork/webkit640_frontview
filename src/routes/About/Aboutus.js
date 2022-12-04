@@ -2,22 +2,27 @@ import { React, useEffect, useState, useMemo, useRef, useCallback } from "react"
 import { Link } from "react-router-dom";
 import { useMediaQuery } from 'react-responsive';
 import { throttle } from 'lodash';
+import { call } from '../../service/ApiService';
+
 import "./Aboutus.css"
 import Header from "../../component/Header/Header";
 import Footer from "../../component/Footer/Footer";
 import About01 from "../../component/About/About01";
 import About02 from "../../component/About/About02";
 import About03 from "../../component/About/About03";
+import About04 from "../../component/About/About04";
 import Arrow from "../../component/About/Arrow";
 
 function Aboutus() {
     const [scrollNum, setScrollNum] = useState(1);
     const [isNavWhite, setIsNavWhite] = useState(true);
     const [arrow, setArrow] = useState('﹀');
+    const [mainPageData, setMainPageData] = useState([]);
     const headerRef = useRef(null);
     const about01Ref = useRef(null);
     const about02Ref = useRef(null);
     const about03Ref = useRef(null);
+    const about04Ref = useRef(null);
 
     const arrowClick = () => {
         if(window.scrollY < 720) {
@@ -28,14 +33,31 @@ function Aboutus() {
             about02Ref.current?.scrollIntoView({behavior:'smooth'});
             setIsNavWhite(false);
         }
-        else if(window.scrollY >= 1500 && window.scrollY < 2200) {
-            about03Ref.current?.scrollIntoView({behavior:'smooth'});
-            setIsNavWhite(false);
-            setArrow('︿');
+        else if(!mainPageData.showEmployment) {
+            if(window.scrollY >= 1500 && window.scrollY < 2200) {
+                about03Ref.current?.scrollIntoView({behavior:'smooth'});
+                setIsNavWhite(false);
+                setArrow('︿');
+            }
+            else if(window.scrollY >= 2200){
+                headerRef.current?.scrollIntoView({behavior:'smooth'});
+                setIsNavWhite(false);
+            }
         }
-        else if(window.scrollY >= 2200){
-            headerRef.current?.scrollIntoView({behavior:'smooth'});
-            setIsNavWhite(false);
+        else if(mainPageData.showEmployment) {
+            if(window.scrollY >= 1500 && window.scrollY < 2200) {
+                about03Ref.current?.scrollIntoView({behavior:'smooth'});
+                setIsNavWhite(false);
+            }
+            else if(window.scrollY >= 2200 && window.scrollY < 2900) {
+                about04Ref.current?.scrollIntoView({behavior:'smooth'});
+                setIsNavWhite(false);
+                setArrow('︿');
+            }
+            else if(window.scrollY >= 2900){
+                headerRef.current?.scrollIntoView({behavior:'smooth'});
+                setIsNavWhite(false);
+            }
         }
     }
 
@@ -53,9 +75,21 @@ function Aboutus() {
                 setIsNavWhite(false);
                 setArrow('﹀');
             }
-            else if(window.scrollY >= 2000){
-                setIsNavWhite(false);
-                setArrow('︿');
+            else if(!mainPageData.showEmployment) {
+                if(window.scrollY >= 2000){
+                    setIsNavWhite(false);
+                    setArrow('︿');
+                }
+            }
+            else if(mainPageData.showEmployment) {
+                if(window.scrollY > 2000 && window.scrollY < 2800) {
+                    setIsNavWhite(false);
+                    setArrow('﹀');
+                }
+                else if(window.scrollY >= 2800){
+                    setIsNavWhite(false);
+                    setArrow('︿');
+                }
             }
         }, 300), [isNavWhite]
     );
@@ -66,6 +100,12 @@ function Aboutus() {
             window.removeEventListener('scroll', throttledScroll);
         }
     }, [throttledScroll]);
+
+    useEffect(()=> {
+        call("/main/data", "GET").then((res)=>{
+            setMainPageData(res);
+        })
+    },[]);
 
     return (
         <div className="Aboutus" ref={headerRef}>
@@ -86,6 +126,12 @@ function Aboutus() {
                 <About01 ref={about01Ref}/>
                 <About02 ref={about02Ref}/>
                 <About03 ref={about03Ref}/>
+                {mainPageData.showEmployment &&
+                    <About04 ref={about04Ref} graduate={mainPageData.cumulativeStudents}
+                    nonMajor={mainPageData.nonMajor}
+                    worker={mainPageData.employmentRate}
+                    company={mainPageData.employmentEnterprise}/>
+                }
                 <Footer/>
             </div>
         </div>

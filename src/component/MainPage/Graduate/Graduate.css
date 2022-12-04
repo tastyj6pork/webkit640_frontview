@@ -94,18 +94,26 @@
     }
     .Graduate .graduate-box h1 {
         font-size: 25px;
-        margin-bottom: 30px;
-    }
-    .Graduate .graduate-box #graduation-box,
-    .Graduate .graduate-box #nonmajor-box{
-        width: 200px;
-        margin: auto;
-        display: block;
+        margin-bottom: 40px;
     }
     .Graduate .graduate-box #graduation-box {
+        display: block;
+    }
+    .Graduate .graduate-box #graduation-box,
+    .Graduate .graduate-box #nonmajor-box,
+    .Graduate #worker-box{
+        width: 200px;
+        margin: auto;
+    }
+    .Graduate .graduate-box #nonmajor-box,
+    .Graduate #worker-box{
+        display: inline-block;
+    }
+    .Graduate .graduate-box #graduation-box,
+    .Graduate .graduate-box #nonmajor-box {
         margin-bottom: 20px;
     }
-    .Graduate .graduate-box #nonmajor-box {
+    .Graduate .graduate-box #worker-box {
         margin-bottom: 30px;
     }
     .Graduate .graduate-box .nonmajor-img {
@@ -116,5 +124,14 @@
     }
     .Graduate .graduate-box p {
         font-size: 14px;
+    }
+    .Graduate .graduate-box .graduation-img {
+        width: 118px;
+    }
+    .Graduate .graduate-box .nonmajor-img {
+        width: 107px;
+    }
+    .Graduate .graduate-box .worker-img {
+        width: 110px;
     }
 }
