@@ -1,0 +1,125 @@
+.About04 * {
+    font-family: 'Pretendard-Regular';
+    letter-spacing: normal;
+    color: rgb(7, 1, 38);
+}
+
+.About04 {
+    width: 100vw;
+    height: 800px;
+    background-image: url("../../../public/images/background07.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.About04 .about04-content {
+    width: 100%;
+    height: 100%;
+}
+
+.About04 .about04-box {
+    width: 80%;
+    height: auto;
+}
+
+.About04 .contents h2 {
+    font-weight: 600;
+    font-size: 48px;
+}
+
+.About04 .left-content, .About01 .right-content {
+    width: 50%;
+    height: auto;
+}
+
+.About04 .left-content {
+    float: left;
+    margin-top: 40px;
+    margin-left: 5%;
+}
+
+.About04 .left-content .text-box h2 {
+    font-size: 48px;
+    font-weight: 600;
+}
+
+.About04 .left-content .text-box label {
+    font-size: 16px;
+    color: rgb(80, 80, 80);
+    margin-top: 20px;
+}
+
+.About04 .left-content .rate {
+    margin-top: 40px;
+}
+
+.About04 .left-content .rate-box {
+    width: 180px;
+    height: 90px;
+    float: left;
+    margin-right: 20px;
+    border: 1px solid rgb(161, 161, 161);
+    background-color: rgba(255, 255, 255, 0.726);
+    border-radius: 10px;
+}
+
+.About04 .left-content .rate-box h6 {
+    margin-bottom: 5px;
+}
+
+.About04 .left-content .rate-box p {
+    font-size: 30px;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.About04 .right-content {
+    width: auto;
+    float: right;
+    margin-right: 5%;
+}
+
+.About04 .right-content .company-list {
+    width: 500px;
+    height: 550px;
+    background-color: white;
+    border-radius: 15px;
+    padding: 50px;
+    font-size: 20px;
+}
+
+.About04 .company-list ul {
+    list-style: none;
+    margin: 0;
+    word-break: keep-all;
+    white-space: pre-wrap;
+    overflow: hidden;
+}
+
+.About04 .company-list li {
+    float: left;
+    margin-right: 25px;
+    margin-top: 10px;
+    transition-property: color;
+    transition-duration: 0.5s;
+}
+
+@media only screen and (max-width:767px) {
+    .About04 {
+        height: 600px;
+    }
+    .About04 .about04-box {
+        width: 100%;
+        height: auto;
+    }
+    .About04 .contents {
+        width: 100%;
+        float: none;
+    }
+    .About04 .contents h2 {
+        width: fit-content;
+        font-size: 24px;
+        font-weight: 600;
+        margin-left: 30px;
+    }
+}

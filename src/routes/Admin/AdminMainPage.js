@@ -1,5 +1,6 @@
 import {
   Button,
+  Checkbox,
   FormControl,
   FormHelperText,
   Grid,
@@ -7,6 +8,7 @@ import {
   Paper,
   TextField,
   Typography,
+  FormControlLabel,
 } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
@@ -32,6 +34,7 @@ export default function AdminMainPage() {
     nonMajor: "",
     contact:"",
   });
+  const [checked, setChecked] = useState(false);
 
   useEffect(() => {
     axios({
@@ -43,9 +46,14 @@ export default function AdminMainPage() {
     }).then((res) => {
       if (res.data !== "") {
         setRawData(res.data);
+        setChecked(res.data.showEmployment);
       }
     });
   }, []);
+
+  const handleChange = (event) => {
+    setChecked(event.target.checked);
+  };
 
   const fileInput = useRef();
 
@@ -53,14 +61,14 @@ export default function AdminMainPage() {
         let pathpoint = obj.target.value.lastIndexOf('.');
         let filepoint = obj.target.value.substring(pathpoint+1,obj.length);
         let filetype = filepoint.toLowerCase();
-        
+
         if(filetype === "jpg" || filetype === "png") {
         } else {
             alert("jpg, png 파일만 제출 가능합니다.");
             fileInput.current.value = "";
             return false;
         }
-        
+
     }
 
   const dataOnChange = (type, e) => {
@@ -130,6 +138,18 @@ export default function AdminMainPage() {
           setRawData((prev)=>{return {...prev, imagePath:API_BASE_URL + res.data}})
         })
         console.log(imageUrl)
+    } else if (type === "worker") {
+      setRawData((prev) => {
+        return { ...prev, employmentRate: e.target.value };
+      });
+    } else if (type === "worker_show") {
+      setRawData((prev) => {
+        return { ...prev, showEmployment: e.target.checked };
+      });
+    } else if (type === "company") {
+      setRawData((prev) => {
+        return { ...prev, employmentEnterprise: e.target.value };
+      });
     }
   };
 
@@ -142,7 +162,7 @@ export default function AdminMainPage() {
       },
       data: rawData,
     }).then((res) => {
-      console.log(res);
+      //  console.log(res);
     });
     alert('저장 되었습니다.');
   };
@@ -293,6 +313,41 @@ export default function AdminMainPage() {
             label="비전공자 수"
             variant="standard"
           />
+
+          <TextField
+            fullWidth
+            sx={{ marginBottom: "15px" }}
+            id="standard-basic"
+            value={rawData.employmentRate}
+            onChange={(e) => {
+              dataOnChange("worker", e);
+            }}
+            label="취업자 수"
+            variant="standard"
+          />
+
+        <FormControlLabel
+          control= {<Checkbox
+            checked = {checked}
+            onChange={(e) => {
+              handleChange(e);
+              dataOnChange("worker_show", e);
+            }}
+            />}
+          label = '취업률 표시 여부'
+          />
+
+          <TextField
+            sx={{marginBottom: "15px" }}
+            value={rawData.employmentEnterprise}
+            onChange={(e) => {
+              dataOnChange("company", e);
+            }}
+            variant="standard"
+            label="취업 현황('/'로 구분하세요. ex. 1기 구글/2기 네이버)"
+            fullWidth
+          />
+
           <TextField
             fullWidth
             sx={{ marginBottom: "15px" }}
