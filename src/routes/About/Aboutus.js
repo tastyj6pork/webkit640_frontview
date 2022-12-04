@@ -23,6 +23,7 @@ function Aboutus() {
     const about02Ref = useRef(null);
     const about03Ref = useRef(null);
     const about04Ref = useRef(null);
+    const isSmallScreen = useMediaQuery({query: '(max-width: 767px)'});
 
     const arrowClick = () => {
         if(window.scrollY < 720) {
@@ -111,7 +112,7 @@ function Aboutus() {
         <div className="Aboutus" ref={headerRef}>
             { isNavWhite && <Header/>}
             { !isNavWhite && <Header isMain={true}/>}
-            <Arrow onclick={arrowClick} shape={arrow}/>
+            { !isSmallScreen && <Arrow onclick={arrowClick} shape={arrow}/>}
             <div className="aboutus-content w3-wide">
                 <header id="aboutus-header" className="w3-display-container">
                     <div className="aboutus-background"></div>

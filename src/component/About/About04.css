@@ -22,11 +22,6 @@
     height: auto;
 }
 
-.About04 .contents h2 {
-    font-weight: 600;
-    font-size: 48px;
-}
-
 .About04 .left-content, .About01 .right-content {
     width: 50%;
     height: auto;
@@ -106,20 +101,41 @@
 
 @media only screen and (max-width:767px) {
     .About04 {
-        height: 600px;
+        height: 750px;
     }
     .About04 .about04-box {
         width: 100%;
         height: auto;
     }
-    .About04 .contents {
-        width: 100%;
-        float: none;
-    }
-    .About04 .contents h2 {
-        width: fit-content;
+    .About04 .left-content .text-box h2 {
         font-size: 24px;
         font-weight: 600;
-        margin-left: 30px;
+    }
+    .About04 .left-content {
+        width: 100%;
+        margin-top: 30px;
+        margin-left: 5%;
+        margin-bottom: 20px;
+    }
+    .About04 .left-content .text-box label {
+        font-size: 13px;
+    }
+    .About04 .right-content {
+        display: block;
+        width: auto;
+        float: left;
+        margin-left: 5%;
+    }
+    .About04 .right-content .company-list {
+        width: 350px;
+        height: 350px;
+        border-radius: 10px;
+        padding: 30px;
+        padding-top: 18px;
+        font-size: 15px;
+    }
+    .About04 .company-list li {
+        margin-right: 15px;
+        margin-top: 5px;
     }
 }
