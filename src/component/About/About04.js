@@ -33,17 +33,20 @@ const About04 = forwardRef((props, ref) => {
                                 <div className="rate">
                                     <div className="rate-box w3-center">
                                         <h6><b>전체 수료생 수</b></h6>
-                                        <p>{props.graduate}</p> 명
+                                        <p style={{color:'rgb(255, 115, 115)'}}>{props.graduate}</p> 명
                                     </div>
                                     <div className="rate-box w3-center">
                                         <h6><b>비전공자 수</b></h6>
-                                        <p>{props.nonMajor}</p> 명
+                                        <p style={{color:'rgb(144, 170, 255)'}}>{props.nonMajor}</p> 명
                                     </div>
                                     <div className="rate-box w3-center">
                                         <h6><b>졸업 후 취업률</b></h6>
-                                        <p>{Math.ceil((props.worker / props.graduate)*100)}</p> %
+                                        <p style={{color:'rgb(166, 214, 34)'}}>{Math.ceil((props.worker / props.graduate)*100)}</p> %
                                     </div>
                                 </div>
+                            }
+                            { !isSmallScreen &&
+                                <img src="/images/arrow.png" style={{height:'300px'}}/>
                             }
                         </div>
                     </div>
