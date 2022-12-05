@@ -20,7 +20,7 @@ const ProcessInfo = forwardRef((props, ref) => {
                     <div className="code-stack-box">
                         <div className="frontend-process">
                             <div className="process-content">
-                                <p>프론트앤드</p>
+                                <p>Frontend</p>
                                 <div className="process-content-box">
                                     {frontend_process[0].map((item, i)=>(
                                         <div className="process-item" key={i}>#{item}</div>
@@ -30,7 +30,7 @@ const ProcessInfo = forwardRef((props, ref) => {
                         </div>
                         <div className="backend-process">
                             <div className="process-content">
-                                <p>백앤드</p>
+                                <p>Backend</p>
                                 <div className="process-content-box">
                                     {backend_process[0].map((item, i)=>(
                                         <div className="process-item" key={i}>#{item}</div>
