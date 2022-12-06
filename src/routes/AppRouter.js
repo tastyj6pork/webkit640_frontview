@@ -26,6 +26,7 @@ import ReviewEditor from '../component/Board/ReviewEditor';
 import RecruitPoster from '../component/MainPage/RecruitPoster/RecruitPoster';
 import Frequently from '../component/Frequently/Frequently';
 import Gallery from '../component/Board/Gallery';
+import GalleryEditor from '../component/Board/GalleryEditor';
 
 function AppRouter(){
     return (
@@ -57,6 +58,7 @@ function AppRouter(){
                     <Route path="/reviewdetail/:id" element={<ReviewDetail />} />
                     <Route path="/revieweditor" element={<ReviewEditor />} />
                     <Route path="/gallery" element={<Gallery/>} />
+                    <Route path="/galleryEditor" element={<GalleryEditor />} />
                     <Route path="/recruitPoster" element={<RecruitPoster/>} />
                     <Route path="/frequently" element={<Frequently />} />
             </Routes>

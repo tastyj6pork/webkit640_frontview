@@ -122,7 +122,7 @@ export default function AdminMainPage() {
       });
     } else if(type === "imageUpload") {
       var imageUrl;
-      console.log(e.target)
+      //console.log(e.target)
       const file = e.target.files[0];
         const formData = new FormData();
         formData.append("file", file);
@@ -137,7 +137,7 @@ export default function AdminMainPage() {
         }).then((res) => {
           setRawData((prev)=>{return {...prev, imagePath:API_BASE_URL + res.data}})
         })
-        console.log(imageUrl)
+        //console.log(imageUrl)
     } else if (type === "worker") {
       setRawData((prev) => {
         return { ...prev, employmentRate: e.target.value };
