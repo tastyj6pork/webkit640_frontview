@@ -12,7 +12,7 @@ import ImageResize from 'quill-image-resize';
 Quill.register('modules/ImageResize', ImageResize);
 
 function LectrueEditor() {
-    
+
     const [value, setValue] = useState("");
     const quillRef = useRef();
 
@@ -36,9 +36,9 @@ function LectrueEditor() {
         }
         formData.enctype = "multipart/form-data";
         formData.append("file", file);
-        
+
         call("/board/save-board","POST",data).then((res) => {
-            console.log(formData.has("file"));
+            // console.log(formData.has("file"));
             if(file === "") {
                 alert("success")
                 window.location.href ="/lecturedata"
@@ -79,7 +79,7 @@ function LectrueEditor() {
         [{ color: [] }, { background: [] }],
         [{ align: [] }],
       ];
-    
+
       const formats = [
         "header",
         "font",
@@ -131,7 +131,7 @@ function LectrueEditor() {
                 url:API_BASE_URL + "/board/upload-image",
                 headers: {
                     "Content-Type": "multipart/form-data",
-                    "Authorization": "Bearer " + accessToken, 
+                    "Authorization": "Bearer " + accessToken,
                 },
                 data: formData,
             }).then((res) => {console.log(res); imageUrl = API_BASE_URL + res.data})
@@ -142,7 +142,7 @@ function LectrueEditor() {
             editor.insertEmbed(range.index, "image", imageUrl);
         }
     }
-    
+
     const modules = useMemo(() => ({
         toolbar: {
             container: toolbarOptions,

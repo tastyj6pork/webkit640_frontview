@@ -38,7 +38,7 @@ function Editor() {
         formData.append("file", file);
 
         call("/board/save-board","POST",data).then((res) => {
-            console.log(formData.has("file"));
+            // console.log(formData.has("file"));
             if(file === "") {
                 alert("success")
                 window.location.href ="/board"
