@@ -47,7 +47,7 @@ function GalleryEditor() {
               Authorization: "Bearer " + localStorage.getItem("ACCESS_TOKEN"),
             }
           }).then((res) => {
-              console.log(res);
+              console.log(data.imagePath);
           });
           alert("게시글이 등록 되었습니다.");
         window.location.href = "/gallery";

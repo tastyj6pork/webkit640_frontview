@@ -162,7 +162,7 @@ export default function AdminMainPage() {
       },
       data: rawData,
     }).then((res) => {
-      //  console.log(res);
+        console.log(res);
     });
     alert('저장 되었습니다.');
   };

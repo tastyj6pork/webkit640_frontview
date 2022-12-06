@@ -8,7 +8,7 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
+import Grid from "@mui/material/Grid";
 import "../Board/Board.css";
 import { useEffect } from 'react';
 import axios from 'axios';
@@ -16,6 +16,7 @@ import { call } from '../../service/ApiService';
 import { API_BASE_URL } from '../../app-config';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import ImageDisplay from './ImageDisplay'
 
 
 function Gallery() {
@@ -38,7 +39,7 @@ function Gallery() {
     }
 
     useEffect(() => {
-        call("/board/list?type=notification", "GET").then((res) => {setList(res);});
+        call("/board/list-image", "GET").then((res) => {setList(res);});
         call("/auth/find-user","GET").then((res)=>{setIsAdmin(res.admin)})
     }, [])
     //console.log(list);
@@ -60,29 +61,19 @@ function Gallery() {
                             }
                         </div>
                         <div className="board-list-container">
-                            <Paper sx={{ width: '100%', overflow: 'hidden' }}>
-                                <TableContainer sx={{ maxHeight: 750 }}>
-                                    <Table stickyHeader aria-label="sticky table">
-                                        <TableBody>
-                                            {rows
-                                                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                                                .map((row) => {
-                                                    return (
-                                                        <TableRow hover role="checkbox" className="board-tablerow-list"
-                                                        tabIndex={-1}
-                                                        key={row.id}
-                                                        >
-                                                            <TableCell>{row.id}</TableCell>
-                                                            <TableCell><Link to={`/boarddetail/${row.id}`}>{row.title}</Link></TableCell>
-                                                            <TableCell align="right">{row.writer}</TableCell>
-                                                            <TableCell align="right">{row.writeDate}</TableCell>
-                                                            <TableCell align="right">{row.cnt}</TableCell>
-                                                        </TableRow>
-                                                    );
-                                                })}
-                                            </TableBody>
-                                        </Table>
-                                    </TableContainer>
+                            <Paper sx={{ width: '100%', overflow: 'hidden', paddingTop:'40px' }}>
+                                <Grid container spacing={3}>
+                                    {rows
+                                        .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                                        .map((row) => {
+                                            //console.log(row.imagePath)
+                                            return (
+                                                <Grid item xs={4} key={row.id}>
+                                                    <ImageDisplay id={row.id} title={row.title} imageUrl={row.imagePath}/>
+                                                </Grid>
+                                            );
+                                        })}
+                                    </Grid>
                                     <TablePagination
                                         component="div"
                                         count={list.length}

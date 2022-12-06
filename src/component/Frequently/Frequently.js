@@ -20,7 +20,7 @@ function Frequently() {
         <Header/>
         <div className="frequently-background">
             <Box>
-                <Typography style={{textAlign:"center" ,marginTop:"70px", padding:"50px", fontFamily:"Pretendard-Regular", letterSpacing:"normal" ,fontWeight:"500", color:"rgb(7, 1, 38)"}} variant="h1" gutterBottom>
+                <Typography style={{textAlign:"center" ,marginTop:"70px", padding:"100px", fontFamily:"Pretendard-Regular", letterSpacing:"normal" ,fontWeight:"600", color:"rgb(7, 1, 38)"}} variant="h2" gutterBottom>
                     자주묻는 질문
                 </Typography>
             </Box>
