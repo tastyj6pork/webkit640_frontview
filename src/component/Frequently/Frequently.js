@@ -16,11 +16,11 @@ import './Frequently.css';
 
 function Frequently() {
 
-    return(<div>
+    return(<div className='Frequently'>
         <Header/>
         <div className="frequently-background">
             <Box>
-                <Typography style={{textAlign:"center" ,marginTop:"70px", padding:"100px", fontFamily:"Pretendard-Regular", letterSpacing:"normal" ,fontWeight:"600", color:"rgb(7, 1, 38)"}} variant="h2" gutterBottom>
+                <Typography style={{textAlign:"center" ,marginTop:"70px", padding:"100px", fontFamily:"Pretendard-Regular", letterSpacing:"normal" ,fontWeight:"600", color:"rgb(7, 1, 38)"}} variant="h2" gutterBottom className='faq-title'>
                     자주묻는 질문
                 </Typography>
             </Box>
@@ -243,22 +243,22 @@ function Frequently() {
                                             <TableRow>
                                                 <TableCell component="th" scope="row">자바 프로그래밍</TableCell>
                                                 <TableCell align="center">O</TableCell>
-                                                <TableCell align="center">큰 문제 없이 이수 가능</TableCell>
+                                                <TableCell align="center">상당히 어려움</TableCell>
                                             </TableRow>
                                             <TableRow>
                                                 <TableCell component="th" scope="row">데이터베이스 설계 및 프로그래밍</TableCell>
                                                 <TableCell align="center">O</TableCell>
-                                                <TableCell align="center">쉽게 이수 가능</TableCell>
+                                                <TableCell align="center">백엔드 부분 어려움</TableCell>
                                             </TableRow>
                                             <TableRow>
                                                 <TableCell component="th" scope="row">HTML / CSS / JavaScript</TableCell>
                                                 <TableCell align="center">X</TableCell>
-                                                <TableCell align="center">초반에 쉬우나 후반 노력 필요</TableCell>
+                                                <TableCell align="center">프론트엔드 부분 쉬움</TableCell>
                                             </TableRow>
                                             <TableRow>
                                                 <TableCell component="th" scope="row">Linux / Server</TableCell>
                                                 <TableCell align="center">X</TableCell>
-                                                <TableCell align="center">큰 문제 없이 이수 가능</TableCell>
+                                                <TableCell align="center">백엔드 부분 어려울 수 있음</TableCell>
                                             </TableRow>
                                         </TableBody>
                                     </Table>
@@ -288,6 +288,23 @@ function Frequently() {
                         <AccordionDetails>
                         <Typography>
                             <p>전체 출석률의 80% 이상을 만족해야 수료 가능합니다. 수료대상자에게는 교육이 끝난 후, 수료증을 발급해드립니다.</p>
+                        </Typography>
+                        </AccordionDetails>
+                    </Accordion>
+                </div>
+                <div className="frequently-next-content">
+                    <Accordion>
+                        <AccordionSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls="panel1a-content"
+                        id="panel1a-header"
+                        >
+                        <Typography>마이크로디그리 과정은 전공학점으로 인정되나요?</Typography>
+                        </AccordionSummary>
+                        <AccordionDetails>
+                        <Typography>
+                            <p>컴퓨터공학과/컴퓨터소프트웨어공학과/인공지능공학과 에 한하여 전공선택 인정됩니다.<br/>
+                            그 외 타학과(부)의 경우에는 일반선택으로 인정됩니다.</p>
                         </Typography>
                         </AccordionDetails>
                     </Accordion>
