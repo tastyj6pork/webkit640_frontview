@@ -30,3 +30,15 @@
     align-items: center;
     margin: 10px auto;
 }
+
+@media only screen and (max-width:767px) {
+    .Frequently .faq-title{
+        font-size: 35px;
+    }
+    .frequently-content {
+        width: 80%;
+    }
+    .frequently-next-content {
+        width: 80%;
+    }
+}
