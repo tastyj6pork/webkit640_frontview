@@ -236,7 +236,7 @@ function Frequently() {
                                         <TableRow>
                                             <TableCell>선행 지식</TableCell>
                                             <TableCell align="center">필수 여부</TableCell>
-                                            <TableCell align="center">교육 이수 난이도</TableCell>
+                                            <TableCell align="center">선행지식 없을 시, 교육 이수 난이도</TableCell>
                                         </TableRow>
                                         </TableHead>
                                         <TableBody>
