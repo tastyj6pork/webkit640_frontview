@@ -11,6 +11,7 @@ function DetailMenu(props) {
                     <ul id="menu01" style={{left:`${props.dmenu01_x}px`}}>
                         <li><a href="/board">공지사항</a></li>
                         <li><a href="/lecturedata">강의자료</a></li>
+                        <li><a href="/gallery">행사자료</a></li>
                     </ul>
                     <ul id="menu02" style={{left:`${props.dmenu02_x}px`}}>
                         <li><a href={"/recruitPoster?recruitImg="+`${props.recruitImg}`}>모집안내</a></li>

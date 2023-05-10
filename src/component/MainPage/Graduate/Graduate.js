@@ -5,18 +5,14 @@ import useScrollCount from "../../../hooks/useScrollHook"
 import moment from "moment";
 
 function Graduate(props) {
-    const [graduation, setGnum] = useState(null);
-    const [nonMajor, setNMnum] = useState(null);
-    const [cardinal, setCNum] = useState(null);
-    let graduateAnimate = useScrollCount(props.graduate);
-    let cardinalAnimate = useScrollCount(props.cardi);
-    let nonmajorAnimate = useScrollCount(props.nonmajor);
+    const [cardinal, setCNum] = useState(0);
+    let graduateAnimate = useScrollCount(parseInt(props.graduate));
+    let cardinalAnimate = useScrollCount(parseInt(props.cardi));
+    let nonmajorAnimate = useScrollCount(parseInt(props.nonmajor));
 
     useEffect(()=>{
-        setGnum(props.graduate);
-        setNMnum(props.nonmajor);
-        setCNum(props.cardinal);
-    },[])
+        setCNum(props.cardi);
+    })
 
     return(
         <div className="Graduate">
@@ -32,8 +28,14 @@ function Graduate(props) {
                     <span id="nonmajor-box" className="img-box">
                         <img className="nonmajor-img" src="/images/book01.png"/>
                         <p>IT 비전공자 비율</p>
-                        <label><label {...nonmajorAnimate}>{Math.ceil(nonMajor / graduation)}</label>%</label>
+                        <label><label {...nonmajorAnimate}>0</label>%</label>
                     </span>
+                    {props.showWorker &&
+                    <span id="worker-box" className="img-box">
+                        <img className="worker-img" src="/images/worker.png"/>
+                        <p>졸업 후 취업률</p>
+                        <label><label>{props.worker}</label>%</label>
+                    </span>}
                     <p>{moment().format("YYYY")} {cardinal}기 웹킷640 수강생들이 무사히 프로그램을 끝마쳤습니다.
                         <br />더 나은 교육 과정과 개발된 프로그램으로 계속해서 멋진 결과를 이끌어낼 예정입니다.
                     </p>

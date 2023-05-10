@@ -38,7 +38,7 @@ function ReviewEditor() {
         formData.append("file", file);
 
         call("/board/save-board","POST",data).then((res) => {
-            console.log(formData.has("file"));
+            // console.log(formData.has("file"));
             if(file === "") {
                 alert("게시글 업로드 완료 되었습니다.")
                 window.location.href ="/review"

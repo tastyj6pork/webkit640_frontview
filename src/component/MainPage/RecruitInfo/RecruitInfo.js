@@ -14,11 +14,13 @@ const RecruitInfo = forwardRef((props, ref) => {
     const isMediumScreen = useMediaQuery({query: '(min-width:768px) and (max-width: 1200px)'});
     const isSmallScreen = useMediaQuery({query: '(max-width: 767px)'});
     const [imagePath, setImagePath] = useState();
+
     useEffect(()=>{
         call("/main/data","GET",null).then((res)=>{
             setImagePath(res.imagePath);
         });
     },[]);
+
     useEffect(()=>{
         setRecruitDate(props.mainData.recruitmentDate);
         setRecruitTarget(props.mainData.recruitmentTarget);
@@ -71,7 +73,7 @@ const RecruitInfo = forwardRef((props, ref) => {
                                 <td className="label">지원 자격
                                 {isSmallScreen &&
                                     <ul>
-                                        {   eligibility && 
+                                        {   eligibility &&
                                             eligibility.split("/").map((item, i)=>(
                                             <li key={i}>{item}</li>
                                         ))}
@@ -80,7 +82,7 @@ const RecruitInfo = forwardRef((props, ref) => {
                                 { (isBigScreen || isMediumScreen) &&
                                 <td className="content">
                                     <ul>
-                                    { eligibility && 
+                                    { eligibility &&
                                             eligibility.split("/").map((item, i)=>(
                                             <li key={i}>{item}</li>
                                         ))}
@@ -89,7 +91,7 @@ const RecruitInfo = forwardRef((props, ref) => {
                                 }
                             </tr>
                             <tr className="btn-row">
-                                { (isBigScreen||isMediumScreen) && 
+                                { (isBigScreen||isMediumScreen) &&
                                     <td></td>
                                 }
                                 <td>
