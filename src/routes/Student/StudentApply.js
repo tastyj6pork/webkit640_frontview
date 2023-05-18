@@ -77,14 +77,24 @@ function StudentApply() {
             }
         });
 
-        call("/main/data", "GET").then((res) => setApplyDate(new Date (res.passAnnouncementDate)));
     },[])
 
+    // useEffect(() => {
+    //     call("/main/data", "GET").then((res) => setApplyDate(new Date (res.documentSubmissionPeriod)));
+
+    //     if (applyDate < today) {
+    //         alert("아직 신청기간이 아닙니다 ");
+    //         window.location.href="/";
+    //     }
+    // })
+
     useEffect(() => {
-        if (applyDate < today) {
-            alert("아직 신청기간이 아닙니다.");
-            window.location.href="/";
-        }
+        call("/main/data", "GET").then((res) => {
+            if((new Date (res.documentSubmissionPeriod)) < today) {
+                alert("아직 신청기간이 아닙니다. ");
+                window.location.href="/";
+            }
+        })
     })
 
     const fileInput = useRef();

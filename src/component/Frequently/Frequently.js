@@ -71,7 +71,7 @@ function Frequently() {
                         </AccordionSummary>
                         <AccordionDetails>
                         <Typography>
-                            <p>1. 출석체크 : 2시간 마다 출석체크</p>
+                            <p>1. 출석체크 : 1시간 마다 출석체크</p>
                                 <TableContainer component={Paper}>
                                     <Table sx={{ minWidth: 650 }} aria-label="simple table">
                                         <TableHead>
@@ -82,27 +82,17 @@ function Frequently() {
                                         </TableHead>
                                         <TableBody>
                                             <TableRow>
-                                                <TableCell component="th" scope="row">조퇴</TableCell>
-                                                <TableCell align="center">당일 교육시간 1/2 이하 인정</TableCell>
-                                            </TableRow>
-                                            <TableRow>
-                                                <TableCell component="th" scope="row">외출</TableCell>
-                                                <TableCell align="center">2시간 기준 인정, 넘어갈 시 조퇴처리</TableCell>
+                                                <TableCell component="th" scope="row">외출/조퇴</TableCell>
+                                                <TableCell align="center">시간당 결석처리</TableCell>
                                             </TableRow>
                                             <TableRow>
                                                 <TableCell component="th" scope="row">지각</TableCell>
-                                                <TableCell align="center">매 교시 1/2 이전에 참여할 시</TableCell>
-                                            </TableRow>
-                                            <TableRow>
-                                                <TableCell component="th" scope="row">결석</TableCell>
-                                                <TableCell align="center">하루 1/2 미만으로 수강 = 결석처리 <br />
-                                                지각,조퇴,외출 합산 3회 = 1일 결석</TableCell>
+                                                <TableCell align="center">매 교시 10분이 지난 후 참여할 시</TableCell>
                                             </TableRow>
                                         </TableBody>
                                     </Table>
                                 </TableContainer>
-                            <p>*각 구분별 출석사유 동시 체크 시, 각각 체크됨 {"("} 예 : 지각 후 조퇴 시, 2회 각각 체크됨 {")"}</p>
-                            <p>*타 수업 이수 및 악용사례 학생 한해, 합 8시간 기준 결석처리 1회 적용</p>
+                            <p>*각 구분별 출석사유 동시 확인 시, 각각 체크됨 {"("} 예 : 지각 후 조퇴 시, 시간 별 체크됨 {")"}</p>
                             <br />
                             <p>2. 출결인정사유 및 제출 증빙서류</p>
                             <p>{"1) 출결사항"}</p>
